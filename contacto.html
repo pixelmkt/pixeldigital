@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto • Hablemos de tu Proyecto • PIXEL</title>
+  <meta name="description" content="Contacta con PIXEL para empezar tu proyecto. Envía un mensaje, escríbenos a pixel.publidigi@gmail.com o agenda una consultoría gratuita.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="base.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <div class="cursor-dot"></div><div class="cursor-outline"></div>
+
+  <header class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" aria-label="Ir al inicio de Pixel.">
+        <span class="logo-text">Pixel.</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
+        <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
+        <a href="contacto.html" class="nav-link transition-colors active">Contacto</a>
+        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">
+          Servicios
+        </a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+      <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
+      <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
+      <a href="contacto.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Contacto</a>
+      <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
+        Cotizar Servicios
+      </a>
+    </div>
+  </header>
+  <main class="max-w-7xl mx-auto px-4 pt-20 pb-20">
+    <h1 class="headline text-center text-5xl md:text-6xl mb-16 scroll-reveal">Hablemos</h1>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 border border-[var(--linea-clara)] p-8 md:p-12 scroll-reveal rounded-lg bg-white shadow-lg">
+      <div>
+        <h2 class="headline text-2xl mb-4">Envía un Mensaje</h2>
+        <form id="contact-form" action="https://formspree.io/f/mdklbdky" method="POST" class="space-y-4">
+          <div class="input-with-icon">
+            <i class="fas fa-user input-icon"></i>
+            <input type="text" name="name" class="input" placeholder="Nombre Completo" required>
+          </div>
+          <div class="input-with-icon">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" name="_replyto" class="input" placeholder="Email" required>
+          </div>
+          <textarea name="message" rows="5" class="input" placeholder="Cuéntanos tu desafío..."></textarea>
+          <button type="submit" class="btn w-full">Enviar Mensaje</button>
+        </form>
+        <p id="form-status" class="mt-4 text-center text-sm font-semibold" aria-live="polite"></p>
+      </div>
+      <div class="text-left">
+        <h2 class="headline text-2xl mb-4">Información y Cita</h2>
+        <ul class="space-y-4 text-lg mb-8">
+          <li><i class="fas fa-envelope text-[var(--rojo-acento)] w-6 text-center mr-2"></i> pixel.publidigi@gmail.com</li>
+          <li><i class="fas fa-phone text-[var(--rojo-acento)] w-6 text-center mr-2"></i> +51 975 200 420</li>
+        </ul>
+        <a href="https://calendar.google.com/calendar/u/0/r/appointment?pli=1" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full">Agendar una Consultoría</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
+    <div>
+      <a href="index.html" aria-label="Ir al inicio de Pixel.">
+        <span class="logo-text">Pixel.</span>
+      </a>
+      <p class="mt-2">© 2024 Pixel. Todos los derechos reservados.</p>
+    </div>
+    <div class="text-right">
+      <div class="flex justify-end space-x-6 mb-2">
+        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de Privacidad</a>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

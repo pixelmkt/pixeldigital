@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proyectos Destacados • PIXEL</title>
+  <meta name="description" content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="base.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    body{ cursor:auto; }
+    .case-img{
+      height: 24rem; width:100%;
+      object-fit: cover; border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      background: #fff;
+    }
+    @media (min-width: 768px){ .case-img{ height: 30rem; } }
+  </style>
+</head>
+<body>
+  <div class="cursor-dot"></div><div class="cursor-outline"></div>
+
+  <header class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" aria-label="Ir al inicio de Pixel.">
+        <span class="logo-text">Pixel.</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
+        <a href="proyectos.html" class="nav-link transition-colors active">Proyectos</a>
+        <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
+        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">
+          Servicios
+        </a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+      <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
+      <a href="proyectos.html" class="block text-center py
