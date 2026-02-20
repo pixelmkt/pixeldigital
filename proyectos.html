@@ -21,22 +21,96 @@
       cursor: auto;
     }
 
-    .case-img {
+    /* ── Project Visual Cards ── */
+    .project-visual {
       height: 24rem;
       width: 100%;
-      object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
-      background: #fff;
-      transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow .5s ease;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .project-visual:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .18);
     }
 
     @media (min-width: 768px) {
-      .case-img {
+      .project-visual {
         height: 30rem;
       }
     }
 
+    .project-visual .pv-icon {
+      font-size: 3rem;
+      opacity: 0.3;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-visual .pv-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    }
+
+    .project-visual .pv-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-top: 0.75rem;
+      opacity: 0.7;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.3rem 1rem;
+      border-radius: 999px;
+    }
+
+    .project-visual .pv-arrow {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      font-size: 0.8rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all .3s ease;
+    }
+
+    .project-visual:hover .pv-arrow {
+      opacity: 0.8;
+      transform: translateX(0);
+    }
+
+    /* ── Gradients per brand ── */
+    .pv-virago {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    }
+
+    .pv-lab {
+      background: linear-gradient(135deg, #C6341E 0%, #e85d3a 50%, #ff8c42 100%);
+    }
+
+    .pv-fiji {
+      background: linear-gradient(135deg, #0a8f8f 0%, #12b5b5 50%, #72dfc5 100%);
+    }
+
+    .pv-teen {
+      background: linear-gradient(135deg, #6c2eb9 0%, #9b59b6 50%, #c39bd3 100%);
+    }
+
+    /* ── Result Badge ── */
     .result-badge {
       display: inline-flex;
       align-items: center;
@@ -52,7 +126,7 @@
       margin-top: 1rem;
     }
 
-    /* Portfolio Filters */
+    /* ── Portfolio Filters ── */
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
@@ -84,7 +158,7 @@
       box-shadow: 0 4px 15px rgba(198, 52, 30, 0.25);
     }
 
-    /* Portfolio Grid */
+    /* ── Portfolio Grid ── */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -109,36 +183,46 @@
       border-color: rgba(198, 52, 30, 0.2);
     }
 
-    .portfolio-card-icon {
+    .portfolio-card-visual {
       width: 100%;
       height: 200px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
       position: relative;
       overflow: hidden;
+      color: #fff;
     }
 
-    .portfolio-card-icon i {
-      font-size: 3.5rem;
-      color: rgba(198, 52, 30, 0.12);
+    .portfolio-card-visual .pcv-icon {
+      font-size: 2.5rem;
+      opacity: 0.35;
+      margin-bottom: 0.75rem;
       transition: all .4s ease;
     }
 
-    .portfolio-card:hover .portfolio-card-icon i {
-      color: rgba(198, 52, 30, 0.3);
+    .portfolio-card:hover .pcv-icon {
+      opacity: 0.6;
       transform: scale(1.1);
     }
 
-    .portfolio-card-icon::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--linea-clara);
+    .portfolio-card-visual .pcv-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* Portfolio card gradients */
+    .pcv-foto {
+      background: linear-gradient(135deg, #2c3e50 0%, #4a6274 100%);
+    }
+
+    .pcv-ecom {
+      background: linear-gradient(135deg, #C6341E 0%, #e8654a 100%);
     }
 
     .portfolio-card-body {
@@ -171,7 +255,7 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Section separator */
+    /* ── Section separator ── */
     .section-divider {
       text-align: center;
       position: relative;
@@ -243,16 +327,16 @@
     <p class="text-center text-lg text-[var(--muted)] max-w-2xl mx-auto mb-16 scroll-reveal">Resultados reales para
       marcas de moda y lifestyle que confían en nuestra estrategia digital 360°.</p>
 
-    <!-- ===== CLIENT PROJECTS (ECOMMERCE RESULTS) ===== -->
+    <!-- ===== CLIENT PROJECTS ===== -->
     <div class="space-y-24">
 
       <!-- 1) Virago Dress -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://viragodress.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
-            src="https://drive.google.com/thumbnail?id=1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml&sz=w1920"
-            onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml'"
-            alt="Virago Dress – Shopify + Paid Media" draggable="false">
+        <a href="https://viragodress.com/" target="_blank" class="project-visual pv-virago">
+          <i class="fas fa-store pv-icon"></i>
+          <div class="pv-brand">Virago Dress</div>
+          <div class="pv-label">Shopify · Paid Media</div>
+          <span class="pv-arrow">Ver proyecto →</span>
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Virago Dress</div>
@@ -278,11 +362,11 @@
       <!-- 2) Lab Nutrition -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
-          <a href="https://www.labnutrition.com/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
-              src="https://drive.google.com/thumbnail?id=1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM&sz=w1920"
-              onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM'"
-              alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
+          <a href="https://www.labnutrition.com/" target="_blank" class="project-visual pv-lab">
+            <i class="fas fa-bolt pv-icon"></i>
+            <div class="pv-brand">Lab Nutrition</div>
+            <div class="pv-label">CRM · Paid Media · Integraciones</div>
+            <span class="pv-arrow">Ver proyecto →</span>
           </a>
         </div>
         <div class="md:order-1">
@@ -308,11 +392,11 @@
       <!-- 3) Fiji Swimwear -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
-          <a href="https://fijiswimwear.pe/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
-              src="https://drive.google.com/thumbnail?id=11H7hzUZ3AUAcut9sspdyR9c7s674bnR4&sz=w1920"
-              onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/11H7hzUZ3AUAcut9sspdyR9c7s674bnR4'"
-              alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
+          <a href="https://fijiswimwear.pe/" target="_blank" class="project-visual pv-fiji">
+            <i class="fas fa-water pv-icon"></i>
+            <div class="pv-brand">Fiji Swimwear</div>
+            <div class="pv-label">Web · Integraciones · Paid Media</div>
+            <span class="pv-arrow">Ver proyecto →</span>
           </a>
         </div>
         <div class="md:order-1">
@@ -337,11 +421,11 @@
 
       <!-- 4) TeenLife Perú -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://teenlifeperu.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
-            src="https://drive.google.com/thumbnail?id=1uwqiH25sZg10-BpUjQio85hi5FwPNi2w&sz=w1920"
-            onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1uwqiH25sZg10-BpUjQio85hi5FwPNi2w'"
-            alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
+        <a href="https://teenlifeperu.com/" target="_blank" class="project-visual pv-teen">
+          <i class="fas fa-palette pv-icon"></i>
+          <div class="pv-brand">TeenLife Perú</div>
+          <div class="pv-label">UX/UI · Meta Ads</div>
+          <span class="pv-arrow">Ver proyecto →</span>
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">TeenLife Perú</div>
@@ -385,8 +469,9 @@
       <!-- Fotografía: Bridal Couture Fiji Swim -->
       <a href="https://www.behance.net/gallery/222616215/Fotografia-Bridal-Couture-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-image"></i>
+        <div class="portfolio-card-visual pcv-foto">
+          <i class="fas fa-camera-retro pcv-icon"></i>
+          <div class="pcv-name">Fiji Swim</div>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
@@ -398,8 +483,9 @@
       <!-- Ecommerce: TEENLIFE -->
       <a href="https://www.behance.net/gallery/223429483/E-Commerce-TEENLIFE" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-window-maximize"></i>
+        <div class="portfolio-card-visual pcv-ecom">
+          <i class="fas fa-laptop-code pcv-icon"></i>
+          <div class="pcv-name">TEENLIFE</div>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
@@ -411,8 +497,9 @@
       <!-- Fotografía: Duna Dorada Fiji Swim -->
       <a href="https://www.behance.net/gallery/202966131/Fotograia-Duna-Dorada-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-sun"></i>
+        <div class="portfolio-card-visual pcv-foto">
+          <i class="fas fa-sun pcv-icon"></i>
+          <div class="pcv-name">Fiji Swim</div>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
@@ -425,8 +512,9 @@
       <!-- Ecommerce: VIRAGO DRESS -->
       <a href="https://www.behance.net/gallery/223432783/Ecommerce-VIRAGO-DRESS" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-gem"></i>
+        <div class="portfolio-card-visual pcv-ecom">
+          <i class="fas fa-gem pcv-icon"></i>
+          <div class="pcv-name">Virago Dress</div>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
@@ -438,8 +526,9 @@
       <!-- Fotografía: Navidad TEENLIFE -->
       <a href="https://www.behance.net/gallery/222620631/Fotografia-Navidad-TEENLIFE" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-snowflake"></i>
+        <div class="portfolio-card-visual pcv-foto">
+          <i class="fas fa-snowflake pcv-icon"></i>
+          <div class="pcv-name">TEENLIFE</div>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
@@ -451,8 +540,9 @@
       <!-- Ecommerce: FijiSwim -->
       <a href="https://www.behance.net/gallery/223271387/E-commerce-FijiSwim" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-compass"></i>
+        <div class="portfolio-card-visual pcv-ecom">
+          <i class="fas fa-store pcv-icon"></i>
+          <div class="pcv-name">Fiji Swim</div>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
@@ -512,32 +602,11 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Fallback: auto-load Google Drive images if main.js doesn't handle them -->
-  <script>
-    (function () {
-      document.querySelectorAll('img[data-drive-id]').forEach(function (img) {
-        if (!img.src || img.src === '' || img.src === window.location.href) {
-          var id = img.getAttribute('data-drive-id');
-          img.src = 'https://drive.google.com/thumbnail?id=' + id + '&sz=w1920';
-          img.onerror = function () {
-            this.onerror = function () {
-              this.onerror = null;
-              this.src = 'https://drive.google.com/uc?export=view&id=' + id;
-            };
-            this.src = 'https://lh3.googleusercontent.com/d/' + id;
-          };
-        }
-      });
-    })();
-  </script>
-
   <script src="main.js"></script>
   <script>
     // Portfolio filter functionality
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        // Toggle active state
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
