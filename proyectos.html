@@ -9,6 +9,7 @@
     content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="referrer" content="no-referrer">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
@@ -238,7 +239,8 @@
       <!-- 1) VIRAGO DRESS -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://viragodress.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml" referrerpolicy="no-referrer"
+          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
+            src="https://lh3.googleusercontent.com/d/1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml" referrerpolicy="no-referrer"
             alt="Virago Dress – Shopify + Paid Media" draggable="false">
         </a>
         <div>
@@ -266,7 +268,8 @@
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
           <a href="https://www.labnutrition.com/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM" referrerpolicy="no-referrer"
+            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
+              src="https://lh3.googleusercontent.com/d/1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM" referrerpolicy="no-referrer"
               alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
           </a>
         </div>
@@ -294,7 +297,8 @@
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
           <a href="https://fijiswimwear.pe/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4" referrerpolicy="no-referrer"
+            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
+              src="https://lh3.googleusercontent.com/d/11H7hzUZ3AUAcut9sspdyR9c7s674bnR4" referrerpolicy="no-referrer"
               alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
           </a>
         </div>
@@ -321,7 +325,8 @@
       <!-- 4) TEENLIFE PERÚ -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://teenlifeperu.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w" referrerpolicy="no-referrer"
+          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
+            src="https://lh3.googleusercontent.com/d/1uwqiH25sZg10-BpUjQio85hi5FwPNi2w" referrerpolicy="no-referrer"
             alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
         </a>
         <div>
@@ -491,19 +496,40 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
   <script>
-    /* Fallback: si main.js no cargó o no manejó las imágenes, las resuelve aquí */
+    /* Garantizar que las imágenes de Drive siempre carguen, incluso si main.js las sobreescribe */
     (function () {
-      function loadDriveImages() {
+      var driveUrl = 'https://lh3.googleusercontent.com/d/';
+
+      function fixDriveImages() {
         document.querySelectorAll('img[data-drive-id]').forEach(function (img) {
-          if (!img.getAttribute('src') || img.naturalWidth === 0) {
-            var id = img.getAttribute('data-drive-id');
-            img.referrerPolicy = 'no-referrer';
-            img.src = 'https://lh3.googleusercontent.com/d/' + id;
+          var id = img.getAttribute('data-drive-id');
+          /* Siempre forzar referrerpolicy */
+          img.referrerPolicy = 'no-referrer';
+          /* Si no tiene src o la imagen no cargó, ponerlo */
+          if (!img.src || img.naturalWidth === 0) {
+            img.src = driveUrl + id;
           }
         });
       }
-      /* Esperar a que main.js tenga tiempo de ejecutarse primero */
-      setTimeout(loadDriveImages, 800);
+
+      /* Ejecutar inmediatamente */
+      fixDriveImages();
+      /* Ejecutar de nuevo después de main.js (por si main.js sobreescribe) */
+      setTimeout(fixDriveImages, 1000);
+      /* Ejecutar una vez más por seguridad */
+      setTimeout(fixDriveImages, 3000);
+
+      /* Observar cambios en src para re-aplicar referrerpolicy */
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (m) {
+          if (m.type === 'attributes' && m.attributeName === 'src') {
+            m.target.referrerPolicy = 'no-referrer';
+          }
+        });
+      });
+      document.querySelectorAll('img[data-drive-id]').forEach(function (img) {
+        observer.observe(img, { attributes: true, attributeFilter: ['src'] });
+      });
     })();
 
     /* Portfolio filter */
