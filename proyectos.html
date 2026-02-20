@@ -1,284 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proyectos Destacados • PIXEL</title>
-  <meta name="description"
-    content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
-
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proyectos • PIXEL</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    body {
-      cursor: auto;
-    }
-
-    .case-img {
-      height: 24rem;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+    body{ cursor:auto; }
+    .case-img{
+      height: 24rem; width:100%;
+      object-fit: cover; border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.12);
       background: #fff;
-      transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-
-    @media (min-width: 768px) {
-      .case-img {
-        height: 30rem;
-      }
-    }
-
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: linear-gradient(135deg, rgba(198, 52, 30, 0.08) 0%, rgba(255, 77, 0, 0.05) 100%);
-      border: 1px solid rgba(198, 52, 30, 0.15);
-      color: var(--rojo-acento);
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      margin-top: 1rem;
-    }
-
-    /* Portfolio Filters */
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      justify-content: center;
-    }
-
-    .filter-btn {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.5rem 1.25rem;
-      border-radius: 999px;
-      border: 1px solid var(--linea-clara);
-      background: rgba(255, 255, 255, 0.7);
-      color: var(--gris-oscuro);
-      cursor: pointer;
-      transition: all .3s ease;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--rojo-acento);
-      color: var(--fondo-crema);
-      border-color: var(--rojo-acento);
-      box-shadow: 0 4px 15px rgba(198, 52, 30, 0.25);
-    }
-
-    /* Portfolio Grid */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .portfolio-card {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--linea-clara);
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      transition: all .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      display: block;
-      color: var(--gris-oscuro);
-      text-decoration: none;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-      border-color: rgba(198, 52, 30, 0.2);
-    }
-
-    .portfolio-card-icon {
-      width: 100%;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .portfolio-card-icon i {
-      font-size: 3.5rem;
-      color: rgba(198, 52, 30, 0.12);
-      transition: all .4s ease;
-    }
-
-    .portfolio-card:hover .portfolio-card-icon i {
-      color: rgba(198, 52, 30, 0.3);
-      transform: scale(1.1);
-    }
-
-    .portfolio-card-icon::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--linea-clara);
-    }
-
-    .portfolio-card-body {
-      padding: 1.25rem;
-    }
-
-    .portfolio-card-body h3 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .portfolio-card-body p {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .portfolio-category {
-      display: inline-block;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(198, 52, 30, 0.08);
-      color: var(--rojo-acento);
-      margin-bottom: 0.5rem;
-    }
-
-    /* Section separator */
-    .section-divider {
-      text-align: center;
-      position: relative;
-      margin: 4rem 0 2rem;
-    }
-
-    .section-divider::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--linea-clara);
-    }
-
-    .section-divider span {
-      position: relative;
-      background: var(--fondo-crema);
-      padding: 0 1.5rem;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--rojo-acento);
-    }
+    @media (min-width: 768px){ .case-img{ height: 30rem; } }
   </style>
 </head>
-
 <body>
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
+  <div class="cursor-dot"></div><div class="cursor-outline"></div>
 
-  <header
-    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+  <header class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="index.html"><img src="https://via.placeholder.com/120x32/C6341E/F5F1E8?text=PIXEL" alt="Logo Pixel"
-          class="h-8"></a>
+      <a href="index.html"><img src="https://via.placeholder.com/120x32/C6341E/F5F1E8?text=PIXEL" alt="Logo Pixel" class="h-8"></a>
       <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="proyectos.html" class="nav-link transition-colors active">Proyectos</a>
-        <a href="https://posicionamiento-ia.vercel.app/" target="_blank" rel="noopener noreferrer"
-          class="nav-link transition-colors font-bold" style="color:#C6341E;">Posicionamiento en IA</a>
-        <a href="https://cotizacion-xi.vercel.app/" target="_blank" rel="noopener noreferrer"
-          class="nav-link transition-colors font-bold" style="color:#C6341E;">¿Qué hacemos?</a>
+        <a href="https://posicionamiento-ia.vercel.app/" target="_blank" class="nav-link transition-colors font-bold" style="color:#C6341E;">Posicionamiento en IA</a>
+        <a href="https://cotizacion-xi.vercel.app/" target="_blank" class="nav-link transition-colors font-bold" style="color:#C6341E;">¿Qué hacemos?</a>
         <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
       </nav>
-      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]"
-        aria-label="Abrir menú de navegación" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]"><i class="fas fa-bars"></i></button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
       <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
-      <a href="proyectos.html"
-        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Proyectos</a>
-      <a href="https://posicionamiento-ia.vercel.app/" target="_blank" rel="noopener noreferrer"
-        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link font-bold"
-        style="color:#C6341E;">Posicionamiento en IA</a>
-      <a href="https://cotizacion-xi.vercel.app/" target="_blank" rel="noopener noreferrer"
-        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link font-bold"
-        style="color:#C6341E;">¿Qué hacemos?</a>
+      <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Proyectos</a>
       <a href="contacto.html" class="block text-center py-3 nav-link">Contacto</a>
     </div>
   </header>
 
   <main class="max-w-5xl mx-auto px-4 pt-20 pb-20">
-    <h1 class="headline text-center text-5xl md:text-6xl mb-4 scroll-reveal">Nuestros Proyectos</h1>
-    <p class="text-center text-lg text-[var(--muted)] max-w-2xl mx-auto mb-16 scroll-reveal">Resultados reales para
-      marcas de moda y lifestyle que confían en nuestra estrategia digital 360°.</p>
+    <h1 class="headline text-center text-5xl md:text-6xl mb-16 scroll-reveal">Nuestros mejores proyectos</h1>
 
-    <!-- ===== CLIENT PROJECTS (ECOMMERCE RESULTS) ===== -->
     <div class="space-y-24">
 
       <!-- 1) Virago Dress -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://viragodress.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
-            alt="Virago Dress – Shopify + Paid Media" draggable="false">
+          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml" alt="Virago Dress – Shopify + Paid Media" draggable="false">
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Virago Dress</div>
           <h2 class="headline text-4xl mt-4">Ecommerce que <span class="text-highlight">escala</span></h2>
           <p class="text-lg mt-4">
-            Montamos la tienda en Shopify con arquitectura de conversión y ejecutamos una estrategia de Paid Media
-            full‑funnel.
-            Resultado: <strong>crecimiento sostenido en ventas</strong> y un <strong>posicionamiento sólido</strong> en
-            su categoría.
+            Montamos la tienda en Shopify con arquitectura de conversión y ejecutamos una estrategia de Paid Media full‑funnel.
+            Resultado: <strong>crecimiento sostenido en ventas</strong> y un <strong>posicionamiento sólido</strong> en su categoría.
           </p>
-          <div class="result-badge">
-            <i class="fas fa-arrow-trend-up"></i> Crecimiento sostenido
-          </div>
-          <div class="mt-5">
-            <span class="project-tag">Shopify</span>
-            <span class="project-tag">Paid Media</span>
-            <span class="project-tag">Estrategia 360</span>
-          </div>
           <a href="https://viragodress.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
-      <!-- 2) Lab Nutrition -->
+      <!-- 2) Lab Nutrition (SEGUNDO) -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
           <a href="https://www.labnutrition.com/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
-              alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
+            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM" alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
           </a>
         </div>
         <div class="md:order-1">
@@ -288,15 +74,6 @@
             Estrategia 360: CRM, automatizaciones, integraciones y Paid Media multicanal.
             Resultado: <strong>+45% de crecimiento</strong> vs. 2024 y una operación preparada para escalar.
           </p>
-          <div class="result-badge">
-            <i class="fas fa-chart-line"></i> +45% crecimiento vs. 2024
-          </div>
-          <div class="mt-5">
-            <span class="project-tag">CRM</span>
-            <span class="project-tag">Paid Media</span>
-            <span class="project-tag">Integraciones</span>
-            <span class="project-tag">Automatizaciones</span>
-          </div>
           <a href="https://www.labnutrition.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
@@ -305,8 +82,7 @@
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
           <a href="https://fijiswimwear.pe/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
-              alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
+            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4" alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
           </a>
         </div>
         <div class="md:order-1">
@@ -314,17 +90,8 @@
           <h2 class="headline text-4xl mt-4">De cero a <span class="text-highlight">exponencial</span></h2>
           <p class="text-lg mt-4">
             Desarrollo web, integraciones clave (pagos, logística y analítica) y lanzamiento de Paid Media.
-            En los <strong>primeros 3 meses</strong> la marca registró un <strong>crecimiento exponencial</strong> en
-            tráfico y ventas.
+            En los <strong>primeros 3 meses</strong> la marca registró un <strong>crecimiento exponencial</strong> en tráfico y ventas.
           </p>
-          <div class="result-badge">
-            <i class="fas fa-rocket"></i> Crecimiento exponencial en 3 meses
-          </div>
-          <div class="mt-5">
-            <span class="project-tag">Shopify</span>
-            <span class="project-tag">Paid Media</span>
-            <span class="project-tag">Desarrollo Web</span>
-          </div>
           <a href="https://fijiswimwear.pe/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
@@ -332,8 +99,7 @@
       <!-- 4) TeenLife Perú -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://teenlifeperu.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
-            alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
+          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w" alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">TeenLife Perú</div>
@@ -342,193 +108,20 @@
             Rediseñamos UX/UI para reducir fricción y relanzamos campañas en Meta Ads.
             El negocio marcó un <strong>+70% en ventas</strong> durante los dos primeros meses post‑optimización.
           </p>
-          <div class="result-badge">
-            <i class="fas fa-arrow-trend-up"></i> +70% en ventas
-          </div>
-          <div class="mt-5">
-            <span class="project-tag">Diseño (UX/UI)</span>
-            <span class="project-tag">Paid Media</span>
-          </div>
           <a href="https://teenlifeperu.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
     </div>
-
-    <!-- ===== PORTFOLIO BEHANCE ===== -->
-    <div class="section-divider scroll-reveal">
-      <span><i class="fab fa-behance mr-2"></i> Portafolio Creativo</span>
-    </div>
-
-    <h2 class="headline text-3xl text-center mb-4 scroll-reveal">Fotografía & Diseño Ecommerce</h2>
-    <p class="text-center text-base text-[var(--muted)] max-w-lg mx-auto mb-8 scroll-reveal">Producción visual
-      profesional para marcas de moda y lifestyle. Cada proyecto diseñado para impulsar ventas.</p>
-
-    <!-- Filter Tabs -->
-    <div class="filter-bar scroll-reveal">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="fotografia">Fotografía</button>
-      <button class="filter-btn" data-filter="ecommerce">Ecommerce</button>
-    </div>
-
-    <!-- Portfolio Grid -->
-    <div class="portfolio-grid scroll-reveal" id="portfolio-grid">
-
-      <!-- Fotografía: Bridal Couture Fiji Swim -->
-      <a href="https://www.behance.net/gallery/222616215/Fotografia-Bridal-Couture-Fiji-Swim" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-image"></i>
-        </div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
-          <h3>Bridal Couture — Fiji Swim</h3>
-          <p>Producción fotográfica de colección nupcial. Dirección de arte, styling y postproducción premium.</p>
-        </div>
-      </a>
-
-      <!-- Ecommerce: TEENLIFE -->
-      <a href="https://www.behance.net/gallery/223429483/E-Commerce-TEENLIFE" target="_blank" rel="noopener noreferrer"
-        class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-window-maximize"></i>
-        </div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
-          <h3>E-Commerce — TEENLIFE</h3>
-          <p>Diseño y desarrollo de tienda online optimizada para conversión. UX/UI enfocado en el público teen.</p>
-        </div>
-      </a>
-
-      <!-- Fotografía: Duna Dorada Fiji Swim -->
-      <a href="https://www.behance.net/gallery/202966131/Fotograia-Duna-Dorada-Fiji-Swim" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-sun"></i>
-        </div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
-          <h3>Duna Dorada — Fiji Swim</h3>
-          <p>Sesión de fotos lifestyle en exteriores para colección de swimwear. Locación, dirección de arte y retoque.
-          </p>
-        </div>
-      </a>
-
-      <!-- Ecommerce: VIRAGO DRESS -->
-      <a href="https://www.behance.net/gallery/223432783/Ecommerce-VIRAGO-DRESS" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-gem"></i>
-        </div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
-          <h3>Ecommerce — VIRAGO DRESS</h3>
-          <p>Tienda Shopify con arquitectura de conversión para moda femenina. Diseño UX/UI y optimización.</p>
-        </div>
-      </a>
-
-      <!-- Fotografía: Navidad TEENLIFE -->
-      <a href="https://www.behance.net/gallery/222620631/Fotografia-Navidad-TEENLIFE" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-snowflake"></i>
-        </div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
-          <h3>Navidad — TEENLIFE</h3>
-          <p>Campaña fotográfica navideña para catálogo ecommerce. Producción, styling y edición profesional.</p>
-        </div>
-      </a>
-
-      <!-- Ecommerce: FijiSwim -->
-      <a href="https://www.behance.net/gallery/223271387/E-commerce-FijiSwim" target="_blank" rel="noopener noreferrer"
-        class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-compass"></i>
-        </div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
-          <h3>E-Commerce — Fiji Swim</h3>
-          <p>Desarrollo integral de la tienda online para swimwear. Shopify, integraciones y optimización.</p>
-        </div>
-      </a>
-
-    </div>
-
-    <!-- ===== CTA BOTTOM ===== -->
-    <section class="cta-section text-center my-20 scroll-reveal">
-      <h2 class="headline text-4xl mb-4 relative z-10">¿Quieres ser nuestro próximo caso de éxito?</h2>
-      <p class="text-xl max-w-2xl mx-auto mb-10 relative z-10">Hablemos sobre tus objetivos y diseñemos juntos la
-        estrategia que va a impulsar tu marca de moda.</p>
-      <div class="relative z-10 flex flex-wrap justify-center gap-4">
-        <a href="contacto.html" class="btn text-lg">Empezar mi Proyecto</a>
-        <a href="https://cotizacion-xi.vercel.app/" target="_blank" rel="noopener noreferrer"
-          class="btn btn-secondary text-lg">¿Qué hacemos?</a>
-      </div>
-    </section>
-
   </main>
 
-  <footer
-    class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
-    <div>
-      <a href="index.html"><img src="https://via.placeholder.com/120x32/C6341E/F5F1E8?text=PIXEL" alt="Logo Pixel"
-          class="h-8"></a>
-      <p class="mt-2">© 2024 Pixel. Todos los derechos reservados.</p>
-    </div>
-    <div class="text-right">
-      <div class="flex justify-end space-x-6 mb-2">
-        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-linkedin"></i></a>
-        <a href="https://www.tiktok.com/@pixel.public" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-tiktok"></i></a>
-        <a href="https://www.behance.net/pixelpublic" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-behance"></i></a>
-      </div>
-      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
-        Privacidad</a>
-    </div>
+  <footer class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
+    <div><a href="index.html"><img src="https://via.placeholder.com/120x32/C6341E/F5F1E8?text=PIXEL" alt="Logo Pixel" class="h-8"></a><p class="mt-2">&copy; 2024 Pixel. Todos los derechos reservados.</p></div>
+    <div class="text-right"><div class="flex justify-end space-x-6 mb-2"><a href="https://www.instagram.com/pixel.public/" target="_blank" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/company/pixelperu" target="_blank" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-linkedin"></i></a></div><a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de Privacidad</a></div>
   </footer>
-
-  <!-- WhatsApp floating button -->
-  <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
-    aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
-  <script>
-    // Portfolio filter functionality
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Toggle active state
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-        const cards = document.querySelectorAll('.portfolio-card');
-
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = '';
-            if (typeof gsap !== 'undefined') {
-              gsap.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' });
-            }
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
 </body>
-
 </html>
