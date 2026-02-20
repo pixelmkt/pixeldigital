@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caso de Estudio: Fiji Swimwear • PIXEL</title>
+    <meta name="description"
+        content="Cómo escalamos la facturación de Fiji Swimwear un +312% en menos de 8 semanas reduciendo el CAC a la mitad. Desglose técnico y sin censura.">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="base.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="cs-body">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="sticky top-0 left-0 right-0 z-40 cs-header">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="index.html" aria-label="Ir al inicio de Pixel.">
+                <span class="logo-text" style="color:var(--fondo-crema);">Pixel.</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[rgba(245,241,232,0.7)]">
+                <a href="proyectos.html" class="nav-link transition-colors cs-nav-link">Proyectos</a>
+                <a href="caso-de-estudio.html" class="nav-link transition-colors cs-nav-link active">Caso de Estudio</a>
+                <a href="contacto.html" class="nav-link transition-colors cs-nav-link">Contacto</a>
+                <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="nav-cta">
+                    Servicios
+                </a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--fondo-crema)]"
+                aria-label="Abrir menú de navegación" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden cs-mobile-menu border-t border-[rgba(245,241,232,0.1)]">
+            <a href="index.html"
+                class="block text-center py-3 border-b border-[rgba(245,241,232,0.1)] nav-link cs-nav-link">Inicio</a>
+            <a href="proyectos.html"
+                class="block text-center py-3 border-b border-[rgba(245,241,232,0.1)] nav-link cs-nav-link">Proyectos</a>
+            <a href="caso-de-estudio.html"
+                class="block text-center py-3 border-b border-[rgba(245,241,232,0.1)] nav-link cs-nav-link active">Caso
+                de Estudio</a>
+            <a href="contacto.html"
+                class="block text-center py-3 border-b border-[rgba(245,241,232,0.1)] nav-link cs-nav-link">Contacto</a>
+            <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
+                Cotizar Servicios
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ===== SECCIÓN 1: HERO & GANCHO PRINCIPAL ===== -->
+        <section class="cs-hero relative overflow-hidden">
+            <!-- Animated background particles -->
+            <div class="cs-hero-particles" aria-hidden="true">
+                <div class="cs-particle" style="--delay:0s;--x:10%;--y:20%;"></div>
+                <div class="cs-particle" style="--delay:1.5s;--x:85%;--y:15%;"></div>
+                <div class="cs-particle" style="--delay:3s;--x:70%;--y:75%;"></div>
+                <div class="cs-particle" style="--delay:0.5s;--x:25%;--y:80%;"></div>
+                <div class="cs-particle" style="--delay:2s;--x:55%;--y:40%;"></div>
+                <div class="cs-particle" style="--delay:4s;--x:90%;--y:60%;"></div>
+            </div>
+
+            <!-- Gradient orbs -->
+            <div class="cs-hero-orb cs-hero-orb--1"></div>
+            <div class="cs-hero-orb cs-hero-orb--2"></div>
+
+            <div class="max-w-5xl mx-auto px-4 py-28 md:py-40 relative z-10">
+                <!-- Exclusivity badge -->
+                <div class="cs-badge scroll-reveal">
+                    <i class="fas fa-lock text-xs"></i>
+                    <span>Documento Estratégico Privado — Acceso Limitado</span>
+                </div>
+
+                <!-- Micro-titular -->
+                <p class="cs-micro-title mt-6 scroll-reveal" style="transition-delay:100ms;">
+                    Caso de Estudio Principal — <strong>Fiji Swimwear</strong>
+                </p>
+
+                <!-- Titular Principal -->
+                <h1 class="cs-hero-title scroll-reveal" style="transition-delay:200ms;">
+                    Cómo escalamos la facturación <span class="cs-text-glow">+312%</span> en menos de <span
+                        class="cs-text-glow">8 semanas.</span>
+                </h1>
+
+                <!-- Subtitular -->
+                <p class="cs-hero-sub scroll-reveal" style="transition-delay:300ms;">
+                    Un desglose técnico y sin censura de cómo reestructuramos el embudo de conversión, optimizamos el
+                    ROAS y escalamos las ventas a través de la <strong>metodología de retención Pixel</strong>.
+                </p>
+
+                <!-- Scroll indicator -->
+                <div class="cs-scroll-indicator scroll-reveal" style="transition-delay:500ms;">
+                    <div class="cs-scroll-line"></div>
+                    <span>Scroll para ver el desglose</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN 2: MÉTRICAS DE IMPACTO B2B ===== -->
+        <section class="cs-metrics-section">
+            <div class="max-w-5xl mx-auto px-4 py-24">
+                <p class="cs-section-label scroll-reveal">
+                    <i class="fas fa-terminal"></i> Dashboard de Resultados
+                </p>
+                <h2 class="cs-section-title scroll-reveal" style="transition-delay:100ms;">
+                    Métricas que le importan a un CEO.
+                </h2>
+                <p class="cs-section-sub scroll-reveal" style="transition-delay:150ms;">
+                    Nada de "alcance" o "impresiones". Datos financieros validados directamente en el backend.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                    <!-- Metric 1 -->
+                    <div class="cs-metric-card scroll-reveal" style="transition-delay:200ms;">
+                        <div class="cs-metric-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="cs-metric-value" data-cs-count="312" data-cs-prefix="+" data-cs-suffix="%">+0%</div>
+                        <div class="cs-metric-label">Aumento de Ingresos Netos</div>
+                        <div class="cs-metric-sub">
+                            <i class="fas fa-check-circle text-xs"></i>
+                            Validado directamente en el backend de Shopify
+                        </div>
+                        <div class="cs-metric-bar">
+                            <div class="cs-metric-bar-fill" style="--fill-width:95%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 2 -->
+                    <div class="cs-metric-card scroll-reveal" style="transition-delay:350ms;">
+                        <div class="cs-metric-icon">
+                            <i class="fas fa-funnel-dollar"></i>
+                        </div>
+                        <div class="cs-metric-value" data-cs-count="45" data-cs-prefix="-" data-cs-suffix="%">-0%</div>
+                        <div class="cs-metric-label">Reducción del CAC</div>
+                        <div class="cs-metric-sub">
+                            <i class="fas fa-check-circle text-xs"></i>
+                            Depurando audiencias basura en Meta y TikTok
+                        </div>
+                        <div class="cs-metric-bar">
+                            <div class="cs-metric-bar-fill" style="--fill-width:75%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metric 3 -->
+                    <div class="cs-metric-card scroll-reveal" style="transition-delay:500ms;">
+                        <div class="cs-metric-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="cs-metric-value" data-cs-count="4.8" data-cs-suffix="%">0%</div>
+                        <div class="cs-metric-label">Tasa de Conversión General</div>
+                        <div class="cs-metric-sub">
+                            <i class="fas fa-check-circle text-xs"></i>
+                            Logrado mediante rediseño UX/UI del flujo de Checkout
+                        </div>
+                        <div class="cs-metric-bar">
+                            <div class="cs-metric-bar-fill" style="--fill-width:60%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN 3: LA AUTOPSIA ===== -->
+        <section class="cs-autopsy-section">
+            <div class="max-w-5xl mx-auto px-4 py-24">
+                <p class="cs-section-label scroll-reveal">
+                    <i class="fas fa-stethoscope"></i> Diagnóstico Financiero
+                </p>
+                <h2 class="cs-section-title scroll-reveal" style="transition-delay:100ms;">
+                    La Autopsia: <span class="text-[var(--rojo-acento)]">Exponiendo la herida.</span>
+                </h2>
+
+                <!-- The Pain -->
+                <div class="cs-pain-block scroll-reveal mt-12" style="transition-delay:200ms;">
+                    <div class="cs-pain-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <h3 class="cs-pain-title">El Cuello de Botella</h3>
+                        <p class="cs-pain-text">
+                            A pesar de tener un excelente producto y cientos de miles de seguidores, la marca inyectaba
+                            miles de dólares mensuales en Paid Media enviando tráfico a una web lenta, con un checkout
+                            lleno de fricción y sin estrategia de retargeting. <strong>Estaban comprando tráfico caro
+                                para verlo escapar en el carrito.</strong> Estaban subsidiando a Mark Zuckerberg en
+                            lugar de escalar su rentabilidad.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- The Cure: Timeline -->
+                <div class="cs-timeline mt-20">
+                    <h3 class="cs-timeline-title scroll-reveal">
+                        <i class="fas fa-syringe"></i> La Intervención Pixel
+                    </h3>
+
+                    <div class="cs-timeline-track">
+                        <!-- Phase 1 -->
+                        <div class="cs-timeline-item scroll-reveal" style="transition-delay:100ms;">
+                            <div class="cs-timeline-dot">
+                                <div class="cs-timeline-dot-inner">1</div>
+                            </div>
+                            <div class="cs-timeline-content">
+                                <span class="cs-phase-label">Fase 1</span>
+                                <h4 class="cs-phase-title">Infraestructura</h4>
+                                <p class="cs-phase-desc">
+                                    <strong>Migración y Optimización Shopify:</strong> Rediseño orientado a mobile-first
+                                    reduciendo el tiempo de carga a <span class="cs-text-accent">1.2s</span>. Eliminamos
+                                    cada milisegundo de fricción que costaba ventas.
+                                </p>
+                                <div class="cs-phase-tags">
+                                    <span class="cs-tag">Shopify</span>
+                                    <span class="cs-tag">Mobile-First</span>
+                                    <span class="cs-tag">PageSpeed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 -->
+                        <div class="cs-timeline-item scroll-reveal" style="transition-delay:250ms;">
+                            <div class="cs-timeline-dot">
+                                <div class="cs-timeline-dot-inner">2</div>
+                            </div>
+                            <div class="cs-timeline-content">
+                                <span class="cs-phase-label">Fase 2</span>
+                                <h4 class="cs-phase-title">Tráfico Líquido</h4>
+                                <p class="cs-phase-desc">
+                                    <strong>Arquitectura Paid Media:</strong> Consolidación de cuentas en Meta +
+                                    Advantage+ Shopping + Creativos orientados a conversión, <span
+                                        class="cs-text-accent">no a estética vacía</span>.
+                                </p>
+                                <div class="cs-phase-tags">
+                                    <span class="cs-tag">Meta Ads</span>
+                                    <span class="cs-tag">Advantage+</span>
+                                    <span class="cs-tag">ROAS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 3 -->
+                        <div class="cs-timeline-item scroll-reveal" style="transition-delay:400ms;">
+                            <div class="cs-timeline-dot">
+                                <div class="cs-timeline-dot-inner">3</div>
+                            </div>
+                            <div class="cs-timeline-content">
+                                <span class="cs-phase-label">Fase 3</span>
+                                <h4 class="cs-phase-title">LTV y Retención</h4>
+                                <p class="cs-phase-desc">
+                                    <strong>Automatización Klaviyo:</strong> Flujos de carrito abandonado, win-back y
+                                    post-compra que aportaron un <span class="cs-text-accent">23% extra</span> de
+                                    facturación pasiva en 30 días.
+                                </p>
+                                <div class="cs-phase-tags">
+                                    <span class="cs-tag">Klaviyo</span>
+                                    <span class="cs-tag">Email Flows</span>
+                                    <span class="cs-tag">Retención</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN 4: EL CIERRE B2B ===== -->
+        <section class="cs-cta-section relative overflow-hidden">
+            <!-- Background animated orbs -->
+            <div class="cs-cta-orb cs-cta-orb--1"></div>
+            <div class="cs-cta-orb cs-cta-orb--2"></div>
+
+            <div class="max-w-4xl mx-auto px-4 py-28 text-center relative z-10">
+                <p class="cs-section-label scroll-reveal" style="justify-content:center;">
+                    <i class="fas fa-crosshairs"></i> Siguiente Paso
+                </p>
+                <h2 class="cs-cta-title scroll-reveal" style="transition-delay:100ms;">
+                    Tu marca de e-commerce es el <span class="cs-text-glow">siguiente caso de estudio.</span>
+                </h2>
+                <p class="cs-cta-sub scroll-reveal" style="transition-delay:200ms;">
+                    Agenda una auditoría técnica de 20 minutos con nuestro equipo directivo. Analizaremos tu embudo
+                    actual, trazaremos las fugas de capital exactas y evaluaremos financieramente si el <strong>Sistema
+                        Pixel</strong> puede aplicarse a tus unit economics actuales.
+                </p>
+
+                <div class="scroll-reveal" style="transition-delay:300ms;">
+                    <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" class="cs-cta-btn"
+                        id="cs-apply-btn">
+                        <i class="fas fa-calendar-check"></i>
+                        Aplicar para Auditoría Estratégica
+                    </a>
+                </div>
+
+                <!-- Hard filter micro-copy -->
+                <div class="cs-filter scroll-reveal" style="transition-delay:400ms;">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>
+                        <strong>Atención:</strong> Agenda sujeta a calificación previa. Solo aceptamos llamadas con
+                        e-commerces que facturen un mínimo de <strong>$10,000 USD mensuales</strong> y estén listos para
+                        escalar.
+                    </p>
+                </div>
+
+                <!-- Trust signals -->
+                <div class="cs-trust-row scroll-reveal" style="transition-delay:500ms;">
+                    <div class="cs-trust-item">
+                        <i class="fas fa-lock"></i>
+                        <span>100% Confidencial</span>
+                    </div>
+                    <div class="cs-trust-item">
+                        <i class="fas fa-clock"></i>
+                        <span>20 min. Sin compromiso</span>
+                    </div>
+                    <div class="cs-trust-item">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Con Equipo Directivo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="cs-footer">
+        <div class="max-w-7xl mx-auto px-4 py-8 flex flex-wrap justify-between items-center text-sm gap-4">
+            <div>
+                <a href="index.html" aria-label="Ir al inicio de Pixel.">
+                    <span class="logo-text" style="color:var(--fondo-crema);">Pixel.</span>
+                </a>
+                <p class="mt-2 text-[rgba(245,241,232,0.5)]">© 2024 Pixel. Todos los derechos reservados.</p>
+            </div>
+            <div class="text-right">
+                <div class="flex justify-end space-x-6 mb-2">
+                    <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer"
+                        class="text-2xl text-[rgba(245,241,232,0.5)] hover:text-[var(--rojo-acento)] transition-colors"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
+                        class="text-2xl text-[rgba(245,241,232,0.5)] hover:text-[var(--rojo-acento)] transition-colors"><i
+                            class="fab fa-linkedin"></i></a>
+                </div>
+                <a href="politica-privacidad.html"
+                    class="text-[rgba(245,241,232,0.5)] hover:text-[var(--rojo-acento)] transition-colors">Política de
+                    Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp floating button -->
+    <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+        aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // ========== Case Study Counter Animation ==========
+        function animateCsCounter(el) {
+            const target = parseFloat(el.dataset.csCount);
+            const prefix = el.dataset.csPrefix || '';
+            const suffix = el.dataset.csSuffix || '';
+            const isDecimal = String(target).includes('.');
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
+
+            function update(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = target * easeOut(progress);
+                el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+        }
+
+        // Observe counter elements
+        const csCounters = document.querySelectorAll('[data-cs-count]');
+        if (csCounters.length) {
+            const csObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.csCounted) {
+                        entry.target.dataset.csCounted = 'true';
+                        animateCsCounter(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            csCounters.forEach(el => csObserver.observe(el));
+        }
+
+        // ========== Metric Bar Animation ==========
+        const csBars = document.querySelectorAll('.cs-metric-bar-fill');
+        if (csBars.length) {
+            const barObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.width = entry.target.style.getPropertyValue('--fill-width');
+                        barObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            csBars.forEach(bar => barObserver.observe(bar));
+        }
+
+        // ========== GSAP Enhancements for Case Study ==========
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Parallax hero orbs
+            gsap.to('.cs-hero-orb--1', {
+                y: -80, x: 30,
+                scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: 1 }
+            });
+            gsap.to('.cs-hero-orb--2', {
+                y: -50, x: -40,
+                scrollTrigger: { trigger: '.cs-hero', start: 'top top', end: 'bottom top', scrub: 1 }
+            });
+
+            // Timeline items stagger
+            gsap.fromTo('.cs-timeline-item',
+                { x: -30, opacity: 0 },
+                {
+                    x: 0, opacity: 1, duration: 0.7, stagger: 0.2, ease: 'power3.out',
+                    scrollTrigger: { trigger: '.cs-timeline-track', start: 'top 80%', toggleActions: 'play none none none' }
+                }
+            );
+
+            // Metric cards entrance
+            gsap.fromTo('.cs-metric-card',
+                { y: 50, opacity: 0, scale: 0.95 },
+                {
+                    y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.15, ease: 'power3.out',
+                    scrollTrigger: { trigger: '.cs-metrics-section', start: 'top 75%', toggleActions: 'play none none none' }
+                }
+            );
+
+            // CTA section entrance
+            gsap.fromTo('.cs-cta-title',
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+                    scrollTrigger: { trigger: '.cs-cta-section', start: 'top 80%', toggleActions: 'play none none none' }
+                }
+            );
+        }
+    </script>
+</body>
+
+</html>

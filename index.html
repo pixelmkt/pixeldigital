@@ -1,243 +1,538 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PIXEL • Agencia de Estrategia y Tecnología Digital</title>
-  <meta name="description" content="Agencia de estrategia y tecnología digital. Fusionamos IA, Paid Media y desarrollo a medida para crear soluciones que lideran el mercado.">
-  
+  <meta name="description"
+    content="Agencia de estrategia y tecnología digital. Fusionamos IA, Paid Media y desarrollo a medida para crear soluciones que lideran el mercado.">
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    /* Estilos in-page de index.html */
-    body { cursor: auto; }
-    .btn { cursor: pointer; }
-    .logo-box{ width:200px; height:70px; display:flex; align-items:center; justify-content:center; }
-    .logo-box img{ max-width:100%; max-height:100%; width:auto; height:auto; display:block; }
-    .logo-box img.logo--meta, .logo-box img.logo--shopify{ max-width:82%; max-height:82%; }
-    @media (max-width: 767px){
-      .logo-box{ width:150px; height:56px; }
-      .logo-box img.logo--meta, .logo-box img.logo--shopify{ max-width:80%; max-height:80%; }
+    body {
+      cursor: auto;
     }
-    .carousel-wrap{ position:relative; }
-    .carousel-viewport{
-      overflow-x: auto; overflow-y: hidden;
+
+    .btn {
+      cursor: pointer;
+    }
+
+    .logo-box {
+      width: 200px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    .logo-box img.logo--meta,
+    .logo-box img.logo--shopify {
+      max-width: 82%;
+      max-height: 82%;
+    }
+
+    @media (max-width: 767px) {
+      .logo-box {
+        width: 150px;
+        height: 56px;
+      }
+
+      .logo-box img.logo--meta,
+      .logo-box img.logo--shopify {
+        max-width: 80%;
+        max-height: 80%;
+      }
+    }
+
+    .carousel-wrap {
+      position: relative;
+    }
+
+    .carousel-viewport {
+      overflow-x: auto;
+      overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
       scrollbar-width: none;
       border: 1px solid var(--linea-clara);
       border-radius: 12px;
       padding: 16px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
-    .carousel-viewport::-webkit-scrollbar{ display:none; }
-    .carousel-track{ display:flex; gap:1rem; }
-    .carousel-item{
+
+    .carousel-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .carousel-item {
       flex: 0 0 auto;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .carousel-img{
-      height: 22rem; width: auto;
-      display:block; object-fit: cover;
-      user-select: none; pointer-events: none;
+
+    .carousel-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
     }
-    @media (min-width: 768px){ .carousel-img{ height: 28rem; } }
-    .arrow{
-      position:absolute; top:50%; transform: translateY(-50%);
-      width:44px; height:44px; border-radius:999px;
-      border:1px solid var(--linea-clara);
-      background: rgba(245,241,232,0.85);
-      display:flex; align-items:center; justify-content:center;
+
+    .carousel-img {
+      height: 22rem;
+      width: auto;
+      display: block;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+      .carousel-img {
+        height: 28rem;
+      }
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--linea-clara);
+      background: rgba(245, 241, 232, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       backdrop-filter: blur(4px);
-      cursor:pointer; transition: transform .2s ease, background .2s ease;
+      cursor: pointer;
+      transition: all .3s ease;
       z-index: 5;
     }
-    .arrow:hover{ transform: translateY(-50%) scale(1.05); background:#fff; }
-    .arrow-left{ left: -14px; }
-    .arrow-right{ right: -14px; }
-    .arrow i{ color: var(--gris-oscuro); }
+
+    .arrow:hover {
+      transform: translateY(-50%) scale(1.1);
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    }
+
+    .arrow-left {
+      left: -14px;
+    }
+
+    .arrow-right {
+      right: -14px;
+    }
+
+    .arrow i {
+      color: var(--gris-oscuro);
+    }
+
+    /* Hero decorative accent */
+    .hero-accent {
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198, 52, 30, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-accent-2 {
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 77, 0, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
   </style>
 </head>
-<body>
-  <div class="cursor-dot"></div><div class="cursor-outline"></div>
 
-  <header class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <header
+    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
       </a>
       <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
+        <a href="caso-de-estudio.html" class="nav-link transition-colors">Caso de Estudio</a>
         <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
         <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">
           Servicios
         </a>
       </nav>
-      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]"
+        aria-label="Abrir menú de navegación" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
-      <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Inicio</a>
-      <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
+      <a href="index.html"
+        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Inicio</a>
+      <a href="proyectos.html"
+        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
+      <a href="caso-de-estudio.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Caso
+        de Estudio</a>
       <a href="contacto.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Contacto</a>
-      <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
+      <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+        class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
         Cotizar Servicios
       </a>
     </div>
   </header>
+
   <main class="max-w-5xl mx-auto px-4">
-    
-    <section class="text-left py-24 md:py-32">
-      <h1 class="headline text-5xl md:text-6xl scroll-reveal">
-        Transformamos <span class="text-highlight">Datos</span><br>en <span class="text-highlight">Dominio</span> Digital.
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="text-left py-24 md:py-32 relative overflow-hidden">
+      <div class="hero-accent"></div>
+      <div class="hero-accent-2"></div>
+      <h1 class="headline text-5xl md:text-7xl scroll-reveal relative z-10 hero-headline" style="line-height:1.05;">
+        Transformamos <span class="text-highlight">Datos</span><br>en <span class="text-highlight">Dominio</span>
+        Digital.
       </h1>
-      <p class="text-lg md:text-xl mt-8 max-w-2xl scroll-reveal" style="transition-delay:100ms;">
-        Somos la agencia de estrategia y tecnología que decodifica el futuro. Fusionamos IA, Paid Media y desarrollo a medida para crear soluciones que no solo compiten, sino que lideran.
+      <p class="text-lg md:text-xl mt-8 max-w-2xl scroll-reveal relative z-10 hero-subtext"
+        style="transition-delay:100ms;">
+        Somos la agencia de estrategia y tecnología que decodifica el futuro. Fusionamos IA, Paid Media y desarrollo a
+        medida para crear soluciones que no solo compiten, sino que lideran.
       </p>
-      <div class="mt-12 scroll-reveal" style="transition-delay:200ms;">
-        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn text-lg">Explorar Servicios</a>
+      <div class="mt-12 scroll-reveal relative z-10 hero-cta flex flex-wrap gap-4" style="transition-delay:200ms;">
+        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+          class="btn text-lg">Explorar Servicios</a>
+        <a href="proyectos.html" class="btn btn-secondary text-lg">Ver Proyectos</a>
       </div>
     </section>
 
-    <section class="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center border-y border-[var(--linea-clara)]">
-      <div class="scroll-reveal">
-        <div class="text-[var(--rojo-acento)] text-4xl mb-4"><i class="fas fa-chart-line"></i></div>
-        <p class="text-4xl font-bold">1.8%</p>
-        <p class="font-semibold mt-2">{ Conversion Rate }</p>
-        <p class="text-sm mt-2 text-[var(--muted)]">Logramos un ratio de conversión promedio saludable y sostenido.</p>
+    <!-- ===== KPI SECTION ===== -->
+    <section class="py-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center border-y border-[var(--linea-clara)]">
+      <div class="kpi-card scroll-reveal">
+        <div class="kpi-icon">
+          <i class="fas fa-chart-line text-[var(--rojo-acento)] text-xl"></i>
+        </div>
+        <p class="kpi-number" data-count="1.8" data-suffix="%">0%</p>
+        <p class="font-semibold mt-2 text-sm">{ Conversion Rate }</p>
+        <p class="text-xs mt-2 text-[var(--muted)]">Ratio de conversión promedio saludable y sostenido.</p>
       </div>
-      <div class="scroll-reveal" style="transition-delay:100ms;">
-        <div class="text-[var(--rojo-acento)] text-4xl mb-4"><i class="fas fa-cloud-upload-alt"></i></div>
-        <p class="text-4xl font-bold">8 semanas</p>
-        <p class="font-semibold mt-2">{ On Air }</p>
-        <p class="text-sm mt-2 text-[var(--muted)]">Lanzamiento de tiendas online optimizadas en tiempo récord.</p>
+      <div class="kpi-card scroll-reveal" style="transition-delay:100ms;">
+        <div class="kpi-icon">
+          <i class="fas fa-cloud-upload-alt text-[var(--rojo-acento)] text-xl"></i>
+        </div>
+        <p class="kpi-number" data-count="8" data-suffix=" sem">0 sem</p>
+        <p class="font-semibold mt-2 text-sm">{ On Air }</p>
+        <p class="text-xs mt-2 text-[var(--muted)]">Tiendas online optimizadas en tiempo récord.</p>
       </div>
-      <div class="scroll-reveal" style="transition-delay:200ms;">
-        <div class="text-[var(--rojo-acento)] text-4xl mb-4"><i class="fas fa-dollar-sign"></i></div>
-        <p class="text-4xl font-bold">$ 16.3M</p>
-        <p class="font-semibold mt-2">{ Millones USD por año }</p>
-        <p class="text-sm mt-2 text-[var(--muted)]">Gestión de marcas con alta transaccionalidad y resultados óptimos.</p>
+      <div class="kpi-card scroll-reveal" style="transition-delay:200ms;">
+        <div class="kpi-icon">
+          <i class="fas fa-dollar-sign text-[var(--rojo-acento)] text-xl"></i>
+        </div>
+        <p class="kpi-number" data-count="16.3" data-prefix="$ " data-suffix="M">$ 0M</p>
+        <p class="font-semibold mt-2 text-sm">{ USD / Año }</p>
+        <p class="text-xs mt-2 text-[var(--muted)]">Marcas con alta transaccionalidad y resultados.</p>
       </div>
-      <div class="scroll-reveal" style="transition-delay:300ms;">
-        <div class="text-[var(--rojo-acento)] text-4xl mb-4"><i class="fas fa-birthday-cake"></i></div>
-        <p class="text-4xl font-bold">9 años</p>
-        <p class="font-semibold mt-2">{ Experiencia }</p>
-        <p class="text-sm mt-2 text-[var(--muted)]">Cientos de proyectos ejecutados con éxito desde 2016.</p>
+      <div class="kpi-card scroll-reveal" style="transition-delay:300ms;">
+        <div class="kpi-icon">
+          <i class="fas fa-birthday-cake text-[var(--rojo-acento)] text-xl"></i>
+        </div>
+        <p class="kpi-number" data-count="9" data-suffix=" años">0 años</p>
+        <p class="font-semibold mt-2 text-sm">{ Experiencia }</p>
+        <p class="text-xs mt-2 text-[var(--muted)]">Cientos de proyectos desde 2016.</p>
       </div>
     </section>
 
+    <!-- ===== LOGOS MARQUEE ===== -->
     <section class="py-16">
-      <h3 class="headline text-center text-4xl md:text-5xl mb-10">Expertos en estrategia Paid Media</h3>
-      <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 items-center justify-items-center">
-        <div class="logo-box"><img class="logo--meta" src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Logo de Meta"></div>
-        <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Tiktok_logo_text.svg" alt="Logo de TikTok"></div>
-        <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" alt="Logo de Google Ads"></div>
-        <div class="logo-box"><img class="logo--shopify" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Logo de Shopify"></div>
-      </div>
-    </section>
-
-    <section class="py-20 scroll-reveal">
-      <h2 class="headline text-4xl">Casos de éxito</h2>
-      <div class="carousel-wrap mt-6">
-        <button class="arrow arrow-left" data-carousel-left><i class="fas fa-chevron-left"></i></button>
-        <button class="arrow arrow-right" data-carousel-right><i class="fas fa-chevron-right"></i></button>
-        <div class="carousel-viewport" data-carousel>
-          <div class="carousel-track">
-            <div class="carousel-item"><img class="carousel-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4" alt="Proyecto Fiji Swimwear"></div>
-            <div class="carousel-item"><img class="carousel-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM" alt="Proyecto Lab Nutrition"></div>
-            <div class="carousel-item"><img class="carousel-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w" alt="Proyecto TeenLife Perú"></div>
-            <div class="carousel-item"><img class="carousel-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml" alt="Proyecto Virago Dress"></div>
+      <h3 class="headline text-center text-4xl md:text-5xl mb-10 scroll-reveal">Expertos en estrategia Paid Media</h3>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <div class="logo-box"><img class="logo--meta"
+              src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Logo de Meta">
+          </div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Tiktok_logo_text.svg"
+              alt="Logo de TikTok"></div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg"
+              alt="Logo de Google Ads"></div>
+          <div class="logo-box"><img class="logo--shopify"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Logo de Shopify">
+          </div>
+          <!-- Duplicated for seamless marquee -->
+          <div class="logo-box"><img class="logo--meta"
+              src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" alt="Logo de Meta">
+          </div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Tiktok_logo_text.svg"
+              alt="Logo de TikTok"></div>
+          <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg"
+              alt="Logo de Google Ads"></div>
+          <div class="logo-box"><img class="logo--shopify"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg" alt="Logo de Shopify">
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-24 scroll-reveal">
-      <div class="mb-12">
-        <h2 class="headline text-4xl">Un Ecosistema de Capacidades</h2>
-        <p class="text-lg mt-4 max-w-2xl">Ofrecemos soluciones integrales para construir, lanzar y escalar tu presencia en línea.</p>
-      </div>
-       <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-4">
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-shopping-cart fa-2x"></i></div><div><h3 class="font-semibold text-lg">Creación Ecommerce (Shopify)</h3><p class="text-sm">Lanzamos tu tienda online optimizada para convertir y crecer desde el día uno.</p></div></div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-bullhorn fa-2x"></i></div><div><h3 class="font-semibold text-lg">Paid Media (Anuncios)</h3><p class="text-sm">Gestionamos tus anuncios en Meta, TikTok y Google para obtener un ROI real.</p></div></div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-search-dollar fa-2x"></i></div><div><h3 class="font-semibold text-lg">Posicionamiento IA / SEO</h3><p class="text-sm">Hacemos que tus clientes te encuentren en Google antes que a tu competencia.</p></div></div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-camera-retro fa-2x"></i></div><div><h3 class="font-semibold text-lg">Photo Shooting E‑commerce</h3><p class="text-sm">Producción visual estratégica para que tu catálogo enamore y venda más.</p></div></div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-drafting-compass fa-2x"></i></div><div><h3 class="font-semibold text-lg">Diseño (UX/UI) Optimization</h3><p class="text-sm">Auditamos y rediseñamos tu web para maximizar las conversiones.</p></div></div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-cogs fa-2x"></i></div><div><h3 class="font-semibold text-lg">Estrategia 360° Ecommerce</h3><p class="text-sm">Gestión integral para un crecimiento sostenible y escalable.</p></div></div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-envelope-open-text fa-2x"></i></div><div><h3 class="font-semibold text-lg">Email Marketing</h3><p class="text-sm">Automatizamos campañas para vender más y fidelizar a tus clientes.</p></div></div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4"><div><i class="fas fa-users-cog fa-2x"></i></div><div><h3 class="font-semibold text-lg">Segmentación & Audiencias</h3><p class="text-sm">Identificamos y optimizamos las audiencias que realmente convierten.</p></div></div>
-        </a>
-      </div>
-      <div class="md:hidden overflow-x-auto flex gap-4 pb-4">
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4"><div class="flex items-center gap-4"><div><i class="fas fa-shopping-cart fa-2x"></i></div><div><h3 class="font-semibold text-lg">Creación Ecommerce (Shopify)</h3><p class="text-sm">Lanzamos tu tienda online optimizada.</p></div></div></a>
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4"><div class="flex items-center gap-4"><div><i class="fas fa-bullhorn fa-2x"></i></div><div><h3 class="font-semibold text-lg">Paid Media (Anuncios)</h3><p class="text-sm">Gestionamos tus anuncios para un ROI real.</p></div></div></a>
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4"><div class="flex items-center gap-4"><div><i class="fas fa-search-dollar fa-2x"></i></div><div><h3 class="font-semibold text-lg">Posicionamiento IA / SEO</h3><p class="text-sm">Hacemos que tus clientes te encuentren.</p></div></div></a>
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4"><div class="flex items-center gap-4"><div><i class="fas fa-camera-retro fa-2x"></i></div><div><h3 class="font-semibold text-lg">Photo Shooting E‑commerce</h3><p class="text-sm">Producción visual estratégica para tu catálogo.</p></div></div></a>
+    <!-- ===== CASOS DE ÉXITO (CAROUSEL) ===== -->
+    <section class="py-20 scroll-reveal">
+      <h2 class="headline text-4xl">Casos de éxito</h2>
+      <div class="carousel-wrap mt-6">
+        <button class="arrow arrow-left" data-carousel-left aria-label="Slide anterior"><i
+            class="fas fa-chevron-left"></i></button>
+        <button class="arrow arrow-right" data-carousel-right aria-label="Slide siguiente"><i
+            class="fas fa-chevron-right"></i></button>
+        <div class="carousel-viewport" data-carousel>
+          <div class="carousel-track">
+            <div class="carousel-item"><img class="carousel-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
+                alt="Proyecto Fiji Swimwear"></div>
+            <div class="carousel-item"><img class="carousel-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
+                alt="Proyecto Lab Nutrition"></div>
+            <div class="carousel-item"><img class="carousel-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
+                alt="Proyecto TeenLife Perú"></div>
+            <div class="carousel-item"><img class="carousel-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
+                alt="Proyecto Virago Dress"></div>
+          </div>
+        </div>
+        <div class="carousel-dots"></div>
       </div>
     </section>
 
+    <!-- ===== SERVICIOS GRID ===== -->
+    <section class="py-24 scroll-reveal">
+      <div class="mb-12">
+        <h2 class="headline text-4xl">Un Ecosistema de Capacidades</h2>
+        <p class="text-lg mt-4 max-w-2xl">Ofrecemos soluciones integrales para construir, lanzar y escalar tu presencia
+          en línea.</p>
+      </div>
+      <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-shopping-cart fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Creación Ecommerce (Shopify)</h3>
+              <p class="text-sm">Lanzamos tu tienda online optimizada para convertir y crecer desde el día uno.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-bullhorn fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Paid Media (Anuncios)</h3>
+              <p class="text-sm">Gestionamos tus anuncios en Meta, TikTok y Google para obtener un ROI real.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-search-dollar fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Posicionamiento IA / SEO</h3>
+              <p class="text-sm">Hacemos que tus clientes te encuentren en Google antes que a tu competencia.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-camera-retro fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Photo Shooting E‑commerce</h3>
+              <p class="text-sm">Producción visual estratégica para que tu catálogo enamore y venda más.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-drafting-compass fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Diseño (UX/UI) Optimization</h3>
+              <p class="text-sm">Auditamos y rediseñamos tu web para maximizar las conversiones.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-cogs fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Estrategia 360° Ecommerce</h3>
+              <p class="text-sm">Gestión integral para un crecimiento sostenible y escalable.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-envelope-open-text fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Email Marketing</h3>
+              <p class="text-sm">Automatizamos campañas para vender más y fidelizar a tus clientes.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-users-cog fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Segmentación &amp; Audiencias</h3>
+              <p class="text-sm">Identificamos y optimizamos las audiencias que realmente convierten.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="md:hidden overflow-x-auto flex gap-4 pb-4">
+        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-shopping-cart fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Creación Ecommerce (Shopify)</h3>
+              <p class="text-sm">Lanzamos tu tienda online optimizada.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-bullhorn fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Paid Media (Anuncios)</h3>
+              <p class="text-sm">Gestionamos tus anuncios para un ROI real.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-search-dollar fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Posicionamiento IA / SEO</h3>
+              <p class="text-sm">Hacemos que tus clientes te encuentren.</p>
+            </div>
+          </div>
+        </a>
+        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
+          <div class="flex items-center gap-4">
+            <div><i class="fas fa-camera-retro fa-2x"></i></div>
+            <div>
+              <h3 class="font-semibold text-lg">Photo Shooting E‑commerce</h3>
+              <p class="text-sm">Producción visual estratégica para tu catálogo.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== PROCESO COLABORATIVO ===== -->
     <section class="py-24 scroll-reveal">
       <h2 class="headline text-4xl mb-4">Nuestro Proceso Colaborativo</h2>
-      <p class="text-lg max-w-3xl mb-16">Un método ágil y transparente que garantiza la alineación con tus objetivos y la entrega de resultados excepcionales.</p>
+      <p class="text-lg max-w-3xl mb-16">Un método ágil y transparente que garantiza la alineación con tus objetivos y
+        la entrega de resultados excepcionales.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
-        <div class="bg-white p-6 rounded-lg shadow-md border-b-4 border-[var(--rojo-acento)] transition-transform transform hover:-translate-y-1">
-          <i class="fas fa-binoculars fa-3x text-[var(--rojo-acento)] mb-4"></i>
-          <h3 class="font-bold text-lg text-gray-800">1. Inmersión</h3>
+        <div class="process-card">
+          <div class="step-number">1</div>
+          <i class="fas fa-binoculars fa-2x text-[var(--rojo-acento)] mb-3"></i>
+          <h3 class="font-bold text-base text-gray-800">Inmersión</h3>
           <p class="text-sm mt-2">Entendemos tu negocio, mercado y objetivos a fondo.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border-b-4 border-[var(--rojo-acento)] transition-transform transform hover:-translate-y-1" style="transition-delay: 50ms;">
-          <i class="fas fa-map-signs fa-3x text-[var(--rojo-acento)] mb-4"></i>
-          <h3 class="font-bold text-lg text-gray-800">2. Estrategia</h3>
+        <div class="process-card">
+          <div class="step-number">2</div>
+          <i class="fas fa-map-signs fa-2x text-[var(--rojo-acento)] mb-3"></i>
+          <h3 class="font-bold text-base text-gray-800">Estrategia</h3>
           <p class="text-sm mt-2">Diseñamos un plan de acción data‑driven y a medida.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border-b-4 border-[var(--rojo-acento)] transition-transform transform hover:-translate-y-1" style="transition-delay: 100ms;">
-          <i class="fas fa-laptop-code fa-3x text-[var(--rojo-acento)] mb-4"></i>
-          <h3 class="font-bold text-lg text-gray-800">3. Ejecución</h3>
+        <div class="process-card">
+          <div class="step-number">3</div>
+          <i class="fas fa-laptop-code fa-2x text-[var(--rojo-acento)] mb-3"></i>
+          <h3 class="font-bold text-base text-gray-800">Ejecución</h3>
           <p class="text-sm mt-2">Creamos, desarrollamos y lanzamos las iniciativas.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border-b-4 border-[var(--rojo-acento)] transition-transform transform hover:-translate-y-1" style="transition-delay: 150ms;">
-          <i class="fas fa-chart-pie fa-3x text-[var(--rojo-acento)] mb-4"></i>
-          <h3 class="font-bold text-lg text-gray-800">4. Análisis</h3>
+        <div class="process-card">
+          <div class="step-number">4</div>
+          <i class="fas fa-chart-pie fa-2x text-[var(--rojo-acento)] mb-3"></i>
+          <h3 class="font-bold text-base text-gray-800">Análisis</h3>
           <p class="text-sm mt-2">Medimos el rendimiento y recopilamos insights clave.</p>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow-md border-b-4 border-[var(--rojo-acento)] transition-transform transform hover:-translate-y-1" style="transition-delay: 200ms;">
-          <i class="fas fa-sync-alt fa-3x text-[var(--rojo-acento)] mb-4"></i>
-          <h3 class="font-bold text-lg text-gray-800">5. Optimización</h3>
+        <div class="process-card">
+          <div class="step-number">5</div>
+          <i class="fas fa-sync-alt fa-2x text-[var(--rojo-acento)] mb-3"></i>
+          <h3 class="font-bold text-base text-gray-800">Optimización</h3>
           <p class="text-sm mt-2">Iteramos y mejoramos continuamente para maximizar el ROI.</p>
         </div>
       </div>
     </section>
 
-    <section class="border border-linea-clara rounded-lg p-12 text-left my-20 scroll-reveal">
-      <h2 class="headline text-4xl mb-4">¿Listo para llevar tu marca al siguiente nivel?</h2>
-      <p class="text-xl max-w-2xl mb-10">Hablemos sobre tus objetivos. Contáctanos para una consultoría gratuita y descubre cómo la precisión de PIXEL puede impulsar tu crecimiento.</p>
-      <a href="contacto.html" class="btn text-xl">Empezar mi Proyecto</a>
+    <!-- ===== TESTIMONIAL / SOCIAL PROOF ===== -->
+    <section class="py-20 scroll-reveal">
+      <h2 class="headline text-4xl mb-10">Lo que dicen nuestros clientes</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="testimonial-card">
+          <p class="text-lg leading-relaxed mb-6 relative z-10">"PIXEL transformó completamente nuestra presencia
+            digital. En solo 3 meses, nuestro e‑commerce multiplicó ventas y el equipo estuvo presente en cada paso."
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="testimonial-avatar">FS</div>
+            <div>
+              <p class="font-bold text-[var(--gris-oscuro)]">Fiji Swimwear</p>
+              <p class="text-sm text-[var(--muted)]">E‑commerce de moda</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="text-lg leading-relaxed mb-6 relative z-10">"La estrategia 360 de PIXEL nos dio un growth del +45%
+            vs año anterior. Su enfoque data‑driven y la calidad del equipo son excepcionales."</p>
+          <div class="flex items-center gap-4">
+            <div class="testimonial-avatar">LN</div>
+            <div>
+              <p class="font-bold text-[var(--gris-oscuro)]">Lab Nutrition</p>
+              <p class="text-sm text-[var(--muted)]">Suplementos deportivos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta-section text-left my-20 scroll-reveal">
+      <h2 class="headline text-4xl mb-4 relative z-10">¿Listo para llevar tu marca al siguiente nivel?</h2>
+      <p class="text-xl max-w-2xl mb-10 relative z-10">Hablemos sobre tus objetivos. Contáctanos para una consultoría
+        gratuita y descubre cómo la precisión de PIXEL puede impulsar tu crecimiento.</p>
+      <div class="relative z-10 flex flex-wrap gap-4">
+        <a href="contacto.html" class="btn text-xl">Empezar mi Proyecto</a>
+        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+          class="btn btn-secondary text-xl">Cotizar Servicios</a>
+      </div>
     </section>
   </main>
 
-  <footer class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
+  <footer
+    class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
     <div>
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
@@ -246,14 +541,27 @@
     </div>
     <div class="text-right">
       <div class="flex justify-end space-x-6 mb-2">
-        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-linkedin"></i></a>
       </div>
-      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de Privacidad</a>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
+        Privacidad</a>
     </div>
   </footer>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+    aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>

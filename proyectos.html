@@ -1,84 +1,144 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Proyectos Destacados • PIXEL</title>
-  <meta name="description" content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
-  
+  <meta name="description"
+    content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    body{ cursor:auto; }
-    .case-img{
-      height: 24rem; width:100%;
-      object-fit: cover; border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.12);
-      background: #fff;
+    body {
+      cursor: auto;
     }
-    @media (min-width: 768px){ .case-img{ height: 30rem; } }
+
+    .case-img {
+      height: 24rem;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+      background: #fff;
+      transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    @media (min-width: 768px) {
+      .case-img {
+        height: 30rem;
+      }
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(198, 52, 30, 0.08) 0%, rgba(255, 77, 0, 0.05) 100%);
+      border: 1px solid rgba(198, 52, 30, 0.15);
+      color: var(--rojo-acento);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      margin-top: 1rem;
+    }
   </style>
 </head>
-<body>
-  <div class="cursor-dot"></div><div class="cursor-outline"></div>
 
-  <header class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <header
+    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
       </a>
       <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="proyectos.html" class="nav-link transition-colors active">Proyectos</a>
+        <a href="caso-de-estudio.html" class="nav-link transition-colors">Caso de Estudio</a>
         <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
         <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="nav-cta">
           Servicios
         </a>
       </nav>
-      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]"
+        aria-label="Abrir menú de navegación" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
       <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
-      <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Proyectos</a>
+      <a href="proyectos.html"
+        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Proyectos</a>
+      <a href="caso-de-estudio.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Caso
+        de Estudio</a>
       <a href="contacto.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Contacto</a>
-      <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer" class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
+      <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+        class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
         Cotizar Servicios
       </a>
     </div>
   </header>
+
   <main class="max-w-5xl mx-auto px-4 pt-20 pb-20">
-    <h1 class="headline text-center text-5xl md:text-6xl mb-16 scroll-reveal">Nuestros mejores proyectos</h1>
+    <h1 class="headline text-center text-5xl md:text-6xl mb-4 scroll-reveal">Nuestros mejores proyectos</h1>
+    <p class="text-center text-lg text-[var(--muted)] max-w-2xl mx-auto mb-16 scroll-reveal">Resultados reales para
+      marcas que confían en nuestra estrategia digital.</p>
 
     <div class="space-y-24">
 
+      <!-- VIRAGO DRESS -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://viragodress.com/" target="_blank" rel="noopener noreferrer" class="block group">
-          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml" alt="Virago Dress – Shopify + Paid Media" draggable="false">
+        <a href="https://viragodress.com/" target="_blank" rel="noopener noreferrer" class="block project-img-wrap">
+          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
+            alt="Virago Dress – Shopify + Paid Media" draggable="false">
+          <div class="project-img-overlay">
+            <span>Ver proyecto →</span>
+          </div>
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Virago Dress</div>
           <h2 class="headline text-4xl mt-4">Ecommerce que <span class="text-highlight">escala</span></h2>
           <p class="text-lg mt-4">
-            Montamos la tienda en Shopify con arquitectura de conversión y ejecutamos una estrategia de Paid Media full‑funnel.
-            Resultado: <strong>crecimiento sostenido en ventas</strong> y un <strong>posicionamiento sólido</strong> en su categoría.
+            Montamos la tienda en Shopify con arquitectura de conversión y ejecutamos una estrategia de Paid Media
+            full‑funnel.
+            Resultado: <strong>crecimiento sostenido en ventas</strong> y un <strong>posicionamiento sólido</strong> en
+            su categoría.
           </p>
+          <div class="result-badge">
+            <i class="fas fa-arrow-trend-up"></i> Crecimiento sostenido
+          </div>
           <div class="mt-5">
             <span class="project-tag">Shopify</span>
             <span class="project-tag">Paid Media</span>
             <span class="project-tag">Estrategia 360</span>
           </div>
-          <a href="https://viragodress.com/" target="_blank" rel="noopener noreferrer" class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://viragodress.com/" target="_blank" rel="noopener noreferrer"
+            class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
+      <!-- LAB NUTRITION -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
-          <a href="https://www.labnutrition.com/" target="_blank" rel="noopener noreferrer" class="block group">
-            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM" alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
+          <a href="https://www.labnutrition.com/" target="_blank" rel="noopener noreferrer"
+            class="block project-img-wrap">
+            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
+              alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
+            <div class="project-img-overlay">
+              <span>Ver proyecto →</span>
+            </div>
           </a>
         </div>
         <div class="md:order-1">
@@ -88,19 +148,28 @@
             Estrategia 360: CRM, automatizaciones, integraciones y Paid Media multicanal.
             Resultado: <strong>+45% de crecimiento</strong> vs. 2024 y una operación preparada para escalar.
           </p>
+          <div class="result-badge">
+            <i class="fas fa-arrow-trend-up"></i> +45% crecimiento vs 2024
+          </div>
           <div class="mt-5">
             <span class="project-tag">Estrategia 360</span>
             <span class="project-tag">Paid Media</span>
             <span class="project-tag">Email Marketing</span>
           </div>
-          <a href="https://www.labnutrition.com/" target="_blank" rel="noopener noreferrer" class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://www.labnutrition.com/" target="_blank" rel="noopener noreferrer"
+            class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
+      <!-- FIJI SWIMWEAR -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
-          <a href="https://fijiswimwear.pe/" target="_blank" rel="noopener noreferrer" class="block group">
-            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4" alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
+          <a href="https://fijiswimwear.pe/" target="_blank" rel="noopener noreferrer" class="block project-img-wrap">
+            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
+              alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
+            <div class="project-img-overlay">
+              <span>Ver proyecto →</span>
+            </div>
           </a>
         </div>
         <div class="md:order-1">
@@ -108,20 +177,30 @@
           <h2 class="headline text-4xl mt-4">De cero a <span class="text-highlight">exponencial</span></h2>
           <p class="text-lg mt-4">
             Desarrollo web, integraciones clave (pagos, logística y analítica) y lanzamiento de Paid Media.
-            En los <strong>primeros 3 meses</strong> la marca registró un <strong>crecimiento exponencial</strong> en tráfico y ventas.
+            En los <strong>primeros 3 meses</strong> la marca registró un <strong>crecimiento exponencial</strong> en
+            tráfico y ventas.
           </p>
+          <div class="result-badge">
+            <i class="fas fa-rocket"></i> Crecimiento exponencial en 3 meses
+          </div>
           <div class="mt-5">
             <span class="project-tag">Shopify</span>
             <span class="project-tag">Paid Media</span>
             <span class="project-tag">Desarrollo Web</span>
           </div>
-          <a href="https://fijiswimwear.pe/" target="_blank" rel="noopener noreferrer" class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://fijiswimwear.pe/" target="_blank" rel="noopener noreferrer"
+            class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
+      <!-- TEENLIFE PERÚ -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://teenlifeperu.com/" target="_blank" rel="noopener noreferrer" class="block group">
-          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w" alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
+        <a href="https://teenlifeperu.com/" target="_blank" rel="noopener noreferrer" class="block project-img-wrap">
+          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
+            alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
+          <div class="project-img-overlay">
+            <span>Ver proyecto →</span>
+          </div>
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">TeenLife Perú</div>
@@ -130,18 +209,36 @@
             Rediseñamos UX/UI para reducir fricción y relanzamos campañas en Meta Ads.
             El negocio marcó un <strong>+70% en ventas</strong> durante los dos primeros meses post‑optimización.
           </p>
+          <div class="result-badge">
+            <i class="fas fa-arrow-trend-up"></i> +70% en ventas
+          </div>
           <div class="mt-5">
             <span class="project-tag">Diseño (UX/UI)</span>
             <span class="project-tag">Paid Media</span>
           </div>
-          <a href="https://teenlifeperu.com/" target="_blank" rel="noopener noreferrer" class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://teenlifeperu.com/" target="_blank" rel="noopener noreferrer"
+            class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
     </div>
+
+    <!-- ===== CTA BOTTOM ===== -->
+    <section class="cta-section text-center my-20 scroll-reveal">
+      <h2 class="headline text-4xl mb-4 relative z-10">¿Quieres ser nuestro próximo caso de éxito?</h2>
+      <p class="text-xl max-w-2xl mx-auto mb-10 relative z-10">Hablemos sobre tus objetivos y diseñemos juntos la
+        estrategia que va a impulsar tu marca.</p>
+      <div class="relative z-10 flex flex-wrap justify-center gap-4">
+        <a href="contacto.html" class="btn text-lg">Empezar mi Proyecto</a>
+        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+          class="btn btn-secondary text-lg">Cotizar Servicios</a>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
+  <footer
+    class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
     <div>
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
@@ -150,14 +247,27 @@
     </div>
     <div class="text-right">
       <div class="flex justify-end space-x-6 mb-2">
-        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer" class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-linkedin"></i></a>
       </div>
-      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de Privacidad</a>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
+        Privacidad</a>
     </div>
   </footer>
+
+  <!-- WhatsApp floating button -->
+  <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+    aria-label="Contactar por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>
