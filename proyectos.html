@@ -7,6 +7,7 @@
   <title>Proyectos Destacados • PIXEL</title>
   <meta name="description"
     content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
+  <meta name="referrer" content="no-referrer">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -17,6 +18,13 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
+    /* Forzar que el contenido sea visible aunque main.js falle */
+    .scroll-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      visibility: visible !important;
+    }
+
     .result-badge {
       display: inline-flex;
       align-items: center;
@@ -30,6 +38,21 @@
       padding: 0.5rem 1rem;
       border-radius: 999px;
       margin-top: 1rem;
+    }
+
+    .case-img {
+      height: 24rem;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
+      background: #eee;
+    }
+
+    @media (min-width: 768px) {
+      .case-img {
+        height: 30rem;
+      }
     }
 
     .section-divider {
@@ -206,8 +229,8 @@
       <!-- 1) VIRAGO DRESS -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://viragodress.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
-            alt="Virago Dress – Shopify + Paid Media" draggable="false">
+          <img class="case-img" src="https://lh3.googleusercontent.com/d/1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
+            referrerpolicy="no-referrer" alt="Virago Dress – Shopify + Paid Media" draggable="false">
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Virago Dress</div>
@@ -234,8 +257,8 @@
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
           <a href="https://www.labnutrition.com/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
-              alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
+            <img class="case-img" src="https://lh3.googleusercontent.com/d/1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
+              referrerpolicy="no-referrer" alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
           </a>
         </div>
         <div class="md:order-1">
@@ -262,8 +285,8 @@
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
           <a href="https://fijiswimwear.pe/" target="_blank" class="block group">
-            <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
-              alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
+            <img class="case-img" src="https://lh3.googleusercontent.com/d/11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
+              referrerpolicy="no-referrer" alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
           </a>
         </div>
         <div class="md:order-1">
@@ -289,8 +312,8 @@
       <!-- 4) TEENLIFE PERÚ -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://teenlifeperu.com/" target="_blank" class="block group">
-          <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
-            alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
+          <img class="case-img" src="https://lh3.googleusercontent.com/d/1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
+            referrerpolicy="no-referrer" alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">TeenLife Perú</div>
@@ -312,7 +335,7 @@
 
     </div>
 
-    <!-- ===== PORTFOLIO BEHANCE ===== -->
+    <!-- PORTFOLIO BEHANCE -->
     <div class="section-divider scroll-reveal">
       <span><i class="fab fa-behance mr-2"></i> Portafolio Creativo</span>
     </div>
@@ -328,7 +351,6 @@
     </div>
 
     <div class="portfolio-grid scroll-reveal" id="portfolio-grid">
-
       <a href="https://www.behance.net/gallery/222616215/Fotografia-Bridal-Couture-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
         <div class="portfolio-card-icon"><i class="fa-regular fa-image"></i></div>
@@ -338,7 +360,6 @@
           <p>Producción fotográfica de colección nupcial. Dirección de arte, styling y postproducción premium.</p>
         </div>
       </a>
-
       <a href="https://www.behance.net/gallery/223429483/E-Commerce-TEENLIFE" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
         <div class="portfolio-card-icon"><i class="fa-regular fa-window-maximize"></i></div>
@@ -348,18 +369,16 @@
           <p>Diseño y desarrollo de tienda online optimizada para conversión. UX/UI enfocado en el público teen.</p>
         </div>
       </a>
-
       <a href="https://www.behance.net/gallery/202966131/Fotograia-Duna-Dorada-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
         <div class="portfolio-card-icon"><i class="fa-regular fa-sun"></i></div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
           <h3>Duna Dorada — Fiji Swim</h3>
-          <p>Sesión de fotos lifestyle en exteriores para colección de swimwear. Locación, dirección de arte y retoque.
-          </p>
+          <p>Sesión de fotos lifestyle en exteriores para colección de swimwear. Locación, dirección de arte y
+            retoque.</p>
         </div>
       </a>
-
       <a href="https://www.behance.net/gallery/223432783/Ecommerce-VIRAGO-DRESS" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="ecommerce">
         <div class="portfolio-card-icon"><i class="fa-regular fa-gem"></i></div>
@@ -369,7 +388,6 @@
           <p>Tienda Shopify con arquitectura de conversión para moda femenina. Diseño UX/UI y optimización.</p>
         </div>
       </a>
-
       <a href="https://www.behance.net/gallery/222620631/Fotografia-Navidad-TEENLIFE" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
         <div class="portfolio-card-icon"><i class="fa-regular fa-snowflake"></i></div>
@@ -379,7 +397,6 @@
           <p>Campaña fotográfica navideña para catálogo ecommerce. Producción, styling y edición profesional.</p>
         </div>
       </a>
-
       <a href="https://www.behance.net/gallery/223271387/E-commerce-FijiSwim" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
         <div class="portfolio-card-icon"><i class="fa-regular fa-compass"></i></div>
@@ -389,7 +406,6 @@
           <p>Desarrollo integral de la tienda online para swimwear. Shopify, integraciones y optimización.</p>
         </div>
       </a>
-
     </div>
 
     <section class="text-center my-20 scroll-reveal">
@@ -402,7 +418,6 @@
           class="btn btn-secondary text-lg">Servicios</a>
       </div>
     </section>
-
   </main>
 
   <footer
@@ -442,7 +457,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
   <script>
-    /* Portfolio filter — no interfiere con main.js */
     document.querySelectorAll('.filter-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
