@@ -9,7 +9,6 @@
     content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta name="referrer" content="no-referrer">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
@@ -18,26 +17,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    body {
-      cursor: auto;
-    }
-
-    .case-img {
-      height: 24rem;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
-      background: #fff;
-      transition: transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    @media (min-width: 768px) {
-      .case-img {
-        height: 30rem;
-      }
-    }
-
     .result-badge {
       display: inline-flex;
       align-items: center;
@@ -53,7 +32,34 @@
       margin-top: 1rem;
     }
 
-    /* ── Portfolio Filters ── */
+    .section-divider {
+      text-align: center;
+      position: relative;
+      margin: 4rem 0 2rem;
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--linea-clara);
+    }
+
+    .section-divider span {
+      position: relative;
+      background: var(--fondo-crema);
+      padding: 0 1.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--rojo-acento);
+    }
+
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
@@ -82,10 +88,8 @@
       background: var(--rojo-acento);
       color: var(--fondo-crema);
       border-color: var(--rojo-acento);
-      box-shadow: 0 4px 15px rgba(198, 52, 30, 0.25);
     }
 
-    /* ── Portfolio Grid ── */
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -97,7 +101,7 @@
       overflow: hidden;
       border: 1px solid var(--linea-clara);
       background: #fff;
-      transition: all .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: all .4s ease;
       display: block;
       color: var(--gris-oscuro);
       text-decoration: none;
@@ -106,7 +110,6 @@
     .portfolio-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-      border-color: rgba(198, 52, 30, 0.2);
     }
 
     .portfolio-card-icon {
@@ -121,11 +124,6 @@
     .portfolio-card-icon i {
       font-size: 2.8rem;
       color: var(--rojo-acento);
-      transition: transform .4s ease;
-    }
-
-    .portfolio-card:hover .portfolio-card-icon i {
-      transform: scale(1.15);
     }
 
     .portfolio-card-body {
@@ -158,35 +156,6 @@
       color: var(--rojo-acento);
       margin-bottom: 0.5rem;
     }
-
-    /* ── Section separator ── */
-    .section-divider {
-      text-align: center;
-      position: relative;
-      margin: 4rem 0 2rem;
-    }
-
-    .section-divider::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--linea-clara);
-    }
-
-    .section-divider span {
-      position: relative;
-      background: var(--fondo-crema);
-      padding: 0 1.5rem;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--rojo-acento);
-    }
   </style>
 </head>
 
@@ -194,7 +163,6 @@
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
 
-  <!-- ===== HEADER — idéntico a contacto.html ===== -->
   <header
     class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -233,14 +201,12 @@
     <p class="text-center text-lg text-[var(--muted)] max-w-2xl mx-auto mb-16 scroll-reveal">Resultados reales para
       marcas de moda y lifestyle que confían en nuestra estrategia digital 360°.</p>
 
-    <!-- ===== CLIENT PROJECTS ===== -->
     <div class="space-y-24">
 
       <!-- 1) VIRAGO DRESS -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://viragodress.com/" target="_blank" class="block group">
           <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
-            src="https://lh3.googleusercontent.com/d/1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml" referrerpolicy="no-referrer"
             alt="Virago Dress – Shopify + Paid Media" draggable="false">
         </a>
         <div>
@@ -269,7 +235,6 @@
         <div class="md:order-2">
           <a href="https://www.labnutrition.com/" target="_blank" class="block group">
             <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
-              src="https://lh3.googleusercontent.com/d/1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM" referrerpolicy="no-referrer"
               alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
           </a>
         </div>
@@ -298,7 +263,6 @@
         <div class="md:order-2">
           <a href="https://fijiswimwear.pe/" target="_blank" class="block group">
             <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
-              src="https://lh3.googleusercontent.com/d/11H7hzUZ3AUAcut9sspdyR9c7s674bnR4" referrerpolicy="no-referrer"
               alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
           </a>
         </div>
@@ -326,7 +290,6 @@
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <a href="https://teenlifeperu.com/" target="_blank" class="block group">
           <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
-            src="https://lh3.googleusercontent.com/d/1uwqiH25sZg10-BpUjQio85hi5FwPNi2w" referrerpolicy="no-referrer"
             alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
         </a>
         <div>
@@ -358,21 +321,17 @@
     <p class="text-center text-base text-[var(--muted)] max-w-lg mx-auto mb-8 scroll-reveal">Producción visual
       profesional para marcas de moda y lifestyle. Cada proyecto diseñado para impulsar ventas.</p>
 
-    <!-- Filter Tabs -->
     <div class="filter-bar scroll-reveal">
       <button class="filter-btn active" data-filter="all">Todos</button>
       <button class="filter-btn" data-filter="fotografia">Fotografía</button>
       <button class="filter-btn" data-filter="ecommerce">Ecommerce</button>
     </div>
 
-    <!-- Portfolio Grid -->
     <div class="portfolio-grid scroll-reveal" id="portfolio-grid">
 
       <a href="https://www.behance.net/gallery/222616215/Fotografia-Bridal-Couture-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-image"></i>
-        </div>
+        <div class="portfolio-card-icon"><i class="fa-regular fa-image"></i></div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
           <h3>Bridal Couture — Fiji Swim</h3>
@@ -382,9 +341,7 @@
 
       <a href="https://www.behance.net/gallery/223429483/E-Commerce-TEENLIFE" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-window-maximize"></i>
-        </div>
+        <div class="portfolio-card-icon"><i class="fa-regular fa-window-maximize"></i></div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
           <h3>E-Commerce — TEENLIFE</h3>
@@ -394,9 +351,7 @@
 
       <a href="https://www.behance.net/gallery/202966131/Fotograia-Duna-Dorada-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-sun"></i>
-        </div>
+        <div class="portfolio-card-icon"><i class="fa-regular fa-sun"></i></div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
           <h3>Duna Dorada — Fiji Swim</h3>
@@ -407,9 +362,7 @@
 
       <a href="https://www.behance.net/gallery/223432783/Ecommerce-VIRAGO-DRESS" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-gem"></i>
-        </div>
+        <div class="portfolio-card-icon"><i class="fa-regular fa-gem"></i></div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
           <h3>Ecommerce — VIRAGO DRESS</h3>
@@ -419,9 +372,7 @@
 
       <a href="https://www.behance.net/gallery/222620631/Fotografia-Navidad-TEENLIFE" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-snowflake"></i>
-        </div>
+        <div class="portfolio-card-icon"><i class="fa-regular fa-snowflake"></i></div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
           <h3>Navidad — TEENLIFE</h3>
@@ -431,9 +382,7 @@
 
       <a href="https://www.behance.net/gallery/223271387/E-commerce-FijiSwim" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon">
-          <i class="fa-regular fa-compass"></i>
-        </div>
+        <div class="portfolio-card-icon"><i class="fa-regular fa-compass"></i></div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
           <h3>E-Commerce — Fiji Swim</h3>
@@ -443,12 +392,11 @@
 
     </div>
 
-    <!-- ===== CTA BOTTOM ===== -->
-    <section class="cta-section text-center my-20 scroll-reveal">
-      <h2 class="headline text-4xl mb-4 relative z-10">¿Quieres ser nuestro próximo caso de éxito?</h2>
-      <p class="text-xl max-w-2xl mx-auto mb-10 relative z-10">Hablemos sobre tus objetivos y diseñemos juntos la
-        estrategia que va a impulsar tu marca de moda.</p>
-      <div class="relative z-10 flex flex-wrap justify-center gap-4">
+    <section class="text-center my-20 scroll-reveal">
+      <h2 class="headline text-4xl mb-4">¿Quieres ser nuestro próximo caso de éxito?</h2>
+      <p class="text-xl max-w-2xl mx-auto mb-10">Hablemos sobre tus objetivos y diseñemos juntos la
+        estrategia que va a impulsar tu marca.</p>
+      <div class="flex flex-wrap justify-center gap-4">
         <a href="contacto.html" class="btn text-lg">Empezar mi Proyecto</a>
         <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
           class="btn btn-secondary text-lg">Servicios</a>
@@ -457,7 +405,6 @@
 
   </main>
 
-  <!-- ===== FOOTER — idéntico a contacto.html ===== -->
   <footer
     class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
     <div>
@@ -486,7 +433,6 @@
     </div>
   </footer>
 
-  <!-- WhatsApp floating button -->
   <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
     aria-label="Contactar por WhatsApp">
     <i class="fab fa-whatsapp"></i>
@@ -496,57 +442,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
   <script>
-    /* Garantizar que las imágenes de Drive siempre carguen, incluso si main.js las sobreescribe */
-    (function () {
-      var driveUrl = 'https://lh3.googleusercontent.com/d/';
-
-      function fixDriveImages() {
-        document.querySelectorAll('img[data-drive-id]').forEach(function (img) {
-          var id = img.getAttribute('data-drive-id');
-          /* Siempre forzar referrerpolicy */
-          img.referrerPolicy = 'no-referrer';
-          /* Si no tiene src o la imagen no cargó, ponerlo */
-          if (!img.src || img.naturalWidth === 0) {
-            img.src = driveUrl + id;
-          }
-        });
-      }
-
-      /* Ejecutar inmediatamente */
-      fixDriveImages();
-      /* Ejecutar de nuevo después de main.js (por si main.js sobreescribe) */
-      setTimeout(fixDriveImages, 1000);
-      /* Ejecutar una vez más por seguridad */
-      setTimeout(fixDriveImages, 3000);
-
-      /* Observar cambios en src para re-aplicar referrerpolicy */
-      var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (m) {
-          if (m.type === 'attributes' && m.attributeName === 'src') {
-            m.target.referrerPolicy = 'no-referrer';
-          }
-        });
-      });
-      document.querySelectorAll('img[data-drive-id]').forEach(function (img) {
-        observer.observe(img, { attributes: true, attributeFilter: ['src'] });
-      });
-    })();
-
-    /* Portfolio filter */
+    /* Portfolio filter — no interfiere con main.js */
     document.querySelectorAll('.filter-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
-        var filter = btn.getAttribute('data-filter');
-        document.querySelectorAll('.portfolio-card').forEach(function (card) {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = '';
-            if (typeof gsap !== 'undefined') {
-              gsap.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' });
-            }
-          } else {
-            card.style.display = 'none';
-          }
+        var f = btn.getAttribute('data-filter');
+        document.querySelectorAll('.portfolio-card').forEach(function (c) {
+          c.style.display = (f === 'all' || c.getAttribute('data-category') === f) ? '' : 'none';
         });
       });
     });
