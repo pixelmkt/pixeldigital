@@ -100,6 +100,7 @@
       transition: all .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       display: block;
       color: var(--gris-oscuro);
+      text-decoration: none;
     }
 
     .portfolio-card:hover {
@@ -108,15 +109,36 @@
       border-color: rgba(198, 52, 30, 0.2);
     }
 
-    .portfolio-card img {
+    .portfolio-card-icon {
       width: 100%;
-      height: 240px;
-      object-fit: cover;
-      transition: transform .6s ease;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
+      position: relative;
+      overflow: hidden;
     }
 
-    .portfolio-card:hover img {
-      transform: scale(1.05);
+    .portfolio-card-icon i {
+      font-size: 3.5rem;
+      color: rgba(198, 52, 30, 0.12);
+      transition: all .4s ease;
+    }
+
+    .portfolio-card:hover .portfolio-card-icon i {
+      color: rgba(198, 52, 30, 0.3);
+      transform: scale(1.1);
+    }
+
+    .portfolio-card-icon::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--linea-clara);
     }
 
     .portfolio-card-body {
@@ -187,9 +209,8 @@
   <header
     class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="index.html" aria-label="Ir al inicio de Pixel.">
-        <span class="logo-text">Pixel.</span>
-      </a>
+      <a href="index.html"><img src="https://via.placeholder.com/120x32/C6341E/F5F1E8?text=PIXEL" alt="Logo Pixel"
+          class="h-8"></a>
       <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="proyectos.html" class="nav-link transition-colors active">Proyectos</a>
         <a href="https://posicionamiento-ia.vercel.app/" target="_blank" rel="noopener noreferrer"
@@ -225,14 +246,11 @@
     <!-- ===== CLIENT PROJECTS (ECOMMERCE RESULTS) ===== -->
     <div class="space-y-24">
 
-      <!-- VIRAGO DRESS -->
+      <!-- 1) Virago Dress -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://viragodress.com/" target="_blank" rel="noopener noreferrer" class="block project-img-wrap">
+        <a href="https://viragodress.com/" target="_blank" class="block group">
           <img class="case-img" data-drive-id="1GQPrHHsGYqp3vAInNrBqT_G1A-_JACml"
             alt="Virago Dress – Shopify + Paid Media" draggable="false">
-          <div class="project-img-overlay">
-            <span>Ver proyecto →</span>
-          </div>
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Virago Dress</div>
@@ -241,7 +259,7 @@
             Montamos la tienda en Shopify con arquitectura de conversión y ejecutamos una estrategia de Paid Media
             full‑funnel.
             Resultado: <strong>crecimiento sostenido en ventas</strong> y un <strong>posicionamiento sólido</strong> en
-            su categoría de moda.
+            su categoría.
           </p>
           <div class="result-badge">
             <i class="fas fa-arrow-trend-up"></i> Crecimiento sostenido
@@ -251,21 +269,16 @@
             <span class="project-tag">Paid Media</span>
             <span class="project-tag">Estrategia 360</span>
           </div>
-          <a href="https://viragodress.com/" target="_blank" rel="noopener noreferrer"
-            class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://viragodress.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
-      <!-- LAB NUTRITION – CRM + Paid Media 360 + Integraciones -->
+      <!-- 2) Lab Nutrition -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
-          <a href="https://www.labnutrition.com/" target="_blank" rel="noopener noreferrer"
-            class="block project-img-wrap">
+          <a href="https://www.labnutrition.com/" target="_blank" class="block group">
             <img class="case-img" data-drive-id="1ToJ_usOZsdfB5jtmxT74wMJMAqw-OAkM"
               alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
-            <div class="project-img-overlay">
-              <span>Ver proyecto →</span>
-            </div>
           </a>
         </div>
         <div class="md:order-1">
@@ -284,20 +297,16 @@
             <span class="project-tag">Integraciones</span>
             <span class="project-tag">Automatizaciones</span>
           </div>
-          <a href="https://www.labnutrition.com/" target="_blank" rel="noopener noreferrer"
-            class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://www.labnutrition.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
-      <!-- FIJI SWIMWEAR -->
+      <!-- 3) Fiji Swimwear -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
         <div class="md:order-2">
-          <a href="https://fijiswimwear.pe/" target="_blank" rel="noopener noreferrer" class="block project-img-wrap">
+          <a href="https://fijiswimwear.pe/" target="_blank" class="block group">
             <img class="case-img" data-drive-id="11H7hzUZ3AUAcut9sspdyR9c7s674bnR4"
               alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
-            <div class="project-img-overlay">
-              <span>Ver proyecto →</span>
-            </div>
           </a>
         </div>
         <div class="md:order-1">
@@ -316,19 +325,15 @@
             <span class="project-tag">Paid Media</span>
             <span class="project-tag">Desarrollo Web</span>
           </div>
-          <a href="https://fijiswimwear.pe/" target="_blank" rel="noopener noreferrer"
-            class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://fijiswimwear.pe/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
-      <!-- TEENLIFE PERÚ -->
+      <!-- 4) TeenLife Perú -->
       <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://teenlifeperu.com/" target="_blank" rel="noopener noreferrer" class="block project-img-wrap">
+        <a href="https://teenlifeperu.com/" target="_blank" class="block group">
           <img class="case-img" data-drive-id="1uwqiH25sZg10-BpUjQio85hi5FwPNi2w"
             alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
-          <div class="project-img-overlay">
-            <span>Ver proyecto →</span>
-          </div>
         </a>
         <div>
           <div class="font-bold text-4xl text-[var(--gris-oscuro)]">TeenLife Perú</div>
@@ -344,8 +349,7 @@
             <span class="project-tag">Diseño (UX/UI)</span>
             <span class="project-tag">Paid Media</span>
           </div>
-          <a href="https://teenlifeperu.com/" target="_blank" rel="noopener noreferrer"
-            class="btn mt-6 inline-block">Visitar sitio</a>
+          <a href="https://teenlifeperu.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
       </section>
 
@@ -373,9 +377,8 @@
       <!-- Fotografía: Bridal Couture Fiji Swim -->
       <a href="https://www.behance.net/gallery/222616215/Fotografia-Bridal-Couture-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div style="overflow: hidden;">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/e7bf46222616215.Y3JvcCwxMzgwLDEwODAsMCwxNTA.jpg"
-            alt="Fotografía Bridal Couture – Fiji Swim" loading="lazy">
+        <div class="portfolio-card-icon">
+          <i class="fa-regular fa-image"></i>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
@@ -387,9 +390,8 @@
       <!-- Ecommerce: TEENLIFE -->
       <a href="https://www.behance.net/gallery/223429483/E-Commerce-TEENLIFE" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
-        <div style="overflow: hidden;">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/bb29bf223429483.Y3JvcCwxMzgwLDEwODAsMCwxNTA.jpg"
-            alt="E-Commerce TEENLIFE" loading="lazy">
+        <div class="portfolio-card-icon">
+          <i class="fa-regular fa-window-maximize"></i>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
@@ -401,9 +403,8 @@
       <!-- Fotografía: Duna Dorada Fiji Swim -->
       <a href="https://www.behance.net/gallery/202966131/Fotograia-Duna-Dorada-Fiji-Swim" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div style="overflow: hidden;">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/f04f99202966131.Y3JvcCwxMzgwLDEwODAsMCwxNTA.jpg"
-            alt="Fotografía Duna Dorada – Fiji Swim" loading="lazy">
+        <div class="portfolio-card-icon">
+          <i class="fa-regular fa-sun"></i>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
@@ -416,9 +417,8 @@
       <!-- Ecommerce: VIRAGO DRESS -->
       <a href="https://www.behance.net/gallery/223432783/Ecommerce-VIRAGO-DRESS" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="ecommerce">
-        <div style="overflow: hidden;">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/d5b5b0223432783.Y3JvcCwxMzgwLDEwODAsMCwxNTA.jpg"
-            alt="Ecommerce VIRAGO DRESS" loading="lazy">
+        <div class="portfolio-card-icon">
+          <i class="fa-regular fa-gem"></i>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
@@ -430,9 +430,8 @@
       <!-- Fotografía: Navidad TEENLIFE -->
       <a href="https://www.behance.net/gallery/222620631/Fotografia-Navidad-TEENLIFE" target="_blank"
         rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div style="overflow: hidden;">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/0dcb0b222620631.Y3JvcCwxMzgwLDEwODAsMCwxNTA.jpg"
-            alt="Fotografía Navidad – TEENLIFE" loading="lazy">
+        <div class="portfolio-card-icon">
+          <i class="fa-regular fa-snowflake"></i>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
@@ -444,9 +443,8 @@
       <!-- Ecommerce: FijiSwim -->
       <a href="https://www.behance.net/gallery/223271387/E-commerce-FijiSwim" target="_blank" rel="noopener noreferrer"
         class="portfolio-card" data-category="ecommerce">
-        <div style="overflow: hidden;">
-          <img src="https://mir-s3-cdn-cf.behance.net/projects/404/1ee037223271387.Y3JvcCwxMzgwLDEwODAsMCwxNTA.jpg"
-            alt="E-commerce FijiSwim" loading="lazy">
+        <div class="portfolio-card-icon">
+          <i class="fa-regular fa-compass"></i>
         </div>
         <div class="portfolio-card-body">
           <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
@@ -474,9 +472,8 @@
   <footer
     class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
     <div>
-      <a href="index.html" aria-label="Ir al inicio de Pixel.">
-        <span class="logo-text">Pixel.</span>
-      </a>
+      <a href="index.html"><img src="https://via.placeholder.com/120x32/C6341E/F5F1E8?text=PIXEL" alt="Logo Pixel"
+          class="h-8"></a>
       <p class="mt-2">© 2024 Pixel. Todos los derechos reservados.</p>
     </div>
     <div class="text-right">
@@ -535,4 +532,3 @@
 </body>
 
 </html>
-
