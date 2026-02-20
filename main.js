@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileMenuBtn && mobileMenu) {
     // Remove the 'hidden' class so CSS max-height animation controls visibility
     mobileMenu.classList.remove('hidden');
-    
+
     mobileMenuBtn.onclick = () => {
       const isOpen = mobileMenu.classList.toggle('menu-open');
       mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-      
+
       // Animate hamburger icon
       const icon = mobileMenuBtn.querySelector('i');
       if (icon) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroHeadline = document.querySelector('.hero-headline, section:first-of-type .headline');
     const heroSubtext = document.querySelector('.hero-subtext, section:first-of-type p');
     const heroCTA = document.querySelector('.hero-cta, section:first-of-type .btn');
-    
+
     if (heroHeadline) {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
       tl.fromTo(heroHeadline, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 })
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Service cards stagger
     const serviceCards = document.querySelectorAll('.service-card');
     if (serviceCards.length) {
-      gsap.fromTo(serviceCards, 
-        { y: 50, opacity: 0, scale: 0.95 }, 
+      gsap.fromTo(serviceCards,
+        { y: 50, opacity: 0, scale: 0.95 },
         {
           y: 0, opacity: 1, scale: 1, duration: 0.7,
           stagger: 0.1,
@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Process cards stagger
     const processCards = document.querySelectorAll('.process-card');
     if (processCards.length) {
-      gsap.fromTo(processCards, 
-        { y: 40, opacity: 0, rotateX: 10 }, 
+      gsap.fromTo(processCards,
+        { y: 40, opacity: 0, rotateX: 10 },
         {
           y: 0, opacity: 1, rotateX: 0, duration: 0.6,
           stagger: 0.12,
@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // KPI cards
     const kpiCards = document.querySelectorAll('.kpi-card');
     if (kpiCards.length) {
-      gsap.fromTo(kpiCards, 
-        { y: 35, opacity: 0 }, 
+      gsap.fromTo(kpiCards,
+        { y: 35, opacity: 0 },
         {
           y: 0, opacity: 1, duration: 0.7,
           stagger: 0.15,
@@ -124,17 +124,17 @@ document.addEventListener('DOMContentLoaded', () => {
     projectSections.forEach(sec => {
       const img = sec.querySelector('.project-img-wrap, img');
       const text = sec.querySelector('div:not(.project-img-wrap)');
-      
+
       if (img && text) {
-        gsap.fromTo(img, 
-          { x: -60, opacity: 0 }, 
+        gsap.fromTo(img,
+          { x: -60, opacity: 0 },
           {
             x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
             scrollTrigger: { trigger: sec, start: 'top 75%', toggleActions: 'play none none none' }
           }
         );
-        gsap.fromTo(text, 
-          { x: 60, opacity: 0 }, 
+        gsap.fromTo(text,
+          { x: 60, opacity: 0 },
           {
             x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
             scrollTrigger: { trigger: sec, start: 'top 75%', toggleActions: 'play none none none' }
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const easedProgress = easeOutQuart(progress);
       const currentValue = (targetNum * easedProgress).toFixed(decimals);
       element.textContent = prefix + currentValue + suffix;
-      
+
       if (progress < 1) {
         requestAnimationFrame(update);
       }
@@ -201,23 +201,43 @@ document.addEventListener('DOMContentLoaded', () => {
     counterElements.forEach(el => counterObserver.observe(el));
   }
 
-  /* ========== Google Drive Image Loading ========== */
+  /* ========== Google Drive Image Loading (Enhanced) ========== */
   const loadDriveImage = (img, id) => {
+    // Show loading state
+    img.style.background = 'linear-gradient(135deg, #E8E4DB 0%, #D4CFBF 100%)';
+    img.style.minHeight = '200px';
+    img.alt = img.alt || 'Proyecto';
+
     const candidates = [
-      `https://drive.google.com/uc?export=download&id=${id}`,
+      `https://lh3.googleusercontent.com/d/${id}=w1200`,
+      `https://drive.google.com/thumbnail?id=${id}&sz=w1200`,
       `https://drive.google.com/uc?export=view&id=${id}`,
-      `https://drive.google.com/thumbnail?id=${id}&sz=w2000`,
-      `https://lh3.googleusercontent.com/d/${id}=w2000`
+      `https://drive.google.com/uc?export=download&id=${id}`,
+      `https://lh3.googleusercontent.com/d/${id}=w2000`,
+      `https://drive.google.com/thumbnail?id=${id}&sz=w2000`
     ];
     let i = 0;
     const tryNext = () => {
       if (i < candidates.length) {
         img.src = candidates[i++];
       } else {
+        // All failed — show a styled fallback
         img.removeEventListener('error', tryNext);
+        img.style.display = 'none';
+        const fallback = document.createElement('div');
+        fallback.style.cssText = `
+          width:100%;min-height:${img.classList.contains('carousel-img') ? '22rem' : '24rem'};
+          background:linear-gradient(135deg,#2D1B16 0%,#1E1E1E 100%);
+          border-radius:12px;display:flex;align-items:center;justify-content:center;
+          color:rgba(245,241,232,0.4);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;
+          text-align:center;padding:2rem;letter-spacing:0.05em;
+        `;
+        fallback.innerHTML = `<div><i class="fas fa-image" style="font-size:2rem;margin-bottom:0.75rem;display:block;opacity:0.3;"></i>${img.alt}</div>`;
+        img.parentNode.insertBefore(fallback, img);
       }
     };
     img.addEventListener('error', tryNext);
+    img.onload = () => { img.style.background = 'none'; };
     tryNext();
   };
 
@@ -286,12 +306,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Drag with mouse
     let isDown = false, startX = 0, startLeft = 0;
-    viewport.addEventListener('mousedown', (e) => { 
-      isDown = true; startX = e.pageX; startLeft = viewport.scrollLeft; 
-      viewport.classList.add('dragging'); 
+    viewport.addEventListener('mousedown', (e) => {
+      isDown = true; startX = e.pageX; startLeft = viewport.scrollLeft;
+      viewport.classList.add('dragging');
       stopAutoPlay();
     });
-    window.addEventListener('mouseup', () => { 
+    window.addEventListener('mouseup', () => {
       if (isDown) { isDown = false; viewport.classList.remove('dragging'); }
     });
     viewport.addEventListener('mouseleave', () => { isDown = false; viewport.classList.remove('dragging'); });
@@ -315,14 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const formStatus = document.getElementById('form-status');
       const submitBtn = contactForm.querySelector('button[type="submit"]');
-      
+
       // Loading state
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
       }
       formStatus.textContent = '';
-      
+
       const formData = new FormData(contactForm);
       try {
         const res = await fetch(contactForm.action, {
@@ -332,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
           formStatus.style.color = 'var(--verde-feedback)';
           formStatus.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito!';
           contactForm.reset();
-          
+
           // Success animation
           if (typeof gsap !== 'undefined') {
             gsap.fromTo(formStatus, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
