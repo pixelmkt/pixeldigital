@@ -1780,3 +1780,328 @@ header.scrolled {
   transform: scale(1.02);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
 }
+
+/* =============================================================
+   LANDING PAGE — caso-de-estudio.html  (lp-* styles)
+   ============================================================= */
+
+/* Hero */
+.lp-hero {
+  background: var(--fondo-crema);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.lp-hero-accent {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(204, 92, 60, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lp-hero-accent-2 {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(204, 51, 51, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(204, 92, 60, 0.08);
+  color: var(--rojo-acento);
+  border: 1px solid rgba(204, 92, 60, 0.2);
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.lp-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--gris-oscuro);
+  line-height: 1.08;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.lp-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.lp-trust-micro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.lp-trust-micro i {
+  color: var(--rojo-acento);
+  margin-right: 0.3rem;
+}
+
+/* Section labels & titles */
+.lp-section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rojo-acento);
+  margin-bottom: 0.75rem;
+}
+
+.lp-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--gris-oscuro);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.lp-section-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-top: 0.75rem;
+}
+
+/* Sections backgrounds */
+.lp-metrics-section {
+  background: #fff;
+}
+
+.lp-diff-section {
+  background: var(--fondo-crema);
+}
+
+.lp-case-section {
+  background: #fff;
+}
+
+.lp-market-section {
+  background: var(--fondo-crema);
+}
+
+.lp-testimonials-section {
+  background: #fff;
+}
+
+.lp-cta-section {
+  background: var(--fondo-crema);
+}
+
+/* Metric cards */
+.lp-metric-card {
+  background: #fff;
+  border: 1px solid var(--linea-clara);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lp-metric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.09);
+}
+
+.lp-metric-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(204, 92, 60, 0.08);
+  color: var(--rojo-acento);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.lp-metric-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--gris-oscuro);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.lp-metric-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--gris-oscuro);
+  margin-top: 0.5rem;
+}
+
+.lp-metric-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.lp-metric-bar {
+  height: 4px;
+  background: var(--linea-clara);
+  border-radius: 999px;
+  margin-top: 1.25rem;
+  overflow: hidden;
+}
+
+.lp-metric-bar-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--rojo-acento), var(--naranja));
+  border-radius: 999px;
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Diff cards */
+.lp-diff-card {
+  background: #fff;
+  border: 1px solid var(--linea-clara);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lp-diff-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+}
+
+.lp-diff-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(204, 92, 60, 0.08);
+  color: var(--rojo-acento);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+}
+
+.lp-diff-title {
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--gris-oscuro);
+  margin-bottom: 0.6rem;
+}
+
+.lp-diff-text {
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* Case study block */
+.lp-case-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  border: 1px solid var(--linea-clara);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .lp-case-block {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lp-case-problem,
+.lp-case-solution {
+  padding: 2rem;
+}
+
+.lp-case-problem {
+  background: rgba(204, 51, 51, 0.04);
+  border-right: 1px solid var(--linea-clara);
+}
+
+.lp-case-solution {
+  background: #fff;
+}
+
+.lp-case-label {
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rojo-acento);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lp-case-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.lp-case-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+  color: var(--gris-oscuro);
+  line-height: 1.6;
+}
+
+.lp-step-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  background: var(--rojo-acento);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.78rem;
+  margin-top: 0.1rem;
+}
+
+/* CTA section */
+.lp-cta-section .headline {
+  color: var(--gris-oscuro);
+}
