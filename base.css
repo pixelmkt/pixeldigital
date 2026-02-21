@@ -1705,3 +1705,78 @@ header.scrolled {
     gap: 1rem;
   }
 }
+
+/* =============================================================
+   PROYECTOS — Estilos de imagen de cliente
+   ============================================================= */
+
+.case-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+}
+
+.case-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+
+.project-img-wrap {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.project-img-wrap .project-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 16px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.project-img-wrap:hover .project-img-overlay {
+  opacity: 1;
+}
+
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(var(--rojo-acento-rgb, 204, 51, 51), 0.08);
+  color: var(--rojo-acento);
+  border: 1px solid rgba(var(--rojo-acento-rgb, 204, 51, 51), 0.2);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.project-tag {
+  display: inline-block;
+  background: var(--linea-clara);
+  color: var(--gris-oscuro);
+  border-radius: 999px;
+  padding: 0.25rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.group:hover .case-img {
+  transform: scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
