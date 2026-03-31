@@ -1,5 +1,168 @@
-// main.js — PIXEL Premium Interactions & Animations
+// main.js — PIXEL Premium Interactions, 3D Effects & Code Rain
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* ========== CODE RAIN (Matrix Effect) ========== */
+  const initCodeRain = () => {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'code-rain-canvas';
+    document.body.prepend(canvas);
+    const ctx = canvas.getContext('2d');
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array.from({ length: columns }, () => Math.random() * -100);
+
+    // Characters: binary + code symbols
+    const chars = '01{}[]<>/\\;:=+-*&|!@#$%^~`const let var function return if else for while async await import export class new this void null undefined true false'.split('');
+
+    const draw = () => {
+      // Semi-transparent background for trail effect
+      ctx.fillStyle = 'rgba(245, 241, 232, 0.06)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = `${fontSize}px 'IBM Plex Mono', monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        // Gradient from red to orange to faded
+        const progress = (drops[i] % 30) / 30;
+        if (progress < 0.3) {
+          ctx.fillStyle = 'rgba(198, 52, 30, 0.9)';  // Bright red head
+        } else if (progress < 0.6) {
+          ctx.fillStyle = 'rgba(255, 77, 0, 0.6)';   // Orange mid
+        } else {
+          ctx.fillStyle = 'rgba(198, 52, 30, 0.25)';  // Faded tail
+        }
+
+        ctx.fillText(char, x, y);
+
+        // Reset drop when it reaches bottom + random delay
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i] += 0.5 + Math.random() * 0.5;
+      }
+
+      requestAnimationFrame(draw);
+    };
+
+    draw();
+  };
+
+  initCodeRain();
+
+  /* ========== 3D FLOATING SHAPES ========== */
+  const initShapes3D = () => {
+    const existing = document.querySelector('.shapes-3d');
+    if (existing) return;
+
+    const container = document.createElement('div');
+    container.className = 'shapes-3d';
+    container.setAttribute('aria-hidden', 'true');
+
+    const shapes = [
+      // Cubes
+      { type: 'cube' },
+      { type: 'cube' },
+      // Diamonds
+      { type: 'diamond' },
+      { type: 'diamond' },
+      // Rings
+      { type: 'ring' },
+      { type: 'ring' },
+      // More cubes
+      { type: 'cube' },
+      { type: 'diamond' },
+    ];
+
+    shapes.forEach(s => {
+      const el = document.createElement('div');
+      el.className = 'shape-3d';
+
+      if (s.type === 'cube') {
+        const cube = document.createElement('div');
+        cube.className = 'shape-cube';
+        ['front', 'back', 'right', 'left', 'top', 'bottom'].forEach(face => {
+          const f = document.createElement('div');
+          f.className = `face face-${face}`;
+          cube.appendChild(f);
+        });
+        el.appendChild(cube);
+      } else if (s.type === 'diamond') {
+        const diamond = document.createElement('div');
+        diamond.className = 'shape-diamond';
+        for (let i = 0; i < 4; i++) {
+          const f = document.createElement('div');
+          f.className = 'face';
+          diamond.appendChild(f);
+        }
+        el.appendChild(diamond);
+      } else {
+        const ring = document.createElement('div');
+        ring.className = 'shape-ring';
+        el.appendChild(ring);
+      }
+
+      container.appendChild(el);
+    });
+
+    document.body.prepend(container);
+  };
+
+  initShapes3D();
+
+  /* ========== 3D TILT CARD SYSTEM ========== */
+  const initTilt = () => {
+    const tiltElements = document.querySelectorAll('[data-tilt]');
+    if (!tiltElements.length) return;
+
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    if (isMobile) return;
+
+    tiltElements.forEach(el => {
+      let rafId = null;
+
+      el.addEventListener('mousemove', (e) => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const maxTilt = parseFloat(el.getAttribute('data-tilt-max') || '8');
+          const rotateX = ((centerY - y) / centerY) * maxTilt;
+          const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+          el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+      });
+
+      el.addEventListener('mouseleave', () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        el.style.transition = 'transform 0.5s ease-out';
+        setTimeout(() => { el.style.transition = 'transform 0.15s ease-out'; }, 500);
+      });
+
+      el.addEventListener('mouseenter', () => {
+        el.style.transition = 'transform 0.15s ease-out';
+      });
+    });
+  };
+
+  initTilt();
 
   /* ========== Floating Dots Background ========== */
   const floatingDotsHTML = document.querySelector('.floating-dots');
@@ -34,14 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   if (mobileMenuBtn && mobileMenu) {
-    // Remove the 'hidden' class so CSS max-height animation controls visibility
     mobileMenu.classList.remove('hidden');
     
     mobileMenuBtn.onclick = () => {
       const isOpen = mobileMenu.classList.toggle('menu-open');
       mobileMenuBtn.setAttribute('aria-expanded', isOpen);
       
-      // Animate hamburger icon
       const icon = mobileMenuBtn.querySelector('i');
       if (icon) {
         icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
@@ -49,29 +210,38 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  /* ========== GSAP Animations (Premium) ========== */
+  /* ========== GSAP Animations (Premium 3D) ========== */
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero entrance timeline
+    // Hero entrance timeline with 3D
     const heroHeadline = document.querySelector('.hero-headline, section:first-of-type .headline');
     const heroSubtext = document.querySelector('.hero-subtext, section:first-of-type p');
     const heroCTA = document.querySelector('.hero-cta, section:first-of-type .btn');
     
     if (heroHeadline) {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.fromTo(heroHeadline, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1 })
-        .fromTo(heroSubtext, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5')
-        .fromTo(heroCTA, { y: 30, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.6 }, '-=0.3');
+      tl.fromTo(heroHeadline, 
+        { y: 80, opacity: 0, rotateX: 15 }, 
+        { y: 0, opacity: 1, rotateX: 0, duration: 1.2, transformPerspective: 1000 }
+      )
+      .fromTo(heroSubtext, 
+        { y: 50, opacity: 0, rotateX: 10 }, 
+        { y: 0, opacity: 1, rotateX: 0, duration: 0.9, transformPerspective: 1000 }, '-=0.6'
+      )
+      .fromTo(heroCTA, 
+        { y: 40, opacity: 0, scale: 0.9 }, 
+        { y: 0, opacity: 1, scale: 1, duration: 0.7 }, '-=0.4'
+      );
     }
 
-    // Service cards stagger
-    const serviceCards = document.querySelectorAll('.service-card');
+    // Service cards stagger with 3D
+    const serviceCards = document.querySelectorAll('.service-card, .service-card-extended');
     if (serviceCards.length) {
       gsap.fromTo(serviceCards, 
-        { y: 50, opacity: 0, scale: 0.95 }, 
+        { y: 60, opacity: 0, rotateX: 12, transformPerspective: 1000 }, 
         {
-          y: 0, opacity: 1, scale: 1, duration: 0.7,
+          y: 0, opacity: 1, rotateX: 0, duration: 0.8,
           stagger: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
@@ -83,13 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
 
-    // Process cards stagger
+    // Process cards stagger with 3D flip
     const processCards = document.querySelectorAll('.process-card');
     if (processCards.length) {
       gsap.fromTo(processCards, 
-        { y: 40, opacity: 0, rotateX: 10 }, 
+        { y: 50, opacity: 0, rotateY: 15, transformPerspective: 1200 }, 
         {
-          y: 0, opacity: 1, rotateX: 0, duration: 0.6,
+          y: 0, opacity: 1, rotateY: 0, duration: 0.7,
           stagger: 0.12,
           ease: 'power3.out',
           scrollTrigger: {
@@ -101,15 +271,15 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
 
-    // KPI cards
+    // KPI cards with 3D scale pop
     const kpiCards = document.querySelectorAll('.kpi-card');
     if (kpiCards.length) {
       gsap.fromTo(kpiCards, 
-        { y: 35, opacity: 0 }, 
+        { y: 40, opacity: 0, scale: 0.85, rotateX: 20, transformPerspective: 800 }, 
         {
-          y: 0, opacity: 1, duration: 0.7,
+          y: 0, opacity: 1, scale: 1, rotateX: 0, duration: 0.8,
           stagger: 0.15,
-          ease: 'power3.out',
+          ease: 'back.out(1.2)',
           scrollTrigger: {
             trigger: kpiCards[0]?.closest('section') || kpiCards[0],
             start: 'top 80%',
@@ -119,34 +289,88 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
 
-    // Project sections
+    // Industry cards with 3D
+    const industryCards = document.querySelectorAll('.industry-card');
+    if (industryCards.length) {
+      gsap.fromTo(industryCards,
+        { y: 60, opacity: 0, rotateY: -20, transformPerspective: 1200 },
+        {
+          y: 0, opacity: 1, rotateY: 0, duration: 0.9,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: industryCards[0]?.closest('section') || industryCards[0],
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    }
+
+    // Testimonial cards with 3D
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    if (testimonialCards.length) {
+      gsap.fromTo(testimonialCards,
+        { y: 50, opacity: 0, rotateX: 10, transformPerspective: 1000 },
+        {
+          y: 0, opacity: 1, rotateX: 0, duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: testimonialCards[0]?.closest('section') || testimonialCards[0],
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    }
+
+    // Project sections with 3D slide
     const projectSections = document.querySelectorAll('.space-y-24 > section');
     projectSections.forEach(sec => {
-      const img = sec.querySelector('.project-img-wrap, img');
-      const text = sec.querySelector('div:not(.project-img-wrap)');
+      const img = sec.querySelector('.project-img-wrap, img, a.block');
+      const text = sec.querySelector('div:not(.project-img-wrap):not(a)');
       
       if (img && text) {
         gsap.fromTo(img, 
-          { x: -60, opacity: 0 }, 
+          { x: -80, opacity: 0, rotateY: 8, transformPerspective: 1200 }, 
           {
-            x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+            x: 0, opacity: 1, rotateY: 0, duration: 1, ease: 'power3.out',
             scrollTrigger: { trigger: sec, start: 'top 75%', toggleActions: 'play none none none' }
           }
         );
         gsap.fromTo(text, 
-          { x: 60, opacity: 0 }, 
+          { x: 80, opacity: 0, rotateY: -8, transformPerspective: 1200 }, 
           {
-            x: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
+            x: 0, opacity: 1, rotateY: 0, duration: 1, ease: 'power3.out',
             scrollTrigger: { trigger: sec, start: 'top 75%', toggleActions: 'play none none none' }
           }
         );
       }
     });
 
-    // Generic scroll-reveal with GSAP
+    // Portfolio cards with 3D
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+    if (portfolioCards.length) {
+      gsap.fromTo(portfolioCards,
+        { y: 50, opacity: 0, rotateX: 8, scale: 0.95, transformPerspective: 1000 },
+        {
+          y: 0, opacity: 1, rotateX: 0, scale: 1, duration: 0.7,
+          stagger: 0.08,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: portfolioCards[0]?.closest('.portfolio-grid') || portfolioCards[0],
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    }
+
+    // Generic scroll-reveal with GSAP 3D
     document.querySelectorAll('.scroll-reveal').forEach(el => {
       if (!el.closest('.space-y-24') && !el.classList.contains('service-card') && !el.classList.contains('process-card') && !el.classList.contains('kpi-card')) {
-        gsap.fromTo(el, { y: 40, opacity: 0 }, {
+        gsap.fromTo(el, { y: 45, opacity: 0 }, {
           y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
           scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
         });
@@ -257,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
       viewport.addEventListener('scroll', () => {
         const scrollLeft = viewport.scrollLeft;
         const itemWidth = items[0]?.offsetWidth || 300;
-        const activeIndex = Math.round(scrollLeft / (itemWidth + 16)); // 16 = gap
+        const activeIndex = Math.round(scrollLeft / (itemWidth + 16));
         dots.forEach((dot, i) => {
           dot.classList.toggle('active', i === activeIndex);
         });
@@ -316,7 +540,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const formStatus = document.getElementById('form-status');
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       
-      // Loading state
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
@@ -333,7 +556,6 @@ document.addEventListener('DOMContentLoaded', () => {
           formStatus.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito!';
           contactForm.reset();
           
-          // Success animation
           if (typeof gsap !== 'undefined') {
             gsap.fromTo(formStatus, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' });
           }

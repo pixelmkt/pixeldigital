@@ -13,8 +13,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap"
     rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     body {
@@ -216,31 +218,87 @@
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4">
+  <main class="max-w-5xl mx-auto px-4 perspective-container" style="position:relative; z-index:1;">
 
     <!-- ===== HERO SECTION ===== -->
-    <section class="text-left py-24 md:py-32 relative overflow-hidden">
-      <div class="hero-accent"></div>
-      <div class="hero-accent-2"></div>
-      <h1 class="headline text-5xl md:text-7xl scroll-reveal relative z-10 hero-headline" style="line-height:1.05;">
-        Transformamos <span class="text-highlight">Datos</span><br>en <span class="text-highlight">Dominio</span>
-        Digital.
-      </h1>
-      <p class="text-lg md:text-xl mt-8 max-w-2xl scroll-reveal relative z-10 hero-subtext"
-        style="transition-delay:100ms;">
-        Somos la agencia de estrategia y tecnología que decodifica el futuro. Fusionamos IA, Paid Media y desarrollo a
-        medida para crear soluciones que no solo compiten, sino que lideran.
-      </p>
-      <div class="mt-12 scroll-reveal relative z-10 hero-cta flex flex-wrap gap-4" style="transition-delay:200ms;">
-        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
-          class="btn text-lg">Explorar Servicios</a>
-        <a href="proyectos.html" class="btn btn-secondary text-lg">Ver Proyectos</a>
+    <section id="vanta-hero" class="hero-fullscreen text-left relative overflow-hidden">
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="hero-inner grid md:grid-cols-2 gap-8 items-center relative z-10">
+        <!-- Left: text -->
+        <div>
+          <div class="hero-tag scroll-reveal">[ AGENCIA ESTRATEGIA DIGITAL · PERÚ ]</div>
+          <h1 class="hero-headline-3d scroll-reveal hero-headline" data-text="TRANSFORMAMOS DATOS EN DOMINIO.">
+            TRANS<span class="hero-red">FOR</span>MAMOS<br>
+            <span class="hero-red">DATOS</span><br>
+            EN DOMINIO.
+          </h1>
+          <p class="text-lg md:text-xl mt-8 max-w-2xl scroll-reveal hero-subtext" style="transition-delay:100ms;">
+            Fusionamos IA, Paid Media y desarrollo a medida.<br>
+            <strong>No competimos. Lideramos.</strong>
+          </p>
+          <div class="mt-10 scroll-reveal hero-cta flex flex-wrap gap-4" style="transition-delay:200ms;">
+            <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+              class="btn text-lg btn-neon">Explorar Servicios</a>
+            <a href="caso-de-estudio.html" class="btn btn-secondary text-lg">Ver Resultados</a>
+          </div>
+        </div>
+        <!-- Right: 3D floating stats card -->
+        <div class="hero-stats-card scroll-reveal hidden md:block" style="transition-delay:300ms;" aria-hidden="true">
+          <div class="stats-card-header">
+            <span class="stats-label">[ MÉTRICAS EN TIEMPO REAL ]</span>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">4.5<span class="stat-x">x</span></div>
+              <div class="stat-desc">ROAS promedio</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">+45<span class="stat-x">%</span></div>
+              <div class="stat-desc">Ventas Lab Nutrition</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">−28<span class="stat-x">%</span></div>
+              <div class="stat-desc">CPA reducido</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">9<span class="stat-x">+</span></div>
+              <div class="stat-desc">Años de experiencia</div>
+            </div>
+          </div>
+          <div class="stats-bar">
+            <div class="stats-bar-fill"></div>
+          </div>
+          <div class="stats-footer">
+            <span class="stats-dot active"></span>
+            <span class="stats-dot"></span>
+            <span class="stats-dot"></span>
+            <span class="stats-live">● LIVE</span>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- ===== TICKER STRIP ===== -->
+    <div class="ticker-strip" aria-hidden="true">
+      <div class="ticker-track">
+        <span>SHOPIFY PARTNER CERTIFICADO</span><span class="ticker-sep">✦</span>
+        <span>META ADS · GOOGLE ADS · TIKTOK ADS</span><span class="ticker-sep">✦</span>
+        <span>AUTOMATIZACIÓN CON IA</span><span class="ticker-sep">✦</span>
+        <span>3 APPS SHOPIFY PROPIAS</span><span class="ticker-sep">✦</span>
+        <span>ECOMMERCE PERÚ 2026</span><span class="ticker-sep">✦</span>
+        <span>AUDITORÍA GRATIS</span><span class="ticker-sep">✦</span>
+        <span>SHOPIFY PARTNER CERTIFICADO</span><span class="ticker-sep">✦</span>
+        <span>META ADS · GOOGLE ADS · TIKTOK ADS</span><span class="ticker-sep">✦</span>
+        <span>AUTOMATIZACIÓN CON IA</span><span class="ticker-sep">✦</span>
+        <span>3 APPS SHOPIFY PROPIAS</span><span class="ticker-sep">✦</span>
+        <span>ECOMMERCE PERÚ 2026</span><span class="ticker-sep">✦</span>
+        <span>AUDITORÍA GRATIS</span><span class="ticker-sep">✦</span>
+      </div>
+    </div>
+
     <!-- ===== KPI SECTION ===== -->
     <section class="py-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center border-y border-[var(--linea-clara)]">
-      <div class="kpi-card scroll-reveal">
+      <div class="kpi-card scroll-reveal" data-tilt data-tilt-max="10">
         <div class="kpi-icon">
           <i class="fas fa-chart-line text-[var(--rojo-acento)] text-xl"></i>
         </div>
@@ -248,7 +306,7 @@
         <p class="font-semibold mt-2 text-sm">{ Conversion Rate }</p>
         <p class="text-xs mt-2 text-[var(--muted)]">Ratio de conversión promedio saludable y sostenido.</p>
       </div>
-      <div class="kpi-card scroll-reveal" style="transition-delay:100ms;">
+      <div class="kpi-card scroll-reveal" data-tilt data-tilt-max="10" style="transition-delay:100ms;">
         <div class="kpi-icon">
           <i class="fas fa-cloud-upload-alt text-[var(--rojo-acento)] text-xl"></i>
         </div>
@@ -256,7 +314,7 @@
         <p class="font-semibold mt-2 text-sm">{ On Air }</p>
         <p class="text-xs mt-2 text-[var(--muted)]">Tiendas online optimizadas en tiempo récord.</p>
       </div>
-      <div class="kpi-card scroll-reveal" style="transition-delay:200ms;">
+      <div class="kpi-card scroll-reveal" data-tilt data-tilt-max="10" style="transition-delay:200ms;">
         <div class="kpi-icon">
           <i class="fas fa-dollar-sign text-[var(--rojo-acento)] text-xl"></i>
         </div>
@@ -264,7 +322,7 @@
         <p class="font-semibold mt-2 text-sm">{ USD / Año }</p>
         <p class="text-xs mt-2 text-[var(--muted)]">Marcas con alta transaccionalidad y resultados.</p>
       </div>
-      <div class="kpi-card scroll-reveal" style="transition-delay:300ms;">
+      <div class="kpi-card scroll-reveal" data-tilt data-tilt-max="10" style="transition-delay:300ms;">
         <div class="kpi-icon">
           <i class="fas fa-birthday-cake text-[var(--rojo-acento)] text-xl"></i>
         </div>
@@ -328,6 +386,49 @@
       </div>
     </section>
 
+    <!-- ===== INDUSTRIAS SHOWCASE 3D ===== -->
+    <section class="py-24 scroll-reveal">
+      <div class="mb-12 text-center">
+        <h2 class="headline text-4xl">Expertos en tu Industria</h2>
+        <p class="text-lg mt-4 max-w-2xl mx-auto">Dominamos los verticales que más crecen en Latinoamérica. Estrategias especializadas para cada sector.</p>
+      </div>
+      <div class="industry-showcase">
+        <div class="industry-card" data-tilt data-tilt-max="12">
+          <div class="industry-icon"><i class="fas fa-tshirt"></i></div>
+          <h3 class="industry-title">Moda</h3>
+          <p class="industry-desc">Desde fast fashion hasta luxury. Creamos ecommerce que enamoran y campañas que convierten en la industria más competitiva.</p>
+          <div class="industry-tags">
+            <span class="industry-tag">Lookbooks</span>
+            <span class="industry-tag">Shopify</span>
+            <span class="industry-tag">Meta Ads</span>
+            <span class="industry-tag">Styling</span>
+          </div>
+        </div>
+        <div class="industry-card" data-tilt data-tilt-max="12">
+          <div class="industry-icon"><i class="fas fa-dumbbell"></i></div>
+          <h3 class="industry-title">Fitness & Nutrición</h3>
+          <p class="industry-desc">Suplementos, ropa deportiva y wellness. Escalamos marcas fitness con estrategia omnicanal y performance marketing.</p>
+          <div class="industry-tags">
+            <span class="industry-tag">CRM</span>
+            <span class="industry-tag">Automatización</span>
+            <span class="industry-tag">Performance</span>
+            <span class="industry-tag">SEO</span>
+          </div>
+        </div>
+        <div class="industry-card" data-tilt data-tilt-max="12">
+          <div class="industry-icon"><i class="fas fa-store"></i></div>
+          <h3 class="industry-title">Ecommerce</h3>
+          <p class="industry-desc">Cualquier vertical, cualquier escala. Construimos, lanzamos y escalamos tiendas online con ROI comprobado.</p>
+          <div class="industry-tags">
+            <span class="industry-tag">Shopify Plus</span>
+            <span class="industry-tag">Google Ads</span>
+            <span class="industry-tag">Email Mkt</span>
+            <span class="industry-tag">Analytics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== SERVICIOS GRID ===== -->
     <section class="py-24 scroll-reveal">
       <div class="mb-12">
@@ -336,7 +437,7 @@
           en línea.</p>
       </div>
       <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-4">
-        <a href="servicios.html" class="service-card">
+        <a href="servicios.html" class="service-card" data-tilt data-tilt-max="6">
           <div class="flex items-center gap-4">
             <div><i class="fas fa-shopping-cart fa-2x"></i></div>
             <div>
@@ -455,7 +556,7 @@
       <p class="text-lg max-w-3xl mb-16">Un método ágil y transparente que garantiza la alineación con tus objetivos y
         la entrega de resultados excepcionales.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
-        <div class="process-card">
+        <div class="process-card" data-tilt data-tilt-max="8">
           <div class="step-number">1</div>
           <i class="fas fa-binoculars fa-2x text-[var(--rojo-acento)] mb-3"></i>
           <h3 class="font-bold text-base text-gray-800">Inmersión</h3>
@@ -492,7 +593,7 @@
     <section class="py-20 scroll-reveal">
       <h2 class="headline text-4xl mb-10">Lo que dicen nuestros clientes</h2>
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="testimonial-card">
+        <div class="testimonial-card" data-tilt data-tilt-max="5">
           <p class="text-lg leading-relaxed mb-6 relative z-10">"PIXEL transformó completamente nuestra presencia
             digital. En solo 3 meses, nuestro e‑commerce multiplicó ventas y el equipo estuvo presente en cada paso."
           </p>
@@ -537,7 +638,7 @@
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
       </a>
-      <p class="mt-2">© 2024 Pixel. Todos los derechos reservados.</p>
+      <p class="mt-2">© 2026 Pixel. Todos los derechos reservados.</p>
     </div>
     <div class="text-right">
       <div class="flex justify-end space-x-6 mb-2">
