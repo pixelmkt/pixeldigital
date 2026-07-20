@@ -1,0 +1,19 @@
+# Proyectos independientes que viven dentro de esta carpeta por conveniencia local.
+# NO son parte de la web y no deben subirse a este repo.
+pixel-suite-pro/
+pixel-suite-pro-BACKUP-pre-purge.bundle
+recurrencia-app/
+suite-ia/
+posicionamiento-ia/
+lab-nutrition-landing/
+stitch-mcp-proxy.js
+
+# Dependencias y entorno
+node_modules/
+.env
+.env.*
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
