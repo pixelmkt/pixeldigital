@@ -33,7 +33,7 @@
                 <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
                 <a href="caso-de-estudio.html" class="nav-link transition-colors active">Resultados</a>
                 <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
-                <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+                <a href="servicios.html"
                     class="nav-cta">
                     Servicios
                 </a>
@@ -51,9 +51,9 @@
                 class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Resultados</a>
             <a href="contacto.html"
                 class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Contacto</a>
-            <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
+            <a href="servicios.html"
                 class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
-                Cotizar Servicios
+                Servicios
             </a>
         </div>
     </header>
@@ -268,8 +268,8 @@
                     <i class="fas fa-globe-americas"></i> Oportunidad de Mercado — Perú 2026
                 </p>
                 <h2 class="lp-section-title scroll-reveal" style="transition-delay:100ms;">
-                    El e-commerce peruano vale <span style="color:var(--rojo-acento);">US$ 59.5 mil millones</span> y
-                    está creciendo.
+                    El e-commerce peruano ya mueve <span style="color:var(--rojo-acento);">US$ 15 mil millones al año</span> y
+                    sigue creciendo a doble dígito.
                 </h2>
                 <p class="lp-section-sub scroll-reveal" style="transition-delay:150ms;">
                     Las marcas que no se digitalicen ahora van a desaparecer. La oportunidad no es vender más — es
@@ -415,6 +415,15 @@
     <script src="main.js"></script>
     <script>
         // Counter Animation
+        const lpPageLoadTs = performance.now();
+        const lpPrefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function formatLpCounter(el) {
+            const target = parseFloat(el.dataset.count);
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const isDecimal = String(target).includes('.');
+            return prefix + (isDecimal ? target.toFixed(1) : Math.floor(target)) + suffix;
+        }
         function animateLpCounter(el) {
             const target = parseFloat(el.dataset.count);
             const prefix = el.dataset.prefix || '';
@@ -438,7 +447,14 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !entry.target.dataset.counted) {
                         entry.target.dataset.counted = 'true';
-                        animateLpCounter(entry.target);
+                        // Ya visible al cargar (no fue un scroll real) o "reducir movimiento" activo:
+                        // no lo pisamos con la cuenta desde 0 — el HTML ya trae el valor real.
+                        const wasVisibleOnLoad = (performance.now() - lpPageLoadTs) < 200;
+                        if (lpPrefersReducedMotion || wasVisibleOnLoad) {
+                            entry.target.textContent = formatLpCounter(entry.target);
+                        } else {
+                            animateLpCounter(entry.target);
+                        }
                     }
                 });
             }, { threshold: 0.3 });

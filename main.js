@@ -162,6 +162,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ========== Animated Number Counters ========== */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pageLoadTs = performance.now();
+
+  const formatCount = (element) => {
+    const target = element.getAttribute('data-count');
+    const prefix = element.getAttribute('data-prefix') || '';
+    const suffix = element.getAttribute('data-suffix') || '';
+    const decimals = (target.includes('.')) ? target.split('.')[1].length : 0;
+    return prefix + parseFloat(target).toFixed(decimals) + suffix;
+  };
+
   const animateCounter = (element) => {
     const target = element.getAttribute('data-count');
     const prefix = element.getAttribute('data-prefix') || '';
@@ -193,38 +204,20 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.dataset.counted) {
           entry.target.dataset.counted = 'true';
-          animateCounter(entry.target);
+          // Ya visible al cargar (no fue un scroll real) o el visitante pidió menos movimiento:
+          // no lo pisamos con la cuenta desde 0 — el HTML ya trae el valor real.
+          const wasVisibleOnLoad = (performance.now() - pageLoadTs) < 200;
+          if (prefersReducedMotion || wasVisibleOnLoad) {
+            entry.target.textContent = formatCount(entry.target);
+          } else {
+            animateCounter(entry.target);
+          }
         }
       });
     }, { threshold: 0.3 });
 
     counterElements.forEach(el => counterObserver.observe(el));
   }
-
-  /* ========== Google Drive Image Loading ========== */
-  const loadDriveImage = (img, id) => {
-    const candidates = [
-      `https://drive.google.com/uc?export=download&id=${id}`,
-      `https://drive.google.com/uc?export=view&id=${id}`,
-      `https://drive.google.com/thumbnail?id=${id}&sz=w2000`,
-      `https://lh3.googleusercontent.com/d/${id}=w2000`
-    ];
-    let i = 0;
-    const tryNext = () => {
-      if (i < candidates.length) {
-        img.src = candidates[i++];
-      } else {
-        img.removeEventListener('error', tryNext);
-      }
-    };
-    img.addEventListener('error', tryNext);
-    tryNext();
-  };
-
-  document.querySelectorAll('img[data-drive-id]').forEach(img => {
-    const id = img.getAttribute('data-drive-id');
-    if (id) loadDriveImage(img, id);
-  });
 
   /* ========== Carousel with Auto-play & Dots ========== */
   const viewport = document.querySelector('[data-carousel]');
