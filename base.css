@@ -2105,3 +2105,101 @@ header.scrolled {
 .lp-cta-section .headline {
   color: var(--gris-oscuro);
 }
+/* ═══════════════════════════════════════════════════════════════
+   VISIBILIDAD Y MOVIMIENTO — añadido 2026-09-06
+   El contenido debe existir para quien no ejecuta JavaScript:
+   Googlebot, los rastreadores de IA, los lectores de pantalla y
+   quien pidió menos movimiento en su sistema. La animación es un
+   premio para el resto, nunca el requisito para leer la página.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Estado de reposo: TODO visible. Anula el opacity:0 de más arriba. */
+.scroll-reveal,
+.cs-reveal,
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Solo se esconde para animar si hay JS y nadie pidió menos movimiento. */
+@media (prefers-reduced-motion: no-preference) {
+
+  html.io .scroll-reveal,
+  html.io .cs-reveal,
+  html.io [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s cubic-bezier(.22, .61, .36, 1),
+      transform .7s cubic-bezier(.22, .61, .36, 1);
+    will-change: opacity, transform;
+  }
+
+  html.io .scroll-reveal.is-visible,
+  html.io .cs-reveal.is-visible,
+  html.io [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+/* Quien pidió menos movimiento no ve NADA moverse. */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Foco visible por teclado en toda la web ── */
+:focus-visible {
+  outline: 2px solid var(--rojo-acento);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Refinamientos de detalle ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.headline {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Cifras alineadas en columna */
+.kpi-number,
+.num,
+[data-count] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* El botón responde al dedo y al cursor, no solo al hover */
+.btn {
+  transition: transform .2s cubic-bezier(.22, .61, .36, 1),
+    box-shadow .2s ease, background-color .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}

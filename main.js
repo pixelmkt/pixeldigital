@@ -50,7 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ========== GSAP Animations (Premium) ========== */
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  // Tres caminos posibles, y el CSS necesita saber cual corre:
+  //   'gsap' -> GSAP anima con estilos en linea; el CSS NO debe poner transition
+  //             sobre las mismas propiedades o las dos capas pelean y el
+  //             elemento se queda a media opacidad.
+  //   'io'   -> sin GSAP, revelamos con IntersectionObserver + clase is-visible.
+  //   ninguna-> sin JS o con menos movimiento pedido: todo queda visible.
+  const menosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (menosMovimiento) {
+    // No animamos nada. El CSS ya deja el contenido visible por defecto.
+  } else if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    document.documentElement.classList.add('gsap');
     gsap.registerPlugin(ScrollTrigger);
 
     // Hero entrance timeline
@@ -154,7 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   } else {
-    // Fallback: IntersectionObserver
+    // Sin GSAP: revelamos con IntersectionObserver y la clase is-visible.
+    document.documentElement.classList.add('io');
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('is-visible'));
     }, { threshold: 0.1 });

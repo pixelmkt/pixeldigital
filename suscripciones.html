@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <script>document.documentElement.classList.add('js')</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suscripciones en Shopify con Mercado Pago • Cobro automático en Perú • PIXEL</title>
+  <meta name="description"
+    content="Shopify no cobra suscripciones con pasarelas latinoamericanas. Construimos la app que sí lo hace: débito automático con Mercado Pago, sin migrar de plataforma y sin Shopify Plus. Perú, Chile y Colombia.">
+  <link rel="canonical" href="https://pixeldigital.vercel.app/suscripciones.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="Pixel Digital">
+  <meta property="og:url" content="https://pixeldigital.vercel.app/suscripciones.html">
+  <meta property="og:title" content="Suscripciones en Shopify con Mercado Pago • Cobro automático en Perú">
+  <meta property="og:description"
+    content="Shopify solo cobra suscripciones por cinco pasarelas y ninguna sirve a una empresa peruana. Nosotros construimos la que falta.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="base.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    .sus-lede {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--gris-oscuro);
+      max-width: 62ch;
+    }
+
+    .sus-block {
+      border: 1px solid var(--linea-clara);
+      background: #fff;
+      padding: 1.6rem 1.4rem;
+    }
+
+    .sus-block--dark {
+      background: var(--fondo-oscuro);
+      border-color: var(--fondo-oscuro);
+      color: var(--texto-claro);
+    }
+
+    .sus-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--rojo-acento);
+      font-weight: 600;
+    }
+
+    .sus-num {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      line-height: 1;
+      color: var(--rojo-acento);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .gates {
+      display: grid;
+      gap: 1px;
+      background: var(--linea-clara);
+      border: 1px solid var(--linea-clara);
+    }
+
+    @media (min-width:640px) {
+      .gates {
+        grid-template-columns: repeat(5, 1fr)
+      }
+    }
+
+    .gate {
+      background: #fff;
+      padding: 1rem .75rem;
+      text-align: center;
+    }
+
+    .gate__n {
+      font-weight: 700;
+      font-size: .88rem;
+      display: block
+    }
+
+    .gate__x {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--muted);
+      display: block;
+      margin-top: .35rem
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--linea-clara);
+      padding: 1.1rem 0;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.02rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none
+    }
+
+    .faq summary::after {
+      content: '+';
+      color: var(--rojo-acento);
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .faq details[open] summary::after {
+      content: '−'
+    }
+
+    .faq p {
+      margin: .85rem 0 0;
+      color: var(--gris-oscuro);
+      max-width: 68ch;
+    }
+
+    .precio-fila {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--linea-clara);
+      align-items: baseline;
+    }
+
+    .precio-fila:last-child {
+      border-bottom: 0
+    }
+
+    .precio-fila b {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Suscripciones con cobro automático en Shopify por Mercado Pago",
+    "serviceType": "Desarrollo de aplicación Shopify para cobro recurrente",
+    "url": "https://pixeldigital.vercel.app/suscripciones.html",
+    "description": "Aplicación Shopify a medida que cobra suscripciones de forma recurrente con Mercado Pago en países donde Shopify Payments no opera. No requiere Shopify Plus ni migrar de plataforma.",
+    "provider": { "@id": "https://pixeldigital.vercel.app/#organizacion" },
+    "areaServed": [
+      { "@type": "Country", "name": "Perú" },
+      { "@type": "Country", "name": "Chile" },
+      { "@type": "Country", "name": "Colombia" }
+    ],
+    "audience": {
+      "@type": "BusinessAudience",
+      "name": "Marcas de consumo con productos de reposición: suplementos, alimento para mascotas, café, cuidado personal y dermocosmética"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PEN",
+      "price": "3900",
+      "description": "Instalación única de S/3,900 más una cuota mensual desde S/390 según el número de suscriptores activos.",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Se pueden cobrar suscripciones automáticas en Shopify con Mercado Pago?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Con las aplicaciones del Shopify App Store, no. Shopify solo ejecuta el cobro de un contrato de suscripción a través de cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe. Mercado Pago no está en esa lista, así que ninguna app del App Store puede debitar automáticamente con él. Sí es posible con una aplicación construida a medida e instalada en la tienda, que es lo que hacemos en Pixel Digital."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Por qué Recharge, Appstle, Loop o Seal no me sirven en Perú?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Porque heredan la misma limitación de Shopify: solo cobran por esas cinco pasarelas. Shopify Payments no opera en Perú, Colombia, Chile ni Argentina; en Latinoamérica solo está disponible en México. Stripe no acepta empresas peruanas y Authorize.net exige entidad en Estados Unidos, Canadá, Reino Unido, Europa o Australia. La alternativa que ofrecen esas apps es enviar al cliente una factura por correo en cada ciclo para que pague a mano, lo que genera fricción y abandono."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito Shopify Plus para tener suscripciones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. La aplicación funciona sobre cualquier plan de Shopify. Sí conviene saber que, fuera de Shopify Plus, la plataforma aplica un solo descuento de producto por artículo, así que hay que decidir qué manda cuando una suscripción coincide con una promoción vigente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tengo que migrar de plataforma o cambiar mi tienda?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. La aplicación se instala sobre tu Shopify actual y el widget de suscripción se integra en tus páginas de producto heredando la tipografía y los colores de tu propio tema. Tu catálogo, tus clientes y tu checkout siguen igual."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta implementar suscripciones en Shopify en Perú?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En Pixel Digital la instalación cuesta S/3,900 por única vez, más una cuota mensual que depende de cuántos suscriptores activos tengas: S/390 hasta 50 suscriptores, S/690 entre 51 y 200, y S/1,190 entre 201 y 500. Los montos no incluyen el 8% del recibo por honorarios. Aparte, Mercado Pago cobra su propia comisión al comercio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto demora la implementación?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tres semanas de desarrollo más una semana de estabilización acompañada, con los primeros cobros reales monitoreados. La primera semana se define la regla de negocio: frecuencias, precios y qué ocurre cuando una suscripción coincide con una promoción."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué comisión cobra Mercado Pago en Perú?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Según el tarifario público de Mercado Pago Perú, la acreditación inmediata cuesta 3.49% más S/1 más IGV por venta, y la acreditación a catorce días cuesta 3.29% más S/1 más IGV. Es una tarifa única para crédito, débito, efectivo y Yape. Esa comisión la cobra Mercado Pago directamente al comercio, no nosotros."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué países funciona esto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En los mercados donde Mercado Pago ofrece cobros recurrentes y Shopify Payments no está disponible: Perú, Chile, Colombia, Argentina y Uruguay. México queda fuera del problema porque ahí sí existe Shopify Payments y las aplicaciones globales funcionan de fábrica."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://pixeldigital.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Suscripciones", "item": "https://pixeldigital.vercel.app/suscripciones.html" }
+    ]
+  }
+  </script>
+</head>
+
+<body class="bg-fondo-crema text-[var(--fondo-oscuro)]">
+
+  <header
+    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" aria-label="Ir al inicio de Pixel.">
+        <span class="logo-text">Pixel.</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
+        <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
+        <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
+        <a href="caso-de-estudio.html" class="nav-link transition-colors">Resultados</a>
+        <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
+        <a href="servicios.html" class="nav-cta">Servicios</a>
+      </nav>
+      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]"
+        aria-label="Abrir menú de navegación" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+      <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
+      <a href="suscripciones.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
+      <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
+      <a href="caso-de-estudio.html"
+        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Resultados</a>
+      <a href="servicios.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Servicios</a>
+      <a href="contacto.html" class="block text-center py-3 nav-link">Contacto</a>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4">
+
+    <!-- ══ HERO ══ -->
+    <section class="py-20 md:py-28 relative overflow-hidden">
+      <p class="sus-eyebrow scroll-reveal">Suscripciones en Shopify · Perú, Chile y Colombia</p>
+      <h1 class="headline text-4xl md:text-6xl mt-5 scroll-reveal relative z-10" style="line-height:1.06;">
+        Shopify no cobra suscripciones<br>con <span class="text-highlight">pasarelas latinoamericanas</span>.
+      </h1>
+      <p class="sus-lede mt-7 scroll-reveal" style="transition-delay:100ms;">
+        Nosotros construimos la app que sí lo hace. <strong>Débito automático con Mercado Pago</strong>, instalada sobre
+        tu tienda actual: sin migrar de plataforma, sin Shopify Plus y sin pedirle al cliente que pague a mano cada mes.
+      </p>
+      <div class="mt-10 scroll-reveal flex flex-wrap gap-4" style="transition-delay:200ms;">
+        <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20quiero%20suscripciones%20con%20cobro%20autom%C3%A1tico%20en%20mi%20Shopify"
+          target="_blank" rel="noopener noreferrer" class="btn text-lg">Conversemos</a>
+        <a href="#como-funciona" class="btn btn-secondary text-lg">Cómo funciona</a>
+      </div>
+    </section>
+
+    <!-- ══ EL PROBLEMA ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="sus-eyebrow scroll-reveal">El problema, dicho con precisión</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-6 scroll-reveal">Shopify solo cobra por cinco pasarelas.</h2>
+      <p class="sus-lede scroll-reveal">
+        Cuando un cliente se suscribe, Shopify crea un contrato — pero quien ejecuta el cobro de cada ciclo es la
+        pasarela, no la aplicación. Y Shopify solo lo permite con estas cinco:
+      </p>
+
+      <div class="gates mt-8 scroll-reveal">
+        <div class="gate"><span class="gate__n">Shopify Payments</span><span class="gate__x">No opera en Sudamérica</span>
+        </div>
+        <div class="gate"><span class="gate__n">Stripe</span><span class="gate__x">No acepta empresas peruanas</span>
+        </div>
+        <div class="gate"><span class="gate__n">Authorize.net</span><span class="gate__x">Exige entidad en EE.&nbsp;UU. o
+            Europa</span></div>
+        <div class="gate"><span class="gate__n">Adyen</span><span class="gate__x">Contrato enterprise</span></div>
+        <div class="gate"><span class="gate__n">PayPal Express</span><span class="gate__x">Marginal en el mercado
+            local</span></div>
+      </div>
+
+      <div class="sus-block sus-block--dark mt-8 scroll-reveal">
+        <p class="sus-eyebrow" style="color:var(--naranja)">La consecuencia</p>
+        <p class="mt-3 text-lg" style="max-width:64ch">
+          Ninguna app del Shopify App Store puede debitar automáticamente con Mercado Pago. Lo que ofrecen en su lugar es
+          <strong>mandarle una factura por correo a tu cliente cada mes</strong> para que pague a mano. Eso no es una
+          suscripción: es una cobranza, y se cae sola.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══ CÓMO FUNCIONA ══ -->
+    <section id="como-funciona" class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="sus-eyebrow scroll-reveal">La solución</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Una app tuya, instalada en tu tienda.</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="sus-block scroll-reveal">
+          <h3 class="font-bold text-lg mb-2">Widget en tu página de producto</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">El cliente elige frecuencia y ve el ahorro antes de agregar al
+            carrito. Hereda la tipografía y los colores de tu tema: no parece un injerto.</p>
+        </div>
+        <div class="sus-block scroll-reveal" style="transition-delay:80ms;">
+          <h3 class="font-bold text-lg mb-2">Cobro automático recurrente</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Tarjeta de crédito y débito por Mercado Pago, en la frecuencia que
+            el cliente elija. Sin tope de ciclos ni permanencia mínima.</p>
+        </div>
+        <div class="sus-block scroll-reveal" style="transition-delay:160ms;">
+          <h3 class="font-bold text-lg mb-2">Panel de administración</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Información del suscriptor, cancelación manual y creación de
+            segmentos en Shopify para tus campañas.</p>
+        </div>
+      </div>
+
+      <p class="mt-8 text-sm text-[var(--muted)] scroll-reveal" style="max-width:66ch">
+        Nota honesta: Shopify no permite integrar la gestión de estas suscripciones dentro de la cuenta de cliente de su
+        plataforma. Las pausas y bajas las ejecuta tu equipo desde el panel, a pedido del cliente por los canales que ya
+        usan. Lo decimos antes de firmar, no después.
+      </p>
+    </section>
+
+    <!-- ══ POR QUÉ IMPORTA ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="sus-eyebrow scroll-reveal">Por qué mueve la aguja</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-10 scroll-reveal">Los números de la categoría.</h2>
+
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="scroll-reveal">
+          <p class="sus-num">3–5×</p>
+          <p class="font-semibold mt-3">Lo que vale un cliente suscrito</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Frente a uno de compra única, al mismo margen bruto.</p>
+        </div>
+        <div class="scroll-reveal" style="transition-delay:80ms;">
+          <p class="sus-num">5–8%</p>
+          <p class="font-semibold mt-3">Abandono mensual típico</p>
+          <p class="text-sm text-[var(--muted)] mt-1">En productos de reposición: suplementos, mascotas y consumibles del
+            hogar.</p>
+        </div>
+        <div class="scroll-reveal" style="transition-delay:160ms;">
+          <p class="sus-num">60–80%</p>
+          <p class="font-semibold mt-3">Menos abandono si cobras anual</p>
+          <p class="text-sm text-[var(--muted)] mt-1">La palanca más barata que existe, y no cuesta desarrollo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PRECIO ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="sus-eyebrow scroll-reveal">Inversión</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Instalación y cuota mensual.</h2>
+
+      <div class="sus-block scroll-reveal" style="max-width:640px">
+        <div class="precio-fila"><span>Instalación, una sola vez</span><b>S/ 3,900</b></div>
+        <div class="precio-fila"><span>Hasta 50 suscriptores activos</span><b>S/ 390 /mes</b></div>
+        <div class="precio-fila"><span>De 51 a 200</span><b>S/ 690 /mes</b></div>
+        <div class="precio-fila"><span>De 201 a 500</span><b>S/ 1,190 /mes</b></div>
+        <div class="precio-fila"><span>Marca que quiere ser dueña del desarrollo</span><b>a cotizar</b></div>
+      </div>
+      <p class="mt-4 text-sm text-[var(--muted)] scroll-reveal">
+        Los montos no incluyen el 8% del recibo por honorarios. La comisión de Mercado Pago la cobra Mercado Pago
+        directamente a tu negocio: 3.49% + S/1 + IGV con acreditación inmediata, según su tarifario público.
+      </p>
+      <p class="mt-2 text-sm text-[var(--muted)] scroll-reveal">
+        Tres semanas de desarrollo, una de estabilización acompañada y dos meses de soporte incluidos.
+      </p>
+    </section>
+
+    <!-- ══ FAQ ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="sus-eyebrow scroll-reveal">Preguntas frecuentes</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Lo que todos preguntan.</h2>
+
+      <div class="faq scroll-reveal" style="max-width:76ch">
+        <details open>
+          <summary>¿Se pueden cobrar suscripciones automáticas en Shopify con Mercado Pago?</summary>
+          <p>Con las apps del Shopify App Store, no. Shopify solo ejecuta el cobro de un contrato de suscripción a través
+            de cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe. Mercado Pago no está en
+            esa lista. Sí es posible con una aplicación construida a medida e instalada en tu tienda, que es lo que
+            hacemos nosotros.</p>
+        </details>
+        <details>
+          <summary>¿Por qué Recharge, Appstle, Loop o Seal no me sirven en Perú?</summary>
+          <p>Porque heredan la misma limitación. Shopify Payments no opera en Perú, Colombia, Chile ni Argentina — en
+            Latinoamérica solo está en México. Stripe no acepta empresas peruanas y Authorize.net exige entidad en
+            Estados Unidos, Canadá, Reino Unido, Europa o Australia. Lo que esas apps ofrecen como alternativa es mandar
+            una factura por correo cada ciclo para que el cliente pague a mano.</p>
+        </details>
+        <details>
+          <summary>¿Necesito Shopify Plus?</summary>
+          <p>No, funciona sobre cualquier plan. Sí conviene saber que fuera de Plus la plataforma aplica un solo
+            descuento de producto por artículo, así que hay que decidir qué manda cuando una suscripción coincide con una
+            promoción vigente. Esa regla se define en la primera semana.</p>
+        </details>
+        <details>
+          <summary>¿Tengo que migrar de plataforma?</summary>
+          <p>No. La app se instala sobre tu Shopify actual. Tu catálogo, tus clientes y tu checkout siguen exactamente
+            igual.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto cuesta?</summary>
+          <p>La instalación cuesta S/3,900 por única vez, más una cuota mensual según cuántos suscriptores activos
+            tengas: S/390 hasta 50, S/690 de 51 a 200, y S/1,190 de 201 a 500. No incluye el 8% del recibo por
+            honorarios.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto demora?</summary>
+          <p>Tres semanas de desarrollo más una de estabilización acompañada, con los primeros cobros reales
+            monitoreados. La primera semana se dedica a definir la regla de negocio.</p>
+        </details>
+        <details>
+          <summary>¿Qué comisión cobra Mercado Pago en Perú?</summary>
+          <p>Según su tarifario público: 3.49% + S/1 + IGV con acreditación inmediata, o 3.29% + S/1 + IGV a catorce
+            días. Es tarifa única para crédito, débito, efectivo y Yape, y la cobra Mercado Pago directamente a tu
+            negocio.</p>
+        </details>
+        <details>
+          <summary>¿En qué países funciona?</summary>
+          <p>Donde Mercado Pago ofrece cobros recurrentes y Shopify Payments no llega: Perú, Chile, Colombia, Argentina y
+            Uruguay. México queda fuera del problema porque ahí sí hay Shopify Payments y las apps globales funcionan de
+            fábrica.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="py-20 border-t border-[var(--linea-clara)] text-center">
+      <h2 class="headline text-3xl md:text-5xl scroll-reveal">¿Tu producto se acaba todos los meses?</h2>
+      <p class="sus-lede mt-5 mx-auto scroll-reveal" style="transition-delay:100ms;">
+        Entonces tus clientes ya están recomprando a mano. Solo falta que no tengan que hacerlo.
+      </p>
+      <div class="mt-9 scroll-reveal" style="transition-delay:200ms;">
+        <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20quiero%20suscripciones%20con%20cobro%20autom%C3%A1tico%20en%20mi%20Shopify"
+          target="_blank" rel="noopener noreferrer" class="btn text-lg">Escríbenos por WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer
+    class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
+    <div>
+      <a href="index.html" aria-label="Ir al inicio de Pixel.">
+        <span class="logo-text">Pixel.</span>
+      </a>
+      <p class="mt-2">© 2026 Pixel. Todos los derechos reservados.</p>
+    </div>
+    <div class="text-right">
+      <div class="flex justify-end space-x-6 mb-2">
+        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
+          aria-label="LinkedIn de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-linkedin"></i></a>
+        <a href="https://www.tiktok.com/@pixel.public" target="_blank" rel="noopener noreferrer"
+          aria-label="TikTok de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-tiktok"></i></a>
+      </div>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
+        Privacidad</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
