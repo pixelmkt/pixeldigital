@@ -1,0 +1,14 @@
+# Proyectos independientes que viven en esta carpeta — NO son parte de la web.
+pixel-suite-pro/
+pixel-suite-pro-BACKUP-pre-purge.bundle
+recurrencia-app/
+suite-ia/
+posicionamiento-ia/
+lab-nutrition-landing/
+stitch-mcp-proxy.js
+
+node_modules/
+.env
+.env.*
+*.log
+.git/
