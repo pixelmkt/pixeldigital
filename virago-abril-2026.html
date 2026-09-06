@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virago Dress — Estrategia Abril 2026 | PIXEL</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#2D2D2D;--white:#fff;--orange:#C43A1C;--orange-light:#D94F2E;
+  --accent:#C43A1C;--accent-light:#E8D5B7;--navy:#3A3A3A;--champagne:#E8D5B7;
+  --cream:#F5F0EB;--bone:#FAF7F3;--gold:#B89B6A;
+  --g100:#F0ECE6;--g200:#E0D9D0;--g300:#C8C0B5;--g500:#6B6460;--g700:#3A3632;
+}
+body{font-family:'Inter',sans-serif;color:var(--g700);background:var(--bone);line-height:1.55;font-size:11px}
+h1,h2,h3,h4,h5{font-family:'Cormorant Garamond',serif;color:var(--g700)}
+
+/* ===== COVER ===== */
+.cover{height:100vh;background:var(--cream);color:var(--g700);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;page-break-after:always}
+.cover::before{content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(196,58,28,0.06) 0%,transparent 70%);border-radius:50%}
+.cover-badge{font-size:9px;letter-spacing:6px;text-transform:uppercase;color:var(--accent);margin-bottom:40px;border:1px solid rgba(196,58,28,0.25);padding:8px 24px}
+.cover h1{font-size:68px;font-weight:300;line-height:1.05;margin-bottom:12px;color:var(--g700)}
+.cover h1 em{font-style:italic;color:var(--g500);font-weight:400}
+.cover h1 span{color:var(--accent);font-weight:700}
+.cover-sub{font-size:13px;color:var(--g500);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+.cover-tagline{font-family:'Cormorant Garamond';font-size:18px;font-style:italic;color:var(--g500);margin-bottom:50px;opacity:0.8}
+.cover-meta{display:flex;gap:40px;font-size:9px;color:var(--g500);letter-spacing:2px;text-transform:uppercase}
+.cover-meta span{color:var(--accent);font-weight:600}
+.cover-line{width:60px;height:1px;background:var(--accent);margin:24px auto}
+.cover-pixel{position:absolute;bottom:40px;right:50px;font-size:18px;font-weight:900;letter-spacing:4px;color:var(--g700)}
+.cover-pixel::after{content:'.';color:var(--accent)}
+.cover-client{position:absolute;bottom:40px;left:50px;font-size:11px;letter-spacing:3px;color:var(--g500)}
+
+/* ===== PAGES ===== */
+.page{min-height:100vh;padding:50px 60px;page-break-after:always;position:relative;background:var(--bone)}
+.page-dark{background:var(--cream);color:var(--g700)}
+.page-sage{background:var(--cream)}
+.page-navy{background:var(--cream);color:var(--g700)}
+
+.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;padding-bottom:14px;border-bottom:1px solid var(--g200)}
+.page-dark .page-header,.page-navy .page-header{border-bottom-color:var(--g200)}
+.ph-left{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--g500)}
+.ph-right{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+.sn{font-family:'Inter';font-size:60px;font-weight:900;color:var(--accent);opacity:0.12;line-height:1;margin-bottom:-18px}
+.page-dark .sn,.page-navy .sn{opacity:0.12;color:var(--accent)}
+.st{font-size:34px;font-weight:700;margin-bottom:6px;line-height:1.1;color:var(--accent)}
+.ss{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g500);font-family:'Inter';font-weight:600;margin-bottom:28px}
+
+/* ===== CARDS ===== */
+.card{background:var(--white);border:1px solid var(--g200);padding:24px;margin-bottom:16px}
+.page-dark .card{background:var(--white);border-color:var(--g200)}
+.page-navy .card{background:var(--white);border-color:var(--g200)}
+.ca{border-left:3px solid var(--accent)}
+.cl{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px}
+.card h4{font-size:18px;margin-bottom:6px;color:var(--g700)}
+.card p{font-size:10.5px;color:var(--g500);line-height:1.6}
+.page-dark .card p,.page-navy .card p{color:var(--g500)}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+.tag{display:inline-block;font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--accent);color:var(--accent);font-weight:600;margin-right:4px;margin-bottom:4px}
+
+.kpi-box{text-align:center;padding:18px}
+.kpi-v{font-size:26px;font-weight:900;color:var(--orange);font-family:'Inter'}
+.kpi-l{font-size:8px;color:var(--g500);letter-spacing:2px;text-transform:uppercase;margin-top:3px}
+
+/* ===== PHASE ===== */
+.ph{background:var(--accent);color:var(--white);padding:14px 24px;display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.ph-n{font-size:32px;font-weight:900;font-family:'Inter';opacity:0.3}
+.ph-t{font-size:14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-family:'Inter'}
+.ph-d{font-size:9px;opacity:0.8}
+
+/* ===== CONTENT CARD ===== */
+.cc{border:1px solid var(--g200);margin-bottom:14px;overflow:hidden}
+.cc-h{background:var(--g700);color:var(--white);padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
+.cc-h h5{font-size:13px;font-family:'Cormorant Garamond';color:var(--white)}
+.cc-num{font-size:8px;color:var(--accent-light);letter-spacing:2px;font-family:'Inter';font-weight:700}
+.cc-b{padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dl{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:3px}
+.dt{font-size:10px;color:var(--g700);line-height:1.6}
+.dt strong{color:var(--black)}
+
+/* ===== HIGHLIGHT ===== */
+.hl{background:var(--accent);color:var(--white);padding:20px 24px;margin:18px 0}
+.hl h4{color:var(--white);font-size:16px;margin-bottom:4px}
+.hl p{color:rgba(255,255,255,0.9);font-size:10px}
+
+.hl-orange{background:var(--accent)}
+
+/* ===== TABLE ===== */
+table{width:100%;border-collapse:collapse;font-size:9.5px}
+th{background:var(--g700);color:var(--white);padding:9px 12px;text-align:left;font-size:8px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+td{padding:9px 12px;border-bottom:1px solid var(--g200)}
+tr:nth-child(even){background:var(--g100)}
+
+/* ===== PROMO ===== */
+.promo-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:var(--white);padding:4px 12px;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.promo-card{background:var(--white);border:1.5px solid var(--g200);padding:20px;margin-bottom:14px}
+.promo-card h5{font-size:15px;margin-bottom:4px;color:var(--g700)}
+.promo-card p{font-size:9.5px;color:var(--g500)}
+.mechanic{font-size:9.5px;background:var(--cream);padding:10px;margin-top:8px;border-left:3px solid var(--accent);color:var(--g700)}
+
+.divider{height:1px;background:var(--g200);margin:26px 0}
+.page-dark .divider,.page-navy .divider{background:rgba(255,255,255,0.08)}
+
+.checklist li{list-style:none;padding:5px 0;font-size:10px;border-bottom:1px solid var(--g200)}
+.checklist li::before{content:'\25B8';color:var(--accent);margin-right:8px;font-weight:700}
+
+/* ===== ANALYSIS BOX ===== */
+.analysis{background:var(--white);border:1px solid var(--g200);padding:20px;margin-bottom:16px}
+.analysis h5{font-size:14px;color:var(--accent);margin-bottom:6px}
+.analysis p{font-size:10px;color:var(--g700)}
+
+.insight-row{display:flex;gap:12px;margin-bottom:12px}
+.insight-icon{width:36px;height:36px;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.insight-text h6{font-size:10px;font-family:'Inter';font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:2px}
+.insight-text p{font-size:9.5px;color:var(--g500);line-height:1.5}
+
+.quote{font-family:'Cormorant Garamond';font-size:20px;font-style:italic;color:var(--g700);text-align:center;padding:24px 40px;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);margin:20px 0}
+.page-dark .quote,.page-navy .quote{color:var(--g700);border-color:var(--g200)}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="cover-badge">Agencia Pixel — Sistema de Pauta Digital y Conversión</div>
+  <div class="cover-line"></div>
+  <h1><em>Estrategia</em><br><span>Abril</span> 2026</h1>
+  <p class="cover-sub">Grilla Táctica · 4 Videos · 4 Imágenes · 4 Carruseles</p>
+  <p class="cover-tagline">"No es el vestido... eres tú. ✨ Pero este definitivamente ayuda."</p>
+  <div class="cover-meta">
+    <div>Cliente: <span>Virago Dress</span></div>
+    <div>Colecciones: <span>5 Líneas Activas · 151 SKUs</span></div>
+    <div>Período: <span>Abril 2026</span></div>
+  </div>
+  <div class="cover-client">@viragodress · 44K seguidores · viragodress.com</div>
+  <div class="cover-pixel">PIXEL</div>
+</div>
+
+<!-- ══════════════ PAGE 2: DIAGNÓSTICO ══════════════ -->
+<div class="page">
+  <div class="page-header"><div class="ph-left">Virago Dress · Abril 2026</div><div class="ph-right">PIXEL.</div></div>
+
+  <div class="sn">01</div>
+  <h2 class="st">Diagnóstico de Marca</h2>
+  <p class="ss">Análisis del ecosistema actual de Virago Dress — Abril 2026</p>
+
+  <div class="grid-2">
+    <div>
+      <div class="analysis">
+        <h5>Estado del Feed de Instagram</h5>
+        <p>El feed de @viragodress ha migrado casi por completo a <strong>formato Reels (90%+)</strong>. El contenido estático es mínimo. Predomina la estética "Quiet Luxury": tonos sage green, navy blue, lavender y champagne. Series recurrentes como <strong>"Favorito de la Semana"</strong> generan consistencia.</p>
+      </div>
+      <div class="analysis">
+        <h5>Identidad Visual Actual</h5>
+        <p>Fotografía lifestyle de alto nivel: espejos, interiores elegantes, modelos en movimiento natural. Iluminación cálida dorada. Tipografía serif (Cormorant Garamond). Paleta sofisticada que evita colores saturados — se alinea con la tendencia "Old Money" y "Clean Girl" aesthetic.</p>
+      </div>
+      <div class="analysis">
+        <h5>Tono de Voz</h5>
+        <p>Poetico-aspiracional y empoderador: <em>"No es el vestido..eres tu, pero este definitivamente ayuda"</em>, <em>"Esta semana santa no es solo para desconectar... es para volver a ti"</em>. Usan emojis minimos. Nunca gritan. Nunca descuentan agresivamente.</p>
+      </div>
+    </div>
+    <div>
+      <div class="analysis">
+        <h5>Catalogo Vigente -- 5 Colecciones</h5>
+        <p style="margin-bottom:8px;"><strong>151 productos activos</strong> · Rango: S/ 149 – S/ 259.99</p>
+        <table style="font-size:9px;">
+          <tr><th>Colección</th><th>SKUs</th><th>Rango</th></tr>
+          <tr><td><strong>Fearless Femme</strong></td><td>4</td><td>S/189 - S/229</td></tr>
+          <tr><td>Valentine Edit</td><td>28</td><td>S/149 - S/259</td></tr>
+          <tr><td>Island Muse</td><td>28</td><td>S/149 - S/259</td></tr>
+          <tr><td>Eterna</td><td>8</td><td>S/169.90</td></tr>
+          <tr><td>Cheers, Babe!</td><td>~80+</td><td>S/149 - S/259</td></tr>
+        </table>
+      </div>
+      <div class="analysis">
+        <h5>Metricas de Engagement Observadas</h5>
+        <p>Reels: <strong>1,500 – 4,000 views</strong> promedio. Likes: <strong>15-30 por post</strong>. Engagement rate estimado: <strong>~0.06%</strong> (bajo vs. 44K followers). Oportunidad enorme de activar base dormida con pauta segmentada.</p>
+      </div>
+      <div class="analysis">
+        <h5>Contexto Promocional</h5>
+        <p>La promocion "2do vestido a S/1" ha finalizado. Virago necesita nuevas mecanicas promocionales para mantener el impulso de ventas post-Semana Santa. PIXEL propone tipologias alineadas al Cyber Wow Peru (20-23 Abril) y al comportamiento del catalogo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote">"Tendencias exclusivas que marcan esta temporada. New Collection: Fearless Femme" -- Bio actual</div>
+</div>
+
+<!-- ══════════════ PAGE 3: FASE 1 — VIDEOS ══════════════ -->
+<div class="page">
+  <div class="page-header"><div class="ph-left">Virago Dress · Abril 2026</div><div class="ph-right">PIXEL.</div></div>
+
+  <div class="sn">02</div>
+  <h2 class="st">Fase 1: Videos</h2>
+  <p class="ss">Formato Reels-First — Alineado al feed actual de Virago</p>
+
+  <div class="ph">
+    <div class="ph-n">V</div>
+    <div><div class="ph-t">4 Reels Estratégicos</div><div class="ph-d">9:16 · Estética Quiet Luxury · Audio Trending · Pauta Meta + TikTok</div></div>
+  </div>
+
+  <!-- V1 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Reel 1 — "GRWM: De Día a Noche con Virago"</h5><div class="cc-num">GET READY WITH ME</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Concepto Creativo</div>
+        <div class="dt">La modelo se graba en espejo estilo UGC. Empieza casual (jeans + top) y hace una transición mágica al <strong>Vestido Sayda</strong> en versión beige para el día, luego corte rápido al <strong>Vestido Chiara Negro</strong> para la noche. Mismo espejo, misma chica, dos vidas.</div>
+        <div class="dl" style="margin-top:10px;">Copy en Pantalla</div>
+        <div class="dt"><strong>"De 'no tengo nada que ponerme' a 'perdón por llegar tarde, estaba siendo icónica' 💅"</strong></div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">El formato GRWM es el más consumido en Reels e-commerce en 2026. Virago ya publica este tipo de contenido orgánicamente — la pauta lo amplifica a audiencias frías que consumen este formato a diario. La transición día/noche muestra 2 productos en 1 video.</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ Video views completos · ↑ Profile visits · ↑ Saves (alta utilidad)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V2 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Reel 2 — "Favorito de la Semana: Edición Especial"</h5><div class="cc-num">SERIE ORGÁNICA → PAUTA</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Concepto Creativo</div>
+        <div class="dt">Tomar la serie existente <strong>"Favorito de la Semana"</strong> que Virago ya publica y crear una versión amplificada. Collage estilo mood board con el vestido más vendido del mes. Tomas: textura close-up, modelo caminando, flat lay con accesorios. Todo en 8 segundos.</div>
+        <div class="dl" style="margin-top:10px;">Copy en Pantalla</div>
+        <div class="dt"><strong>"Esta semana el favorito es [Vestido Roma]. Y el tuyo? 👀"</strong></div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">Amplificar una serie orgánica que ya existe genera coherencia entre el feed y la pauta. El usuario no siente el salto "esto es un anuncio". Además, la pregunta final estimula comentarios, lo que mejora la distribución orgánica del Reel.</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ Engagement (comentarios) · ↑ Reach orgánico por boost algorítmico</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V3 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Reel 3 — "Virago Girls: Tu Primera Vez"</h5><div class="cc-num">UNBOXING + PRUEBA REAL</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Concepto Creativo</div>
+        <div class="dt">Compilación de <strong>3 clientas reales</strong> (del highlight "Virago Grls") abriendo su caja Virago. Reacción genuina al abrir el empaque premium + probándose el vestido por primera vez. Formato vertical, cada clienta con diferente tipo de cuerpo y estilo.</div>
+        <div class="dl" style="margin-top:10px;">Copy en Pantalla</div>
+        <div class="dt"><strong>"Lo que pasa cuando una Virago Girl abre su caja por primera vez ✨"</strong></div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">Prueba social real > cualquier producción de estudio. Resuelve la objeción "¿se verá igual que en la foto?" y "¿cómo llega el empaque?". Virago ya tiene el highlight "Virago Grls" — este contenido es la versión de pauta de ese concepto de comunidad.</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ Trust score · ↓ CPA por confianza previa · ↑ Conversiones en primera compra</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- V4 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Reel 4 — "5 Vestidos en 30 Segundos"</h5><div class="cc-num">CATÁLOGO RÁPIDO</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Concepto Creativo</div>
+        <div class="dt">Cámara fija, fondo neutro elegante. La modelo entra, posa 3 segundos con cada vestido y sale. Corte limpio. Se muestran 5 vestidos de diferentes colecciones con precio superpuesto: <strong>Emilia Rojo S/159 → Camila Rosa S/169 → Sayda Beige S/179 → Roma S/219 → Chiara S/259</strong>. Escalera visual de precio ascendente.</div>
+        <div class="dl" style="margin-top:10px;">Copy en Pantalla</div>
+        <div class="dt"><strong>"Todos los vestidos. Todos los rangos. Tu favorito? 🤍"</strong></div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">Muestra la amplitud del catálogo (no solo Fearless Femme). Los precios visibles filtran usuarios: quién hace clic ya procesó el rango y tiene intención real. Formato try-on acelerado = alta retención porque el cerebro espera "el siguiente".</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ CTR a web · ↑ Tiempo de vista del video (retención) · ↑ AOV por exposición a premium</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 4: FASE 2 — IMÁGENES ══════════════ -->
+<div class="page page-sage">
+  <div class="page-header"><div class="ph-left">Virago Dress · Abril 2026</div><div class="ph-right">PIXEL.</div></div>
+
+  <div class="sn">03</div>
+  <h2 class="st">Fase 2: Imágenes Estáticas</h2>
+  <p class="ss">Retargeting + Conversión — Estética alineada al brand book actual</p>
+
+  <div class="ph" style="background:linear-gradient(135deg,var(--navy),#2A3F6A);">
+    <div class="ph-n">I</div>
+    <div><div class="ph-t">4 Imágenes de Alto Impacto</div><div class="ph-d">Feed 1:1 / Stories 9:16 · Paleta Sage-Navy-Champagne · Tipografía Cormorant</div></div>
+  </div>
+
+  <div class="grid-2">
+    <!-- I1 -->
+    <div class="card ca">
+      <div class="cl">Imagen 1 — "2do Vestido a S/1" (Amplificación Promo)</div>
+      <h4>La Promo que Ya Existe, Ahora con Pauta</h4>
+      <p><strong>Arte:</strong> Split visual con dos vestidos lado a lado. Uno con su precio completo, el otro con un sticker estilo "S/1" manuscrito en dorado. Fondo sage minimalista.</p>
+      <p style="margin-top:6px;"><strong>Copy:</strong> "Tu vestido favorito + un segundo por S/1. Sí, leíste bien. Solo por tiempo limitado. 🥂"</p>
+      <p style="margin-top:6px;"><strong>Objetivo:</strong> Virago ya tiene esta promo corriendo. No inventar: amplificar. La pauta lleva esta oferta a audiencias que no siguen la cuenta pero sí encajan en el perfil demográfico.</p>
+      <div style="margin-top:8px;"><span class="tag">PROMO ACTIVA</span><span class="tag">TOF + MOF</span><span class="tag">FEED</span></div>
+    </div>
+
+    <!-- I2 -->
+    <div class="card ca">
+      <div class="cl">Imagen 2 — Colección Eterna: El Entry Point</div>
+      <h4>8 Vestidos Únicos · Un Solo Precio</h4>
+      <p><strong>Arte:</strong> Grid de 8 mini-fotos de la colección Eterna (Camila + Debora en 4 colores) sobre fondo cream. Precio único centrado: <strong>"S/ 169.90 — Cualquier modelo."</strong></p>
+      <p style="margin-top:6px;"><strong>Copy:</strong> "Tu primer Virago. Colección Eterna: 8 vestidos al mismo precio. Elige tu color, elige tu historia."</p>
+      <p style="margin-top:6px;"><strong>Objetivo:</strong> Captar volumen con la colección de precio más accesible. El usuario que entra por Eterna se convierte en lead para upsell futuro a Fearless Femme.</p>
+      <div style="margin-top:8px;"><span class="tag">ENTRY POINT</span><span class="tag">VOLUMEN</span><span class="tag">FEED</span></div>
+    </div>
+
+    <!-- I3 -->
+    <div class="card ca">
+      <div class="cl">Imagen 3 — Abandono de Carrito Poético</div>
+      <h4>"Ese vestido sigue pensando en ti"</h4>
+      <p><strong>Arte:</strong> Foto del vestido en percha sobre fondo oscuro navy, iluminación dramática lateral. Tipografía Cormorant en cursiva centrada. Estética editorial, no comercial.</p>
+      <p style="margin-top:6px;"><strong>Copy:</strong> "Ese vestido que dejaste en el carrito sigue pensando en ti. ¿Vas a dejarlo esperando? 💭"</p>
+      <p style="margin-top:6px;"><strong>Objetivo:</strong> Retargeting de carrito abandonado con el TONO de Virago — poético, no agresivo. La marca nunca grita. El copy suave pero directo respeta el brand voice y convierte.</p>
+      <div style="margin-top:8px;"><span class="tag">RETARGETING</span><span class="tag">ABANDONO</span><span class="tag">BOF</span></div>
+    </div>
+
+    <!-- I4 -->
+    <div class="card ca">
+      <div class="cl">Imagen 4 — Social Proof: Screenshot de WhatsApp</div>
+      <h4>"Amiga, te juro que quedé 🔥"</h4>
+      <p><strong>Arte:</strong> Mockup de conversación de WhatsApp real entre dos amigas. Una envía foto con vestido Virago puesto, la otra responde con emojis de fuego y "dónde lo compraste??". Diseño que simula un screenshot genuino.</p>
+      <p style="margin-top:6px;"><strong>Copy:</strong> "Esto pasa cuando una Virago Girl se prueba su vestido. La conversación que todas hemos tenido. Link en bio 🤍"</p>
+      <p style="margin-top:6px;"><strong>Objetivo:</strong> Prueba social nativa. El formato "screenshot de chat" tiene el CTR más alto en moda porque se siente REAL, no producido. Conecta con la comunidad "Virago Grls".</p>
+      <div style="margin-top:8px;"><span class="tag">SOCIAL PROOF</span><span class="tag">NATIVO</span><span class="tag">ALTO CTR</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 5: FASE 3 — CARRUSELES ══════════════ -->
+<div class="page">
+  <div class="page-header"><div class="ph-left">Virago Dress · Abril 2026</div><div class="ph-right">PIXEL.</div></div>
+
+  <div class="sn">04</div>
+  <h2 class="st">Fase 3: Carruseles</h2>
+  <p class="ss">Educación, Navegación de Catálogo e Incremento de Ticket Promedio</p>
+
+  <div class="ph" style="background:linear-gradient(135deg,var(--champagne),var(--gold));">
+    <div class="ph-n" style="color:var(--navy);">C</div>
+    <div><div class="ph-t" style="color:var(--navy);">4 Carruseles de Alta Utilidad</div><div class="ph-d" style="color:var(--navy);opacity:0.7;">Feed IG/FB · Diseñados para Save, Share y Swipe completo</div></div>
+  </div>
+
+  <!-- C1 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Carrusel 1 — "¿Qué Vestido Va con Tu Evento?"</h5><div class="cc-num">QUIZ VISUAL</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Estructura de Tarjetas</div>
+        <div class="dt">
+          <strong>T1:</strong> "¿A dónde vas? Desliza y te decimos qué vestido es el tuyo 👗"<br>
+          <strong>T2:</strong> 🎓 Graduación → Vestido Chiara (S/259) — "Elegancia que se recuerda"<br>
+          <strong>T3:</strong> 🥂 Cumpleaños → Vestido Roma (S/219) — "La estrella de la fiesta, sin intentarlo"<br>
+          <strong>T4:</strong> ☀️ Brunch → Vestido Camila Eterna (S/169) — "Casual chic sin esfuerzo"<br>
+          <strong>T5:</strong> 💍 Matrimonio Civil → Vestido Lima (S/229) — "Invitada perfecta garantizada"<br>
+          <strong>T6:</strong> CTA → "¿Ya sabes cuál es el tuyo? Link en bio 🤍"
+        </div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">Asigna un producto a cada OCASIÓN real del calendario peruano de Abril. El usuario no busca "un vestido" — busca "qué ponerme para X". Al ver su evento específico, el vestido deja de ser genérico y se convierte en la solución exacta.</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ Saves masivos · ↑ Swipe-through rate · ↑ Conversiones por intención específica</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C2 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Carrusel 2 — "Guía de Colecciones Virago"</h5><div class="cc-num">NAVEGACIÓN DE CATÁLOGO</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Estructura de Tarjetas</div>
+        <div class="dt">
+          <strong>T1:</strong> "5 Colecciones. 151 vestidos. Una para cada versión de ti. ✨"<br>
+          <strong>T2:</strong> 🔥 FEARLESS FEMME — "Para la que no pide permiso" (4 modelos hero)<br>
+          <strong>T3:</strong> 💕 VALENTINE EDIT — "Para la que celebra el amor propio" (28 modelos)<br>
+          <strong>T4:</strong> 🌊 ISLAND MUSE — "Para la que sueña con sal y arena" (28 modelos)<br>
+          <strong>T5:</strong> ♾️ ETERNA — "Desde S/169. Tu primer Virago" (8 modelos, 1 precio)<br>
+          <strong>T6:</strong> 🥂 CHEERS, BABE! — "Para la que brinda por ella" (catálogo completo)
+        </div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">Virago tiene 151 SKUs pero solo promociona Fearless Femme en pauta. Este carrusel expone las 5 colecciones de forma organizada, educando al usuario sobre la profundidad del catálogo. El 90% del inventario está invisible para la audiencia de pauta — esto lo corrige.</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ Tráfico a colecciones subexpuestas · ↑ Discovery de productos · ↑ Saves</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C3 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Carrusel 3 — "De S/149 a S/259: Tu Virago Ideal"</h5><div class="cc-num">ESCALERA DE PRECIO VISUAL</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Estructura de Tarjetas</div>
+        <div class="dt">
+          <strong>T1:</strong> "Hay un Virago para cada presupuesto. ¿Cuál es el tuyo?"<br>
+          <strong>T2:</strong> 💚 Desde S/149 → Vestido Anais / Cameron (Entry)<br>
+          <strong>T3:</strong> 💛 Desde S/169 → Colección Eterna (Básicos elegantes)<br>
+          <strong>T4:</strong> 🧡 Desde S/189 → Fearless Femme (Statement pieces)<br>
+          <strong>T5:</strong> ❤️ Desde S/229 → Premium (Lima, Chiara, Atenea, Marena)<br>
+          <strong>T6:</strong> "Todos incluyen empaque premium + envío gratis desde S/399"
+        </div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">Democratiza el catálogo. Muestra que Virago NO es solo "la marca de S/230" — tiene puntos de entrada desde S/149. Nuevo público sensible al precio entra por abajo; el anclaje psicológico del precio bajo hace que S/189 parezca "el sweet spot".</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ Conversiones de entrada · ↑ AOV por anclaje ascendente · ↓ Percepción de "caro"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C4 -->
+  <div class="cc">
+    <div class="cc-h"><h5>Carrusel 4 — "Cómo Elegir Tu Talla Virago"</h5><div class="cc-num">GUÍA DE TALLAS SALVABLE</div></div>
+    <div class="cc-b">
+      <div>
+        <div class="dl">Estructura de Tarjetas</div>
+        <div class="dt">
+          <strong>T1:</strong> "No adivines tu talla. Mídete en 60 segundos 📏"<br>
+          <strong>T2:</strong> Paso 1: Mide tu busto con cinta métrica (ilustración)<br>
+          <strong>T3:</strong> Paso 2: Mide tu cintura (ilustración)<br>
+          <strong>T4:</strong> Tabla de tallas oficial Virago con medidas en cm<br>
+          <strong>T5:</strong> "¿83cm busto? → S/M. ¿94cm busto? → M/L"<br>
+          <strong>T6:</strong> "Guarda este carrusel. Tu guía antes de cada compra 🤍"
+        </div>
+      </div>
+      <div>
+        <div class="dl">Por Qué Funciona</div>
+        <div class="dt">Virago ya tiene el highlight "Guía de Tallas" — esta es la versión de feed que se puede guardar. Reduce la objeción #1 de compra online (duda de talla) y elimina consultas por DM. El formato de alta utilidad genera la mayor tasa de Saves del feed.</div>
+        <div class="dl" style="margin-top:10px;">KPI</div>
+        <div class="dt">↑ Saves (KPI #1) · ↓ Consultas DM · ↓ Devoluciones por talla incorrecta</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 6: PROMOCIONES ══════════════ -->
+<div class="page page-navy">
+  <div class="page-header"><div class="ph-left" style="color:rgba(255,255,255,0.3);">Virago Dress · Abril 2026</div><div class="ph-right">PIXEL.</div></div>
+
+  <div class="sn">05</div>
+  <h2 class="st" style="color:var(--white);">Tipologías Promocionales</h2>
+  <p class="ss" style="color:var(--sage-light);">Solicitud de Aprobación — Virago Dress debe confirmar cuáles activar</p>
+
+  <p style="color:rgba(255,255,255,0.5);margin-bottom:20px;font-size:10px;">Basado en el análisis de las promociones que Virago ya ejecuta (2do vestido a S/1) y el comportamiento del catálogo, PIXEL propone las siguientes mecánicas escalables para Abril:</p>
+
+  <div class="grid-2">
+    <div class="promo-card">
+      <div class="promo-badge">🔥 Tipo A — Extensión</div>
+      <h5>"2do Vestido a S/1" → Amplificación con Pauta</h5>
+      <p>La promo que YA funciona orgánicamente. Escalarla con pauta segmentada a audiencias frías que encajan en el perfil pero no siguen la cuenta.</p>
+      <div class="mechanic">
+        <strong>Mecánica:</strong> Mantener la promo actual sin cambios. PIXEL crea el arte publicitario optimizado para pauta.<br>
+        <strong>Segmentación:</strong> Lookalike de compradoras + intereses fashion Lima.<br>
+        <strong>Duración:</strong> Mientras el cliente mantenga la promo activa en web.
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">⚡ Tipo B — Flash</div>
+      <h5>"Solo 48h: Envío Gratis Sin Mínimo"</h5>
+      <p>Eliminar temporalmente el mínimo de S/399 para envío gratis. Destraba compras de ticket bajo (Eterna S/169, Entry S/149) que no llegan al umbral.</p>
+      <div class="mechanic">
+        <strong>Mecánica:</strong> Envío gratis total durante 48h. Sin código — automático en checkout.<br>
+        <strong>Objetivo:</strong> Capturar compras de primer ingreso que abandona por costo de envío.<br>
+        <strong>Duración sugerida:</strong> Viernes-Sábado, Semana 3 (25-26 Abril).
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">👑 Tipo C — Exclusividad</div>
+      <h5>"Código VIRAGOGIRL: 10% Primera Compra"</h5>
+      <p>Código exclusivo para nuevas seguidoras captadas por pauta. Trackea atribución directa de la inversión publicitaria y construye base de datos.</p>
+      <div class="mechanic">
+        <strong>Mecánica:</strong> Código VIRAGOGIRL en checkout = 10% off primera compra.<br>
+        <strong>Objetivo:</strong> Capturar leads fríos + medir ROI directo de pauta social.<br>
+        <strong>Duración:</strong> Todo Abril (código permanente del mes).
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <div class="promo-badge">🎯 Tipo D — Liquidación</div>
+      <h5>"Colección [X] — Últimas Unidades"</h5>
+      <p>Promo de liquidación para la colección con mayor stock acumulado. Descuento escalonado: -15% primera semana, -25% segunda semana si no se agota.</p>
+      <div class="mechanic">
+        <strong>Mecánica:</strong> Seleccionar la colección con más inventario muerto. Descuento progresivo visible en web.<br>
+        <strong>Objetivo:</strong> Liberar capital atrapado en inventario. Generar flujo de caja.<br>
+        <strong>Requiere:</strong> Virago confirme la colección y % máximo autorizado.
+      </div>
+    </div>
+  </div>
+
+  <div class="hl-orange" style="background:linear-gradient(135deg,var(--orange),var(--orange-light));margin-top:16px;">
+    <h4>⚠️ Acción Requerida del Cliente</h4>
+    <p>Virago Dress debe confirmar: (1) Cuáles tipologías aprueba, (2) Porcentajes de descuento máximos, (3) Colección para liquidación tipo D, (4) Fechas de activación. Sin confirmación, PIXEL opera la pauta con los assets estándar de la grilla (sin descuento).</p>
+  </div>
+</div>
+
+<!-- ══════════════ PAGE 7: CALENDARIO + INVERSIÓN ══════════════ -->
+<div class="page">
+  <div class="page-header"><div class="ph-left">Virago Dress · Abril 2026</div><div class="ph-right">PIXEL.</div></div>
+
+  <div class="sn">06</div>
+  <h2 class="st">Calendario e Inversión</h2>
+  <p class="ss">Timeline de Producción · Distribución · Estructura Financiera</p>
+
+  <table>
+    <thead>
+      <tr><th>Semana</th><th>Fecha</th><th>Entregable Creativo</th><th>Acción en Pauta</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Semana 1</strong></td>
+        <td>7 – 13 Abr</td>
+        <td>Reel 1 (GRWM) + Imagen 1 (Promo 2×S/1)</td>
+        <td>TOF: Captación con Reel GRWM · Conversión con promo amplificada</td>
+      </tr>
+      <tr>
+        <td><strong>Semana 2</strong></td>
+        <td>14 – 20 Abr</td>
+        <td>Reel 2 (Favorito Semana) + Carrusel 1 (Quiz Evento) + Imagen 2 (Eterna Entry)</td>
+        <td>Escalar ganadores S1 · Activar código VIRAGOGIRL · Educar catálogo</td>
+      </tr>
+      <tr>
+        <td><strong>Semana 3</strong></td>
+        <td>21 – 27 Abr</td>
+        <td>Reel 3 (Virago Girls UGC) + Carrusel 2 (Guía Colecciones) + Imagen 3 (Abandono) + Carrusel 3 (Escalera Precio)</td>
+        <td>Retargeting agresivo · Flash envío gratis 48h (Vie-Sáb)</td>
+      </tr>
+      <tr>
+        <td><strong>Semana 4</strong></td>
+        <td>28 – 30 Abr</td>
+        <td>Reel 4 (5 Vestidos 30s) + Carrusel 4 (Guía Tallas) + Imagen 4 (WhatsApp Social Proof)</td>
+        <td>Cierre: Escalar top performers · Remarketing full funnel · Flush budget restante</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+
+  <div class="grid-3">
+    <div class="card" style="text-align:center;">
+      <div class="cl">Ventas Directas (Meta)</div>
+      <div class="kpi-v">S/ 2,000</div>
+      <p>Presupuesto mensual Meta Ads</p>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div class="cl">Mensajes (TikTok/WSP)</div>
+      <div class="kpi-v">S/ 500-800</div>
+      <p>WhatsApp + TikTok Ads</p>
+    </div>
+    <div class="card" style="text-align:center;border:2px solid var(--orange);">
+      <div class="cl">Meta de Ventas</div>
+      <div class="kpi-v">S/ 5,000+</div>
+      <p>Para activar comisión 5%</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="cl">Fee Base Operativo</div>
+      <h4>S/ 900 PEN / mes</h4>
+      <p>50% Inicial (S/ 450) → Días 1-5 · 50% Final (S/ 450) → Cierre de mes.</p>
+    </div>
+    <div class="card">
+      <div class="cl">Comisión por Performance</div>
+      <h4>5% sobre ventas netas</h4>
+      <p>Solo se activa cuando ventas trackeadas superen S/ 5,000 PEN. Pago conjunto con 50% final.</p>
+    </div>
+  </div>
+
+  <div class="hl">
+    <h4>Requerimientos al Cliente — Activos Creativos</h4>
+    <p><strong>4 Videos:</strong> Grabados según briefs técnicos (GRWM, Favorito Semana, Unboxing UGC, Try-on rápido) · <strong>4 Sets Foto:</strong> Producto limpio + lifestyle · <strong>4 Sets Carrusel:</strong> Mínimo 4-6 fotos por set · <strong>Plazo:</strong> 5 días hábiles antes de la fecha de publicación</p>
+  </div>
+
+  <div style="margin-top:30px;text-align:center;padding:30px;">
+    <div class="quote">"Tendencias exclusivas que marcan esta temporada." — Virago Dress</div>
+    <p style="font-size:9px;color:var(--g500);letter-spacing:3px;text-transform:uppercase;margin-top:16px;">
+      Documento preparado por Israel Sarmiento — PIXEL<br>
+      Abril 2026 · Todos los derechos reservados
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
