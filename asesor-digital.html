@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <script>document.documentElement.classList.add('js')</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asesor Digital • El chat que cierra la venta en tu Shopify • PIXEL</title>
+  <meta name="description"
+    content="Un asesor con IA dentro de tu tienda Shopify que recomienda con tu catálogo real, arma el pedido y cobra con Mercado Pago sin salir de la conversación. Precio real, stock real, pedido real.">
+  <link rel="canonical" href="https://pixeldigital.vercel.app/asesor-digital.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="Pixel Digital">
+  <meta property="og:url" content="https://pixeldigital.vercel.app/asesor-digital.html">
+  <meta property="og:title" content="Asesor Digital • El chat que cierra la venta en tu Shopify">
+  <meta property="og:description"
+    content="Recomienda con tu catálogo real, arma el pedido y cobra con Mercado Pago sin que el cliente salga del chat.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="base.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    .ad-lede {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--gris-oscuro);
+      max-width: 60ch;
+    }
+
+    .ad-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--rojo-acento);
+      font-weight: 600;
+    }
+
+    .ad-block {
+      border: 1px solid var(--linea-clara);
+      background: #fff;
+      padding: 1.5rem 1.35rem;
+    }
+
+    .ad-dark {
+      background: var(--fondo-oscuro);
+      border-color: var(--fondo-oscuro);
+      color: var(--texto-claro);
+    }
+
+    .ad-num {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 5.5vw, 3rem);
+      line-height: 1;
+      color: var(--rojo-acento);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── el teléfono con el chat real ── */
+    .fono {
+      width: 100%;
+      max-width: 340px;
+      background: #1D1D1D;
+      border-radius: 30px;
+      padding: 9px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .22);
+    }
+
+    .fono__in {
+      background: #fff;
+      border-radius: 23px;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    .ch__top {
+      background: #1D1D1D;
+      color: #fff;
+      padding: .85rem .9rem;
+      display: flex;
+      gap: .65rem;
+      align-items: center;
+    }
+
+    .ch__av {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--rojo-acento);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+      flex: none;
+    }
+
+    .ch__nm {
+      font-weight: 700;
+      font-size: .85rem;
+      line-height: 1.2
+    }
+
+    .ch__st {
+      font-size: .66rem;
+      color: #9AE6A0;
+      display: flex;
+      align-items: center;
+      gap: .3rem
+    }
+
+    .ch__st::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #48BB58
+    }
+
+    .ch__body {
+      padding: .85rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      background: #fff;
+    }
+
+    .b-user {
+      align-self: flex-end;
+      background: var(--rojo-acento);
+      color: #fff;
+      padding: .55rem .85rem;
+      border-radius: 14px 14px 3px 14px;
+      font-size: .78rem;
+      max-width: 82%;
+      font-weight: 500;
+    }
+
+    .b-bot {
+      align-self: flex-start;
+      background: #F2F0EC;
+      color: #2A2A2A;
+      padding: .6rem .8rem;
+      border-radius: 14px 14px 14px 3px;
+      font-size: .76rem;
+      line-height: 1.5;
+      max-width: 92%;
+    }
+
+    .prod {
+      border: 1px solid #E6E2DB;
+      border-radius: 9px;
+      padding: .55rem;
+      display: flex;
+      gap: .6rem;
+      align-items: center;
+    }
+
+    .prod__img {
+      width: 42px;
+      height: 46px;
+      border-radius: 5px;
+      background: linear-gradient(160deg, #35312C, #16130F);
+      flex: none;
+    }
+
+    .prod__n {
+      font-weight: 700;
+      font-size: .72rem;
+      line-height: 1.25
+    }
+
+    .prod__d {
+      font-size: .64rem;
+      color: #7A736A;
+      margin-top: .12rem
+    }
+
+    .prod__p {
+      font-weight: 800;
+      font-size: .82rem;
+      color: var(--rojo-acento);
+      margin-top: .22rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pagar {
+      background: var(--rojo-acento);
+      color: #fff;
+      text-align: center;
+      padding: .6rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: .76rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+    }
+
+    .listo {
+      align-self: center;
+      background: #1D8A3A;
+      color: #fff;
+      padding: .45rem .95rem;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+    .ch__in {
+      border-top: 1px solid #EDEAE4;
+      padding: .6rem .7rem;
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+    }
+
+    .ch__in span {
+      flex: 1;
+      border: 1px solid #E4E0D9;
+      border-radius: 999px;
+      padding: .42rem .8rem;
+      font-size: .72rem;
+      color: #A79F94;
+    }
+
+    .ch__snd {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--rojo-acento);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .68rem;
+      flex: none;
+    }
+
+    /* ── pasos ── */
+    .pasos {
+      display: grid;
+      gap: 1px;
+      background: var(--linea-clara);
+      border: 1px solid var(--linea-clara);
+    }
+
+    @media (min-width:700px) {
+      .pasos {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+
+    .paso {
+      background: #fff;
+      padding: 1.15rem 1rem;
+    }
+
+    .paso__n {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--rojo-acento);
+      font-weight: 600;
+      letter-spacing: .1em;
+    }
+
+    .paso__t {
+      font-weight: 800;
+      font-size: .95rem;
+      margin: .4rem 0 .3rem
+    }
+
+    .paso__d {
+      font-size: .82rem;
+      color: var(--gris-oscuro);
+      line-height: 1.55
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--linea-clara);
+      padding: 1.05rem 0
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none
+    }
+
+    .faq summary::after {
+      content: '+';
+      color: var(--rojo-acento);
+      font-weight: 400;
+      font-size: 1.45rem;
+      line-height: 1
+    }
+
+    .faq details[open] summary::after {
+      content: '−'
+    }
+
+    .faq p {
+      margin: .8rem 0 0;
+      color: var(--gris-oscuro);
+      max-width: 68ch
+    }
+
+    .fila {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .78rem 0;
+      border-bottom: 1px solid var(--linea-clara);
+      align-items: baseline;
+    }
+
+    .fila:last-child {
+      border-bottom: 0
+    }
+
+    .fila b {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Asesor Digital — asistente de ventas con IA para Shopify",
+    "serviceType": "Asistente conversacional con inteligencia artificial para comercio electrónico",
+    "url": "https://pixeldigital.vercel.app/asesor-digital.html",
+    "description": "Asesor con inteligencia artificial que se instala en una tienda Shopify, recomienda productos leyendo el catálogo y el precio reales, arma el pedido y genera un link de pago de Mercado Pago dentro de la misma conversación.",
+    "provider": { "@id": "https://pixeldigital.vercel.app/#organizacion" },
+    "areaServed": [
+      { "@type": "Country", "name": "Perú" },
+      { "@type": "Country", "name": "Chile" },
+      { "@type": "Country", "name": "Colombia" }
+    ],
+    "audience": {
+      "@type": "BusinessAudience",
+      "name": "Tiendas Shopify con catálogo amplio o producto que requiere asesoría antes de comprar"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PEN",
+      "price": "2900",
+      "description": "Instalación única de S/2,900 más una cuota mensual desde S/490 según el volumen de conversaciones.",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿En qué se diferencia de un chatbot común?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Un chatbot responde preguntas. Este cierra la compra. Lee el catálogo y el precio reales de la tienda en Shopify, arma el pedido con los datos del cliente y genera un link de pago de Mercado Pago dentro de la misma conversación. El cliente no vuelve al catálogo ni pasa por el carrito."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puede inventarse precios o productos que no existen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. El precio y la disponibilidad se consultan contra Shopify en el momento de armar el pedido, no se los pide al modelo de lenguaje. Si un producto no está en el catálogo, no puede recomendarlo. Los descuentos que puede ofrecer están limitados por configuración y se pueden apagar por completo desde el panel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cobra suscripciones recurrentes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, y es a propósito. Para suscripciones solo lee los planes activos y se los muestra al cliente; el cobro recurrente lo resuelve la aplicación de suscripciones, que es un producto distinto. Mezclar ambos cobros en un mismo asistente añade riesgo sin añadir venta."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si el modelo de inteligencia artificial falla o se cae?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El asistente enruta entre varios proveedores de modelos y cambia al siguiente cuando uno falla. La conversación no se corta por la caída de un proveedor."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Recuerda a un cliente que ya habló antes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Guarda un perfil por cliente con lo conversado y lo comprado, así que en la siguiente visita retoma donde quedó en vez de empezar de cero. Ese mismo perfil alimenta las campañas de remarketing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se instala y cuánto demora?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Se conecta a la tienda Shopify y el widget se inyecta en el tema sin tocar el código de la plantilla. La puesta en marcha toma unas dos semanas, la mayor parte dedicada a cargar el conocimiento del negocio: qué recomendar para cada objetivo, qué no decir nunca y cómo hablar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La instalación cuesta S/2,900 por única vez, más una cuota mensual según el volumen de conversaciones: S/490 hasta quinientas al mes, S/890 hasta dos mil y S/1,490 por encima de esa cifra. No incluye el 8% del recibo por honorarios. La comisión de Mercado Pago la cobra Mercado Pago directamente al comercio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cumple con las reglas de datos de Shopify?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Implementa los webhooks obligatorios de privacidad de Shopify: solicitud de datos del cliente, borrado de datos del cliente y borrado de datos de la tienda."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://pixeldigital.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Asesor Digital", "item": "https://pixeldigital.vercel.app/asesor-digital.html" }
+    ]
+  }
+  </script>
+</head>
+
+<body class="bg-fondo-crema text-[var(--fondo-oscuro)]">
+
+  <header
+    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" aria-label="Ir al inicio de Pixel."><span class="logo-text">Pixel.</span></a>
+      <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[var(--gris-oscuro)]">
+        <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
+        <a href="asesor-digital.html" class="nav-link transition-colors">Asesor IA</a>
+        <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
+        <a href="caso-de-estudio.html" class="nav-link transition-colors">Resultados</a>
+        <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
+        <a href="servicios.html" class="nav-cta">Servicios</a>
+      </nav>
+      <button id="mobile-menu-btn" class="lg:hidden text-2xl text-[var(--gris-oscuro)]"
+        aria-label="Abrir menú de navegación" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+      <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
+      <a href="suscripciones.html"
+        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
+      <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
+      <a href="caso-de-estudio.html"
+        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Resultados</a>
+      <a href="servicios.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Servicios</a>
+      <a href="contacto.html" class="block text-center py-3 nav-link">Contacto</a>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4">
+
+    <!-- ══ HERO: el producto se ve de entrada ══ -->
+    <section class="py-16 md:py-24 grid lg:grid-cols-[1.1fr_auto] gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="ad-eyebrow scroll-reveal">Asesor Digital · IA de ventas para Shopify</p>
+        <h1 class="headline text-4xl md:text-6xl mt-5 scroll-reveal" style="line-height:1.06;">
+          Tu mejor vendedor,<br>atendiendo a <span class="text-highlight">todos</span> a la vez.
+        </h1>
+        <p class="ad-lede mt-7 scroll-reveal" style="transition-delay:100ms;">
+          No es un bot que responde preguntas. Es un asesor que <strong>recomienda con tu catálogo real, arma el pedido
+            y cobra con Mercado Pago</strong> sin que el cliente salga de la conversación.
+        </p>
+        <div class="mt-9 scroll-reveal flex flex-wrap gap-4" style="transition-delay:200ms;">
+          <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20quiero%20ver%20el%20Asesor%20Digital%20funcionando"
+            target="_blank" rel="noopener noreferrer" class="btn text-lg">Ver una demo</a>
+          <a href="#como-vende" class="btn btn-secondary text-lg">Cómo vende</a>
+        </div>
+      </div>
+
+      <!-- el widget real -->
+      <div class="scroll-reveal justify-self-center" style="transition-delay:150ms;">
+        <div class="fono">
+          <div class="fono__in">
+            <div class="ch__top">
+              <div class="ch__av">🧑‍⚕️</div>
+              <div>
+                <div class="ch__nm">Asesor</div>
+                <div class="ch__st">En línea</div>
+              </div>
+            </div>
+            <div class="ch__body">
+              <div class="b-user">Quiero algo para dormir mejor</div>
+              <div class="b-bot">Para descanso profundo te recomiendo estas dos. Precio y stock de tu tienda, ahora
+                mismo 👇</div>
+
+              <div class="prod">
+                <div class="prod__img" aria-hidden="true"></div>
+                <div>
+                  <div class="prod__n">MAGNESIO BISGLICINATO</div>
+                  <div class="prod__d">Relajación muscular y sueño</div>
+                  <div class="prod__p">S/ 89.00</div>
+                </div>
+              </div>
+              <div class="prod">
+                <div class="prod__img" aria-hidden="true"></div>
+                <div>
+                  <div class="prod__n">MELATONINA 5 MG</div>
+                  <div class="prod__d">60 cápsulas · conciliación rápida</div>
+                  <div class="prod__p">S/ 54.00</div>
+                </div>
+              </div>
+
+              <div class="b-user">Los dos, a Miraflores</div>
+              <div class="b-bot">Listo. Despacho desde la tienda más cercana. Total <b>S/ 143.00</b> con envío
+                incluido.</div>
+              <div class="pagar"><i class="fas fa-lock" style="font-size:.66rem"></i> Pagar S/ 143.00</div>
+              <div class="listo">✓ Pago aprobado · Pedido #1284</div>
+            </div>
+            <div class="ch__in">
+              <span>Escribe aquí…</span>
+              <div class="ch__snd"><i class="fas fa-paper-plane"></i></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-4 text-xs text-[var(--muted)]" style="font-family:'IBM Plex Mono',monospace">
+          De la pregunta al pago, sin salir del chat</p>
+      </div>
+    </section>
+
+    <!-- ══ CÓMO VENDE ══ -->
+    <section id="como-vende" class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="ad-eyebrow scroll-reveal">El recorrido completo</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Cuatro pasos, una sola ventana.</h2>
+
+      <div class="pasos scroll-reveal">
+        <div class="paso">
+          <div class="paso__n">PASO 01</div>
+          <div class="paso__t">Entiende qué necesita</div>
+          <div class="paso__d">No pregunta qué producto quiere. Pregunta qué problema tiene, que es lo que el cliente sí
+            sabe responder.</div>
+        </div>
+        <div class="paso">
+          <div class="paso__n">PASO 02</div>
+          <div class="paso__t">Recomienda con tu catálogo</div>
+          <div class="paso__d">Producto, precio y stock salen de tu Shopify en ese momento. No se los inventa el modelo.
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso__n">PASO 03</div>
+          <div class="paso__t">Arma el pedido</div>
+          <div class="paso__d">Toma los datos, calcula el envío y elige la tienda de despacho más cercana a la dirección.
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso__n">PASO 04</div>
+          <div class="paso__t">Cobra y confirma</div>
+          <div class="paso__d">Genera el link de pago de Mercado Pago y confirma el pedido cuando el cobro se aprueba.
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-block ad-dark mt-8 scroll-reveal">
+        <p class="ad-eyebrow" style="color:var(--naranja)">La diferencia que importa</p>
+        <p class="mt-3 text-lg" style="max-width:64ch">
+          Un chatbot común te deja una conversación. Este te deja un <strong>pedido pagado</strong>. Entre esas dos cosas
+          está todo el abandono del carrito.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══ LO QUE TRAE ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="ad-eyebrow scroll-reveal">Lo que trae</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Construido sobre un motor que ya cobra.</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="ad-block scroll-reveal">
+          <h3 class="font-bold text-lg mb-2">Cobro con Mercado Pago</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Link de pago real dentro del chat, con verificación de firma en el
+            aviso de pago y control de duplicados: si el cliente reintenta, no se cobra dos veces.</p>
+        </div>
+        <div class="ad-block scroll-reveal" style="transition-delay:70ms;">
+          <h3 class="font-bold text-lg mb-2">Precio y stock reales</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Se consultan contra Shopify al armar el pedido. El modelo
+            conversa; los números los pone tu tienda.</p>
+        </div>
+        <div class="ad-block scroll-reveal" style="transition-delay:140ms;">
+          <h3 class="font-bold text-lg mb-2">Memoria del cliente</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Guarda un perfil con lo conversado y lo comprado. En la siguiente
+            visita retoma donde quedó, y ese perfil alimenta el remarketing.</p>
+        </div>
+        <div class="ad-block scroll-reveal" style="transition-delay:70ms;">
+          <h3 class="font-bold text-lg mb-2">Despacho por cercanía</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Elige la tienda desde la que sale el pedido según la dirección del
+            cliente, igual que lo haría tu checkout.</p>
+        </div>
+        <div class="ad-block scroll-reveal" style="transition-delay:140ms;">
+          <h3 class="font-bold text-lg mb-2">Varios modelos, con respaldo</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Enruta entre proveedores de IA y cambia al siguiente si uno se
+            cae. La conversación no se corta.</p>
+        </div>
+        <div class="ad-block scroll-reveal" style="transition-delay:210ms;">
+          <h3 class="font-bold text-lg mb-2">Panel con la venta atribuida</h3>
+          <p class="text-sm text-[var(--gris-oscuro)]">Conversaciones, leads, pedidos y cuánto vendió el asesor. Los
+            descuentos que puede dar se limitan o se apagan desde ahí.</p>
+        </div>
+      </div>
+
+      <p class="mt-8 text-sm text-[var(--muted)] scroll-reveal" style="max-width:66ch">
+        Dos límites que declaramos antes de firmar: <strong>no cobra suscripciones recurrentes</strong> — solo lee los
+        planes activos y los muestra, porque el cobro recurrente lo resuelve la otra aplicación — y todo lo que
+        recomienda depende del conocimiento que carguemos en la puesta en marcha. Un asesor sin briefing es un buscador
+        con modales.
+      </p>
+    </section>
+
+    <!-- ══ PARA QUIÉN ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="ad-eyebrow scroll-reveal">Para quién rinde</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Sirve cuando el cliente no sabe qué comprar.</h2>
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="scroll-reveal">
+          <p class="ad-num">+50</p>
+          <p class="font-semibold mt-3">Productos en catálogo</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Cuando hay tanto que elegir que el cliente se va sin decidir.</p>
+        </div>
+        <div class="scroll-reveal" style="transition-delay:80ms;">
+          <p class="ad-num">24/7</p>
+          <p class="font-semibold mt-3">Sin turnos ni feriados</p>
+          <p class="text-sm text-[var(--muted)] mt-1">La mayor parte del tráfico de una tienda llega cuando nadie está
+            atendiendo el WhatsApp.</p>
+        </div>
+        <div class="scroll-reveal" style="transition-delay:160ms;">
+          <p class="ad-num">S/0</p>
+          <p class="font-semibold mt-3">En pauta adicional</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Trabaja sobre el tráfico que ya pagaste. No pide más presupuesto de
+            anuncios.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PRECIO ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="ad-eyebrow scroll-reveal">Inversión</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Instalación y cuota mensual.</h2>
+      <div class="ad-block scroll-reveal" style="max-width:640px">
+        <div class="fila"><span>Instalación y carga de conocimiento</span><b>S/ 2,900</b></div>
+        <div class="fila"><span>Hasta 500 conversaciones al mes</span><b>S/ 490 /mes</b></div>
+        <div class="fila"><span>Hasta 2,000</span><b>S/ 890 /mes</b></div>
+        <div class="fila"><span>Más de 2,000</span><b>S/ 1,490 /mes</b></div>
+      </div>
+      <p class="mt-4 text-sm text-[var(--muted)] scroll-reveal">
+        No incluye el 8% del recibo por honorarios. La comisión de Mercado Pago la cobra Mercado Pago directamente a tu
+        negocio. Dos semanas de puesta en marcha, la mayor parte cargando qué recomendar, qué no decir nunca y cómo
+        hablarle a tu cliente.
+      </p>
+    </section>
+
+    <!-- ══ FAQ ══ -->
+    <section class="py-16 border-t border-[var(--linea-clara)]">
+      <p class="ad-eyebrow scroll-reveal">Preguntas frecuentes</p>
+      <h2 class="headline text-3xl md:text-4xl mt-4 mb-8 scroll-reveal">Lo que todos preguntan.</h2>
+      <div class="faq scroll-reveal" style="max-width:76ch">
+        <details open>
+          <summary>¿En qué se diferencia de un chatbot común?</summary>
+          <p>Un chatbot responde preguntas. Este cierra la compra: lee tu catálogo y tu precio reales, arma el pedido y
+            genera el link de pago de Mercado Pago dentro de la misma conversación. El cliente no vuelve al catálogo ni
+            pasa por el carrito.</p>
+        </details>
+        <details>
+          <summary>¿Puede inventarse precios o productos que no existen?</summary>
+          <p>No. El precio y la disponibilidad se consultan contra Shopify al armar el pedido, no se los pide al modelo.
+            Si un producto no está en el catálogo, no puede recomendarlo. Y los descuentos que ofrece están limitados por
+            configuración; se pueden apagar por completo desde el panel.</p>
+        </details>
+        <details>
+          <summary>¿Cobra suscripciones recurrentes?</summary>
+          <p>No, y es a propósito. Para suscripciones solo lee los planes activos y se los muestra al cliente. El cobro
+            recurrente lo resuelve la app de suscripciones, que es otro producto. Mezclar los dos cobros en un mismo
+            asistente añade riesgo sin añadir venta.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si el modelo de IA se cae?</summary>
+          <p>Enruta entre varios proveedores y cambia al siguiente cuando uno falla. La conversación no se corta por la
+            caída de un proveedor.</p>
+        </details>
+        <details>
+          <summary>¿Recuerda a un cliente que ya habló antes?</summary>
+          <p>Sí. Guarda un perfil por cliente con lo conversado y lo comprado, así que retoma donde quedó en vez de
+            empezar de cero. Ese mismo perfil alimenta las campañas de remarketing.</p>
+        </details>
+        <details>
+          <summary>¿Cómo se instala y cuánto demora?</summary>
+          <p>Se conecta a tu Shopify y el widget se inyecta en el tema sin tocar el código de la plantilla. La puesta en
+            marcha toma unas dos semanas, casi toda dedicada a cargar el conocimiento del negocio.</p>
+        </details>
+        <details>
+          <summary>¿Cumple con las reglas de datos de Shopify?</summary>
+          <p>Sí. Implementa los webhooks obligatorios de privacidad: solicitud de datos del cliente, borrado de datos del
+            cliente y borrado de datos de la tienda.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section class="py-20 border-t border-[var(--linea-clara)] text-center">
+      <h2 class="headline text-3xl md:text-5xl scroll-reveal">¿Cuántos se van sin preguntar?</h2>
+      <p class="ad-lede mt-5 mx-auto scroll-reveal" style="transition-delay:100ms;">
+        Ese es el número que nadie mide. Te lo mostramos con tu propio tráfico.
+      </p>
+      <div class="mt-9 scroll-reveal" style="transition-delay:200ms;">
+        <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20quiero%20ver%20el%20Asesor%20Digital%20funcionando"
+          target="_blank" rel="noopener noreferrer" class="btn text-lg">Pídenos una demo</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer
+    class="max-w-7xl mx-auto px-4 py-8 mt-10 border-t border-[var(--linea-clara)] flex flex-wrap justify-between items-center text-sm gap-4">
+    <div>
+      <a href="index.html" aria-label="Ir al inicio de Pixel."><span class="logo-text">Pixel.</span></a>
+      <p class="mt-2">© 2026 Pixel. Todos los derechos reservados.</p>
+    </div>
+    <div class="text-right">
+      <div class="flex justify-end space-x-6 mb-2">
+        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
+          aria-label="LinkedIn de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-linkedin"></i></a>
+        <a href="https://www.tiktok.com/@pixel.public" target="_blank" rel="noopener noreferrer"
+          aria-label="TikTok de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
+            class="fab fa-tiktok"></i></a>
+      </div>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
+        Privacidad</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>

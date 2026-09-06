@@ -154,6 +154,32 @@
       font-variant-numeric: tabular-nums;
       white-space: nowrap
     }
+
+    /* ── el widget tal como lo ve el comprador ── */
+    .wdg{width:100%;max-width:360px;background:#fff;border:1px solid #E5E1DA;border-radius:12px;
+         padding:1.1rem;font-family:Inter,-apple-system,sans-serif;box-shadow:0 18px 48px rgba(0,0,0,.10)}
+    .wdg__lbl{font-size:.62rem;font-weight:600;color:#6B6560;text-transform:uppercase;letter-spacing:.13em;
+              margin-bottom:.7rem}
+    .opt{border:1px solid #E5E1DA;border-radius:9px;padding:.75rem;margin-bottom:.55rem;display:flex;gap:.6rem}
+    .opt--on{border:2px solid #1D1D1D;padding:.7rem}
+    .rad{width:15px;height:15px;border-radius:50%;border:1.5px solid #C9C3BA;flex:none;margin-top:.15rem}
+    .opt--on .rad{border:4.5px solid #1D1D1D}
+    .opt__b{flex:1;min-width:0}
+    .opt__r{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+    .opt__n{font-weight:700;font-size:.83rem}
+    .opt__p{font-weight:800;font-size:.86rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .opt__s{font-size:.68rem;color:#8A837A;margin-top:.15rem}
+    .opt__old{font-size:.68rem;color:#A79F94;text-decoration:line-through}
+    .ahorro{display:inline-block;background:#1D1D1D;color:#fff;font-size:.56rem;font-weight:700;
+            padding:.16rem .42rem;border-radius:3px;letter-spacing:.06em;margin-left:.4rem;vertical-align:middle}
+    .freq{border:1px solid #E5E1DA;border-radius:7px;padding:.5rem .65rem;margin-top:.6rem;
+          display:flex;justify-content:space-between;align-items:center;font-size:.76rem}
+    .freq b{font-weight:700}
+    .freq span{color:var(--rojo-acento);font-weight:600;font-size:.7rem}
+    .nota{font-size:.66rem;color:#8A837A;margin-top:.5rem;display:flex;gap:.35rem;line-height:1.45}
+    .nota i{color:#C0B8AC;font-style:normal}
+    .wdg__cta{background:#1D1D1D;color:#fff;text-align:center;padding:.72rem;border-radius:8px;
+              font-weight:700;font-size:.83rem;margin-top:.9rem}
   </style>
 
   <script type="application/ld+json">
@@ -277,21 +303,23 @@
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
       </a>
-      <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-[var(--gris-oscuro)]">
+      <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
+        <a href="asesor-digital.html" class="nav-link transition-colors">Asesor IA</a>
         <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
         <a href="caso-de-estudio.html" class="nav-link transition-colors">Resultados</a>
         <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
         <a href="servicios.html" class="nav-cta">Servicios</a>
       </nav>
-      <button id="mobile-menu-btn" class="md:hidden text-2xl text-[var(--gris-oscuro)]"
+      <button id="mobile-menu-btn" class="lg:hidden text-2xl text-[var(--gris-oscuro)]"
         aria-label="Abrir menú de navegación" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
       <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
       <a href="suscripciones.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
+      <a href="asesor-digital.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Asesor IA</a>
       <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
       <a href="caso-de-estudio.html"
         class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Resultados</a>
@@ -303,19 +331,57 @@
   <main class="max-w-7xl mx-auto px-4">
 
     <!-- ══ HERO ══ -->
-    <section class="py-20 md:py-28 relative overflow-hidden">
-      <p class="sus-eyebrow scroll-reveal">Suscripciones en Shopify · Perú, Chile y Colombia</p>
-      <h1 class="headline text-4xl md:text-6xl mt-5 scroll-reveal relative z-10" style="line-height:1.06;">
-        Shopify no cobra suscripciones<br>con <span class="text-highlight">pasarelas latinoamericanas</span>.
-      </h1>
-      <p class="sus-lede mt-7 scroll-reveal" style="transition-delay:100ms;">
-        Nosotros construimos la app que sí lo hace. <strong>Débito automático con Mercado Pago</strong>, instalada sobre
-        tu tienda actual: sin migrar de plataforma, sin Shopify Plus y sin pedirle al cliente que pague a mano cada mes.
-      </p>
-      <div class="mt-10 scroll-reveal flex flex-wrap gap-4" style="transition-delay:200ms;">
-        <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20quiero%20suscripciones%20con%20cobro%20autom%C3%A1tico%20en%20mi%20Shopify"
-          target="_blank" rel="noopener noreferrer" class="btn text-lg">Conversemos</a>
-        <a href="#como-funciona" class="btn btn-secondary text-lg">Cómo funciona</a>
+    <section class="py-16 md:py-24 grid lg:grid-cols-[1.1fr_auto] gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="sus-eyebrow scroll-reveal">Suscripciones en Shopify · Perú, Chile y Colombia</p>
+        <h1 class="headline text-4xl md:text-6xl mt-5 scroll-reveal" style="line-height:1.06;">
+          Shopify no cobra suscripciones<br>con <span class="text-highlight">pasarelas latinoamericanas</span>.
+        </h1>
+        <p class="sus-lede mt-7 scroll-reveal" style="transition-delay:100ms;">
+          Nosotros construimos la app que sí lo hace. <strong>Débito automático con Mercado Pago</strong>, instalada
+          sobre tu tienda actual: sin migrar de plataforma, sin Shopify Plus y sin pedirle al cliente que pague a mano
+          cada mes.
+        </p>
+        <div class="mt-9 scroll-reveal flex flex-wrap gap-4" style="transition-delay:200ms;">
+          <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20quiero%20suscripciones%20con%20cobro%20autom%C3%A1tico%20en%20mi%20Shopify"
+            target="_blank" rel="noopener noreferrer" class="btn text-lg">Conversemos</a>
+          <a href="#como-funciona" class="btn btn-secondary text-lg">Cómo funciona</a>
+        </div>
+      </div>
+
+      <div class="scroll-reveal justify-self-center" style="transition-delay:150ms;">
+        <div class="wdg">
+          <div class="wdg__lbl">Cómo lo quieres recibir</div>
+
+          <div class="opt">
+            <div class="rad" aria-hidden="true"></div>
+            <div class="opt__b">
+              <div class="opt__r"><span class="opt__n">Compra única</span><span class="opt__p">S/ 160.00</span></div>
+              <div class="opt__s">S/ 5.33 por servicio</div>
+            </div>
+          </div>
+
+          <div class="opt opt--on">
+            <div class="rad" aria-hidden="true"></div>
+            <div class="opt__b">
+              <div class="opt__r">
+                <span class="opt__n">Suscripción<span class="ahorro">AHORRA 10%</span></span>
+                <span class="opt__p">S/ 144.00</span>
+              </div>
+              <div class="opt__r">
+                <span class="opt__s">S/ 4.80 por servicio</span>
+                <span class="opt__old">S/ 160.00</span>
+              </div>
+              <div class="freq"><b>Recíbelo cada 30 días</b><span>Cambiar</span></div>
+              <div class="nota"><i>—</i>Se cobra a tu tarjeta el día de cada entrega</div>
+              <div class="nota"><i>—</i>Pausa o cancela cuando quieras, sin penalidad</div>
+            </div>
+          </div>
+
+          <div class="wdg__cta">Agregar al carrito</div>
+        </div>
+        <p class="text-center mt-4 text-xs text-[var(--muted)]" style="font-family:'IBM Plex Mono',monospace">
+          El widget hereda la tipografía y los colores de tu tema</p>
       </div>
     </section>
 

@@ -28,6 +28,7 @@ requiere Shopify Plus ni migrar de plataforma.
 ## Servicios
 
 - [Suscripciones con cobro automático](https://pixeldigital.vercel.app/suscripciones.html): la app a medida, su precio, sus límites reales y las preguntas frecuentes.
+- [Asesor Digital](https://pixeldigital.vercel.app/asesor-digital.html): asistente con IA que recomienda con el catalogo y el precio reales de la tienda, arma el pedido y genera un link de pago de Mercado Pago dentro del chat. NO cobra suscripciones recurrentes: solo lee los planes activos.
 - [Servicios](https://pixeldigital.vercel.app/servicios.html): apps Shopify a medida, creación y migración de tiendas, paid media, SEO y posicionamiento en modelos de IA.
 - [Proyectos](https://pixeldigital.vercel.app/proyectos.html): trabajos entregados.
 - [Caso de estudio](https://pixeldigital.vercel.app/caso-de-estudio.html): resultados medidos de un proyecto.
