@@ -15,7 +15,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
@@ -34,20 +34,16 @@
     .service-card-extended {
       border: 1px solid var(--linea-clara);
       padding: 0;
-      border-radius: 12px;
-      transition: all .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+transition: all .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       color: var(--gris-oscuro);
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
       border-left: 5px solid var(--rojo-acento);
       overflow: hidden;
     }
 
     .service-card-extended:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
-      border-left-color: var(--naranja);
+border-left-color: var(--naranja);
     }
 
     .service-card-header {
@@ -117,7 +113,7 @@
   <div class="cursor-outline"></div>
 
   <header
-    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
@@ -137,7 +133,7 @@
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema border-t border-[var(--linea-clara)]">
       <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
       <a href="suscripciones.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
       <a href="asesor-digital.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Asesor IA</a>
@@ -154,7 +150,7 @@
   </header>
 
   <main class="max-w-5xl mx-auto px-4 pt-20 pb-20">
-    <h1 class="headline text-center text-5xl md:text-6xl mb-4 scroll-reveal">Nuestras Capacidades</h1>
+    <h1 class="headline text-center text-5xl md: mb-4 scroll-reveal">Nuestras Capacidades</h1>
     <p class="text-center text-lg text-[var(--muted)] max-w-2xl mx-auto mb-16 scroll-reveal">Cada servicio está diseñado
       para maximizar tu crecimiento digital. Haz clic en cualquiera para conocer más detalles.</p>
 
@@ -500,7 +496,7 @@
 
     <!-- ===== PROCESO ===== -->
     <section class="py-24 scroll-reveal">
-      <h2 class="headline text-4xl mb-4">Nuestro Proceso Colaborativo</h2>
+      <h2 class="headline mb-4">Nuestro Proceso Colaborativo</h2>
       <p class="text-lg max-w-3xl mb-16">Un método ágil y transparente que garantiza la alineación con tus objetivos y
         la entrega de resultados excepcionales.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
@@ -539,7 +535,7 @@
 
     <!-- ===== CTA BOTTOM ===== -->
     <section class="cta-section text-left my-10 scroll-reveal">
-      <h2 class="headline text-4xl mb-4 relative z-10">¿Listo para empezar?</h2>
+      <h2 class="headline mb-4 relative z-10">¿Listo para empezar?</h2>
       <p class="text-xl max-w-2xl mb-10 relative z-10">Cuéntanos tu desafío y diseñaremos la estrategia perfecta para tu
         negocio. Consultoría gratuita y sin compromiso.</p>
       <div class="relative z-10 flex flex-wrap gap-4">
@@ -587,6 +583,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="main.js"></script>
   <script>
     // Accordion toggle for service details

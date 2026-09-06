@@ -15,7 +15,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="base.css">
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script type="application/ld+json">
@@ -48,7 +48,7 @@
 
     <!-- ===== HEADER ===== -->
     <header
-        class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+        class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 border-b border-[var(--linea-clara)]">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <a href="index.html" aria-label="Ir al inicio de Pixel.">
                 <span class="logo-text">Pixel.</span>
@@ -69,7 +69,7 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+        <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema border-t border-[var(--linea-clara)]">
             <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
             <a href="proyectos.html"
                 class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
@@ -88,8 +88,6 @@
 
         <!-- ===== SECCIÓN 1: HERO ===== -->
         <section class="lp-hero relative overflow-hidden">
-            <div class="lp-hero-accent"></div>
-            <div class="lp-hero-accent-2"></div>
 
             <div class="max-w-5xl mx-auto px-4 py-24 md:py-36 relative z-10">
                 <div class="lp-badge scroll-reveal">
@@ -369,14 +367,12 @@
 
         <!-- ===== SECCIÓN 7: CTA FINAL ===== -->
         <section class="lp-cta-section relative overflow-hidden">
-            <div class="lp-hero-accent" style="top:-30%;right:-15%;"></div>
-            <div class="lp-hero-accent-2" style="bottom:-20%;left:-10%;"></div>
 
             <div class="max-w-4xl mx-auto px-4 py-24 text-center relative z-10">
                 <p class="lp-section-label scroll-reveal" style="justify-content:center;">
                     <i class="fas fa-rocket"></i> Tu Momento es Ahora
                 </p>
-                <h2 class="headline text-4xl md:text-5xl scroll-reveal" style="transition-delay:100ms;">
+                <h2 class="headline text-4xl md: scroll-reveal" style="transition-delay:100ms;">
                     ¿Listo para ser el <span class="text-highlight">siguiente caso de éxito?</span>
                 </h2>
                 <p class="text-lg md:text-xl mt-6 max-w-2xl mx-auto scroll-reveal" style="transition-delay:200ms;">
@@ -438,7 +434,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
     <script>
         // Counter Animation
         const lpPageLoadTs = performance.now();

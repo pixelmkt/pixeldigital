@@ -15,7 +15,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
@@ -24,23 +24,19 @@
       align-items: center;
       gap: 1rem;
       padding: 1rem;
-      border-radius: 12px;
-      transition: all .3s ease;
+transition: all .3s ease;
       border: 1px solid transparent;
     }
 
     .contact-info-item:hover {
-      background: rgba(255, 255, 255, 0.6);
-      border-color: var(--linea-clara);
+border-color: var(--linea-clara);
       transform: translateX(4px);
     }
 
     .contact-info-icon {
       width: 44px;
       height: 44px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(198, 52, 30, 0.1) 0%, rgba(255, 77, 0, 0.08) 100%);
-      display: flex;
+display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
@@ -85,7 +81,7 @@
   <div class="cursor-outline"></div>
 
   <header
-    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
@@ -105,7 +101,7 @@
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema border-t border-[var(--linea-clara)]">
       <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
       <a href="suscripciones.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
       <a href="asesor-digital.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Asesor IA</a>
@@ -123,14 +119,14 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-4 pt-20 pb-20">
-    <h1 class="headline text-center text-5xl md:text-6xl mb-4 scroll-reveal">Hablemos</h1>
+    <h1 class="headline text-center text-5xl md: mb-4 scroll-reveal">Hablemos</h1>
     <p class="text-center text-lg text-[var(--muted)] max-w-xl mx-auto mb-16 scroll-reveal">Estamos listos para impulsar
       tu marca. Cuéntanos tu desafío y te responderemos en menos de 24 horas.</p>
 
     <div
-      class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 border border-[var(--linea-clara)] p-8 md:p-12 scroll-reveal rounded-2xl bg-white/70 backdrop-blur-sm shadow-lg">
+      class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 border border-[var(--linea-clara)] p-8 md:p-12 scroll-reveal bg-white/70">
       <div>
-        <h2 class="headline text-2xl mb-6">Envía un Mensaje</h2>
+        <h2 class="headline mb-6">Envía un Mensaje</h2>
         <form id="contact-form" action="https://formspree.io/f/mdklbdky" method="POST" class="space-y-4">
           <div class="input-with-icon">
             <i class="fas fa-user input-icon"></i>
@@ -150,7 +146,7 @@
         <p id="form-status" class="mt-4 text-center text-sm font-semibold" aria-live="polite"></p>
       </div>
       <div class="text-left">
-        <h2 class="headline text-2xl mb-6">Información y Cita</h2>
+        <h2 class="headline mb-6">Información y Cita</h2>
         <div class="space-y-2 mb-8">
           <a href="mailto:pixel.publidigi@gmail.com" class="contact-info-item">
             <div class="contact-info-icon"><i class="fas fa-envelope text-[var(--rojo-acento)]"></i></div>
@@ -226,6 +222,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="main.js"></script>
 </body>
 

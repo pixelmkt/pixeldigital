@@ -25,7 +25,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
@@ -83,11 +83,8 @@
       scroll-behavior: smooth;
       scrollbar-width: none;
       border: 1px solid var(--linea-clara);
-      border-radius: 12px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+padding: 16px;
+-webkit-backdrop-filter: blur(8px);
     }
 
     .carousel-viewport::-webkit-scrollbar {
@@ -101,16 +98,12 @@
 
     .carousel-item {
       flex: 0 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
-      transition: transform .3s ease, box-shadow .3s ease;
+overflow: hidden;
+transition: transform .3s ease, box-shadow .3s ease;
     }
 
     .carousel-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
-    }
+}
 
     .carousel-img {
       height: 22rem;
@@ -133,23 +126,19 @@
       transform: translateY(-50%);
       width: 44px;
       height: 44px;
-      border-radius: 999px;
-      border: 1px solid var(--linea-clara);
+border: 1px solid var(--linea-clara);
       background: rgba(245, 241, 232, 0.85);
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(4px);
-      cursor: pointer;
+cursor: pointer;
       transition: all .3s ease;
       z-index: 5;
     }
 
     .arrow:hover {
-      transform: translateY(-50%) scale(1.1);
-      background: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
-    }
+background: #fff;
+}
 
     .arrow-left {
       left: -14px;
@@ -164,27 +153,13 @@
     }
 
     /* Hero decorative accent */
-    .hero-accent {
-      position: absolute;
-      top: -40%;
-      right: -15%;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(198, 52, 30, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero-accent-2 {
+.hero-accent-2 {
       position: absolute;
       bottom: -30%;
       left: -10%;
       width: 350px;
       height: 350px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 77, 0, 0.04) 0%, transparent 70%);
-      pointer-events: none;
+pointer-events: none;
       z-index: 0;
     }
   </style>
@@ -242,7 +217,7 @@
   <div class="cursor-outline"></div>
 
   <header
-    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 backdrop-blur-sm border-b border-[var(--linea-clara)]">
+    class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
@@ -262,7 +237,7 @@
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema/95 border-t border-[var(--linea-clara)]">
+    <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema border-t border-[var(--linea-clara)]">
       <a href="index.html"
         class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Inicio</a>
       <a href="suscripciones.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
@@ -279,13 +254,11 @@
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4">
+  <main class="max-w-7xl mx-auto px-4">
 
     <!-- ===== HERO SECTION ===== -->
     <section class="text-left py-24 md:py-32 relative overflow-hidden">
-      <div class="hero-accent"></div>
-      <div class="hero-accent-2"></div>
-      <h1 class="headline text-5xl md:text-7xl scroll-reveal relative z-10 hero-headline" style="line-height:1.05;">
+      <h1 class="headline text-5xl md: scroll-reveal relative z-10 hero-headline" style="line-height:1.05;">
         Agencia <span class="text-highlight">Shopify</span> en Perú.<br>Y las <span class="text-highlight">apps</span>
         que Shopify no trae.
       </h1>
@@ -296,8 +269,8 @@
         levantamos o migramos tu tienda.
       </p>
       <div class="mt-12 scroll-reveal relative z-10 hero-cta flex flex-wrap gap-4" style="transition-delay:200ms;">
-        <a href="servicios.html" class="btn text-lg">Explorar Servicios</a>
-        <a href="proyectos.html" class="btn btn-secondary text-lg">Ver Proyectos</a>
+        <a href="suscripciones.html" class="btn">Suscripciones</a>
+        <a href="proyectos.html" class="btn btn-secondary">Ver proyectos</a>
       </div>
     </section>
 
@@ -308,7 +281,7 @@
           <i class="fas fa-chart-line text-[var(--rojo-acento)] text-xl"></i>
         </div>
         <p class="kpi-number" data-count="3.2" data-suffix="%">3.2%</p>
-        <p class="font-semibold mt-2 text-sm">{ Conversion Rate }</p>
+        <p class="font-semibold mt-2 text-sm">Conversión</p>
         <p class="text-xs mt-2 text-[var(--muted)]">Ratio de conversión promedio en ecommerce gestionados.</p>
       </div>
       <div class="kpi-card scroll-reveal" style="transition-delay:100ms;">
@@ -316,15 +289,15 @@
           <i class="fas fa-cloud-upload-alt text-[var(--rojo-acento)] text-xl"></i>
         </div>
         <p class="kpi-number" data-count="4" data-suffix=" sem">4 sem</p>
-        <p class="font-semibold mt-2 text-sm">{ On Air }</p>
-        <p class="text-xs mt-2 text-[var(--muted)]">Tiendas online lanzadas y optimizadas en tiempo récord.</p>
+        <p class="font-semibold mt-2 text-sm">Al aire</p>
+        <p class="text-xs mt-2 text-[var(--muted)]">De la firma a la tienda vendiendo.</p>
       </div>
       <div class="kpi-card scroll-reveal" style="transition-delay:200ms;">
         <div class="kpi-icon">
           <i class="fas fa-dollar-sign text-[var(--rojo-acento)] text-xl"></i>
         </div>
         <p class="kpi-number" data-count="850" data-prefix="$ " data-suffix="K">$ 850K</p>
-        <p class="font-semibold mt-2 text-sm">{ USD Gestionados }</p>
+        <p class="font-semibold mt-2 text-sm">Gestionados</p>
         <p class="text-xs mt-2 text-[var(--muted)]">Revenue gestionado para marcas con alta transaccionalidad.</p>
       </div>
       <div class="kpi-card scroll-reveal" style="transition-delay:300ms;">
@@ -332,14 +305,14 @@
           <i class="fas fa-birthday-cake text-[var(--rojo-acento)] text-xl"></i>
         </div>
         <p class="kpi-number" data-count="6" data-suffix="+ años">6+ años</p>
-        <p class="font-semibold mt-2 text-sm">{ Experiencia }</p>
-        <p class="text-xs mt-2 text-[var(--muted)]">Proyectos ejecutados en ecommerce y paid media.</p>
+        <p class="font-semibold mt-2 text-sm">Años</p>
+        <p class="text-xs mt-2 text-[var(--muted)]">En ecommerce y paid media.</p>
       </div>
     </section>
 
     <!-- ===== LOGOS MARQUEE ===== -->
     <section class="py-16">
-      <h3 class="headline text-center text-4xl md:text-5xl mb-10 scroll-reveal">Expertos en estrategia Paid Media</h3>
+      <p class="k scroll-reveal mb-6">Plataformas con las que trabajamos</p>
       <div class="marquee-container">
         <div class="marquee-track">
           <div class="logo-box"><img class="logo--meta"
@@ -369,7 +342,7 @@
 
     <!-- ===== CASOS DE ÉXITO (CAROUSEL) ===== -->
     <section class="py-20 scroll-reveal">
-      <h2 class="headline text-4xl">Casos de éxito</h2>
+      <h2 class="headline">Trabajos</h2>
       <div class="carousel-wrap mt-6">
         <button class="arrow arrow-left" data-carousel-left aria-label="Slide anterior"><i
             class="fas fa-chevron-left"></i></button>
@@ -391,169 +364,48 @@
       </div>
     </section>
 
-    <!-- ===== SERVICIOS GRID ===== -->
-    <section class="py-24 scroll-reveal">
-      <div class="mb-12">
-        <h2 class="headline text-4xl">Un Ecosistema de Capacidades</h2>
-        <p class="text-lg mt-4 max-w-2xl">Ofrecemos soluciones integrales para construir, lanzar y escalar tu presencia
-          en línea.</p>
+    <!-- ===== CINTA ===== -->
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta__t">
+        <span>Suscripciones</span><span>Asesor IA</span><span>Apps a medida</span><span>Tiendas Shopify</span><span>Paid media</span><span>IA y buscadores</span>
+        <span>Suscripciones</span><span>Asesor IA</span><span>Apps a medida</span><span>Tiendas Shopify</span><span>Paid media</span><span>IA y buscadores</span>
       </div>
-      <div class="hidden md:grid grid-cols-1 md:grid-cols-2 gap-4">
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-shopping-cart fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Creación Ecommerce (Shopify)</h3>
-              <p class="text-sm">Lanzamos tu tienda online optimizada para convertir y crecer desde el día uno.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-bullhorn fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Paid Media (Anuncios)</h3>
-              <p class="text-sm">Gestionamos tus anuncios en Meta, TikTok y Google para obtener un ROI real.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-search-dollar fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Posicionamiento IA / SEO</h3>
-              <p class="text-sm">Hacemos que tus clientes te encuentren en Google antes que a tu competencia.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-camera-retro fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Photo Shooting E‑commerce</h3>
-              <p class="text-sm">Producción visual estratégica para que tu catálogo enamore y venda más.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-drafting-compass fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Diseño (UX/UI) Optimization</h3>
-              <p class="text-sm">Auditamos y rediseñamos tu web para maximizar las conversiones.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-cogs fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Estrategia 360° Ecommerce</h3>
-              <p class="text-sm">Gestión integral para un crecimiento sostenible y escalable.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-envelope-open-text fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Email Marketing</h3>
-              <p class="text-sm">Automatizamos campañas para vender más y fidelizar a tus clientes.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-users-cog fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Segmentación &amp; Audiencias</h3>
-              <p class="text-sm">Identificamos y optimizamos las audiencias que realmente convierten.</p>
-            </div>
-          </div>
-        </a>
+    </div>
+
+    <!-- ===== SERVICIOS: ÍNDICE ===== -->
+    <section class="py-24 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2.1fr)] gap-8 lg:gap-14 items-start">
+      <div class="pegado">
+        <p class="k mb-4">Lo que hacemos</p>
+        <h2 class="headline">Seis cosas.<br>Una que nadie más.</h2>
       </div>
-      <div class="md:hidden overflow-x-auto flex gap-4 pb-4">
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-shopping-cart fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Creación Ecommerce (Shopify)</h3>
-              <p class="text-sm">Lanzamos tu tienda online optimizada.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-bullhorn fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Paid Media (Anuncios)</h3>
-              <p class="text-sm">Gestionamos tus anuncios para un ROI real.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-search-dollar fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Posicionamiento IA / SEO</h3>
-              <p class="text-sm">Hacemos que tus clientes te encuentren.</p>
-            </div>
-          </div>
-        </a>
-        <a href="servicios.html" class="service-card flex-shrink-0 w-3/4">
-          <div class="flex items-center gap-4">
-            <div><i class="fas fa-camera-retro fa-2x"></i></div>
-            <div>
-              <h3 class="font-semibold text-lg">Photo Shooting E‑commerce</h3>
-              <p class="text-sm">Producción visual estratégica para tu catálogo.</p>
-            </div>
-          </div>
-        </a>
-      </div>
+      <ol class="idx">
+        <li class="hot"><a href="suscripciones.html"><span class="idx__n">01</span><span class="idx__t">Suscripciones</span><span class="idx__d">Cobro automático recurrente con Mercado Pago, instalado sobre tu Shopify actual. Sin migrar, sin Plus, sin pedirle al cliente que pague a mano cada mes.</span><span class="idx__tag">Solo nosotros en Perú</span></a></li>
+        <li><a href="asesor-digital.html"><span class="idx__n">02</span><span class="idx__t">Asesor IA</span><span class="idx__d">Recomienda con tu catálogo real, arma el pedido y cobra dentro del chat. Precio y stock de tu tienda, no del modelo.</span><span class="idx__tag">App propia</span></a></li>
+        <li><a href="servicios.html"><span class="idx__n">03</span><span class="idx__t">Apps a medida</span><span class="idx__d">Lo que el App Store no resuelve: integraciones con pasarelas, ERP y facturación peruana.</span><span class="idx__tag">Shopify Partner</span></a></li>
+        <li><a href="servicios.html"><span class="idx__n">04</span><span class="idx__t">Tiendas</span><span class="idx__d">Creación desde cero y migración desde WooCommerce sin perder el historial de clientes.</span><span class="idx__tag">Desde S/ 4,500</span></a></li>
+        <li><a href="servicios.html"><span class="idx__n">05</span><span class="idx__t">Paid media</span><span class="idx__d">Meta, Google y TikTok con medición del lado del servidor, no del navegador.</span><span class="idx__tag">Mensual</span></a></li>
+        <li><a href="servicios.html"><span class="idx__n">06</span><span class="idx__t">IA y buscadores</span><span class="idx__d">Que tu tienda la lean bien Google y los agentes de compra: datos estructurados, catálogo legible, respuestas citables.</span><span class="idx__tag">Nuevo en 2026</span></a></li>
+      </ol>
     </section>
 
-    <!-- ===== PROCESO COLABORATIVO ===== -->
-    <section class="py-24 scroll-reveal">
-      <h2 class="headline text-4xl mb-4">Nuestro Proceso Colaborativo</h2>
-      <p class="text-lg max-w-3xl mb-16">Un método ágil y transparente que garantiza la alineación con tus objetivos y
-        la entrega de resultados excepcionales.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
-        <div class="process-card">
-          <div class="step-number">1</div>
-          <i class="fas fa-binoculars fa-2x text-[var(--rojo-acento)] mb-3"></i>
-          <h3 class="font-bold text-base text-gray-800">Inmersión</h3>
-          <p class="text-sm mt-2">Entendemos tu negocio, mercado y objetivos a fondo.</p>
-        </div>
-        <div class="process-card">
-          <div class="step-number">2</div>
-          <i class="fas fa-map-signs fa-2x text-[var(--rojo-acento)] mb-3"></i>
-          <h3 class="font-bold text-base text-gray-800">Estrategia</h3>
-          <p class="text-sm mt-2">Diseñamos un plan de acción data‑driven y a medida.</p>
-        </div>
-        <div class="process-card">
-          <div class="step-number">3</div>
-          <i class="fas fa-laptop-code fa-2x text-[var(--rojo-acento)] mb-3"></i>
-          <h3 class="font-bold text-base text-gray-800">Ejecución</h3>
-          <p class="text-sm mt-2">Creamos, desarrollamos y lanzamos las iniciativas.</p>
-        </div>
-        <div class="process-card">
-          <div class="step-number">4</div>
-          <i class="fas fa-chart-pie fa-2x text-[var(--rojo-acento)] mb-3"></i>
-          <h3 class="font-bold text-base text-gray-800">Análisis</h3>
-          <p class="text-sm mt-2">Medimos el rendimiento y recopilamos insights clave.</p>
-        </div>
-        <div class="process-card">
-          <div class="step-number">5</div>
-          <i class="fas fa-sync-alt fa-2x text-[var(--rojo-acento)] mb-3"></i>
-          <h3 class="font-bold text-base text-gray-800">Optimización</h3>
-          <p class="text-sm mt-2">Iteramos y mejoramos continuamente para maximizar el ROI.</p>
-        </div>
+    <!-- ===== CÓMO TRABAJAMOS ===== -->
+    <section class="py-20 scroll-reveal">
+      <div class="grid md:grid-cols-[11rem_1fr] gap-4 md:gap-12 items-end mb-10">
+        <p class="k">Cómo trabajamos</p>
+        <h2 class="headline">Cinco pasos.<br>Ninguno se salta.</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-4">
+        <div class="process-card"><div class="step-number">01</div><h3>Inmersión</h3><p class="text-sm mt-2">Tu negocio, tu margen, tu cliente. Antes de proponer nada.</p></div>
+        <div class="process-card"><div class="step-number">02</div><h3>Definición</h3><p class="text-sm mt-2">Reglas de negocio por escrito y aprobadas. Sale un documento, no una promesa.</p></div>
+        <div class="process-card"><div class="step-number">03</div><h3>Construcción</h3><p class="text-sm mt-2">Se construye, se prueba con datos reales y se muestra funcionando.</p></div>
+        <div class="process-card"><div class="step-number">04</div><h3>Salida</h3><p class="text-sm mt-2">A producción acompañada: los primeros cobros y pedidos, monitoreados.</p></div>
+        <div class="process-card"><div class="step-number">05</div><h3>Soporte</h3><p class="text-sm mt-2">Dos meses incluidos. Después, mantenimiento mensual si lo quieres.</p></div>
       </div>
     </section>
 
     <!-- ===== TESTIMONIAL / SOCIAL PROOF ===== -->
     <section class="py-20 scroll-reveal">
-      <h2 class="headline text-4xl mb-10">Lo que dicen nuestros clientes</h2>
+      <p class="k mb-8">Lo que dicen los clientes</p>
       <div class="grid md:grid-cols-2 gap-6">
         <div class="testimonial-card">
           <p class="text-lg leading-relaxed mb-6 relative z-10">"PIXEL transformó completamente nuestra presencia
@@ -583,13 +435,12 @@
 
     <!-- ===== CTA SECTION ===== -->
     <section class="cta-section text-left my-20 scroll-reveal">
-      <h2 class="headline text-4xl mb-4 relative z-10">¿Listo para llevar tu marca al siguiente nivel?</h2>
-      <p class="text-xl max-w-2xl mb-10 relative z-10">Hablemos sobre tus objetivos. Contáctanos para una consultoría
-        gratuita y descubre cómo la precisión de PIXEL puede impulsar tu crecimiento.</p>
+      <h2 class="headline mb-4 relative z-10">Hablemos<br>de tu tienda.</h2>
+      <p class="max-w-2xl mb-8 relative z-10">Cuéntanos qué vendes y cómo cobras hoy. Te decimos en una conversación qué se puede
+        automatizar, qué no, y cuánto cuesta.</p>
       <div class="relative z-10 flex flex-wrap gap-4">
-        <a href="contacto.html" class="btn text-xl">Empezar mi Proyecto</a>
-        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
-          class="btn btn-secondary text-xl">Cotizar Servicios</a>
+        <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="btn">Escríbenos</a>
+        <a href="suscripciones.html" class="btn btn-secondary">Ver suscripciones</a>
       </div>
     </section>
   </main>
@@ -600,7 +451,7 @@
       <a href="index.html" aria-label="Ir al inicio de Pixel.">
         <span class="logo-text">Pixel.</span>
       </a>
-      <p class="mt-2">© 2024 Pixel. Todos los derechos reservados.</p>
+      <p class="mt-2">© 2026 Pixel. Todos los derechos reservados.</p>
     </div>
     <div class="text-right">
       <div class="flex justify-end space-x-6 mb-2">
@@ -624,6 +475,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="main.js"></script>
 </body>
 
