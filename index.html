@@ -5,19 +5,19 @@
   <script>document.documentElement.classList.add('js')</script>
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agencia Shopify en Perú • Tiendas, Suscripciones y Paid Media • PIXEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cotiza tu plan, tu asesor o tu tienda Shopify • PIXEL</title>
   <meta name="description"
-    content="Agencia Shopify en Perú. Creamos y migramos tiendas, activamos suscripciones con cobro automático por MercadoPago, e integramos facturación SUNAT. Partner de Shopify con apps propias.">
+    content="Agencia Shopify en Perú. Cotiza en un minuto suscripciones con cobro automático por Mercado Pago, el Asesor Digital que vende en el chat o tu tienda Shopify. Precios publicados.">
   <link rel="canonical" href="https://pixeldigital.vercel.app/">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_PE">
   <meta property="og:site_name" content="Pixel Digital">
   <meta property="og:url" content="https://pixeldigital.vercel.app/">
-  <meta property="og:title" content="Agencia Shopify en Perú • Tiendas, Suscripciones y Paid Media • PIXEL">
+  <meta property="og:title" content="Cotiza tu plan, tu asesor o tu tienda Shopify • PIXEL">
   <meta property="og:description"
-    content="Creamos y migramos tiendas Shopify, activamos suscripciones con cobro automático por MercadoPago e integramos facturación SUNAT.">
+    content="Tres preguntas, el precio publicado y tu cotización lista para WhatsApp.">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -83,8 +83,7 @@
       scroll-behavior: smooth;
       scrollbar-width: none;
       border: 1px solid var(--linea-clara);
-padding: 16px;
--webkit-backdrop-filter: blur(8px);
+      padding: 16px;
     }
 
     .carousel-viewport::-webkit-scrollbar {
@@ -98,12 +97,8 @@ padding: 16px;
 
     .carousel-item {
       flex: 0 0 auto;
-overflow: hidden;
-transition: transform .3s ease, box-shadow .3s ease;
+      overflow: hidden;
     }
-
-    .carousel-item:hover {
-}
 
     .carousel-img {
       height: 22rem;
@@ -126,19 +121,19 @@ transition: transform .3s ease, box-shadow .3s ease;
       transform: translateY(-50%);
       width: 44px;
       height: 44px;
-border: 1px solid var(--linea-clara);
+      border: 1px solid var(--linea-clara);
       background: rgba(245, 241, 232, 0.85);
       display: flex;
       align-items: center;
       justify-content: center;
-cursor: pointer;
+      cursor: pointer;
       transition: all .3s ease;
       z-index: 5;
     }
 
     .arrow:hover {
-background: #fff;
-}
+      background: #fff;
+    }
 
     .arrow-left {
       left: -14px;
@@ -152,15 +147,515 @@ background: #fff;
       color: var(--gris-oscuro);
     }
 
-    /* Hero decorative accent */
-.hero-accent-2 {
+    /* ===== Home: portada con puertas, objeciones, precios, barra fija y cotizador ===== */
+
+    /* Copiado de suscripciones.html, para usarlo también en el home. */
+    .sus-eyebrow {
+      font-family: var(--fuente-mono);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--rojo-acento);
+      font-weight: 600;
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--linea-clara);
+      padding: 1.1rem 0;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.02rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+      color: var(--tinta);
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none
+    }
+
+    .faq summary::after {
+      content: '+';
+      color: var(--rojo-acento);
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .faq details[open] summary::after {
+      content: '−'
+    }
+
+    .faq p {
+      margin: .85rem 0 0;
+      color: var(--gris-oscuro);
+      max-width: 68ch;
+    }
+
+    .precio-fila {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .8rem 0;
+      border-bottom: 1px solid var(--linea-clara);
+      align-items: baseline;
+    }
+
+    .precio-fila:last-child {
+      border-bottom: 0
+    }
+
+    .precio-fila b {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap
+    }
+
+    /* Portada: el titular repite el cierre de los reels. */
+    /* Caja del alto de la línea, como la deja la máscara de main.js: sin movimiento tampoco se encima. */
+    .hero-cot h1 .text-highlight {
+      display: inline-block;
+      vertical-align: bottom;
+      padding: 0 .1em .06em;
+    }
+
+    /* Tres puertas: una por reel. Filas del índice, con el toque entero. */
+    .puertas {
+      margin-top: 1.8rem;
+    }
+
+    .puertas li {
+      padding: 0 !important;
+    }
+
+    .puerta {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr auto;
+      gap: .3rem .8rem;
+      align-items: baseline;
+      width: 100%;
+      padding: 1rem 0;
+      text-align: left;
+      background: none;
+      border: 0;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .puerta .idx__t {
+      grid-column: 2;
+      font-size: 1.75rem;
+    }
+
+    .puerta .idx__d {
+      grid-column: 2 / 4;
+      font-size: .84rem;
+      line-height: 1.5;
+    }
+
+    .puerta__cta {
+      grid-column: 3;
+      grid-row: 1;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--fondo-crema);
+      background: var(--rojo-acento);
+      padding: .3rem .55rem;
+      white-space: nowrap;
+    }
+
+    .puerta:hover .idx__t,
+    .puerta:focus-visible .idx__t {
+      color: var(--rojo-acento);
+    }
+
+    .puerta__largo {
+      display: none;
+    }
+
+    /* Celulares angostos (360-375 px): el título entra en una línea al lado del botón. */
+    @media (max-width: 389px) {
+      .puerta .idx__t {
+        font-size: 1.45rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .puertas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .puertas li {
+        border-bottom: 0;
+        border-right: 1px solid var(--linea-clara);
+      }
+
+      .puertas li:last-child {
+        border-right: 0;
+      }
+
+      .puerta {
+        grid-template-columns: 2.2rem 1fr;
+        align-content: start;
+        height: 100%;
+        padding: 1.6rem 1.6rem 1.8rem 0;
+      }
+
+      .puertas li + li .puerta {
+        padding-left: 1.6rem;
+      }
+
+      .puerta .idx__t {
+        font-size: 2.3rem;
+      }
+
+      .puerta .idx__d {
+        grid-column: 2;
+        font-size: .9rem;
+      }
+
+      .puerta__cta {
+        grid-column: 2;
+        grid-row: auto;
+        order: 1;
+        justify-self: start;
+        margin-top: .8rem;
+        font-size: .76rem;
+        padding: .45rem .75rem;
+      }
+
+      .puerta__largo {
+        display: inline;
+      }
+    }
+
+    /* Precios a la vista: tres columnas con filete. */
+    .precios {
+      display: grid;
+      gap: 2.6rem;
+      margin-top: 2.4rem;
+    }
+
+    @media (min-width: 900px) {
+      .precios {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.2rem;
+      }
+    }
+
+    .precio-col {
+      border-top: 1px solid var(--tinta);
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .precio-col h3 {
+      font-family: var(--fuente-display);
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: .95;
+      text-transform: uppercase;
+      color: var(--tinta);
+      margin: .5rem 0 .4rem;
+    }
+
+    .precio-col .btn {
+      margin-top: 1.1rem;
+      text-align: center;
+    }
+
+    /* Cotizador: hoja que sube en el celular, panel centrado en escritorio. */
+    .cot[hidden] {
+      display: none;
+    }
+
+    .cot {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .cot__fondo {
       position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 350px;
-      height: 350px;
-pointer-events: none;
-      z-index: 0;
+      inset: 0;
+      background: rgba(20, 18, 16, .55);
+    }
+
+    .cot__hoja {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      max-height: 92vh;
+      max-height: 92svh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background: var(--fondo-crema);
+      border-top: 2px solid var(--tinta);
+      padding: 1rem 1.1rem calc(1.4rem + env(safe-area-inset-bottom));
+    }
+
+    @media (min-width: 768px) {
+      .cot {
+        align-items: center;
+      }
+
+      .cot__hoja {
+        border: 1px solid var(--tinta);
+        padding: 1.4rem 2rem 2rem;
+      }
+    }
+
+    html.gsap .cot__hoja,
+    html.io .cot__hoja {
+      animation: cot-sube .5s var(--suave);
+    }
+
+    html.gsap .cot__entra,
+    html.io .cot__entra {
+      animation: cot-entra .38s var(--suave);
+    }
+
+    @keyframes cot-sube {
+      from { transform: translateY(48px); opacity: 0 }
+      to { transform: none; opacity: 1 }
+    }
+
+    @keyframes cot-entra {
+      from { transform: translateX(18px); opacity: 0 }
+      to { transform: none; opacity: 1 }
+    }
+
+    .cot__cab {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .cot__paso {
+      margin-left: auto;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cot__x {
+      width: 44px;
+      height: 44px;
+      margin-right: -.6rem;
+      font-size: 1.7rem;
+      line-height: 1;
+      color: var(--tinta);
+    }
+
+    .cot__barra {
+      height: 2px;
+      background: var(--linea-clara);
+      margin: .5rem 0 1.3rem;
+    }
+
+    .cot__barra i {
+      display: block;
+      height: 100%;
+      background: var(--rojo-acento);
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      transition: transform .45s var(--suave);
+    }
+
+    .cot__q {
+      font-family: var(--fuente-display);
+      font-weight: 400;
+      font-size: 2.35rem;
+      line-height: .95;
+      text-transform: uppercase;
+      color: var(--tinta);
+    }
+
+    .cot__ops {
+      list-style: none;
+      margin: 1.2rem 0 0;
+      padding: 0;
+      border-top: 1px solid var(--tinta);
+    }
+
+    .cot__ops button {
+      width: 100%;
+      min-height: 52px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: .85rem .6rem;
+      border-bottom: 1px solid var(--linea-clara);
+      text-align: left;
+      font-family: var(--fuente-mono);
+      font-size: .95rem;
+      color: var(--tinta);
+      transition: background-color .18s var(--suave), color .18s var(--suave);
+    }
+
+    .cot__ops button::after {
+      content: '→';
+      color: var(--rojo-acento);
+    }
+
+    .cot__ops button:hover {
+      background: var(--crema-2);
+    }
+
+    .cot__ops button[aria-pressed="true"] {
+      background: var(--rojo-acento);
+      color: var(--fondo-crema);
+    }
+
+    .cot__ops button[aria-pressed="true"]::after {
+      color: var(--fondo-crema);
+    }
+
+    .cot__atras {
+      margin-top: 1rem;
+      min-height: 44px;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .cot__resp {
+      margin-top: .9rem;
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cot__precio {
+      margin-top: 1rem;
+      border-top: 1px solid var(--tinta);
+    }
+
+    .cot__nota {
+      font-size: .78rem;
+      color: var(--gris-oscuro);
+      margin-top: .7rem;
+      line-height: 1.55;
+    }
+
+    .cot__suma {
+      margin-top: 1.2rem;
+      border: 0;
+      padding: 0;
+    }
+
+    .cot__suma label {
+      display: flex;
+      gap: .7rem;
+      align-items: center;
+      min-height: 48px;
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--linea-clara);
+      font-size: .86rem;
+      color: var(--tinta);
+      cursor: pointer;
+    }
+
+    .cot__suma input {
+      width: 1.15rem;
+      height: 1.15rem;
+      accent-color: var(--rojo-acento);
+      flex: 0 0 auto;
+    }
+
+    .cot__wa {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 1.3rem;
+    }
+
+    .cot__wa i {
+      margin-right: .45rem;
+      font-size: 1rem;
+      vertical-align: -1px;
+    }
+
+    .cot__pie {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: .4rem;
+    }
+
+    .cot__mas {
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--tinta);
+      border-bottom: 1px solid var(--tinta);
+    }
+
+    html.cot-abierto {
+      overflow: hidden;
+    }
+
+    /* Barra fija en el celular: cotizar o escribir, siempre a mano. */
+    .barra-cot {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .barra-cot {
+        display: flex;
+        gap: .55rem;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 60;
+        padding: .6rem 1rem calc(.6rem + env(safe-area-inset-bottom));
+        background: var(--fondo-crema);
+        border-top: 1px solid var(--tinta);
+      }
+
+      .barra-cot .btn {
+        flex: 1;
+        width: auto;
+        padding: .95rem 1rem;
+      }
+
+      .barra-cot__wa {
+        flex: 0 0 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--tinta);
+        border-radius: 2px;
+        font-size: 1.45rem;
+        color: var(--tinta);
+      }
+
+      .whatsapp-float {
+        display: none;
+      }
+
+      body {
+        padding-bottom: 78px;
+      }
     }
   </style>
   <script type="application/ld+json">
@@ -187,7 +682,7 @@ pointer-events: none;
     ],
     "telephone": "+51975200420",
     "sameAs": [
-      "https://www.instagram.com/pixel.public/",
+      "https://www.instagram.com/pixel.adigital/",
       "https://www.linkedin.com/company/pixelperu"
     ],
     "hasOfferCatalog": {
@@ -213,9 +708,6 @@ pointer-events: none;
 </head>
 
 <body>
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
-
   <header
     class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 border-b border-[var(--linea-clara)]">
     <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -225,12 +717,11 @@ pointer-events: none;
       <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
         <a href="asesor-digital.html" class="nav-link transition-colors">Asesor IA</a>
+        <a href="servicios.html" class="nav-link transition-colors">Servicios</a>
         <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
-        <a href="caso-de-estudio.html" class="nav-link transition-colors">Resultados</a>
         <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
-        <a href="servicios.html" class="nav-cta">
-          Servicios
-        </a>
+        <!-- El botón del menú abre el cotizador -->
+        <a href="#cotiza" class="nav-cta" data-cotiza="">Cotiza</a>
       </nav>
       <button id="mobile-menu-btn" class="lg:hidden text-2xl text-[var(--gris-oscuro)]"
         aria-label="Abrir menú de navegación" aria-expanded="false">
@@ -242,76 +733,132 @@ pointer-events: none;
         class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Inicio</a>
       <a href="suscripciones.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
       <a href="asesor-digital.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Asesor IA</a>
+      <a href="servicios.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Servicios</a>
       <a href="proyectos.html"
         class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Proyectos</a>
-      <a href="caso-de-estudio.html"
-        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Resultados</a>
       <a href="contacto.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Contacto</a>
-      <a href="servicios.html"
+      <a href="#cotiza" data-cotiza=""
         class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
-        Servicios
+        Cotiza
       </a>
     </div>
   </header>
 
   <main class="max-w-7xl mx-auto px-4">
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="text-left py-24 md:py-32 relative overflow-hidden">
-      <h1 class="headline text-5xl md: scroll-reveal relative z-10 hero-headline" style="line-height:1.05;">
-        Agencia <span class="text-highlight">Shopify</span> en Perú.<br>Y las <span class="text-highlight">apps</span>
-        que Shopify no trae.
+    <!-- ===== PORTADA: repite el cierre de los 18 reels ===== -->
+    <section class="hero-cot pt-8 pb-14 md:pt-20 md:pb-20 relative" id="cotiza">
+      <p class="sus-eyebrow">Shopify Partner · Apps propias en producción</p>
+      <h1 class="headline hero-headline mt-4">
+        Cotiza tu <span class="text-highlight">plan</span>,<br>tu <span class="text-highlight">asesor</span> o tu <span class="text-highlight">tienda</span>.
       </h1>
-      <p class="text-lg md:text-xl mt-8 max-w-2xl scroll-reveal relative z-10 hero-subtext"
-        style="transition-delay:100ms;">
-        Somos Shopify Partner con apps propias en producción. Activamos <strong>suscripciones con cobro automático
-        por Mercado Pago</strong> —lo que las apps globales no pueden hacer en Sudamérica—, construimos apps a medida y
-        levantamos o migramos tu tienda.
-      </p>
-      <div class="mt-12 scroll-reveal relative z-10 hero-cta flex flex-wrap gap-4" style="transition-delay:200ms;">
-        <a href="suscripciones.html" class="btn">Suscripciones</a>
-        <a href="proyectos.html" class="btn btn-secondary">Ver proyectos</a>
+      <p class="mt-5 max-w-xl md:text-lg">Tres preguntas, el precio publicado y tu cotización lista para mandar por WhatsApp.</p>
+
+      <ol class="idx puertas">
+        <li><button type="button" class="puerta" data-cotiza="plan">
+          <span class="idx__n">01</span>
+          <span class="idx__t">Plan de suscripción</span>
+          <span class="puerta__cta">Cotiza<span class="puerta__largo"> tu plan</span> →</span>
+          <span class="idx__d">Que tu cliente vuelva a comprar solo. Mercado Pago le cobra cada mes.</span>
+        </button></li>
+        <li><button type="button" class="puerta" data-cotiza="asesor">
+          <span class="idx__n">02</span>
+          <span class="idx__t">Asesor Digital</span>
+          <span class="puerta__cta">Cotiza<span class="puerta__largo"> tu asesor</span> →</span>
+          <span class="idx__d">Atiende, recomienda y cobra en el chat, a cualquier hora.</span>
+        </button></li>
+        <li><button type="button" class="puerta" data-cotiza="tienda">
+          <span class="idx__n">03</span>
+          <span class="idx__t">Tienda Shopify</span>
+          <span class="puerta__cta">Cotiza<span class="puerta__largo"> tu tienda</span> →</span>
+          <span class="idx__d">Con tu marca y tu dominio. Pagos y envíos integrados.</span>
+        </button></li>
+      </ol>
+    </section>
+
+    <!-- ===== OBJECIONES: respuestas que ya están en la web y en los reels ===== -->
+    <section class="py-20 border-t border-[var(--linea-clara)] grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2.1fr)] gap-8 lg:gap-14 items-start">
+      <div class="pegado">
+        <p class="k mb-4">Antes de cotizar</p>
+        <h2 class="headline">Lo que todos<br>preguntan.</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>¿Tengo que migrar o pagar Shopify Plus para cobrar suscripciones?</summary>
+          <p>No. La app se instala sobre tu Shopify actual y funciona en cualquier plan. Tu catálogo, tus clientes y
+            tu checkout siguen igual.</p>
+        </details>
+        <details>
+          <summary>¿Quién cobra cada mes y cuánto se queda Mercado Pago?</summary>
+          <p>Mercado Pago cobra solo, con la tarjeta de crédito o débito que tu cliente registró, y el pedido entra a
+            tu Shopify. Su comisión la cobra Mercado Pago directo a tu negocio: 3.49% + S/1 + IGV con acreditación
+            inmediata, según su tarifario público.</p>
+        </details>
+        <details>
+          <summary>¿El asesor puede inventar precios o productos?</summary>
+          <p>No. El precio y el stock se consultan en tu Shopify al armar el pedido. Si un producto no está en tu
+            catálogo, no lo recomienda.</p>
+        </details>
+        <details>
+          <summary>¿Necesito más publicidad para que el asesor venda?</summary>
+          <p>No. Trabaja sobre el tráfico que ya tienes: atiende a quien entra a tu tienda cuando nadie está
+            contestando el WhatsApp.</p>
+        </details>
+        <details>
+          <summary>Si me paso a Shopify, ¿pierdo mis clientes o lo que gané en Google?</summary>
+          <p>No. Migramos tu tienda completa: productos, clientes y pedidos. Y cada página vieja apunta a la nueva con
+            redirecciones 301, para que Google te siga encontrando.</p>
+        </details>
+        <details>
+          <summary>Nunca manejé una tienda online. ¿Me van a dejar solo?</summary>
+          <p>No. Te enseñamos a manejarla: subir productos, ver pedidos, todo. Y tienes dos meses de soporte
+            incluidos.</p>
+        </details>
+        <details>
+          <summary>¿Qué no hacen?</summary>
+          <p>Te lo decimos antes de firmar. Las pausas y bajas de una suscripción las hace tu equipo desde el panel,
+            porque Shopify no deja gestionarlas desde la cuenta del cliente. Y el asesor no cobra suscripciones: solo
+            muestra los planes; el cobro lo hace la otra app.</p>
+        </details>
       </div>
     </section>
 
-    <!-- ===== KPI SECTION ===== -->
-    <section class="py-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center border-y border-[var(--linea-clara)]">
-      <div class="kpi-card scroll-reveal">
-        <div class="kpi-icon">
-          <i class="fas fa-chart-line text-[var(--rojo-acento)] text-xl"></i>
+    <!-- ===== PRECIOS: los mismos que publican suscripciones.html, asesor-digital.html y el home ===== -->
+    <section class="py-20 border-t border-[var(--linea-clara)]">
+      <p class="k mb-4">Sin sorpresas</p>
+      <h2 class="headline">Precios<br>a la vista.</h2>
+      <div class="precios">
+        <div class="precio-col">
+          <p class="sus-eyebrow">01</p>
+          <h3>Plan de suscripción</h3>
+          <div class="precio-fila"><span>Instalación, una sola vez</span><b>S/ 3,900</b></div>
+          <div class="precio-fila"><span>Cuota mensual</span><b>desde S/ 390</b></div>
+          <div class="precio-fila"><span>Puesta en marcha</span><b>4 semanas</b></div>
+          <button type="button" class="btn" data-cotiza="plan">Cotiza tu plan</button>
         </div>
-        <p class="kpi-number" data-count="3.2" data-suffix="%">3.2%</p>
-        <p class="font-semibold mt-2 text-sm">Conversión</p>
-        <p class="text-xs mt-2 text-[var(--muted)]">Ratio de conversión promedio en ecommerce gestionados.</p>
-      </div>
-      <div class="kpi-card scroll-reveal" style="transition-delay:100ms;">
-        <div class="kpi-icon">
-          <i class="fas fa-cloud-upload-alt text-[var(--rojo-acento)] text-xl"></i>
+        <div class="precio-col">
+          <p class="sus-eyebrow">02</p>
+          <h3>Asesor Digital</h3>
+          <div class="precio-fila"><span>Instalación y conocimiento</span><b>S/ 2,900</b></div>
+          <div class="precio-fila"><span>Cuota mensual</span><b>desde S/ 490</b></div>
+          <div class="precio-fila"><span>Puesta en marcha</span><b>2 semanas</b></div>
+          <button type="button" class="btn" data-cotiza="asesor">Cotiza tu asesor</button>
         </div>
-        <p class="kpi-number" data-count="4" data-suffix=" sem">4 sem</p>
-        <p class="font-semibold mt-2 text-sm">Al aire</p>
-        <p class="text-xs mt-2 text-[var(--muted)]">De la firma a la tienda vendiendo.</p>
-      </div>
-      <div class="kpi-card scroll-reveal" style="transition-delay:200ms;">
-        <div class="kpi-icon">
-          <i class="fas fa-dollar-sign text-[var(--rojo-acento)] text-xl"></i>
+        <div class="precio-col">
+          <p class="sus-eyebrow">03</p>
+          <h3>Tienda Shopify</h3>
+          <div class="precio-fila"><span>Tienda nueva o migración</span><b>desde S/ 4,500</b></div>
+          <div class="precio-fila"><span>Soporte incluido</span><b>2 meses</b></div>
+          <div class="precio-fila"><span>Puesta en marcha</span><b>4 semanas</b></div>
+          <button type="button" class="btn" data-cotiza="tienda">Cotiza tu tienda</button>
         </div>
-        <p class="kpi-number" data-count="850" data-prefix="$ " data-suffix="K">$ 850K</p>
-        <p class="font-semibold mt-2 text-sm">Gestionados</p>
-        <p class="text-xs mt-2 text-[var(--muted)]">Revenue gestionado para marcas con alta transaccionalidad.</p>
       </div>
-      <div class="kpi-card scroll-reveal" style="transition-delay:300ms;">
-        <div class="kpi-icon">
-          <i class="fas fa-birthday-cake text-[var(--rojo-acento)] text-xl"></i>
-        </div>
-        <p class="kpi-number" data-count="6" data-suffix="+ años">6+ años</p>
-        <p class="font-semibold mt-2 text-sm">Años</p>
-        <p class="text-xs mt-2 text-[var(--muted)]">En ecommerce y paid media.</p>
-      </div>
+      <p class="text-sm mt-8 text-[var(--muted)] max-w-3xl">Los montos no incluyen el 8% del recibo por honorarios. La
+        comisión de Mercado Pago la cobra Mercado Pago directamente a tu negocio.</p>
     </section>
 
     <!-- ===== LOGOS MARQUEE ===== -->
-    <section class="py-16">
+    <section class="py-16 border-t border-[var(--linea-clara)]">
       <p class="k scroll-reveal mb-6">Plataformas con las que trabajamos</p>
       <div class="marquee-container">
         <div class="marquee-track">
@@ -403,44 +950,15 @@ pointer-events: none;
       </div>
     </section>
 
-    <!-- ===== TESTIMONIAL / SOCIAL PROOF ===== -->
-    <section class="py-20 scroll-reveal">
-      <p class="k mb-8">Lo que dicen los clientes</p>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="testimonial-card">
-          <p class="text-lg leading-relaxed mb-6 relative z-10">"PIXEL transformó completamente nuestra presencia
-            digital. En solo 3 meses, nuestro e‑commerce multiplicó ventas y el equipo estuvo presente en cada paso."
-          </p>
-          <div class="flex items-center gap-4">
-            <div class="testimonial-avatar">FS</div>
-            <div>
-              <p class="font-bold text-[var(--gris-oscuro)]">Fiji Swimwear</p>
-              <p class="text-sm text-[var(--muted)]">E‑commerce de moda</p>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p class="text-lg leading-relaxed mb-6 relative z-10">"La estrategia 360 de PIXEL nos dio un growth del +45%
-            vs año anterior. Su enfoque data‑driven y la calidad del equipo son excepcionales."</p>
-          <div class="flex items-center gap-4">
-            <div class="testimonial-avatar">LN</div>
-            <div>
-              <p class="font-bold text-[var(--gris-oscuro)]">Lab Nutrition</p>
-              <p class="text-sm text-[var(--muted)]">Suplementos deportivos</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CTA SECTION ===== -->
+    <!-- ===== CIERRE: las tres puertas otra vez ===== -->
     <section class="cta-section text-left my-20 scroll-reveal">
-      <h2 class="headline mb-4 relative z-10">Hablemos<br>de tu tienda.</h2>
-      <p class="max-w-2xl mb-8 relative z-10">Cuéntanos qué vendes y cómo cobras hoy. Te decimos en una conversación qué se puede
-        automatizar, qué no, y cuánto cuesta.</p>
+      <h2 class="headline mb-4 relative z-10">Cotiza<br>en un minuto.</h2>
+      <p class="max-w-2xl mb-8 relative z-10">Tres preguntas, el precio publicado y tu cotización lista para mandar por
+        WhatsApp. Te respondemos en menos de 24 horas.</p>
       <div class="relative z-10 flex flex-wrap gap-4">
-        <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="btn">Escríbenos</a>
-        <a href="suscripciones.html" class="btn btn-secondary">Ver suscripciones</a>
+        <button type="button" class="btn" data-cotiza="plan">Cotiza tu plan</button>
+        <button type="button" class="btn" data-cotiza="asesor">Cotiza tu asesor</button>
+        <button type="button" class="btn" data-cotiza="tienda">Cotiza tu tienda</button>
       </div>
     </section>
   </main>
@@ -455,10 +973,12 @@ pointer-events: none;
     </div>
     <div class="text-right">
       <div class="flex justify-end space-x-6 mb-2">
-        <a href="https://www.instagram.com/pixel.public/" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.instagram.com/pixel.adigital/" target="_blank" rel="noopener noreferrer"
+          aria-label="Instagram de Pixel: @pixel.adigital"
           class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
             class="fab fa-instagram"></i></a>
         <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
+          aria-label="LinkedIn de Pixel"
           class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
             class="fab fa-linkedin"></i></a>
       </div>
@@ -467,16 +987,226 @@ pointer-events: none;
     </div>
   </footer>
 
-  <!-- WhatsApp floating button -->
-  <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
-    aria-label="Contactar por WhatsApp">
+  <!-- WhatsApp floating button (escritorio; en el celular lo reemplaza la barra) -->
+  <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20vengo%20de%20la%20web%20y%20quiero%20cotizar."
+    target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- ===== BARRA FIJA (solo celular) ===== -->
+  <div class="barra-cot" role="region" aria-label="Cotizar">
+    <button type="button" class="btn" data-cotiza="">Cotiza en un minuto</button>
+    <a class="barra-cot__wa" href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20vengo%20de%20la%20web%20y%20quiero%20cotizar."
+      target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <!-- ===== COTIZADOR ===== -->
+  <div class="cot" id="cot" role="dialog" aria-modal="true" aria-labelledby="cot-prod" hidden>
+    <div class="cot__fondo" data-cerrar></div>
+    <div class="cot__hoja" data-lenis-prevent>
+      <div class="cot__cab">
+        <p class="sus-eyebrow" id="cot-prod">Cotiza en un minuto</p>
+        <span class="cot__paso" id="cot-paso"></span>
+        <button type="button" class="cot__x" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <div class="cot__barra" aria-hidden="true"><i id="cot-prog"></i></div>
+      <div id="cot-cuerpo" aria-live="polite"></div>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="main.js"></script>
+  <script>
+    // Cotizador: tres preguntas por producto, el precio publicado y el mensaje armado para WhatsApp.
+    // Los montos son los que publican suscripciones.html, asesor-digital.html y el home; si cambian allá, cambian aquí.
+    (() => {
+      const WA = '51975200420';
+      const PRODUCTOS = {
+        plan: {
+          titulo: 'Suscripciones', cab: 'Cotiza tu plan', msg: 'mi PLAN de suscripción', pagina: 'suscripciones.html',
+          suma: 'Suscripciones: que tu cliente vuelva a comprar solo',
+          preguntas: [
+            { q: '¿Tu tienda ya está en Shopify?', c: 'Shopify', ops: ['Sí', 'Todavía no', 'Uso otra plataforma'] },
+            { q: '¿Qué vendes que tu cliente vuelve a comprar?', c: 'Vendo', ops: ['Suplementos', 'Mascotas', 'Belleza', 'Café o alimentos', 'Canasta del mes', 'Otro'] },
+            { q: '¿Cuántos clientes crees que se suscribirían?', c: 'Suscriptores', ops: ['Hasta 50', 'De 51 a 200', 'De 201 a 500', 'Más de 500'] },
+          ],
+          // [etiqueta, monto, frase corta para el mensaje]
+          precio: r => {
+            const m = { 'Hasta 50': '390', 'De 51 a 200': '690', 'De 201 a 500': '1,190' }[r[2]];
+            return [['Instalación, una sola vez', 'S/ 3,900', 'S/ 3,900 de instalación'],
+              ['Cuota mensual, ' + r[2].toLowerCase() + ' suscriptores', m ? 'S/ ' + m + ' /mes' : 'a cotizar', m ? 'S/ ' + m + ' al mes' : 'cuota mensual a cotizar']];
+          },
+          plazo: 'Tres semanas de desarrollo y una de ajuste, con los primeros cobros monitoreados.',
+        },
+        asesor: {
+          titulo: 'Asesor Digital', cab: 'Cotiza tu asesor', msg: 'mi ASESOR digital', pagina: 'asesor-digital.html',
+          suma: 'Asesor Digital: atiende y cobra en el chat',
+          preguntas: [
+            { q: '¿Tu tienda ya está en Shopify?', c: 'Shopify', ops: ['Sí', 'Todavía no', 'Uso otra plataforma'] },
+            { q: '¿Qué vendes?', c: 'Vendo', ops: ['Belleza', 'Mascotas', 'Ferretería', 'Tecnología', 'Regalos', 'Otro'] },
+            { q: '¿Cuántas consultas de clientes te llegan al mes?', c: 'Consultas al mes', ops: ['Hasta 500', 'Hasta 2,000', 'Más de 2,000', 'No lo sé'] },
+          ],
+          precio: r => {
+            const m = { 'Hasta 500': '490', 'Hasta 2,000': '890', 'Más de 2,000': '1,490' }[r[2]];
+            return [['Instalación y carga de conocimiento', 'S/ 2,900', 'S/ 2,900 de instalación'],
+              [m ? 'Cuota mensual, ' + r[2].toLowerCase() + ' conversaciones' : 'Cuota mensual', m ? 'S/ ' + m + ' /mes' : 'desde S/ 490 /mes', m ? 'S/ ' + m + ' al mes' : 'desde S/ 490 al mes']];
+          },
+          plazo: 'Dos semanas de puesta en marcha, casi todas cargando qué recomendar y cómo hablarle a tu cliente.',
+        },
+        tienda: {
+          titulo: 'Tienda Shopify', cab: 'Cotiza tu tienda', msg: 'mi TIENDA Shopify', pagina: 'servicios.html',
+          suma: 'Tienda Shopify: con tu marca y tu dominio',
+          preguntas: [
+            { q: '¿Dónde vendes hoy?', c: 'Vendo en', ops: ['Instagram y WhatsApp', 'Marketplace', 'Ferias', 'WordPress u otra web', 'Todavía en ningún lado'] },
+            { q: '¿Cuántos productos vas a subir?', c: 'Productos', ops: ['Hasta 50', 'De 51 a 300', 'Más de 300'] },
+            { q: '¿Para cuándo la quieres vendiendo?', c: 'La quiero', ops: ['Para diciembre', 'En uno o dos meses', 'Estoy averiguando'] },
+          ],
+          precio: r => [[r[0] === 'WordPress u otra web' ? 'Migración a Shopify' : 'Tienda nueva en Shopify', 'desde S/ 4,500', 'desde S/ 4,500']],
+          plazo: 'Cuatro semanas de la firma a la tienda vendiendo. Te enseñamos a manejarla y tienes dos meses de soporte.',
+        },
+      };
+      const ELEGIR = [['plan', 'Mi plan de suscripción'], ['asesor', 'Mi asesor digital'], ['tienda', 'Mi tienda Shopify']];
+
+      const raiz = document.documentElement;
+      const dlg = document.getElementById('cot'), cuerpo = document.getElementById('cot-cuerpo');
+      const cab = document.getElementById('cot-prod'), paso = document.getElementById('cot-paso'), prog = document.getElementById('cot-prog');
+      let prod = '', resp = [], conElegir = false, disparador = null;
+      const quieto = () => !raiz.matches('.gsap, .io');   // ruta sin movimiento: sin demoras ni transiciones
+
+      const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
+
+      function opciones(lista, elegida, alElegir) {
+        const ul = el('ul', 'cot__ops');
+        lista.forEach(t => {
+          const b = el('button', '', t);
+          b.type = 'button';
+          b.setAttribute('aria-pressed', String(t === elegida));
+          b.onclick = () => {
+            ul.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+            setTimeout(() => alElegir(t), quieto() ? 0 : 200);
+          };
+          const li = el('li'); li.appendChild(b); ul.appendChild(li);
+        });
+        return ul;
+      }
+
+      function atras(fn, txt) { const b = el('button', 'cot__atras', txt || '← Atrás'); b.type = 'button'; b.onclick = fn; return b; }
+
+      function pintar(nodos, etiqueta, avance) {
+        cuerpo.replaceChildren(...nodos);
+        paso.textContent = etiqueta;
+        prog.style.transform = 'scaleX(' + avance + ')';
+        if (!quieto()) { cuerpo.classList.remove('cot__entra'); void cuerpo.offsetWidth; cuerpo.classList.add('cot__entra'); }
+        dlg.querySelector('.cot__hoja').scrollTop = 0;
+        const f = cuerpo.querySelector('button, a[href], input');
+        if (f) f.focus({ preventScroll: true });
+      }
+
+      function elegir() {
+        prod = ''; resp = []; conElegir = true;
+        cab.textContent = 'Cotiza en un minuto';
+        pintar([el('h3', 'cot__q', '¿Qué quieres cotizar?'),
+          opciones(ELEGIR.map(e => e[1]), null, t => { prod = ELEGIR.find(e => e[1] === t)[0]; pregunta(0); })], '', 0);
+      }
+
+      function pregunta(i) {
+        const P = PRODUCTOS[prod], Q = P.preguntas[i];
+        cab.textContent = P.cab;
+        const nodos = [el('h3', 'cot__q', Q.q), opciones(Q.ops, resp[i], t => { resp[i] = t; i < 2 ? pregunta(i + 1) : final(); })];
+        if (i > 0) nodos.push(atras(() => pregunta(i - 1)));
+        else if (conElegir) nodos.push(atras(elegir));
+        pintar(nodos, (i + 1) + ' / 3', i / 3);
+      }
+
+      function mensaje() {
+        const P = PRODUCTOS[prod];
+        const lineas = ['Hola Pixel, quiero cotizar ' + P.msg + '.'];
+        P.preguntas.forEach((Q, i) => lineas.push('· ' + Q.c + ': ' + resp[i]));
+        lineas.push('Precio publicado: ' + P.precio(resp).map(f => f[2]).join(' + ') + '.');
+        const extra = [...cuerpo.querySelectorAll('.cot__suma input:checked')].map(x => PRODUCTOS[x.value].titulo);
+        if (extra.length) lineas.push('También quiero cotizar: ' + extra.join(' y ') + '.');
+        return lineas.join('\n');
+      }
+
+      function final() {
+        const P = PRODUCTOS[prod];
+        const sinShopify = prod !== 'tienda' && resp[0] !== 'Sí';
+        cab.textContent = P.cab;
+
+        const precio = el('div', 'cot__precio');
+        P.precio(resp).forEach(([a, b]) => { const f = el('div', 'precio-fila'); f.append(el('span', '', a), el('b', '', b)); precio.appendChild(f); });
+
+        const suma = el('fieldset', 'cot__suma');
+        suma.appendChild(el('legend', 'k', 'Súmale a tu cotización'));
+        Object.keys(PRODUCTOS).filter(k => k !== prod).forEach(k => {
+          const lab = el('label'), inp = el('input');
+          inp.type = 'checkbox'; inp.value = k;
+          inp.checked = k === 'tienda' && sinShopify;   // la app necesita Shopify: la tienda va sí o sí
+          lab.append(inp, el('span', '', PRODUCTOS[k].suma));
+          suma.appendChild(lab);
+        });
+
+        const wa = el('a', 'btn cot__wa');
+        wa.target = '_blank'; wa.rel = 'noopener noreferrer';
+        wa.innerHTML = '<i class="fab fa-whatsapp" aria-hidden="true"></i>Enviar por WhatsApp';
+        const actualizar = () => { wa.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(mensaje()); };
+        suma.addEventListener('change', actualizar);
+
+        const pie = el('div', 'cot__pie');
+        const mas = el('a', 'cot__mas', 'Ver cómo funciona'); mas.href = P.pagina;
+        pie.append(atras(() => pregunta(2), '← Cambiar'), mas);
+
+        const nodos = [
+          el('h3', 'cot__q', 'Tu cotización'),
+          el('p', 'cot__resp', P.preguntas.map((Q, i) => Q.c + ': ' + resp[i]).join(' · ')),
+          precio,
+          el('p', 'cot__nota', P.plazo + ' No incluye el 8% del recibo por honorarios.'),
+        ];
+        if (sinShopify) nodos.push(el('p', 'cot__nota', 'La app se instala sobre Shopify: te cotizamos también la tienda.'));
+        nodos.push(suma, wa, el('p', 'cot__nota', 'Te respondemos en menos de 24 horas.'), pie);
+        pintar(nodos, 'Listo', 1);
+        actualizar();
+        wa.focus({ preventScroll: true });
+      }
+
+      function abrir(p, quien) {
+        disparador = quien || null;
+        dlg.hidden = false;
+        raiz.classList.add('cot-abierto');
+        if (p && PRODUCTOS[p]) { prod = p; resp = []; conElegir = false; pregunta(0); } else elegir();
+      }
+
+      function cerrar() {
+        dlg.hidden = true;
+        raiz.classList.remove('cot-abierto');
+        if (/^#cotiza/.test(location.hash)) history.replaceState(null, '', location.href.split('#')[0]);
+        if (disparador) disparador.focus({ preventScroll: true });
+      }
+
+      document.addEventListener('click', e => {
+        const t = e.target.closest('[data-cotiza]');
+        if (t) { e.preventDefault(); abrir(t.dataset.cotiza, t); return; }
+        if (e.target.closest('[data-cerrar]')) cerrar();
+      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && !dlg.hidden) cerrar(); });
+      // Tab no sale de la hoja mientras está abierta.
+      dlg.addEventListener('keydown', e => {
+        if (e.key !== 'Tab') return;
+        const f = [...dlg.querySelectorAll('button, a[href], input')];
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      });
+      // La rueda y el dedo mueven la hoja, no la página de atrás (Lenis escucha en window).
+      ['wheel', 'touchmove'].forEach(ev => dlg.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
+
+      // Enlaces directos para la bio y los anuncios: #cotiza-plan, #cotiza-asesor, #cotiza-tienda.
+      const porHash = () => { const m = location.hash.match(/^#cotiza-(plan|asesor|tienda)$/); if (m) abrir(m[1]); };
+      window.addEventListener('hashchange', porHash);
+      porHash();
+    })();
+  </script>
 </body>
 
 </html>
