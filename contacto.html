@@ -74,6 +74,19 @@ display: flex;
     ]
   }
   </script>
+  <!-- Meta Pixel · Pixel Digital -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '4748549178756369');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=4748549178756369&ev=PageView&noscript=1"/></noscript>
+  <!-- Fin Meta Pixel -->
 </head>
 
 <body>
@@ -224,6 +237,37 @@ display: flex;
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="main.js"></script>
+  <script>
+  /* Eventos del píxel: servicio visto, contacto por WhatsApp/correo/teléfono, agenda y formularios. */
+  (function () {
+    if (!window.fbq) return;
+    var ruta = location.pathname.replace(/\/$/, '') || '/';
+    var servicios = {
+      '/suscripciones': 'Suscripciones', '/suscripciones.html': 'Suscripciones',
+      '/asesor-digital': 'Asesor IA', '/asesor-digital.html': 'Asesor IA',
+      '/servicios': 'Servicios', '/servicios.html': 'Servicios'
+    };
+    if (servicios[ruta]) fbq('track', 'ViewContent', { content_name: servicios[ruta], content_category: 'Servicio' });
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var h = a.getAttribute('href') || '';
+      if (/wa\.me|whatsapp\.com|^whatsapp:/i.test(h)) fbq('track', 'Contact', { content_name: 'WhatsApp', content_category: ruta });
+      else if (/^mailto:/i.test(h)) fbq('track', 'Contact', { content_name: 'Correo', content_category: ruta });
+      else if (/^tel:/i.test(h)) fbq('track', 'Contact', { content_name: 'Llamada', content_category: ruta });
+      else if (/calendar\.google|calendly\.com|cal\.com/i.test(h)) fbq('track', 'Schedule', { content_category: ruta });
+    }, true);
+
+    document.addEventListener('submit', function (e) {
+      var f = e.target;
+      fbq('track', 'Lead', { content_name: (f.getAttribute('name') || f.id || 'Formulario'), content_category: ruta });
+    }, true);
+
+    /* Para el cotizador u otros botones que abren WhatsApp desde JavaScript. */
+    window.pixelLead = function (detalle) { fbq('track', 'Lead', detalle || {}); };
+  })();
+  </script>
 </body>
 
 </html>
