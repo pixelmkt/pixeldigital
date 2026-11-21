@@ -24,14 +24,9 @@
   <meta name="theme-color" content="#F5F1E8">
 
   <!-- Fuentes servidas desde la propia web. Las dos que pintan la portada se piden primero. -->
-  <link rel="preload" href="fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="base.css">
   <style>
-    @font-face { font-family: 'Bebas Neue'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/bebas-neue-400.woff2) format('woff2'); }
-    @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/ibm-plex-mono-400.woff2) format('woff2'); }
-    @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/ibm-plex-mono-600.woff2) format('woff2'); }
-    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/playfair-display-700.woff2) format('woff2'); }
 
     body {
       cursor: auto;
@@ -68,10 +63,11 @@
 
     .logo-box span {
       font-family: var(--fuente-display);
-      font-size: 1.9rem;
+      font-size: 1.406rem;
       line-height: 1;
-      text-transform: uppercase;
-      letter-spacing: .02em;
+      text-transform: none;
+      letter-spacing: -.022em;
+      font-weight: 750;
     }
 
     @media (max-width: 767px) {
@@ -179,9 +175,9 @@
       display: inline-flex;
       align-items: center;
       gap: .35rem;
-      font-size: .72rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-size: .86rem;
+      letter-spacing: 0;
+      text-transform: none;
       font-weight: 600;
       color: var(--tinta);
       border-bottom: 1px solid var(--tinta);
@@ -204,9 +200,9 @@
     /* Copiado de suscripciones.html, para usarlo también en el home. */
     .sus-eyebrow {
       font-family: var(--fuente-mono);
-      font-size: .7rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+      font-size: .84rem;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--rojo-acento);
       font-weight: 600;
     }
@@ -273,7 +269,7 @@
     .hero-cot h1 .text-highlight {
       display: inline-block;
       vertical-align: bottom;
-      padding: 0 .1em .06em;
+      padding: 0 0 .06em;
     }
 
     /* Tres puertas: una por reel. Filas del índice, con el toque entero. */
@@ -314,13 +310,14 @@
     .puerta__cta {
       grid-column: 3;
       grid-row: 1;
-      font-size: .72rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-size: .86rem;
+      letter-spacing: 0;
+      text-transform: none;
       font-weight: 600;
       color: var(--fondo-crema);
       background: var(--rojo-acento);
-      padding: .3rem .55rem;
+      padding: .5rem .85rem;
+      border-radius: 8px;
       white-space: nowrap;
     }
 
@@ -350,19 +347,19 @@
 
     .puerta__precio b {
       font-family: var(--fuente-display);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: .95;
-      letter-spacing: .01em;
+      font-weight: 750;
+      font-size: 1.48rem;
+      line-height: 1.08;
+      letter-spacing: -.022em;
       color: var(--tinta);
       font-variant-numeric: tabular-nums;
       transition: color .25s ease;
     }
 
     .puerta__precio small {
-      font-size: .64rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-size: .78rem;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--muted);
     }
 
@@ -432,8 +429,8 @@
         order: 1;
         justify-self: start;
         margin-top: .8rem;
-        font-size: .76rem;
-        padding: .45rem .75rem;
+        font-size: .9rem;
+        padding: .6rem 1.05rem;
       }
 
       .puerta__largo {
@@ -461,16 +458,18 @@
     }
 
     .lab::before {
-      content: 'LAB';
+      content: none;
       position: absolute;
       right: -.04em;
       bottom: -.2em;
       font-family: var(--fuente-display);
-      font-size: clamp(9rem, 30vw, 22rem);
+      font-size: clamp(5.94rem, 19.8vw, 14.52rem);
       line-height: 1;
       color: rgba(245, 241, 232, .045);
       pointer-events: none;
       user-select: none;
+      font-weight: 750;
+      letter-spacing: -.022em;
     }
 
     .lab > * {
@@ -490,9 +489,9 @@
       display: inline-flex;
       align-items: center;
       gap: .6rem;
-      font-size: .66rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
+      font-size: .79rem;
+      letter-spacing: 0;
+      text-transform: none;
       font-weight: 600;
       color: #D9D1C2;
     }
@@ -554,11 +553,12 @@
 
     .lab__mods b {
       font-family: var(--fuente-display);
-      font-weight: 400;
-      font-size: 1.6rem;
+      font-weight: 750;
+      font-size: 1.28rem;
       line-height: 1;
-      text-transform: uppercase;
+      text-transform: none;
       color: var(--fondo-crema);
+      letter-spacing: -.022em;
     }
 
     .lab__mods li > span:last-child {
@@ -568,8 +568,8 @@
     }
 
     .lab__n {
-      font-size: .68rem;
-      letter-spacing: .1em;
+      font-size: .82rem;
+      letter-spacing: 0;
       color: var(--rojo-acento);
       padding-top: .35rem;
     }
@@ -595,9 +595,9 @@
     }
 
     .lab__cot {
-      font-size: .72rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-size: .86rem;
+      letter-spacing: 0;
+      text-transform: none;
       font-weight: 600;
       color: var(--fondo-crema);
       border-bottom: 1px solid currentColor;
@@ -713,9 +713,9 @@
 
     .cot__paso {
       margin-left: auto;
-      font-size: .72rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-size: .86rem;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--muted);
       font-variant-numeric: tabular-nums;
     }
@@ -746,11 +746,12 @@
 
     .cot__q {
       font-family: var(--fuente-display);
-      font-weight: 400;
-      font-size: 2.35rem;
-      line-height: .95;
-      text-transform: uppercase;
+      font-weight: 750;
+      font-size: 1.739rem;
+      line-height: 1.08;
+      text-transform: none;
       color: var(--tinta);
+      letter-spacing: -.022em;
     }
 
     .cot__ops {
@@ -797,9 +798,9 @@
     .cot__atras {
       margin-top: 1rem;
       min-height: 44px;
-      font-size: .72rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-size: .86rem;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--muted);
     }
 
@@ -870,9 +871,9 @@
     }
 
     .cot__mas {
-      font-size: .72rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-size: .86rem;
+      letter-spacing: 0;
+      text-transform: none;
       color: var(--tinta);
       border-bottom: 1px solid var(--tinta);
     }
@@ -1051,7 +1052,7 @@
     <section class="hero-cot pt-8 pb-14 md:pt-20 md:pb-20 relative" id="cotiza">
       <p class="sus-eyebrow">Apps propias para Shopify · Hecho en Perú</p>
       <h1 class="headline hero-headline mt-4">
-        Cotiza tu <span class="text-highlight">plan</span>,<br>tu <span class="text-highlight">asesor</span> o tu <span class="text-highlight">tienda</span>.
+        Cotiza tu <span style="white-space:nowrap"><span class="text-highlight">plan</span>,</span><br>tu <span class="text-highlight">asesor</span> o tu <span style="white-space:nowrap"><span class="text-highlight">tienda</span>.</span>
       </h1>
       <p class="mt-5 max-w-xl md:text-lg">El precio está a la vista. Tres preguntas y tu cotización sale lista para mandar por WhatsApp.</p>
 
@@ -1197,13 +1198,6 @@
       </div>
     </section>
 
-    <!-- ===== CINTA ===== -->
-    <div class="cinta" aria-hidden="true">
-      <div class="cinta__t">
-        <span>Suscripciones</span><span>Asesor IA</span><span>Apps a medida</span><span>Tiendas Shopify</span><span>Paid media</span><span>IA y buscadores</span>
-        <span>Suscripciones</span><span>Asesor IA</span><span>Apps a medida</span><span>Tiendas Shopify</span><span>Paid media</span><span>IA y buscadores</span>
-      </div>
-    </div>
 
     <!-- ===== SERVICIOS: ÍNDICE ===== -->
     <section class="py-24 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2.1fr)] gap-8 lg:gap-14 items-start">
@@ -1224,8 +1218,8 @@
 
     <!-- ===== CÓMO TRABAJAMOS ===== -->
     <section class="py-20 scroll-reveal">
-      <div class="grid md:grid-cols-[11rem_1fr] gap-4 md:gap-12 items-end mb-10">
-        <p class="k">Cómo trabajamos</p>
+      <div class="mb-10">
+        <p class="k mb-4">Cómo trabajamos</p>
         <h2 class="headline">Cinco pasos.<br>Ninguno se salta.</h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-4">
@@ -1269,8 +1263,7 @@
           class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><svg
             class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
       </div>
-      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
-        Privacidad</a>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de privacidad</a>
     </div>
   </footer>
 

@@ -12,11 +12,8 @@
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="tw.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     .contact-info-item {
@@ -102,12 +99,10 @@ display: flex;
       <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
         <a href="asesor-digital.html" class="nav-link transition-colors">Asesor IA</a>
+        <a href="servicios.html" class="nav-link transition-colors">Servicios</a>
         <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
-        <a href="caso-de-estudio.html" class="nav-link transition-colors">Resultados</a>
         <a href="contacto.html" class="nav-link transition-colors active">Contacto</a>
-        <a href="servicios.html" class="nav-cta">
-          Servicios
-        </a>
+        <a href="index.html#cotiza" class="nav-cta">Cotiza</a>
       </nav>
       <button id="mobile-menu-btn" class="lg:hidden text-2xl text-[var(--gris-oscuro)]"
         aria-label="Abrir menú de navegación" aria-expanded="false">
@@ -139,7 +134,7 @@ display: flex;
     <div
       class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 border border-[var(--linea-clara)] p-8 md:p-12 scroll-reveal bg-white/70">
       <div>
-        <h2 class="headline mb-6">Envía un Mensaje</h2>
+        <h2 class="headline mb-6">Envía un mensaje</h2>
         <form id="contact-form" action="https://formspree.io/f/mdklbdky" method="POST" class="space-y-4">
           <div class="input-with-icon">
             <i class="fas fa-user input-icon"></i>
@@ -154,12 +149,12 @@ display: flex;
             <input type="tel" name="phone" class="input" placeholder="Teléfono (opcional)">
           </div>
           <textarea name="message" rows="5" class="input" placeholder="Cuéntanos tu desafío..."></textarea>
-          <button type="submit" class="btn w-full text-center">Enviar Mensaje</button>
+          <button type="submit" class="btn w-full text-center">Enviar mensaje</button>
         </form>
         <p id="form-status" class="mt-4 text-center text-sm font-semibold" aria-live="polite"></p>
       </div>
       <div class="text-left">
-        <h2 class="headline mb-6">Información y Cita</h2>
+        <h2 class="headline mb-6">Información y cita</h2>
         <div class="space-y-2 mb-8">
           <a href="mailto:pixel.publidigi@gmail.com" class="contact-info-item">
             <div class="contact-info-icon"><i class="fas fa-envelope text-[var(--rojo-acento)]"></i></div>
@@ -193,7 +188,7 @@ display: flex;
         </div>
         <a href="https://calendar.google.com/calendar/u/0/r/appointment?pli=1" target="_blank" rel="noopener noreferrer"
           class="btn btn-secondary w-full text-center">
-          <i class="fas fa-calendar-alt mr-2"></i>Agendar una Consultoría
+          <i class="fas fa-calendar-alt mr-2"></i>Agendar una consultoría
         </a>
       </div>
     </div>
@@ -222,8 +217,7 @@ display: flex;
           class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
             class="fab fa-behance"></i></a>
       </div>
-      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
-        Privacidad</a>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de privacidad</a>
     </div>
   </footer>
 
