@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobile-menu');
   if (mobileMenuBtn && mobileMenu) {
     mobileMenu.classList.remove('hidden');
+    // Lenis no mueve la página de atrás mientras el menú está encima.
+    mobileMenu.setAttribute('data-lenis-prevent', '');
     const icon = mobileMenuBtn.querySelector('i');
     const cerrar = () => {
       mobileMenu.classList.remove('menu-open');
@@ -113,6 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
           if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -80 }); }
         });
       });
+      // Si la página abre con un ancla (proyectos.html#lab-nutrition), se baja ahí cuando todo ya está medido,
+      // con el mismo margen para la cabecera.
+      const destino = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (destino) {
+        const ir = () => requestAnimationFrame(() => lenis.scrollTo(destino, { offset: -80, immediate: true }));
+        if (document.readyState === 'complete') ir(); else window.addEventListener('load', ir, { once: true });
+      }
     }
 
     const EASE = 'expo.out';

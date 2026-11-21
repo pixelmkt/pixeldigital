@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suscripciones en Shopify con Mercado Pago • Cobro automático en Perú • PIXEL</title>
   <meta name="description"
-    content="Shopify no cobra suscripciones con pasarelas latinoamericanas. Construimos la app que sí lo hace: débito automático con Mercado Pago, sin migrar de plataforma y sin Shopify Plus. Perú, Chile y Colombia.">
+    content="Shopify no cobra suscripciones con pasarelas latinoamericanas. Construimos la app que sí lo hace: débito automático con Mercado Pago, sin migrar de plataforma y sin Shopify Plus. Para tiendas Shopify en Perú.">
   <link rel="canonical" href="https://pixeldigital.vercel.app/suscripciones.html">
 
   <meta property="og:type" content="website">
@@ -191,14 +191,10 @@
     "url": "https://pixeldigital.vercel.app/suscripciones.html",
     "description": "Aplicación Shopify a medida que cobra suscripciones de forma recurrente con Mercado Pago en países donde Shopify Payments no opera. No requiere Shopify Plus ni migrar de plataforma.",
     "provider": { "@id": "https://pixeldigital.vercel.app/#organizacion" },
-    "areaServed": [
-      { "@type": "Country", "name": "Perú" },
-      { "@type": "Country", "name": "Chile" },
-      { "@type": "Country", "name": "Colombia" }
-    ],
+    "areaServed": { "@type": "Country", "name": "Perú" },
     "audience": {
       "@type": "BusinessAudience",
-      "name": "Marcas de consumo con productos de reposición: suplementos, alimento para mascotas, café, cuidado personal y dermocosmética"
+      "name": "Marcas de consumo con productos de reposición: alimento para mascotas, café, cuidado personal y dermocosmética"
     },
     "offers": {
       "@type": "Offer",
@@ -220,7 +216,7 @@
         "name": "¿Se pueden cobrar suscripciones automáticas en Shopify con Mercado Pago?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Con las aplicaciones del Shopify App Store, no. Shopify solo ejecuta el cobro de un contrato de suscripción a través de cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe. Mercado Pago no está en esa lista, así que ninguna app del App Store puede debitar automáticamente con él. Sí es posible con una aplicación construida a medida e instalada en la tienda, que es lo que hacemos en Pixel Digital."
+          "text": "Sí, con una aplicación construida a medida e instalada en la tienda, que es lo que hacemos en Pixel Digital. Shopify solo ejecuta el cobro de un contrato de suscripción con cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe, y ninguna es Mercado Pago. Por eso las apps más usadas mandan un link de pago cada mes. La nuestra cobra sola."
         }
       },
       {
@@ -268,7 +264,7 @@
         "name": "¿Qué comisión cobra Mercado Pago en Perú?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Según el tarifario público de Mercado Pago Perú, la acreditación inmediata cuesta 3.49% más S/1 más IGV por venta, y la acreditación a catorce días cuesta 3.29% más S/1 más IGV. Es una tarifa única para crédito, débito, efectivo y Yape. Esa comisión la cobra Mercado Pago directamente al comercio, no nosotros."
+          "text": "Según la página de suscripciones de Mercado Pago (revisada el 18 de noviembre de 2026), cuesta 3.49% más S/1 más IGV con el dinero al instante, o 3.29% más S/1 más IGV a catorce días, para crédito, débito y dinero en cuenta. Esa comisión la cobra Mercado Pago directamente al comercio, no nosotros."
         }
       },
       {
@@ -276,7 +272,7 @@
         "name": "¿En qué países funciona esto?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "En los mercados donde Mercado Pago ofrece cobros recurrentes y Shopify Payments no está disponible: Perú, Chile, Colombia, Argentina y Uruguay. México queda fuera del problema porque ahí sí existe Shopify Payments y las aplicaciones globales funcionan de fábrica."
+          "text": "Para tiendas Shopify en Perú. Para otro país, la adaptamos a pedido."
         }
       }
     ]
@@ -346,7 +342,7 @@
     <!-- ══ HERO ══ -->
     <section class="py-16 md:py-24 grid lg:grid-cols-[1.1fr_auto] gap-12 lg:gap-16 items-center">
       <div>
-        <p class="sus-eyebrow scroll-reveal">Suscripciones en Shopify · Perú, Chile y Colombia</p>
+        <p class="sus-eyebrow scroll-reveal">Suscripciones en Shopify · Para tiendas en Perú</p>
         <h1 class="headline text-4xl md: mt-5 scroll-reveal" style="line-height:1.06;">
           Shopify no cobra suscripciones<br>con <span class="text-highlight">pasarelas latinoamericanas</span>.
         </h1>
@@ -387,7 +383,6 @@
               </div>
               <div class="freq"><b>Recíbelo cada 30 días</b><span>Cambiar</span></div>
               <div class="nota"><i>—</i>Se cobra a tu tarjeta el día de cada entrega</div>
-              <div class="nota"><i>—</i>Pausa o cancela cuando quieras, sin penalidad</div>
             </div>
           </div>
 
@@ -422,9 +417,9 @@
       <div class="sus-block sus-block--dark mt-8 scroll-reveal">
         <p class="sus-eyebrow" style="color:var(--naranja)">La consecuencia</p>
         <p class="mt-3 text-lg" style="max-width:64ch">
-          Ninguna app del Shopify App Store puede debitar automáticamente con Mercado Pago. Lo que ofrecen en su lugar es
-          <strong>mandarle una factura por correo a tu cliente cada mes</strong> para que pague a mano. Eso no es una
-          suscripción: es una cobranza, y se cae sola.
+          Ninguna de esas cinco es Mercado Pago. Por eso las apps más usadas le mandan a tu cliente
+          <strong>un link de pago cada mes</strong> para que pague a mano. Eso no es una suscripción: es una cobranza, y
+          se cae sola. La nuestra cobra sola.
         </p>
       </div>
     </section>
@@ -442,8 +437,8 @@
         </div>
         <div class="sus-block scroll-reveal" style="transition-delay:80ms;">
           <h3 class="font-bold text-lg mb-2">Cobro automático recurrente</h3>
-          <p class="text-sm text-[var(--gris-oscuro)]">Tarjeta de crédito y débito por Mercado Pago, en la frecuencia que
-            el cliente elija. Sin tope de ciclos ni permanencia mínima.</p>
+          <p class="text-sm text-[var(--gris-oscuro)]">Tarjeta de crédito y débito por Mercado Pago, cada 1, 2, 3 o 6
+            meses. Puedes ofrecer planes sin permanencia.</p>
         </div>
         <div class="sus-block scroll-reveal" style="transition-delay:160ms;">
           <h3 class="font-bold text-lg mb-2">Panel de administración</h3>
@@ -453,33 +448,35 @@
       </div>
 
       <p class="mt-8 text-sm text-[var(--muted)] scroll-reveal" style="max-width:66ch">
-        Nota honesta: Shopify no permite integrar la gestión de estas suscripciones dentro de la cuenta de cliente de su
-        plataforma. Las pausas y bajas las ejecuta tu equipo desde el panel, a pedido del cliente por los canales que ya
-        usan. Lo decimos antes de firmar, no después.
+        La app trae el portal del cliente: pausar, reanudar o cancelar desde su cuenta. Lo activamos y lo probamos
+        contigo en la instalación.
       </p>
     </section>
 
     <!-- ══ POR QUÉ IMPORTA ══ -->
     <section class="py-16 border-t border-[var(--linea-clara)]">
       <p class="sus-eyebrow scroll-reveal">Por qué mueve la aguja</p>
-      <h2 class="headline text-3xl md: mt-4 mb-10 scroll-reveal">Los números de la categoría.</h2>
+      <h2 class="headline text-3xl md: mt-4 mb-10 scroll-reveal">Un cliente suscrito vuelve a comprar sin que le
+        pagues otro anuncio.</h2>
 
       <div class="grid sm:grid-cols-3 gap-8">
         <div class="scroll-reveal">
-          <p class="sus-num">3–5×</p>
-          <p class="font-semibold mt-3">Lo que vale un cliente suscrito</p>
-          <p class="text-sm text-[var(--muted)] mt-1">Frente a uno de compra única, al mismo margen bruto.</p>
+          <p class="sus-num">01</p>
+          <p class="font-semibold mt-3">La recompra ya no depende de un anuncio</p>
+          <p class="text-sm text-[var(--muted)] mt-1">El pedido vuelve cada 1, 2, 3 o 6 meses, sin otra campaña para
+            traerlo de vuelta.</p>
         </div>
         <div class="scroll-reveal" style="transition-delay:80ms;">
-          <p class="sus-num">5–8%</p>
-          <p class="font-semibold mt-3">Abandono mensual típico</p>
-          <p class="text-sm text-[var(--muted)] mt-1">En productos de reposición: suplementos, mascotas y consumibles del
-            hogar.</p>
+          <p class="sus-num">02</p>
+          <p class="font-semibold mt-3">Una venta que ya sabes que viene</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Cada suscriptor activo es un pedido del próximo ciclo. Planificas
+            compras y stock con algo concreto.</p>
         </div>
         <div class="scroll-reveal" style="transition-delay:160ms;">
-          <p class="sus-num">60–80%</p>
-          <p class="font-semibold mt-3">Menos abandono si cobras anual</p>
-          <p class="text-sm text-[var(--muted)] mt-1">La palanca más barata que existe, y no cuesta desarrollo.</p>
+          <p class="sus-num">03</p>
+          <p class="font-semibold mt-3">Nadie persigue pagos</p>
+          <p class="text-sm text-[var(--muted)] mt-1">Mercado Pago cobra solo. Tu equipo no manda links ni recuerda
+            fechas de pago.</p>
         </div>
       </div>
     </section>
@@ -498,7 +495,8 @@
       </div>
       <p class="mt-4 text-sm text-[var(--muted)] scroll-reveal">
         Los montos no incluyen el 8% del recibo por honorarios. La comisión de Mercado Pago la cobra Mercado Pago
-        directamente a tu negocio: 3.49% + S/1 + IGV con acreditación inmediata, según su tarifario público.
+        directamente a tu negocio: 3.49% + S/1 + IGV con el dinero al instante, según su página de suscripciones
+        (revisada el 18 de noviembre de 2026).
       </p>
       <p class="mt-2 text-sm text-[var(--muted)] scroll-reveal">
         Tres semanas de desarrollo, una de estabilización acompañada y dos meses de soporte incluidos.
@@ -513,10 +511,10 @@
       <div class="faq scroll-reveal" style="max-width:76ch">
         <details open>
           <summary>¿Se pueden cobrar suscripciones automáticas en Shopify con Mercado Pago?</summary>
-          <p>Con las apps del Shopify App Store, no. Shopify solo ejecuta el cobro de un contrato de suscripción a través
-            de cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe. Mercado Pago no está en
-            esa lista. Sí es posible con una aplicación construida a medida e instalada en tu tienda, que es lo que
-            hacemos nosotros.</p>
+          <p>Sí, con una app construida a medida e instalada en tu tienda, que es lo que hacemos. Shopify solo ejecuta
+            el cobro de un contrato de suscripción con cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net,
+            Adyen y Stripe, y ninguna es Mercado Pago. Por eso las apps más usadas mandan un link de pago cada mes. La
+            nuestra cobra sola.</p>
         </details>
         <details>
           <summary>¿Por qué Recharge, Appstle, Loop o Seal no me sirven en Perú?</summary>
@@ -549,15 +547,13 @@
         </details>
         <details>
           <summary>¿Qué comisión cobra Mercado Pago en Perú?</summary>
-          <p>Según su tarifario público: 3.49% + S/1 + IGV con acreditación inmediata, o 3.29% + S/1 + IGV a catorce
-            días. Es tarifa única para crédito, débito, efectivo y Yape, y la cobra Mercado Pago directamente a tu
-            negocio.</p>
+          <p>Según su página de suscripciones (revisada el 18 de noviembre de 2026): 3.49% + S/1 + IGV con el dinero al
+            instante, o 3.29% + S/1 + IGV a catorce días, para crédito, débito y dinero en cuenta. La cobra Mercado Pago
+            directamente a tu negocio.</p>
         </details>
         <details>
           <summary>¿En qué países funciona?</summary>
-          <p>Donde Mercado Pago ofrece cobros recurrentes y Shopify Payments no llega: Perú, Chile, Colombia, Argentina y
-            Uruguay. México queda fuera del problema porque ahí sí hay Shopify Payments y las apps globales funcionan de
-            fábrica.</p>
+          <p>Para tiendas Shopify en Perú. Para otro país, la adaptamos a pedido.</p>
         </details>
       </div>
     </section>

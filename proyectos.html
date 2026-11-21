@@ -5,173 +5,982 @@
   <script>document.documentElement.classList.add('js')</script>
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proyectos Destacados • PIXEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Proyectos: Lab Nutrition y tiendas Shopify • PIXEL</title>
   <meta name="description"
-    content="Conoce nuestros casos de éxito. Proyectos reales para clientes como Virago Dress, Lab Nutrition y Fiji Swimwear con resultados exponenciales.">
+    content="Lab Nutrition corre el sistema completo de Pixel: suscripciones con cobro automático por Mercado Pago y Asesor Digital. Además, tiendas Shopify, anuncios y producción visual para Virago Dress, Fiji Swimwear y TeenLife Perú.">
+  <link rel="canonical" href="https://pixeldigital.vercel.app/proyectos.html">
 
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="Pixel Digital">
+  <meta property="og:url" content="https://pixeldigital.vercel.app/proyectos.html">
+  <meta property="og:title" content="Proyectos • PIXEL">
+  <meta property="og:description"
+    content="Lab Nutrition, la primera marca con todo el sistema: suscripciones, Asesor Digital y más. Y las tiendas de Virago Dress, Fiji Swimwear y TeenLife Perú.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#F5F1E8">
 
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fuentes servidas desde la propia web. Las dos que pintan la portada se piden primero. -->
+  <link rel="preload" href="fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="base.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
-    /* Forzar que el contenido sea visible aunque main.js falle */
-    .scroll-reveal {
-      opacity: 1 !important;
-      transform: none !important;
-      visibility: visible !important;
-    }
+    @font-face { font-family: 'Bebas Neue'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/bebas-neue-400.woff2) format('woff2'); }
+    @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/ibm-plex-mono-400.woff2) format('woff2'); }
+    @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 600; font-display: swap; src: url(fonts/ibm-plex-mono-600.woff2) format('woff2'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url(fonts/playfair-display-700.woff2) format('woff2'); }
 
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-border: 1px solid rgba(198, 52, 30, 0.15);
+    /* ===== Proyectos =====
+       Regla de la página: se muestra lo que hicimos y cómo funciona. Ninguna cifra
+       de resultados sin fuente y sin el permiso del cliente.                     */
+
+    .sus-eyebrow {
+      font-family: var(--fuente-mono);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
       color: var(--rojo-acento);
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      padding: 0.5rem 1rem;
-margin-top: 1rem;
+      font-weight: 600;
     }
 
-    .case-img {
-      height: 24rem;
-      width: 100%;
-      object-fit: cover;
-box-shadow: 0 10px 25px rgba(0, 0, 0, .12);
-      background: #eee;
+    /* Los anclas quedan debajo de la cabecera. Con Lenis no hace falta: main.js ya descuenta 80px
+       y Lenis sumaría este margen otra vez. */
+    html:not(.lenis) main section[id],
+    html:not(.lenis) main article[id] {
+      scroll-margin-top: 5.5rem;
     }
 
-    @media (min-width: 768px) {
-      .case-img {
-        height: 30rem;
+    /* Portada */
+    .pj-hero h1 .text-highlight {
+      display: inline-block;
+      vertical-align: bottom;
+      padding: 0 .1em .06em;
+    }
+
+    .pj-indice {
+      margin-top: 2.6rem;
+    }
+
+    .pj-indice .idx__d {
+      font-size: .82rem;
+    }
+
+    @media (min-width: 820px) {
+      .pj-indice li > a {
+        grid-template-columns: 3rem 16rem 1fr auto;
       }
     }
 
-    .section-divider {
-      text-align: center;
-      position: relative;
-      margin: 4rem 0 2rem;
+    /* Vista previa que sigue al mouse por el índice (solo escritorio con mouse y con movimiento). */
+    .pj-vista {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 30;
+      width: 300px;
+      height: 225px;
+      margin: -112px 0 0 36px;
+      pointer-events: none;
     }
 
-    .section-divider::before {
+    .pj-vista__in {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border: 1px solid var(--tinta);
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(.86) rotate(-2deg);
+      transition: opacity .25s ease, transform .45s var(--suave);
+    }
+
+    .pj-vista.on .pj-vista__in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .pj-vista__in img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pj-vista__in.es-lab {
+      background: var(--tinta);
+      display: grid;
+      place-items: center;
+    }
+
+    .pj-vista__in.es-lab img {
+      width: 62%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* ===== Caso destacado: Lab Nutrition ===== */
+    .caso {
+      background: var(--tinta);
+      color: var(--fondo-crema);
+      padding: clamp(1.6rem, 5vw, 4rem);
+      margin-top: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .caso::before {
+      content: 'LAB';
+      position: absolute;
+      right: -.04em;
+      top: -.12em;
+      font-family: var(--fuente-display);
+      font-size: clamp(10rem, 34vw, 30rem);
+      line-height: 1;
+      color: rgba(245, 241, 232, .04);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .caso > * {
+      position: relative;
+    }
+
+    .caso__top {
+      display: grid;
+      gap: 2.6rem;
+    }
+
+    @media (min-width: 1024px) {
+      .caso__top {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+        gap: 3.5rem;
+        align-items: center;
+      }
+    }
+
+    .lab__k {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .66rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #D9D1C2;
+    }
+
+    .vivo {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #43B36F;
+      flex: 0 0 auto;
+      animation: vivo 2.2s ease-out infinite;
+    }
+
+    @keyframes vivo {
+      0% { box-shadow: 0 0 0 0 rgba(67, 179, 111, .55) }
+      70% { box-shadow: 0 0 0 10px rgba(67, 179, 111, 0) }
+      100% { box-shadow: 0 0 0 0 rgba(67, 179, 111, 0) }
+    }
+
+    .caso__marca {
+      display: inline-block;
+      margin: 1.5rem 0 1.4rem;
+      line-height: 0;
+      transition: transform .3s var(--suave);
+    }
+
+    .caso__marca:hover {
+      transform: translateY(-2px);
+    }
+
+    .caso__marca img {
+      height: 56px;
+      width: auto;
+    }
+
+    .caso .headline {
+      color: var(--fondo-crema);
+    }
+
+    .caso__p {
+      margin-top: 1.1rem;
+      max-width: 56ch;
+      color: #D9D1C2;
+    }
+
+    .caso__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .9rem 1.6rem;
+      margin-top: 1.9rem;
+    }
+
+    .caso .btn {
+      background: var(--fondo-crema);
+      color: var(--tinta);
+      border-color: var(--fondo-crema);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .caso .btn:hover {
+      background: var(--rojo-acento);
+      border-color: var(--rojo-acento);
+      color: var(--fondo-crema);
+    }
+
+    .caso__cot {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--fondo-crema);
+      border-bottom: 1px solid currentColor;
+      transition: color .2s ease;
+    }
+
+    .caso__cot:hover {
+      color: #FF8A70;
+    }
+
+    /* Diagrama: dos carriles, un punto que recorre cada uno. Sin JS o con menos movimiento: quieto y completo. */
+    .sis {
+      margin: 0;
+      container-type: inline-size;
+      border: 1px solid rgba(245, 241, 232, .22);
+      background: rgba(245, 241, 232, .03);
+      padding: 1.2rem 1.1rem 1.4rem;
+      display: grid;
+      gap: 1.7rem;
+    }
+
+    .sis__cap {
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #A79E90;
+    }
+
+    .sis__nom {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: var(--fuente-display);
+      font-size: 1.45rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--fondo-crema);
+      margin-bottom: .85rem;
+    }
+
+    .sis__nom span {
+      display: inline-grid;
+      place-items: center;
+      width: 1.45rem;
+      height: 1.45rem;
+      border: 1px solid var(--rojo-acento);
+      color: var(--rojo-acento);
+      font-family: var(--fuente-mono);
+      font-size: .62rem;
+    }
+
+    .sis__via {
+      position: relative;
+      padding-left: 1.6rem;
+    }
+
+    .sis__via::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--linea-clara);
+      left: .45rem;
+      top: .5rem;
+      bottom: .5rem;
+      width: 1px;
+      background: rgba(245, 241, 232, .28);
     }
 
-    .section-divider span {
+    .sis__pasos {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: .55rem;
+    }
+
+    .sis__pasos li {
       position: relative;
-      background: var(--fondo-crema);
-      padding: 0 1.5rem;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 600;
+      border: 1px solid rgba(245, 241, 232, .24);
+      background: var(--tinta);
+      padding: .62rem .75rem;
+      font-size: .78rem;
+      line-height: 1.4;
+      color: #E9E2D4;
+    }
+
+    .sis__pasos li::before {
+      content: '';
+      position: absolute;
+      left: calc(-1.15rem - 4px);
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      margin-top: -3.5px;
+      border-radius: 50%;
+      background: var(--tinta);
+      border: 1px solid rgba(245, 241, 232, .55);
+    }
+
+    .sis__punto {
+      position: absolute;
+      left: calc(.45rem - 5px);
+      top: .5rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--rojo-acento);
+      box-shadow: 0 0 0 4px rgba(198, 52, 30, .3), 0 0 18px rgba(198, 52, 30, .65);
+      opacity: 0;
+    }
+
+    .sis__vuelta {
+      margin-top: .7rem;
+      font-size: .66rem;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      color: #A79E90;
+    }
+
+    .sis__vuelta b {
+      color: var(--rojo-acento);
+      font-weight: 600;
+    }
+
+    @container (min-width: 520px) {
+      .sis__via {
+        padding: 1.2rem 0 0;
+      }
+
+      .sis__via::before {
+        left: 0;
+        right: 0;
+        top: .45rem;
+        bottom: auto;
+        width: auto;
+        height: 1px;
+      }
+
+      .sis__pasos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: .6rem;
+      }
+
+      .sis__pasos li {
+        min-height: 4.6rem;
+      }
+
+      .sis__pasos li::before {
+        left: 50%;
+        top: calc(-.75rem - 4px);
+        margin: 0 0 0 -3.5px;
+      }
+
+      .sis__punto {
+        left: 0;
+        top: calc(.45rem - 5px);
+      }
+    }
+
+    @keyframes sis-v {
+      0% { top: .5rem; opacity: 0 }
+      6%, 92% { opacity: 1 }
+      100% { top: calc(100% - .5rem - 11px); opacity: 0 }
+    }
+
+    @keyframes sis-h {
+      0% { left: 0; opacity: 0 }
+      6%, 92% { opacity: 1 }
+      100% { left: calc(100% - 11px); opacity: 0 }
+    }
+
+    @keyframes sis-paso {
+      0%, 9% { background: var(--tinta); border-color: rgba(245, 241, 232, .24); color: #E9E2D4 }
+      16%, 30% { background: var(--rojo-acento); border-color: var(--rojo-acento); color: var(--fondo-crema) }
+      44%, 100% { background: var(--tinta); border-color: rgba(245, 241, 232, .5); color: #E9E2D4 }
+    }
+
+    @keyframes sis-vuelta {
+      0%, 84% { color: #A79E90 }
+      90%, 98% { color: var(--fondo-crema) }
+      100% { color: #A79E90 }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html.anima .sis__punto {
+        animation: sis-v 3.6s linear infinite paused;
+      }
+
+      html.anima .sis__pasos li {
+        animation: sis-paso 3.6s linear infinite paused;
+        animation-delay: calc(var(--i) * 1.2s);
+      }
+
+      html.anima .sis__vuelta {
+        animation: sis-vuelta 3.6s linear infinite paused;
+      }
+
+      html.anima .sis__carril--ase .sis__punto {
+        animation-delay: 1.8s;
+      }
+
+      html.anima .sis__carril--ase .sis__pasos li {
+        animation-delay: calc(1.8s + var(--i) * 1.2s);
+      }
+
+      html.anima .sis.corre .sis__punto,
+      html.anima .sis.corre .sis__pasos li,
+      html.anima .sis.corre .sis__vuelta {
+        animation-play-state: running;
+      }
+
+      @container (min-width: 520px) {
+        html.anima .sis__punto {
+          animation-name: sis-h;
+        }
+      }
+    }
+
+    /* Módulos que corren en su tienda */
+    .caso__mods {
+      list-style: none;
+      margin: 2.8rem 0 0;
+      padding: 0;
+      border-top: 1px solid rgba(245, 241, 232, .35);
+    }
+
+    .caso__mods li {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: .25rem .8rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(245, 241, 232, .14);
+    }
+
+    .caso__mods b {
+      font-family: var(--fuente-display);
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--fondo-crema);
+    }
+
+    .caso__mods li > span:last-child {
+      grid-column: 2;
+      font-size: .82rem;
+      color: #D9D1C2;
+    }
+
+    .lab__n {
+      font-size: .68rem;
+      letter-spacing: .1em;
+      color: var(--rojo-acento);
+      padding-top: .35rem;
+    }
+
+    @media (min-width: 900px) {
+      .caso__mods {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .caso__mods li {
+        border-bottom: 0;
+        border-right: 1px solid rgba(245, 241, 232, .14);
+        padding: 1.3rem 1.3rem 0 0;
+      }
+
+      .caso__mods li + li {
+        padding-left: 1.3rem;
+      }
+
+      .caso__mods li:last-child {
+        border-right: 0;
+      }
+    }
+
+    /* Un año de cobros: ilustración, no dato. */
+    .anio {
+      margin-top: 2.8rem;
+      border-top: 1px solid rgba(245, 241, 232, .35);
+      padding-top: 1.4rem;
+      display: grid;
+      gap: 1.3rem;
+    }
+
+    @media (min-width: 900px) {
+      .anio {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
+        align-items: end;
+        gap: 2.6rem;
+      }
+    }
+
+    .anio .k {
+      color: #A79E90;
+    }
+
+    .anio__tit {
+      margin-top: .55rem;
+      font-family: var(--fuente-display);
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      line-height: .95;
+      text-transform: uppercase;
+      color: var(--fondo-crema);
+    }
+
+    .anio__m {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 4px;
+    }
+
+    .anio__m li {
+      position: relative;
+      aspect-ratio: 1 / 1.45;
+      background: rgba(245, 241, 232, .07);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: .3rem;
+    }
+
+    .anio__m li::before {
+      content: '✓';
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding-bottom: 1rem;
+      background: var(--rojo-acento);
+      color: var(--fondo-crema);
+      font-size: clamp(.7rem, 2vw, 1.1rem);
+      transition: transform .55s var(--suave);
+      transition-delay: calc(var(--i) * 110ms);
+    }
+
+    .anio__m span {
+      position: relative;
+      font-size: clamp(.46rem, 1.4vw, .62rem);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--fondo-crema);
+    }
+
+    html.anima .anio:not(.en-vista) .anio__m li::before {
+      transform: translateY(101%);
+    }
+
+    /* ===== Matriz: qué hicimos en cada marca ===== */
+    .mx {
+      overflow-x: auto;
+    }
+
+    .mx__t {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .78rem;
+    }
+
+    .mx__t th,
+    .mx__t td {
+      border-bottom: 1px solid var(--linea-clara);
+      padding: .85rem .35rem;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .mx__t thead th {
+      border-bottom: 1px solid var(--tinta);
+      font-size: .6rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .mx__t thead th.es-lab {
       color: var(--rojo-acento);
     }
 
-    .filter-bar {
+    .mx__t tbody th {
+      text-align: left;
+      padding-left: 0;
+      font-family: var(--fuente-display);
+      font-weight: 400;
+      font-size: 1.3rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--tinta);
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+
+    .mx__t tbody tr:hover th {
+      color: var(--rojo-acento);
+    }
+
+    .mx__t td::before {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 2px;
+      vertical-align: middle;
+      background: var(--linea-fuerte);
+    }
+
+    .mx__t td.si::before {
+      width: 22px;
+      height: 22px;
+      background: var(--rojo-acento);
+      transition: transform .45s var(--suave);
+      transition-delay: calc(var(--d) * 40ms);
+    }
+
+    .mx__t td.mx__tot {
+      text-align: left;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      color: var(--tinta);
+      padding-right: 0;
+    }
+
+    .mx__t td.mx__tot::before {
+      display: none;
+    }
+
+    .mx__barra {
+      display: inline-block;
+      vertical-align: middle;
+      width: calc(var(--v) * 72px);
+      height: 6px;
+      margin-right: .55rem;
+      background: var(--tinta);
+      transform-origin: 0 50%;
+      transition: transform .9s var(--suave) .35s;
+    }
+
+    html.anima .mx:not(.en-vista) td.si::before {
+      transform: scale(0);
+    }
+
+    html.anima .mx:not(.en-vista) .mx__barra {
+      transform: scaleX(0);
+    }
+
+    @media (max-width: 559px) {
+      .mx__t thead th:not(:first-child) {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        padding: .5rem .2rem;
+        text-align: left;
+      }
+
+      .mx__t tbody th {
+        font-size: 1.1rem;
+        white-space: normal;
+      }
+
+      .mx__t td.si::before {
+        width: 18px;
+        height: 18px;
+      }
+
+      .mx__barra {
+        display: none;
+      }
+    }
+
+    /* ===== Más proyectos: tarjetas que se apilan al bajar (escritorio y tableta) ===== */
+    .pila {
+      display: grid;
+      gap: 2.6rem;
+    }
+
+    .pj {
+      display: grid;
+      gap: 1.3rem;
+      background: var(--fondo-crema);
+      border-top: 1px solid var(--tinta);
+      padding-top: 1.3rem;
+    }
+
+    @media (min-width: 768px) {
+      .pj {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 2.6rem;
+        align-items: center;
+        padding: 1.6rem 0;
+      }
+
+      .pj:nth-child(even) .pj__img {
+        order: 2;
+      }
+    }
+
+    @media (min-width: 768px) and (min-height: 640px) {
+      .pila {
+        gap: 3.5rem;
+      }
+
+      .pj {
+        position: sticky;
+        top: calc(4.9rem + var(--i) * 14px);
+      }
+    }
+
+    .pj__img {
+      background: #fff;
+      border: 1px solid var(--linea-clara);
+    }
+
+    .pj__img img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .pj__n {
+      font-size: .66rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--rojo-acento);
+    }
+
+    .pj__t {
+      margin: .45rem 0 .9rem;
+      font-family: var(--fuente-display);
+      font-weight: 400;
+      font-size: clamp(2.7rem, 6vw, 4.8rem);
+      line-height: .9;
+      text-transform: uppercase;
+      color: var(--tinta);
+    }
+
+    .pj__txt > p:not(.pj__n) {
+      max-width: 52ch;
+    }
+
+    .pj__tags {
+      list-style: none;
+      margin: 1.15rem 0 0;
+      padding: 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      justify-content: center;
+      gap: .4rem;
     }
 
-    .filter-btn {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 600;
+    .pj__tags li {
+      border: 1px solid var(--linea-fuerte);
+      padding: .28rem .65rem;
+      font-size: .62rem;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.5rem 1.25rem;
-border: 1px solid var(--linea-clara);
-color: var(--gris-oscuro);
-      cursor: pointer;
-      transition: all .3s ease;
+      color: var(--gris-oscuro);
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--rojo-acento);
-      color: var(--fondo-crema);
+    .pj__link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: 1.4rem;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--tinta);
+      border-bottom: 1px solid var(--tinta);
+      padding-bottom: 2px;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .pj__link:hover {
+      color: var(--rojo-acento);
       border-color: var(--rojo-acento);
     }
 
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+    .pj__link .ico {
+      width: 14px;
+      height: 14px;
     }
 
-    .portfolio-card {
-overflow: hidden;
-      border: 1px solid var(--linea-clara);
-      background: #fff;
-      transition: all .4s ease;
-      display: block;
-      color: var(--gris-oscuro);
-      text-decoration: none;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-6px);
-}
-
-    .portfolio-card-icon {
-      width: 100%;
-      height: 180px;
+    /* ===== Producción visual (Behance) ===== */
+    .filtros {
       display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .filtro {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid var(--linea-clara);
-    }
-
-    .portfolio-card-icon i {
-      font-size: 2.8rem;
-      color: var(--rojo-acento);
-    }
-
-    .portfolio-card-body {
-      padding: 1.25rem;
-    }
-
-    .portfolio-card-body h3 {
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .portfolio-card-body p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .portfolio-category {
-      display: inline-block;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      font-weight: 600;
+      gap: .45rem;
+      min-height: 44px;
+      padding: .5rem .95rem;
+      border: 1px solid var(--tinta);
+      border-radius: 2px;
+      font-size: .68rem;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 0.2rem 0.6rem;
-background: rgba(198, 52, 30, 0.08);
+      font-weight: 600;
+      color: var(--tinta);
+      transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .filtro span {
+      font-size: .6rem;
+      color: var(--muted);
+    }
+
+    .filtro:hover {
+      border-color: var(--rojo-acento);
       color: var(--rojo-acento);
-      margin-bottom: 0.5rem;
+    }
+
+    .filtro[aria-pressed="true"] {
+      background: var(--tinta);
+      border-color: var(--tinta);
+      color: var(--fondo-crema);
+    }
+
+    .filtro[aria-pressed="true"] span {
+      color: #A79E90;
+    }
+
+    .bh {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      column-gap: 1.6rem;
+      border-top: 1px solid var(--tinta);
+    }
+
+    @media (min-width: 640px) {
+      .bh {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .bh a {
+        min-height: 15rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .bh {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .bh li[hidden] {
+      display: none;
+    }
+
+    .bh a {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      height: 100%;
+      padding: 1.3rem .9rem 1.2rem;
+      border-bottom: 1px solid var(--linea-clara);
+      color: var(--gris-oscuro);
+      transition: background-color .3s var(--suave), color .3s var(--suave);
+    }
+
+    .bh__cat {
+      font-size: .62rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--rojo-acento);
+    }
+
+    .bh__t {
+      font-family: var(--fuente-display);
+      font-size: 2.3rem;
+      line-height: .95;
+      text-transform: uppercase;
+      color: var(--tinta);
+      transition: color .3s var(--suave);
+    }
+
+    .bh__d {
+      font-size: .8rem;
+      line-height: 1.55;
+    }
+
+    .bh__ir {
+      margin-top: auto;
+      padding-top: .6rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .66rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--tinta);
+      transition: color .3s var(--suave);
+    }
+
+    .bh__ir .ico {
+      transition: transform .3s var(--suave);
+    }
+
+    .bh a:hover,
+    .bh a:focus-visible {
+      background: var(--tinta);
+      color: #D9D1C2;
+    }
+
+    .bh a:hover .bh__t,
+    .bh a:hover .bh__ir,
+    .bh a:focus-visible .bh__t,
+    .bh a:focus-visible .bh__ir {
+      color: var(--fondo-crema);
+    }
+
+    .bh a:hover .bh__ir .ico {
+      transform: translate(3px, -3px);
+    }
+
+    /* El filtro usa su propia transición de vista: la página no se funde, solo se mueven las piezas. */
+    html.vt-filtro::view-transition-old(root),
+    html.vt-filtro::view-transition-new(root) {
+      animation: none;
+    }
+
+    html.vt-filtro::view-transition-group(*) {
+      animation-duration: .5s;
+      animation-timing-function: var(--suave);
     }
   </style>
   <script type="application/ld+json">
@@ -179,11 +988,20 @@ background: rgba(198, 52, 30, 0.08);
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Proyectos de Pixel Digital",
-    "description": "Tiendas Shopify, apps propias y campanas ejecutadas por Pixel Digital para marcas peruanas.",
+    "description": "Lab Nutrition corre el sistema completo de Pixel: suscripciones con cobro automatico por Mercado Pago y Asesor Digital. Ademas, tiendas Shopify, anuncios y produccion visual para Virago Dress, Fiji Swimwear y TeenLife Peru.",
     "url": "https://pixeldigital.vercel.app/proyectos.html",
     "inLanguage": "es-PE",
     "isPartOf": { "@type": "WebSite", "name": "Pixel Digital", "url": "https://pixeldigital.vercel.app/" },
-    "publisher": { "@id": "https://pixeldigital.vercel.app/#organizacion" }
+    "publisher": { "@id": "https://pixeldigital.vercel.app/#organizacion" },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Lab Nutrition: suscripciones con cobro automatico, Asesor Digital, integraciones y paid media", "url": "https://pixeldigital.vercel.app/proyectos.html#lab-nutrition" },
+        { "@type": "ListItem", "position": 2, "name": "Virago Dress: tienda Shopify, paid media y diseno", "url": "https://pixeldigital.vercel.app/proyectos.html#virago-dress" },
+        { "@type": "ListItem", "position": 3, "name": "Fiji Swimwear: tienda Shopify, integraciones, paid media y fotografia", "url": "https://pixeldigital.vercel.app/proyectos.html#fiji-swimwear" },
+        { "@type": "ListItem", "position": 4, "name": "TeenLife Peru: tienda Shopify, paid media y fotografia", "url": "https://pixeldigital.vercel.app/proyectos.html#teenlife-peru" }
+      ]
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -209,11 +1027,22 @@ background: rgba(198, 52, 30, 0.08);
   <noscript><img height="1" width="1" style="display:none" alt=""
   src="https://www.facebook.com/tr?id=4748549178756369&ev=PageView&noscript=1"/></noscript>
   <!-- Fin Meta Pixel -->
+  <!-- Tailwind compilado (antes venía del CDN). Va al final del head, como lo inyectaba el CDN. -->
+  <link rel="stylesheet" href="tw.css">
 </head>
 
 <body>
-  <div class="cursor-dot"></div>
-  <div class="cursor-outline"></div>
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/> <line x1="4" x2="20" y1="6" y2="6"/> <line x1="4" x2="20" y1="18" y2="18"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/> <path d="m6 6 12 12"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/> <path d="M7 17 17 7"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/> <path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></symbol>
+    <symbol id="i-behance" viewBox="0 0 24 24"><path fill="currentColor" d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></symbol>
+    </svg>
 
   <header
     class="sticky top-0 left-0 right-0 z-40 bg-fondo-crema/80 border-b border-[var(--linea-clara)]">
@@ -222,233 +1051,369 @@ background: rgba(198, 52, 30, 0.08);
         <span class="logo-text">Pixel.</span>
       </a>
       <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[var(--gris-oscuro)]">
-        <a href="proyectos.html" class="nav-link transition-colors active">Proyectos</a>
-        <a href="caso-de-estudio.html" class="nav-link transition-colors">Caso de Estudio</a>
+        <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
+        <a href="asesor-digital.html" class="nav-link transition-colors">Asesor IA</a>
+        <a href="servicios.html" class="nav-link transition-colors">Servicios</a>
+        <a href="proyectos.html" class="nav-link transition-colors active" aria-current="page">Proyectos</a>
         <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
-        <a href="servicios.html" class="nav-cta">
-          Servicios
-        </a>
+        <a href="index.html#cotiza" class="nav-cta">Cotiza</a>
       </nav>
       <button id="mobile-menu-btn" class="lg:hidden text-2xl text-[var(--gris-oscuro)]"
-        aria-label="Abrir menú de navegación" aria-expanded="false">
-        <i class="fas fa-bars"></i>
+        aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="ico ico-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="ico ico-x" aria-hidden="true"><use href="#i-x"/></svg>
       </button>
     </div>
     <div id="mobile-menu" class="hidden lg:hidden bg-fondo-crema border-t border-[var(--linea-clara)]">
       <a href="index.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Inicio</a>
-      <a href="proyectos.html"
-        class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active">Proyectos</a>
-      <a href="caso-de-estudio.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Caso
-        de Estudio</a>
+      <a href="suscripciones.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Suscripciones</a>
+      <a href="asesor-digital.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Asesor IA</a>
+      <a href="servicios.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Servicios</a>
+      <a href="proyectos.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link active"
+        aria-current="page">Proyectos</a>
       <a href="contacto.html" class="block text-center py-3 border-b border-[var(--linea-clara)] nav-link">Contacto</a>
-      <a href="servicios.html"
-        class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
-        Servicios
+      <a href="index.html#cotiza" class="block text-center py-3 nav-link font-bold text-[var(--rojo-acento)]">
+        Cotiza
       </a>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 pt-20 pb-20">
-    <h1 class="headline text-center text-5xl md: mb-4 scroll-reveal">Nuestros Proyectos</h1>
-    <p class="text-center text-lg text-[var(--muted)] max-w-2xl mx-auto mb-16 scroll-reveal">Resultados reales para
-      marcas de moda y lifestyle que confían en nuestra estrategia digital 360°.</p>
+  <main class="max-w-7xl mx-auto px-4">
 
-    <div class="space-y-24">
+    <!-- ===== PORTADA ===== -->
+    <section class="pj-hero pt-10 pb-12 md:pt-20 md:pb-16">
+      <p class="sus-eyebrow">Proyectos</p>
+      <h1 class="headline hero-headline mt-4">Tiendas que venden.<br>Apps que <span class="text-highlight">cobran</span> solas.</h1>
+      <p class="mt-5 max-w-2xl md:text-lg">Lo que construimos para marcas peruanas: tiendas Shopify, apps propias, anuncios y
+        producción visual. Sin cifras de adorno: qué hicimos y cómo funciona.</p>
 
-      <!-- 1) VIRAGO DRESS -->
-      <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://viragodress.com/" target="_blank" class="block group">
-          <img class="case-img"
-            src="https://viragodress.com/cdn/shop/files/Untitled_design_5_c5dfd773-88f0-4791-97ee-f09cc3460370.webp?v=1759603825&width=1440"
-            alt="Virago Dress – Shopify + Paid Media" draggable="false">
-        </a>
+      <ol class="idx pj-indice" aria-label="Proyectos en esta página">
+        <li class="hot"><a href="#lab-nutrition" data-vista="lab">
+          <span class="idx__n">01</span>
+          <span class="idx__t">Lab Nutrition</span>
+          <span class="idx__d">Suscripciones, Asesor Digital, integraciones y paid media.</span>
+          <span class="idx__tag">Caso destacado</span>
+        </a></li>
+        <li><a href="#virago-dress" data-vista="img/virago.webp">
+          <span class="idx__n">02</span>
+          <span class="idx__t">Virago Dress</span>
+          <span class="idx__d">Tienda Shopify, paid media y diseño.</span>
+          <span class="idx__tag">Moda</span>
+        </a></li>
+        <li><a href="#fiji-swimwear" data-vista="img/fiji.webp">
+          <span class="idx__n">03</span>
+          <span class="idx__t">Fiji Swimwear</span>
+          <span class="idx__d">Tienda Shopify, integraciones, paid media y fotografía.</span>
+          <span class="idx__tag">Ropa de baño</span>
+        </a></li>
+        <li><a href="#teenlife-peru" data-vista="img/teenlife.webp">
+          <span class="idx__n">04</span>
+          <span class="idx__t">TeenLife Perú</span>
+          <span class="idx__d">Tienda Shopify, paid media y fotografía.</span>
+          <span class="idx__tag">Moda íntima</span>
+        </a></li>
+      </ol>
+    </section>
+
+    <!-- ===== CINTA ===== -->
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta__t">
+        <span>Lab Nutrition</span><span>Virago Dress</span><span>Fiji Swimwear</span><span>TeenLife Perú</span>
+        <span>Lab Nutrition</span><span>Virago Dress</span><span>Fiji Swimwear</span><span>TeenLife Perú</span>
+      </div>
+    </div>
+
+    <!-- ===== CASO DESTACADO: LAB NUTRITION =====
+         Con permiso escrito de Lab (confirmado por Israel el 21 nov 2026): nombre, logo y enlace.
+         Sin cifras de resultados hasta que Lab apruebe una con su fuente. -->
+    <section class="caso" id="lab-nutrition" aria-labelledby="caso-titulo">
+      <div class="caso__top">
         <div>
-          <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Virago Dress</div>
-          <h2 class="headline mt-4">Ecommerce que <span class="text-highlight">escala</span></h2>
-          <p class="text-lg mt-4">
-            Montamos la tienda en Shopify con arquitectura de conversión y ejecutamos una estrategia de Paid Media
-            full‑funnel.
-            Resultado: <strong>crecimiento sostenido en ventas</strong> y un <strong>posicionamiento sólido</strong> en
-            su categoría.
-          </p>
-          <div class="result-badge">
-            <i class="fas fa-arrow-trend-up"></i> Crecimiento sostenido
-          </div>
-          <div class="mt-5">
-            <span class="project-tag">Shopify</span>
-            <span class="project-tag">Paid Media</span>
-            <span class="project-tag">Estrategia 360</span>
-          </div>
-          <a href="https://viragodress.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
-        </div>
-      </section>
-
-      <!-- 2) LAB NUTRITION -->
-      <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <div class="md:order-2">
-          <a href="https://www.labnutrition.com/" target="_blank" class="block group">
-            <img class="case-img"
-              src="https://labnutrition.com/cdn/shop/files/3191528b-33f3-44bc-9137-6f6ffc64eeee___a81ddadab3c7465f52f89d25bc2c532c_52fb5518-353c-4554-bf1a-809bcc04ecdf.webp?v=1765394017&width=1440"
-              alt="Lab Nutrition – CRM + Paid Media 360 + Integraciones" draggable="false">
+          <p class="lab__k"><span class="vivo" aria-hidden="true"></span>Caso destacado · Ya cobra en producción en Perú</p>
+          <a class="caso__marca" href="https://www.labnutrition.com/" target="_blank" rel="noopener"
+            aria-label="Lab Nutrition: abre su tienda en otra pestaña">
+            <img src="img/lab-nutrition-logo.svg" alt="Lab Nutrition" width="166" height="69" decoding="async">
           </a>
-        </div>
-        <div class="md:order-1">
-          <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Lab Nutrition</div>
-          <h2 class="headline mt-4">Escala con <span class="text-highlight">sistema</span></h2>
-          <p class="text-lg mt-4">
-            Estrategia 360: CRM, automatizaciones, integraciones y Paid Media multicanal.
-            Resultado: <strong>+45% de crecimiento</strong> vs. 2024 y una operación preparada para escalar.
-          </p>
-          <div class="result-badge">
-            <i class="fas fa-chart-line"></i> +45% crecimiento vs. 2024
+          <h2 class="headline" id="caso-titulo">La primera marca<br>con <span class="text-highlight">todo</span> el sistema.</h2>
+          <p class="caso__p">Lab Nutrition vende en Shopify. Fue la primera marca en usar todo lo que construimos:
+            suscripciones que se cobran solas con Mercado Pago, un Asesor Digital que vende en el chat y su operación
+            conectada de punta a punta.</p>
+          <div class="caso__ctas">
+            <a class="btn" href="https://www.labnutrition.com/" target="_blank" rel="noopener">Ver su tienda <svg
+                class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+            <a class="caso__cot" href="index.html#cotiza">Cotiza el tuyo →</a>
           </div>
-          <div class="mt-5">
-            <span class="project-tag">CRM</span>
-            <span class="project-tag">Paid Media</span>
-            <span class="project-tag">Integraciones</span>
-            <span class="project-tag">Automatizaciones</span>
-          </div>
-          <a href="https://www.labnutrition.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
         </div>
-      </section>
 
-      <!-- 3) FIJI SWIMWEAR -->
-      <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <div class="md:order-2">
-          <a href="https://fijiswimwear.pe/" target="_blank" class="block group">
-            <img class="case-img"
-              src="https://fijiswimwear.pe/cdn/shop/files/Rebekahkissfrente.png?crop=center&height=1400&v=1770383812&width=1400"
-              alt="Fiji Swimwear – Web + Integraciones + Paid Media" draggable="false">
-          </a>
-        </div>
-        <div class="md:order-1">
-          <div class="font-bold text-4xl text-[var(--gris-oscuro)]">Fiji Swimwear</div>
-          <h2 class="headline mt-4">De cero a <span class="text-highlight">exponencial</span></h2>
-          <p class="text-lg mt-4">
-            Desarrollo web, integraciones clave (pagos, logística y analítica) y lanzamiento de Paid Media.
-            En los <strong>primeros 3 meses</strong> la marca registró un <strong>crecimiento exponencial</strong> en
-            tráfico y ventas.
-          </p>
-          <div class="result-badge">
-            <i class="fas fa-rocket"></i> Crecimiento exponencial en 3 meses
+        <figure class="sis" data-bucle aria-labelledby="sis-cap">
+          <figcaption id="sis-cap" class="sis__cap">Cómo funciona en su tienda</figcaption>
+          <div class="sis__carril sis__carril--sus">
+            <p class="sis__nom"><span>A</span>Suscripciones</p>
+            <div class="sis__via">
+              <ol class="sis__pasos">
+                <li style="--i:0">El cliente se suscribe en la tienda</li>
+                <li style="--i:1">Mercado Pago le cobra solo</li>
+                <li style="--i:2">El pedido entra a Shopify</li>
+              </ol>
+              <i class="sis__punto" aria-hidden="true"></i>
+            </div>
+            <p class="sis__vuelta"><b>↻</b> Cada mes, otra vez. Sin link de pago.</p>
           </div>
-          <div class="mt-5">
-            <span class="project-tag">Shopify</span>
-            <span class="project-tag">Paid Media</span>
-            <span class="project-tag">Desarrollo Web</span>
+          <div class="sis__carril sis__carril--ase">
+            <p class="sis__nom"><span>B</span>Asesor Digital</p>
+            <div class="sis__via">
+              <ol class="sis__pasos">
+                <li style="--i:0">El cliente pregunta en el chat</li>
+                <li style="--i:1">Recomienda con precio y stock reales</li>
+                <li style="--i:2">Arma el pedido y manda el link de pago</li>
+              </ol>
+              <i class="sis__punto" aria-hidden="true"></i>
+            </div>
           </div>
-          <a href="https://fijiswimwear.pe/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
-        </div>
-      </section>
+        </figure>
+      </div>
 
-      <!-- 4) TEENLIFE PERÚ -->
-      <section class="grid md:grid-cols-2 gap-12 items-center scroll-reveal">
-        <a href="https://teenlifeperu.com/" target="_blank" class="block group">
-          <img class="case-img"
-            src="https://teenlifeperu.com/cdn/shop/files/fotos2026-04ASa.png?v=1770486455&width=1440"
-            alt="TeenLife Perú – UX/UI Optimization + Meta Ads" draggable="false">
-        </a>
+      <ol class="caso__mods">
+        <li class="fila"><span class="lab__n">01</span><b>Suscripciones</b><span>Mercado Pago cobra cada mes y el pedido entra solo a su Shopify.</span></li>
+        <li class="fila"><span class="lab__n">02</span><b>Asesor Digital</b><span>Recomienda con su catálogo real: precio y stock de su tienda, no del modelo.</span></li>
+        <li class="fila"><span class="lab__n">03</span><b>Integraciones</b><span>Pedidos, cobros y stock conectados con su sistema interno.</span></li>
+        <li class="fila"><span class="lab__n">04</span><b>Paid media</b><span>Campañas en Meta que llevan gente a su tienda.</span></li>
+      </ol>
+
+      <div class="anio" data-anima>
         <div>
-          <div class="font-bold text-4xl text-[var(--gris-oscuro)]">TeenLife Perú</div>
-          <h2 class="headline mt-4">UX que convierte, Ads que <span class="text-highlight">empujan</span></h2>
-          <p class="text-lg mt-4">
-            Rediseñamos UX/UI para reducir fricción y relanzamos campañas en Meta Ads.
-            El negocio marcó un <strong>+70% en ventas</strong> durante los dos primeros meses post‑optimización.
-          </p>
-          <div class="result-badge">
-            <i class="fas fa-arrow-trend-up"></i> +70% en ventas
+          <p class="k">Un suscriptor mensual, un año · Ilustrativo</p>
+          <p class="anio__tit">Doce cobros automáticos. Ningún link de pago que mandar a mano.</p>
+        </div>
+        <ol class="anio__m" role="img" aria-label="Ilustración: un suscriptor mensual genera un cobro automático cada mes, de enero a diciembre.">
+          <li style="--i:0"><span>Ene</span></li>
+          <li style="--i:1"><span>Feb</span></li>
+          <li style="--i:2"><span>Mar</span></li>
+          <li style="--i:3"><span>Abr</span></li>
+          <li style="--i:4"><span>May</span></li>
+          <li style="--i:5"><span>Jun</span></li>
+          <li style="--i:6"><span>Jul</span></li>
+          <li style="--i:7"><span>Ago</span></li>
+          <li style="--i:8"><span>Set</span></li>
+          <li style="--i:9"><span>Oct</span></li>
+          <li style="--i:10"><span>Nov</span></li>
+          <li style="--i:11"><span>Dic</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== MATRIZ: QUÉ HICIMOS EN CADA MARCA ===== -->
+    <section class="py-20 md:py-24 grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2.1fr)] gap-8 lg:gap-14 items-start"
+      aria-labelledby="mx-titulo">
+      <div class="pegado">
+        <p class="k mb-4">El alcance, marca por marca</p>
+        <h2 class="headline" id="mx-titulo">Qué hicimos<br>en cada una.</h2>
+        <p class="mt-4 text-sm max-w-xs">Cada cuadro rojo es un servicio que le hicimos a esa marca. La última columna
+          suma cuántas lo tienen.</p>
+      </div>
+      <div class="mx" data-anima>
+        <table class="mx__t">
+          <caption class="sr-only">Servicios que Pixel hizo para cada marca</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr-only">Servicio</span></th>
+              <th scope="col" class="es-lab">Lab</th>
+              <th scope="col">Virago</th>
+              <th scope="col">Fiji</th>
+              <th scope="col">TeenLife</th>
+              <th scope="col">Marcas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Tienda Shopify</th>
+              <td><span class="sr-only">No</span></td>
+              <td class="si" style="--d:1"><span class="sr-only">Sí</span></td>
+              <td class="si" style="--d:2"><span class="sr-only">Sí</span></td>
+              <td class="si" style="--d:3"><span class="sr-only">Sí</span></td>
+              <td class="mx__tot"><span class="mx__barra" style="--v:.75"></span>3 de 4</td>
+            </tr>
+            <tr>
+              <th scope="row">Suscripciones</th>
+              <td class="si" style="--d:4"><span class="sr-only">Sí</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td class="mx__tot"><span class="mx__barra" style="--v:.25"></span>1 de 4</td>
+            </tr>
+            <tr>
+              <th scope="row">Asesor Digital</th>
+              <td class="si" style="--d:8"><span class="sr-only">Sí</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td class="mx__tot"><span class="mx__barra" style="--v:.25"></span>1 de 4</td>
+            </tr>
+            <tr>
+              <th scope="row">Integraciones</th>
+              <td class="si" style="--d:12"><span class="sr-only">Sí</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td class="si" style="--d:14"><span class="sr-only">Sí</span></td>
+              <td><span class="sr-only">No</span></td>
+              <td class="mx__tot"><span class="mx__barra" style="--v:.5"></span>2 de 4</td>
+            </tr>
+            <tr>
+              <th scope="row">Paid media</th>
+              <td class="si" style="--d:16"><span class="sr-only">Sí</span></td>
+              <td class="si" style="--d:17"><span class="sr-only">Sí</span></td>
+              <td class="si" style="--d:18"><span class="sr-only">Sí</span></td>
+              <td class="si" style="--d:19"><span class="sr-only">Sí</span></td>
+              <td class="mx__tot"><span class="mx__barra" style="--v:1"></span>4 de 4</td>
+            </tr>
+            <tr>
+              <th scope="row">Foto y diseño</th>
+              <td><span class="sr-only">No</span></td>
+              <td class="si" style="--d:21"><span class="sr-only">Sí</span></td>
+              <td class="si" style="--d:22"><span class="sr-only">Sí</span></td>
+              <td class="si" style="--d:23"><span class="sr-only">Sí</span></td>
+              <td class="mx__tot"><span class="mx__barra" style="--v:.75"></span>3 de 4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== MÁS PROYECTOS ===== -->
+    <section class="pb-12" aria-labelledby="mas-titulo">
+      <div class="grid md:grid-cols-[11rem_1fr] gap-4 md:gap-12 items-end mb-10">
+        <p class="k">Más proyectos</p>
+        <h2 class="headline" id="mas-titulo">Tiendas con<br>marca propia.</h2>
+      </div>
+      <div class="pila">
+        <article class="pj" id="virago-dress" style="--i:0" aria-labelledby="pj-virago">
+          <div class="pj__img project-img-wrap"><img src="img/virago.webp" width="800" height="600"
+              alt="Tienda Shopify de Virago Dress en celular y tableta" loading="lazy" decoding="async"></div>
+          <div class="pj__txt">
+            <p class="pj__n">02 · Moda</p>
+            <h3 class="pj__t" id="pj-virago">Virago Dress</h3>
+            <p>Montamos su tienda en Shopify pensada para convertir y llevamos su paid media de punta a punta, del
+              primer anuncio a la compra.</p>
+            <ul class="pj__tags">
+              <li>Tienda Shopify</li>
+              <li>Paid media</li>
+              <li>Diseño</li>
+            </ul>
+            <a class="pj__link" href="https://viragodress.com/" target="_blank" rel="noopener">viragodress.com <svg
+                class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
           </div>
-          <div class="mt-5">
-            <span class="project-tag">Diseño (UX/UI)</span>
-            <span class="project-tag">Paid Media</span>
+        </article>
+        <article class="pj" id="fiji-swimwear" style="--i:1" aria-labelledby="pj-fiji">
+          <div class="pj__img project-img-wrap"><img src="img/fiji.webp" width="800" height="600"
+              alt="Tienda Shopify de Fiji Swimwear en celular" loading="lazy" decoding="async"></div>
+          <div class="pj__txt">
+            <p class="pj__n">03 · Ropa de baño</p>
+            <h3 class="pj__t" id="pj-fiji">Fiji Swimwear</h3>
+            <p>Desarrollamos su tienda Shopify, conectamos pagos, logística y analítica, y lanzamos sus campañas.
+              También producimos las fotos de sus colecciones.</p>
+            <ul class="pj__tags">
+              <li>Tienda Shopify</li>
+              <li>Integraciones</li>
+              <li>Paid media</li>
+              <li>Fotografía</li>
+            </ul>
+            <a class="pj__link" href="https://fijiswimwear.pe/" target="_blank" rel="noopener">fijiswimwear.pe <svg
+                class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
           </div>
-          <a href="https://teenlifeperu.com/" target="_blank" class="btn mt-6 inline-block">Visitar sitio</a>
-        </div>
-      </section>
+        </article>
+        <article class="pj" id="teenlife-peru" style="--i:2" aria-labelledby="pj-teenlife">
+          <div class="pj__img project-img-wrap"><img src="img/teenlife.webp" width="800" height="600"
+              alt="Tienda de TeenLife Perú en celular y escritorio" loading="lazy" decoding="async"></div>
+          <div class="pj__txt">
+            <p class="pj__n">04 · Moda íntima</p>
+            <h3 class="pj__t" id="pj-teenlife">TeenLife Perú</h3>
+            <p>Rediseñamos su tienda para que comprar tome menos pasos y relanzamos sus campañas en Meta. También
+              producimos su campaña de Navidad.</p>
+            <ul class="pj__tags">
+              <li>Tienda Shopify</li>
+              <li>Paid media</li>
+              <li>Fotografía</li>
+            </ul>
+            <a class="pj__link" href="https://teenlifeperu.com/" target="_blank" rel="noopener">teenlifeperu.com <svg
+                class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    </div>
+    <!-- ===== PRODUCCIÓN VISUAL (BEHANCE) ===== -->
+    <section class="py-20 border-t border-[var(--linea-clara)]" aria-labelledby="pv-titulo">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
+        <div>
+          <p class="k mb-4">Portafolio en Behance</p>
+          <h2 class="headline" id="pv-titulo">Producción<br>visual.</h2>
+        </div>
+        <div class="filtros" role="group" aria-label="Filtrar producciones">
+          <button type="button" class="filtro" data-filtro="todo" aria-pressed="true">Todo <span>6</span></button>
+          <button type="button" class="filtro" data-filtro="fotografia" aria-pressed="false">Fotografía <span>3</span></button>
+          <button type="button" class="filtro" data-filtro="ecommerce" aria-pressed="false">Ecommerce <span>3</span></button>
+        </div>
+      </div>
+      <ul class="bh" id="bh">
+        <li class="fila" data-cat="fotografia">
+          <a href="https://www.behance.net/gallery/222616215/Fotografia-Bridal-Couture-Fiji-Swim" target="_blank" rel="noopener">
+            <span class="bh__cat">Fotografía · Fiji Swim</span>
+            <span class="bh__t">Bridal Couture</span>
+            <span class="bh__d">Colección nupcial: dirección de arte, styling y postproducción.</span>
+            <span class="bh__ir">Ver en Behance <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+          </a>
+        </li>
+        <li class="fila" data-cat="ecommerce">
+          <a href="https://www.behance.net/gallery/223429483/E-Commerce-TEENLIFE" target="_blank" rel="noopener">
+            <span class="bh__cat">Ecommerce · TeenLife</span>
+            <span class="bh__t">Tienda TeenLife</span>
+            <span class="bh__d">Diseño y desarrollo de su tienda online, con UX/UI pensado en su público.</span>
+            <span class="bh__ir">Ver en Behance <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+          </a>
+        </li>
+        <li class="fila" data-cat="fotografia">
+          <a href="https://www.behance.net/gallery/202966131/Fotograia-Duna-Dorada-Fiji-Swim" target="_blank" rel="noopener">
+            <span class="bh__cat">Fotografía · Fiji Swim</span>
+            <span class="bh__t">Duna Dorada</span>
+            <span class="bh__d">Sesión lifestyle en exteriores: locación, dirección de arte y retoque.</span>
+            <span class="bh__ir">Ver en Behance <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+          </a>
+        </li>
+        <li class="fila" data-cat="ecommerce">
+          <a href="https://www.behance.net/gallery/223432783/Ecommerce-VIRAGO-DRESS" target="_blank" rel="noopener">
+            <span class="bh__cat">Ecommerce · Virago Dress</span>
+            <span class="bh__t">Tienda Virago</span>
+            <span class="bh__d">Tienda Shopify para moda femenina: diseño UX/UI pensado para convertir.</span>
+            <span class="bh__ir">Ver en Behance <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+          </a>
+        </li>
+        <li class="fila" data-cat="fotografia">
+          <a href="https://www.behance.net/gallery/222620631/Fotografia-Navidad-TEENLIFE" target="_blank" rel="noopener">
+            <span class="bh__cat">Fotografía · TeenLife</span>
+            <span class="bh__t">Navidad</span>
+            <span class="bh__d">Campaña de Navidad para su catálogo: producción, styling y edición.</span>
+            <span class="bh__ir">Ver en Behance <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+          </a>
+        </li>
+        <li class="fila" data-cat="ecommerce">
+          <a href="https://www.behance.net/gallery/223271387/E-commerce-FijiSwim" target="_blank" rel="noopener">
+            <span class="bh__cat">Ecommerce · Fiji Swim</span>
+            <span class="bh__t">Tienda Fiji Swim</span>
+            <span class="bh__d">Su tienda online de punta a punta: Shopify, integraciones y optimización.</span>
+            <span class="bh__ir">Ver en Behance <svg class="ico" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
+          </a>
+        </li>
+      </ul>
+    </section>
 
-    <!-- PORTFOLIO BEHANCE -->
-    <div class="section-divider scroll-reveal">
-      <span><i class="fab fa-behance mr-2"></i> Portafolio Creativo</span>
-    </div>
-
-    <h2 class="headline text-center mb-4 scroll-reveal">Fotografía & Diseño Ecommerce</h2>
-    <p class="text-center text-base text-[var(--muted)] max-w-lg mx-auto mb-8 scroll-reveal">Producción visual
-      profesional para marcas de moda y lifestyle. Cada proyecto diseñado para impulsar ventas.</p>
-
-    <div class="filter-bar scroll-reveal">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="fotografia">Fotografía</button>
-      <button class="filter-btn" data-filter="ecommerce">Ecommerce</button>
-    </div>
-
-    <div class="portfolio-grid scroll-reveal" id="portfolio-grid">
-      <a href="https://www.behance.net/gallery/222616215/Fotografia-Bridal-Couture-Fiji-Swim" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon"><i class="fa-regular fa-image"></i></div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
-          <h3>Bridal Couture — Fiji Swim</h3>
-          <p>Producción fotográfica de colección nupcial. Dirección de arte, styling y postproducción premium.</p>
-        </div>
-      </a>
-      <a href="https://www.behance.net/gallery/223429483/E-Commerce-TEENLIFE" target="_blank" rel="noopener noreferrer"
-        class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon"><i class="fa-regular fa-window-maximize"></i></div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
-          <h3>E-Commerce — TEENLIFE</h3>
-          <p>Diseño y desarrollo de tienda online optimizada para conversión. UX/UI enfocado en el público teen.</p>
-        </div>
-      </a>
-      <a href="https://www.behance.net/gallery/202966131/Fotograia-Duna-Dorada-Fiji-Swim" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon"><i class="fa-regular fa-sun"></i></div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
-          <h3>Duna Dorada — Fiji Swim</h3>
-          <p>Sesión de fotos lifestyle en exteriores para colección de swimwear. Locación, dirección de arte y
-            retoque.</p>
-        </div>
-      </a>
-      <a href="https://www.behance.net/gallery/223432783/Ecommerce-VIRAGO-DRESS" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon"><i class="fa-regular fa-gem"></i></div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
-          <h3>Ecommerce — VIRAGO DRESS</h3>
-          <p>Tienda Shopify con arquitectura de conversión para moda femenina. Diseño UX/UI y optimización.</p>
-        </div>
-      </a>
-      <a href="https://www.behance.net/gallery/222620631/Fotografia-Navidad-TEENLIFE" target="_blank"
-        rel="noopener noreferrer" class="portfolio-card" data-category="fotografia">
-        <div class="portfolio-card-icon"><i class="fa-regular fa-snowflake"></i></div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-camera mr-1"></i> Fotografía</span>
-          <h3>Navidad — TEENLIFE</h3>
-          <p>Campaña fotográfica navideña para catálogo ecommerce. Producción, styling y edición profesional.</p>
-        </div>
-      </a>
-      <a href="https://www.behance.net/gallery/223271387/E-commerce-FijiSwim" target="_blank" rel="noopener noreferrer"
-        class="portfolio-card" data-category="ecommerce">
-        <div class="portfolio-card-icon"><i class="fa-regular fa-compass"></i></div>
-        <div class="portfolio-card-body">
-          <span class="portfolio-category"><i class="fas fa-shopping-bag mr-1"></i> Ecommerce</span>
-          <h3>E-Commerce — Fiji Swim</h3>
-          <p>Desarrollo integral de la tienda online para swimwear. Shopify, integraciones y optimización.</p>
-        </div>
-      </a>
-    </div>
-
-    <section class="text-center my-20 scroll-reveal">
-      <h2 class="headline mb-4">¿Quieres ser nuestro próximo caso de éxito?</h2>
-      <p class="text-xl max-w-2xl mx-auto mb-10">Hablemos sobre tus objetivos y diseñemos juntos la
-        estrategia que va a impulsar tu marca.</p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="contacto.html" class="btn text-lg">Empezar mi Proyecto</a>
-        <a href="https://cotizacion-umber.vercel.app/" target="_blank" rel="noopener noreferrer"
-          class="btn btn-secondary text-lg">Servicios</a>
+    <!-- ===== CIERRE ===== -->
+    <section class="cta-section text-left my-20 scroll-reveal">
+      <h2 class="headline mb-4 relative z-10">¿El próximo caso?<br>Tu marca.</h2>
+      <p class="max-w-2xl mb-8 relative z-10">Cotiza en un minuto, con el precio publicado. Te respondemos en menos de 24
+        horas.</p>
+      <div class="relative z-10 flex flex-wrap gap-4">
+        <a class="btn" href="index.html#cotiza-plan">Cotiza tu plan</a>
+        <a class="btn" href="index.html#cotiza-asesor">Cotiza tu asesor</a>
+        <a class="btn" href="index.html#cotiza-tienda">Cotiza tu tienda</a>
       </div>
     </section>
   </main>
@@ -464,43 +1429,112 @@ background: rgba(198, 52, 30, 0.08);
     <div class="text-right">
       <div class="flex justify-end space-x-6 mb-2">
         <a href="https://www.instagram.com/pixel.adigital/" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-instagram"></i></a>
+          aria-label="Instagram de Pixel: @pixel.adigital"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><svg
+            class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></a>
         <a href="https://www.linkedin.com/company/pixelperu" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-linkedin"></i></a>
+          aria-label="LinkedIn de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><svg
+            class="ico" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
         <a href="https://www.tiktok.com/@pixel.public" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-tiktok"></i></a>
+          aria-label="TikTok de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><svg
+            class="ico" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
         <a href="https://www.behance.net/pixelpublic" target="_blank" rel="noopener noreferrer"
-          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
-            class="fab fa-behance"></i></a>
+          aria-label="Behance de Pixel"
+          class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><svg
+            class="ico" aria-hidden="true"><use href="#i-behance"/></svg></a>
       </div>
       <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
         Privacidad</a>
     </div>
   </footer>
 
-  <a href="https://wa.me/51975200420" target="_blank" rel="noopener noreferrer" class="whatsapp-float"
-    aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
+  <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20vi%20sus%20proyectos%20y%20quiero%20cotizar."
+    target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
   </a>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+  <script src="js/vendor/gsap-3.12.5.min.js"></script>
+  <script src="js/vendor/ScrollTrigger-3.12.5.min.js"></script>
+  <script src="js/vendor/lenis-1.3.27.min.js"></script>
   <script src="main.js"></script>
   <script>
-    document.querySelectorAll('.filter-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-        var f = btn.getAttribute('data-filter');
-        document.querySelectorAll('.portfolio-card').forEach(function (c) {
-          c.style.display = (f === 'all' || c.getAttribute('data-category') === f) ? '' : 'none';
+    // Proyectos: diagrama, matriz y año que se animan al entrar en pantalla; filtro del portafolio;
+    // vista previa del índice. Todo se ve completo y quieto sin JavaScript o con "menos movimiento".
+    (() => {
+      const raiz = document.documentElement;
+      const forzar = new URLSearchParams(location.search).get('motion');
+      const quieto = forzar === '0' || (forzar !== '1' && matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+      if (!quieto && 'IntersectionObserver' in window) {
+        raiz.classList.add('anima');
+        const una = new IntersectionObserver(es => es.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('en-vista'); una.unobserve(e.target); }
+        }), { threshold: .3 });
+        document.querySelectorAll('[data-anima]').forEach(el => una.observe(el));
+        // Los bucles solo corren mientras se ven.
+        const bucle = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('corre', e.isIntersecting)), { threshold: .15 });
+        document.querySelectorAll('[data-bucle]').forEach(el => bucle.observe(el));
+      }
+
+      // Filtro del portafolio. Donde el navegador tiene View Transitions, las piezas se reacomodan con movimiento.
+      const botones = document.querySelectorAll('[data-filtro]');
+      const piezas = document.querySelectorAll('#bh > li');
+      const aplicar = f => piezas.forEach(li => { li.hidden = !(f === 'todo' || li.dataset.cat === f); });
+      botones.forEach(b => b.addEventListener('click', () => {
+        if (b.getAttribute('aria-pressed') === 'true') return;
+        botones.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+        const f = b.dataset.filtro;
+        if (quieto || !document.startViewTransition) { aplicar(f); return; }
+        piezas.forEach((li, i) => { li.style.viewTransitionName = 'bh-' + i; });
+        raiz.classList.add('vt-filtro');
+        const t = document.startViewTransition(() => aplicar(f));
+        t.finished.finally(() => {
+          raiz.classList.remove('vt-filtro');
+          piezas.forEach(li => { li.style.viewTransitionName = ''; });
         });
-      });
-    });
+      }));
+
+      // Vista previa que sigue al mouse por el índice de la portada (escritorio con mouse).
+      const filas = document.querySelectorAll('.pj-indice a[data-vista]');
+      if (!quieto && filas.length && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const caja = document.createElement('div');
+        caja.className = 'pj-vista';
+        caja.setAttribute('aria-hidden', 'true');
+        const dentro = document.createElement('div');
+        dentro.className = 'pj-vista__in';
+        const img = document.createElement('img');
+        img.alt = '';
+        img.decoding = 'async';
+        dentro.appendChild(img);
+        caja.appendChild(dentro);
+        document.body.appendChild(caja);
+        let x = 0, y = 0, tx = 0, ty = 0, activo = false, raf = 0;
+        const limite = v => Math.min(v, window.innerWidth - 360);
+        const mover = () => {
+          x += (tx - x) * .16; y += (ty - y) * .16;
+          caja.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+          raf = (activo || Math.abs(tx - x) + Math.abs(ty - y) > .5) ? requestAnimationFrame(mover) : 0;
+        };
+        filas.forEach(a => {
+          a.addEventListener('mouseenter', e => {
+            const v = a.dataset.vista;
+            img.src = v === 'lab' ? 'img/lab-nutrition-logo.svg' : v;
+            dentro.classList.toggle('es-lab', v === 'lab');
+            if (!activo) { x = tx = limite(e.clientX); y = ty = e.clientY; }
+            activo = true;
+            caja.classList.add('on');
+            if (!raf) raf = requestAnimationFrame(mover);
+          });
+          a.addEventListener('mousemove', e => { tx = limite(e.clientX); ty = e.clientY; });
+          a.addEventListener('mouseleave', () => { activo = false; caja.classList.remove('on'); });
+        });
+        // Precarga en reposo para que la imagen ya esté al pasar el mouse.
+        const precargar = () => filas.forEach(a => { const v = a.dataset.vista; if (v !== 'lab') { const i = new Image(); i.src = v; } });
+        ('requestIdleCallback' in window) ? requestIdleCallback(precargar) : setTimeout(precargar, 1500);
+      }
+    })();
   </script>
   <script>
   /* Eventos del píxel: servicio visto, contacto por WhatsApp/correo/teléfono, agenda y formularios. */

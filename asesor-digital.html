@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Asesor Digital • El chat que cierra la venta en tu Shopify • PIXEL</title>
   <meta name="description"
-    content="Un asesor con IA dentro de tu tienda Shopify que recomienda con tu catálogo real, arma el pedido y cobra con Mercado Pago sin salir de la conversación. Precio real, stock real, pedido real.">
+    content="Un asesor con IA dentro de tu tienda Shopify que recomienda con tu catálogo real, arma el pedido en el chat y le manda el link de pago de Mercado Pago. Precio real, stock real, pedido real.">
   <link rel="canonical" href="https://pixeldigital.vercel.app/asesor-digital.html">
 
   <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
   <meta property="og:url" content="https://pixeldigital.vercel.app/asesor-digital.html">
   <meta property="og:title" content="Asesor Digital • El chat que cierra la venta en tu Shopify">
   <meta property="og:description"
-    content="Recomienda con tu catálogo real, arma el pedido y cobra con Mercado Pago sin que el cliente salga del chat.">
+    content="Recomienda con tu catálogo real, arma el pedido en el chat y le manda el link de pago de Mercado Pago.">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -338,11 +338,7 @@ background: var(--rojo-acento);
     "url": "https://pixeldigital.vercel.app/asesor-digital.html",
     "description": "Asesor con inteligencia artificial que se instala en una tienda Shopify, recomienda productos leyendo el catálogo y el precio reales, arma el pedido y genera un link de pago de Mercado Pago dentro de la misma conversación.",
     "provider": { "@id": "https://pixeldigital.vercel.app/#organizacion" },
-    "areaServed": [
-      { "@type": "Country", "name": "Perú" },
-      { "@type": "Country", "name": "Chile" },
-      { "@type": "Country", "name": "Colombia" }
-    ],
+    "areaServed": { "@type": "Country", "name": "Perú" },
     "audience": {
       "@type": "BusinessAudience",
       "name": "Tiendas Shopify con catálogo amplio o producto que requiere asesoría antes de comprar"
@@ -391,7 +387,7 @@ background: var(--rojo-acento);
         "name": "¿Qué pasa si el modelo de inteligencia artificial falla o se cae?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "El asistente enruta entre varios proveedores de modelos y cambia al siguiente cuando uno falla. La conversación no se corta por la caída de un proveedor."
+          "text": "Si un modelo falla, el asistente prueba con otro."
         }
       },
       {
@@ -495,7 +491,7 @@ background: var(--rojo-acento);
         </h1>
         <p class="ad-lede mt-7 scroll-reveal" style="transition-delay:100ms;">
           No es un bot que responde preguntas. Es un asesor que <strong>recomienda con tu catálogo real, arma el pedido
-            y cobra con Mercado Pago</strong> sin que el cliente salga de la conversación.
+            en el chat</strong> y le manda el link de pago de Mercado Pago.
         </p>
         <div class="mt-9 scroll-reveal flex flex-wrap gap-4" style="transition-delay:200ms;">
           <a href="https://wa.me/51975200420?text=Hola%20Pixel%2C%20quiero%20ver%20el%20Asesor%20Digital%20funcionando"
@@ -550,7 +546,7 @@ background: var(--rojo-acento);
           </div>
         </div>
         <p class="text-center mt-4 text-xs text-[var(--muted)]" style="font-family:'IBM Plex Mono',monospace">
-          De la pregunta al pago, sin salir del chat</p>
+          De la pregunta al link de pago, en el mismo chat</p>
       </div>
     </section>
 
@@ -623,8 +619,7 @@ background: var(--rojo-acento);
         </div>
         <div class="ad-block scroll-reveal" style="transition-delay:140ms;">
           <h3 class="font-bold text-lg mb-2">Varios modelos, con respaldo</h3>
-          <p class="text-sm text-[var(--gris-oscuro)]">Enruta entre proveedores de IA y cambia al siguiente si uno se
-            cae. La conversación no se corta.</p>
+          <p class="text-sm text-[var(--gris-oscuro)]">Si un modelo falla, prueba con otro.</p>
         </div>
         <div class="ad-block scroll-reveal" style="transition-delay:210ms;">
           <h3 class="font-bold text-lg mb-2">Panel con la venta atribuida</h3>
@@ -708,8 +703,7 @@ background: var(--rojo-acento);
         </details>
         <details>
           <summary>¿Qué pasa si el modelo de IA se cae?</summary>
-          <p>Enruta entre varios proveedores y cambia al siguiente cuando uno falla. La conversación no se corta por la
-            caída de un proveedor.</p>
+          <p>Si un modelo falla, prueba con otro.</p>
         </details>
         <details>
           <summary>¿Recuerda a un cliente que ya habló antes?</summary>
