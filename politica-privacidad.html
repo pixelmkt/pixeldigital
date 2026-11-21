@@ -6,17 +6,14 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidad • PIXEL</title>
+  <title>Política de privacidad • PIXEL</title>
   <meta name="description"
     content="Consulta nuestra política de privacidad para entender cómo PIXEL recopila, usa y protege tu información personal al navegar nuestro sitio web.">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="base.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@600&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="tw.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     /* Estilos ajustados para el fondo crema */
@@ -28,9 +25,10 @@
     .prose h1,
     .prose h2,
     .prose h3 {
-      color: var(--rojo-acento);
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      color: var(--tinta);
+      font-family: var(--fuente-display);
+      font-weight: 800;
+      letter-spacing: -.02em;
     }
 
     .prose h1 {
@@ -99,12 +97,10 @@
       <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[var(--gris-oscuro)]">
         <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
         <a href="asesor-digital.html" class="nav-link transition-colors">Asesor IA</a>
+        <a href="servicios.html" class="nav-link transition-colors">Servicios</a>
         <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
-        <a href="caso-de-estudio.html" class="nav-link transition-colors">Resultados</a>
         <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
-        <a href="servicios.html" class="nav-cta">
-          Servicios
-        </a>
+        <a href="index.html#cotiza" class="nav-cta">Cotiza</a>
       </nav>
       <button id="mobile-menu-btn" class="lg:hidden text-2xl text-[var(--gris-oscuro)]"
         aria-label="Abrir menú de navegación" aria-expanded="false">
@@ -128,7 +124,7 @@
   </header>
   <main class="max-w-4xl mx-auto px-4 pt-20 pb-20">
     <div class="prose scroll-reveal">
-      <h1 class="headline">Política de Privacidad</h1>
+      <h1 class="headline">Política de privacidad</h1>
       <p><strong>Última actualización: 17 de noviembre de 2026</strong></p>
 
       <p>Bienvenido a PIXEL. Nos comprometemos a proteger su privacidad. Esta Política de Privacidad explica cómo
@@ -212,8 +208,7 @@
           class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
             class="fab fa-behance"></i></a>
       </div>
-      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
-        Privacidad</a>
+      <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de privacidad</a>
     </div>
   </footer>
 

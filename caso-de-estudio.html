@@ -12,11 +12,8 @@
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="base.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600;700;900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="tw.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script type="application/ld+json">
   {
@@ -67,16 +64,13 @@
                 <span class="logo-text">Pixel.</span>
             </a>
             <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-[var(--gris-oscuro)]">
-                <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
+        <a href="suscripciones.html" class="nav-link transition-colors">Suscripciones</a>
         <a href="asesor-digital.html" class="nav-link transition-colors">Asesor IA</a>
+        <a href="servicios.html" class="nav-link transition-colors">Servicios</a>
         <a href="proyectos.html" class="nav-link transition-colors">Proyectos</a>
-                <a href="caso-de-estudio.html" class="nav-link transition-colors active">Resultados</a>
-                <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
-                <a href="servicios.html"
-                    class="nav-cta">
-                    Servicios
-                </a>
-            </nav>
+        <a href="contacto.html" class="nav-link transition-colors">Contacto</a>
+        <a href="index.html#cotiza" class="nav-cta">Cotiza</a>
+      </nav>
             <button id="mobile-menu-btn" class="lg:hidden text-2xl text-[var(--gris-oscuro)]"
                 aria-label="Abrir menú de navegación" aria-expanded="false">
                 <i class="fas fa-bars"></i>
@@ -122,7 +116,7 @@
                 <div class="mt-10 scroll-reveal flex flex-wrap gap-4" style="transition-delay:300ms;">
                     <a href="https://wa.me/51975200420?text=Hola%2C%20quiero%20agendar%20una%20auditor%C3%ADa%20estrat%C3%A9gica%20para%20mi%20negocio"
                         target="_blank" rel="noopener noreferrer" class="btn text-lg" id="lp-main-cta">
-                        <i class="fas fa-calendar-check mr-2"></i>Agendar Auditoría Gratuita
+                        <i class="fas fa-calendar-check mr-2"></i>Agendar auditoría gratuita
                     </a>
                     <a href="#resultados" class="btn btn-secondary text-lg">
                         Ver Resultados →
@@ -207,7 +201,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
                     <div class="lp-diff-card scroll-reveal" style="transition-delay:150ms;">
                         <div class="lp-diff-icon"><i class="fas fa-bullseye"></i></div>
-                        <h3 class="lp-diff-title">ROAS, No Métricas de Vanidad</h3>
+                        <h3 class="lp-diff-title">ROAS, no métricas de vanidad</h3>
                         <p class="lp-diff-text">
                             Cada sol invertido en Paid Media se rastrea hasta la venta final. No te mostramos "likes" —
                             te mostramos <strong>retorno sobre la inversión real</strong>.
@@ -216,7 +210,7 @@
 
                     <div class="lp-diff-card scroll-reveal" style="transition-delay:250ms;">
                         <div class="lp-diff-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3 class="lp-diff-title">Mobile-First para el Mercado Peruano</h3>
+                        <h3 class="lp-diff-title">Pensado para el celular y el mercado peruano</h3>
                         <p class="lp-diff-text">
                             El <strong>64% de las compras online</strong> en Perú se hacen desde el celular. Cada
                             proyecto nuestro está optimizado para convertir en mobile desde el día uno.
@@ -225,7 +219,7 @@
 
                     <div class="lp-diff-card scroll-reveal" style="transition-delay:350ms;">
                         <div class="lp-diff-icon"><i class="fas fa-wallet"></i></div>
-                        <h3 class="lp-diff-title">Integración Yape, Plin & Pagos Locales</h3>
+                        <h3 class="lp-diff-title">Integración con Yape, Plin y pagos locales</h3>
                         <p class="lp-diff-text">
                             Eliminamos la fricción de pago del mercado peruano integrando <strong>billeteras
                                 digitales</strong> directamente en el checkout. Más opciones = más conversiones.
@@ -234,7 +228,7 @@
 
                     <div class="lp-diff-card scroll-reveal" style="transition-delay:450ms;">
                         <div class="lp-diff-icon"><i class="fas fa-robot"></i></div>
-                        <h3 class="lp-diff-title">IA + Automatización de Retención</h3>
+                        <h3 class="lp-diff-title">IA y automatización de retención</h3>
                         <p class="lp-diff-text">
                             Flujos automatizados de email marketing (carrito abandonado, post-compra, win-back) que
                             generan hasta un <strong>23% extra de facturación pasiva</strong>.
@@ -385,7 +379,7 @@
                 <div class="scroll-reveal mt-10" style="transition-delay:300ms;">
                     <a href="https://wa.me/51975200420?text=Hola%2C%20quiero%20agendar%20una%20auditor%C3%ADa%20estrat%C3%A9gica%20para%20mi%20negocio"
                         target="_blank" rel="noopener noreferrer" class="btn text-xl" id="lp-cta-bottom">
-                        <i class="fas fa-calendar-check mr-2"></i>Agendar Auditoría Gratuita
+                        <i class="fas fa-calendar-check mr-2"></i>Agendar auditoría gratuita
                     </a>
                 </div>
 
@@ -423,8 +417,7 @@
                     class="text-2xl text-[var(--gris-oscuro)] hover:text-[var(--rojo-acento)] transition-colors"><i
                         class="fab fa-behance"></i></a>
             </div>
-            <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de
-                Privacidad</a>
+            <a href="politica-privacidad.html" class="hover:text-[var(--rojo-acento)] transition-colors">Política de privacidad</a>
         </div>
     </footer>
 
