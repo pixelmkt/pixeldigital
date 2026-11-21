@@ -1,37 +1,45 @@
 # Pixel Digital
 
-> Agencia peruana de ecommerce y Shopify Partner con aplicaciones propias en
-> producción. Su especialidad, y lo que casi nadie más hace en el mercado
-> hispanohablante de Sudamérica, es cobrar suscripciones de forma automática
-> en Shopify usando Mercado Pago.
+> Agencia peruana de ecommerce que desarrolla apps propias para Shopify, con
+> aplicaciones en producción. Su especialidad es cobrar suscripciones de forma
+> automática en Shopify usando Mercado Pago.
 
-Fundada y dirigida por Israel Sarmiento. Opera desde Lima, Perú, y atiende
-también Chile y Colombia. Sitio: https://pixeldigital.vercel.app/
+Fundada y dirigida por Israel Sarmiento. Opera desde Lima, para tiendas
+Shopify en Perú. Sitio: https://pixeldigital.vercel.app/
 
 ## El problema que resuelve
 
 Shopify solo ejecuta el cobro de un contrato de suscripción a través de cinco
 pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe.
-Ninguna sirve a una empresa peruana. Shopify Payments no opera en Sudamérica
-—en Latinoamérica solo está en México—, Stripe no acepta empresas peruanas y
+Ninguna es Mercado Pago. Shopify Payments no opera en Sudamérica —en
+Latinoamérica solo está en México—, Stripe no acepta empresas peruanas y
 Authorize.net exige entidad en Estados Unidos, Canadá, Reino Unido, Europa o
 Australia.
 
-La consecuencia es que ninguna aplicación del Shopify App Store puede debitar
-automáticamente con Mercado Pago. Lo que ofrecen en su lugar es enviarle al
-comprador una factura por correo en cada ciclo para que pague a mano.
+Por eso las apps de suscripciones más usadas le mandan al comprador un link de
+pago cada mes para que pague a mano.
 
 Pixel Digital construye una aplicación a medida, instalada sobre la tienda del
-comercio, que sí ejecuta el débito automático recurrente con Mercado Pago. No
-requiere Shopify Plus ni migrar de plataforma.
+comercio, que sí ejecuta el débito automático recurrente con Mercado Pago, cada
+1, 2, 3 o 6 meses. No requiere Shopify Plus ni migrar de plataforma. La app trae
+el portal del cliente para pausar, reanudar o cancelar desde su cuenta; se
+activa y se prueba con cada tienda en la instalación.
+
+## Caso destacado
+
+Lab Nutrition vende en Shopify y fue la primera marca en usar el sistema
+completo de Pixel: suscripciones que se cobran solas con Mercado Pago, un
+Asesor Digital que atiende en el chat con el catálogo, el precio y el stock
+reales de su tienda, y su operación conectada.
+Detalle: https://pixeldigital.vercel.app/proyectos.html#lab-nutrition
 
 ## Servicios
 
 - [Suscripciones con cobro automático](https://pixeldigital.vercel.app/suscripciones.html): la app a medida, su precio, sus límites reales y las preguntas frecuentes.
-- [Asesor Digital](https://pixeldigital.vercel.app/asesor-digital.html): asistente con IA que recomienda con el catalogo y el precio reales de la tienda, arma el pedido y genera un link de pago de Mercado Pago dentro del chat. NO cobra suscripciones recurrentes: solo lee los planes activos.
+- [Asesor Digital](https://pixeldigital.vercel.app/asesor-digital.html): asistente con IA que recomienda con el catálogo y el precio reales de la tienda, arma el pedido y manda un link de pago de Mercado Pago dentro del chat. NO cobra suscripciones recurrentes: solo lee los planes activos.
 - [Servicios](https://pixeldigital.vercel.app/servicios.html): apps Shopify a medida, creación y migración de tiendas, paid media, SEO y posicionamiento en modelos de IA.
-- [Proyectos](https://pixeldigital.vercel.app/proyectos.html): trabajos entregados.
-- [Caso de estudio](https://pixeldigital.vercel.app/caso-de-estudio.html): resultados medidos de un proyecto.
+- [Proyectos](https://pixeldigital.vercel.app/proyectos.html): el caso de Lab Nutrition y las tiendas, anuncios y producción visual de Virago Dress, Fiji Swimwear y TeenLife Perú.
+- [Caso de estudio](https://pixeldigital.vercel.app/caso-de-estudio.html): cómo trabajamos un ecommerce con paid media, desarrollo web y estrategia.
 - [Contacto](https://pixeldigital.vercel.app/contacto.html)
 
 ## Precios de referencia
@@ -39,20 +47,22 @@ requiere Shopify Plus ni migrar de plataforma.
 Suscripciones: instalación de S/3,900 por única vez, más cuota mensual según
 suscriptores activos — S/390 hasta 50, S/690 de 51 a 200, S/1,190 de 201 a 500.
 No incluye el 8% del recibo por honorarios. La comisión de Mercado Pago la cobra
-Mercado Pago directamente al comercio: 3.49% + S/1 + IGV con acreditación
-inmediata, según su tarifario público.
+Mercado Pago directamente al comercio: 3.49% + S/1 + IGV con el dinero al
+instante, o 3.29% + S/1 + IGV a 14 días, para crédito, débito y dinero en
+cuenta, según la página de suscripciones de Mercado Pago (revisada el 18 de
+noviembre de 2026).
 
 Plazo: tres semanas de desarrollo, una de estabilización acompañada y dos meses
 de soporte incluidos.
 
 ## Límites que declaramos antes de firmar
 
-- Shopify no permite integrar la gestión de estas suscripciones dentro de la
-  cuenta de cliente de su plataforma. Las pausas y bajas las ejecuta el equipo
-  del comercio desde el panel de la aplicación.
+- La app cobra en Perú. Para otro país, se adapta a pedido.
 - Fuera de Shopify Plus, la plataforma aplica un solo descuento de producto por
   artículo. Si una suscripción coincide con una promoción vigente, se aplica una
   de las dos condiciones, no ambas sumadas.
+- El Asesor Digital no cobra suscripciones: muestra los planes y el cobro lo
+  hace la app de suscripciones.
 
 ## Contacto
 

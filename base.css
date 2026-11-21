@@ -32,7 +32,9 @@
 }
 
 /* ═══════════════ BASE ═══════════════ */
-html {
+/* Scroll suave nativo solo sin JS. Con JS lo hace Lenis; si el navegador también animara el salto a un
+   ancla al cargar (proyectos.html#lab-nutrition), ScrollTrigger lo corta a medio camino. */
+html:not(.js) {
   scroll-behavior: smooth;
 }
 
@@ -1318,11 +1320,15 @@ footer a:hover {
   pointer-events: none;
 }
 
-/* Máscara de texto: cada palabra sube desde abajo. Solo con JS y movimiento. */
+/* Máscara de texto: cada palabra sube desde abajo. Solo con JS y movimiento.
+   El relleno de arriba deja ver las tildes de las mayúsculas (QUÉ, PRÓXIMO); el margen negativo
+   lo descuenta para que la línea mida lo mismo. */
 .w {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
+  padding-top: .22em;
+  margin-top: -.22em;
   padding-bottom: .06em;
   margin-bottom: -.06em;
 }
@@ -1417,9 +1423,17 @@ html.gsap .abre > .abre-in {
 }
 
 #mobile-menu.menu-open {
+  /* La regla vieja del menú desplegable lo cortaba en 480px: aquí ocupa toda la pantalla. */
+  max-height: none;
   opacity: 1;
   visibility: visible;
   transition: opacity .35s var(--suave), visibility 0s;
+}
+
+/* Con el menú abierto, la cabecera (y el menú, que vive adentro) pasa por encima de la barra de cotizar
+   y del botón de WhatsApp. */
+html.menu-abierto body > header {
+  z-index: 85;
 }
 
 #mobile-menu a {
@@ -1466,10 +1480,15 @@ html.gsap .abre > .abre-in {
   color: var(--fondo-crema);
 }
 
-/* Cuando el menú está abierto, la página no hace scroll detrás. */
-html.menu-abierto,
-html.menu-abierto body {
+/* Cuando el menú está abierto, la página no hace scroll detrás. Lo corta el html; el body queda visible
+   para no volverse su propia caja de scroll: si lo fuera, la cabecera fija se iría arriba del documento
+   y con ella el botón de cerrar. */
+html.menu-abierto {
   overflow: hidden;
+}
+
+html.menu-abierto body {
+  overflow: visible;
 }
 
 /* Cabecera: el logo también vive por encima del menú abierto. */
@@ -1513,4 +1532,69 @@ html.lenis body {
   .kpi-card { padding-left: .8rem; padding-right: .4rem }
   .idx li { padding: 1.15rem 0 }
   .idx__t { font-size: 1.6rem }
+}
+
+/* ═══════════════ ÍCONOS EN LÍNEA (SVG) ═══════════════
+   Home y Proyectos ya no cargan Font Awesome: usan un sprite SVG en la página.
+   Las demás páginas siguen con <i class="fa…"> y no se ven afectadas.      */
+.sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.ico {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+  flex: 0 0 auto;
+}
+
+#mobile-menu-btn .ico-x {
+  display: none;
+}
+
+#mobile-menu-btn[aria-expanded="true"] .ico-x {
+  display: inline-block;
+}
+
+#mobile-menu-btn[aria-expanded="true"] .ico-menu {
+  display: none;
+}
+
+.whatsapp-float svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+/* ═══════════════ TRANSICIÓN ENTRE PÁGINAS ═══════════════
+   Navegadores con View Transitions (Chrome, Edge, Safari 18.2+): al cambiar de
+   página, la cabecera se queda y el contenido se funde. Los demás navegan
+   igual que siempre. Nada de esto corre si se pidió menos movimiento.      */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  body > header {
+    view-transition-name: cabecera;
+  }
+
+  ::view-transition-old(root) {
+    animation: vt-sale .22s var(--suave) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: vt-entra .38s var(--suave) both;
+  }
+}
+
+@keyframes vt-sale {
+  to { opacity: 0; }
+}
+
+@keyframes vt-entra {
+  from { opacity: 0; transform: translateY(14px); }
 }
