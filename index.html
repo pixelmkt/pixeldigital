@@ -6,7 +6,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Cotiza tu plan, tu asesor o tu tienda Shopify • PIXEL</title>
+  <title>Cotiza tu app de Suscripciones, tu asesor o tu tienda Shopify • PIXEL</title>
   <meta name="description"
     content="Agencia Shopify en Perú. Cotiza en un minuto suscripciones con cobro automático por Mercado Pago, el Asesor Digital que vende en el chat o tu tienda Shopify. Precios publicados.">
   <link rel="canonical" href="https://pixeldigital.vercel.app/">
@@ -15,7 +15,7 @@
   <meta property="og:locale" content="es_PE">
   <meta property="og:site_name" content="Pixel Digital">
   <meta property="og:url" content="https://pixeldigital.vercel.app/">
-  <meta property="og:title" content="Cotiza tu plan, tu asesor o tu tienda Shopify • PIXEL">
+  <meta property="og:title" content="Cotiza tu app de Suscripciones, tu asesor o tu tienda Shopify • PIXEL">
   <meta property="og:description"
     content="Tres preguntas, el precio publicado y tu cotización lista para WhatsApp.">
   <meta name="twitter:card" content="summary_large_image">
@@ -403,9 +403,12 @@
         border-right: 0;
       }
 
+      /* Filas: título, texto (se estira), precio y botón. Así el precio y el botón quedan a la misma
+         altura en las tres puertas aunque un título ocupe dos líneas («App de Suscripciones»). */
       .puerta {
         grid-template-columns: 2.2rem 1fr;
-        align-content: start;
+        grid-template-rows: auto 1fr auto auto;
+        align-content: stretch;
         height: 100%;
         padding: 1.6rem 1.6rem 1.8rem 0;
       }
@@ -1052,7 +1055,7 @@
     <section class="hero-cot pt-8 pb-14 md:pt-20 md:pb-20 relative" id="cotiza">
       <p class="sus-eyebrow">Apps propias para Shopify · Hecho en Perú</p>
       <h1 class="headline hero-headline mt-4">
-        Cotiza tu <span style="white-space:nowrap"><span class="text-highlight">plan</span>,</span><br>tu <span class="text-highlight">asesor</span> o tu <span style="white-space:nowrap"><span class="text-highlight">tienda</span>.</span>
+        Cotiza tu app de <span style="white-space:nowrap"><span class="text-highlight">Suscripciones</span>,</span><br>tu <span class="text-highlight">asesor</span> o tu <span style="white-space:nowrap"><span class="text-highlight">tienda</span>.</span>
       </h1>
       <p class="mt-5 max-w-xl md:text-lg">El precio está a la vista. Tres preguntas y tu cotización sale lista para mandar por WhatsApp.</p>
 
@@ -1060,8 +1063,8 @@
       <ol class="idx puertas">
         <li><button type="button" class="puerta" data-cotiza="plan">
           <span class="idx__n">01</span>
-          <span class="idx__t">Plan de suscripción</span>
-          <span class="puerta__cta">Cotiza<span class="puerta__largo"> tu plan</span> →</span>
+          <span class="idx__t">App de Suscripciones</span>
+          <span class="puerta__cta">Cotiza<span class="puerta__largo"> tu app</span> →</span>
           <span class="idx__d">Que tu cliente vuelva a comprar solo. Mercado Pago le cobra cada mes.</span>
           <span class="puerta__precio"><b>S/ 3,900</b><small>una vez</small><em>+ desde S/ 390 al mes</em></span>
         </button></li>
@@ -1103,7 +1106,7 @@
       </ol>
       <div class="lab__pie">
         <a class="btn" href="proyectos.html#lab-nutrition">Ver el caso completo</a>
-        <button type="button" class="lab__cot" data-cotiza="plan">Cotiza tu plan →</button>
+        <button type="button" class="lab__cot" data-cotiza="plan">Cotiza tu app de Suscripciones →</button>
       </div>
     </section>
 
@@ -1116,7 +1119,7 @@
       <div class="faq">
         <details open>
           <summary>¿Tengo que migrar o pagar Shopify Plus para cobrar suscripciones?</summary>
-          <p>No. La app se instala sobre tu Shopify actual y funciona en cualquier plan. Tu catálogo, tus clientes y
+          <p>No. La app se instala sobre tu Shopify actual y funciona en cualquier plan de Shopify. Tu catálogo, tus clientes y
             tu checkout siguen igual.</p>
         </details>
         <details>
@@ -1147,8 +1150,8 @@
         </details>
         <details>
           <summary>¿Qué no hacen?</summary>
-          <p>Te lo decimos antes de firmar. El asesor no cobra suscripciones: muestra los planes y el cobro lo hace la
-            app de suscripciones. Y no te prometemos cifras de ventas antes de conocer tu negocio.</p>
+          <p>Te lo decimos antes de firmar. El asesor no cobra suscripciones: muestra los planes que ofrece tu tienda y el cobro lo hace la
+            app de Suscripciones. Y no te prometemos cifras de ventas antes de conocer tu negocio.</p>
         </details>
       </div>
     </section>
@@ -1237,7 +1240,7 @@
       <p class="max-w-2xl mb-8 relative z-10">Tres preguntas, el precio publicado y tu cotización lista para mandar por
         WhatsApp. Te respondemos en menos de 24 horas.</p>
       <div class="relative z-10 flex flex-wrap gap-4">
-        <button type="button" class="btn" data-cotiza="plan">Cotiza tu plan</button>
+        <button type="button" class="btn" data-cotiza="plan">Cotiza tu app de Suscripciones</button>
         <button type="button" class="btn" data-cotiza="asesor">Cotiza tu asesor</button>
         <button type="button" class="btn" data-cotiza="tienda">Cotiza tu tienda</button>
       </div>
@@ -1305,7 +1308,7 @@
       const WA = '51975200420';
       const PRODUCTOS = {
         plan: {
-          titulo: 'Suscripciones', cab: 'Cotiza tu plan', msg: 'mi PLAN de suscripción', pagina: 'suscripciones.html',
+          titulo: 'Suscripciones', cab: 'Cotiza tu app de Suscripciones', msg: 'mi APP de Suscripciones', pagina: 'suscripciones.html',
           suma: 'Suscripciones: que tu cliente vuelva a comprar solo',
           preguntas: [
             { q: '¿Tu tienda ya está en Shopify?', c: 'Shopify', ops: ['Sí', 'Todavía no', 'Uso otra plataforma'] },
@@ -1347,7 +1350,7 @@
           plazo: 'Cuatro semanas de la firma a la tienda vendiendo. Te enseñamos a manejarla y tienes dos meses de soporte.',
         },
       };
-      const ELEGIR = [['plan', 'Mi plan de suscripción'], ['asesor', 'Mi asesor digital'], ['tienda', 'Mi tienda Shopify']];
+      const ELEGIR = [['plan', 'Mi app de Suscripciones'], ['asesor', 'Mi asesor digital'], ['tienda', 'Mi tienda Shopify']];
 
       const raiz = document.documentElement;
       const dlg = document.getElementById('cot'), cuerpo = document.getElementById('cot-cuerpo');
@@ -1483,8 +1486,9 @@
       // La rueda y el dedo mueven la hoja, no la página de atrás (Lenis escucha en window).
       ['wheel', 'touchmove'].forEach(ev => dlg.addEventListener(ev, e => e.stopPropagation(), { passive: true }));
 
-      // Enlaces directos para la bio y los anuncios: #cotiza-plan, #cotiza-asesor, #cotiza-tienda.
-      const porHash = () => { const m = location.hash.match(/^#cotiza-(plan|asesor|tienda)$/); if (m) abrir(m[1]); };
+      // Enlaces directos para la bio y los anuncios: #cotiza-suscripciones, #cotiza-asesor, #cotiza-tienda.
+      // #cotiza-plan se mantiene porque ya circula en anuncios y en la bio; abre lo mismo que #cotiza-suscripciones.
+      const porHash = () => { const m = location.hash.match(/^#cotiza-(plan|suscripciones|asesor|tienda)$/); if (m) abrir(m[1] === 'suscripciones' ? 'plan' : m[1]); };
       window.addEventListener('hashchange', porHash);
       porHash();
     })();
