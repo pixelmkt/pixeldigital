@@ -213,7 +213,7 @@
         "name": "¿Se pueden cobrar suscripciones automáticas en Shopify con Mercado Pago?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí, con una aplicación construida a medida e instalada en la tienda, que es lo que hacemos en Pixel Digital. Shopify solo ejecuta el cobro de un contrato de suscripción con cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe, y ninguna es Mercado Pago. Por eso las apps más usadas mandan un link de pago cada mes. La nuestra cobra sola."
+          "text": "Sí, con una aplicación construida a medida e instalada en la tienda, que es lo que hacemos en Pixel Digital. Shopify solo ejecuta el cobro de un contrato de suscripción con cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe, y ninguna es Mercado Pago. Por eso Recharge y Appstle no pueden usarlo, y Seal le manda al cliente una factura en cada ciclo para que pague a mano. La nuestra cobra sola con Mercado Pago, sin cobrar un porcentaje de las ventas."
         }
       },
       {
@@ -221,7 +221,7 @@
         "name": "¿Por qué Recharge, Appstle, Loop o Seal no me sirven en Perú?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Porque heredan la misma limitación de Shopify: solo cobran por esas cinco pasarelas. Shopify Payments no opera en Perú, Colombia, Chile ni Argentina; en Latinoamérica solo está disponible en México. Stripe no acepta empresas peruanas y Authorize.net exige entidad en Estados Unidos, Canadá, Reino Unido, Europa o Australia. La alternativa que ofrecen esas apps es enviar al cliente una factura por correo en cada ciclo para que pague a mano, lo que genera fricción y abandono."
+          "text": "Porque heredan la misma limitación de Shopify: solo cobran por esas cinco pasarelas. Shopify Payments no opera en Perú, Colombia, Chile ni Argentina; en Latinoamérica solo está disponible en México. Stripe no acepta empresas peruanas y Authorize.net exige una cuenta de comercio en Estados Unidos o Canadá. Recharge y Appstle solo funcionan con esas cinco pasarelas. Seal sí acepta Mercado Pago, pero le manda al cliente una factura por correo en cada ciclo para que pague a mano."
         }
       },
       {
@@ -261,7 +261,7 @@
         "name": "¿Qué comisión cobra Mercado Pago en Perú?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Según la página de suscripciones de Mercado Pago (revisada el 18 de noviembre de 2026), cuesta 3.49% más S/1 más IGV con el dinero al instante, o 3.29% más S/1 más IGV a catorce días, para crédito, débito y dinero en cuenta. Esa comisión la cobra Mercado Pago directamente al comercio, no nosotros."
+          "text": "Según la página de suscripciones de Mercado Pago (revisada el 22 de noviembre de 2026), cuesta 3.49% más S/1 más IGV con el dinero al instante, o 3.29% más S/1 más IGV a catorce días, para crédito, débito y dinero en cuenta. Esa comisión la cobra Mercado Pago directamente al comercio, no nosotros."
         }
       },
       {
@@ -378,7 +378,7 @@
                 <span class="opt__s">S/ 4.80 por servicio</span>
                 <span class="opt__old">S/ 160.00</span>
               </div>
-              <div class="freq"><b>Recíbelo cada 30 días</b><span>Cambiar</span></div>
+              <div class="freq"><b>Recíbelo cada mes</b><span>Cambiar</span></div>
               <div class="nota"><i>—</i>Se cobra a tu tarjeta el día de cada entrega</div>
             </div>
           </div>
@@ -404,19 +404,20 @@
         </div>
         <div class="gate"><span class="gate__n">Stripe</span><span class="gate__x">No acepta empresas peruanas</span>
         </div>
-        <div class="gate"><span class="gate__n">Authorize.net</span><span class="gate__x">Exige entidad en EE.&nbsp;UU. o
-            Europa</span></div>
+        <div class="gate"><span class="gate__n">Authorize.net</span><span class="gate__x">Exige cuenta de comercio en EE.&nbsp;UU. o
+            Canadá</span></div>
         <div class="gate"><span class="gate__n">Adyen</span><span class="gate__x">Contrato enterprise</span></div>
-        <div class="gate"><span class="gate__n">PayPal Express</span><span class="gate__x">Marginal en el mercado
-            local</span></div>
+        <div class="gate"><span class="gate__n">PayPal Express</span><span class="gate__x">Sin Shopify Payments, Shopify cobra
+            comisión extra</span></div>
       </div>
 
       <div class="sus-block sus-block--dark mt-8 scroll-reveal">
         <p class="sus-eyebrow" style="color:var(--naranja)">La consecuencia</p>
         <p class="mt-3 text-lg" style="max-width:64ch">
-          Ninguna de esas cinco es Mercado Pago. Por eso las apps más usadas le mandan a tu cliente
-          <strong>un link de pago cada mes</strong> para que pague a mano. Eso no es una suscripción: es una cobranza, y
-          se cae sola. La nuestra cobra sola.
+          Ninguna de esas cinco es Mercado Pago. Por eso Recharge y Appstle no pueden usarlo, y Seal le manda a tu
+          cliente <strong>una factura en cada ciclo</strong> para que pague a mano. Eso no es una suscripción: es una
+          cobranza, y se cae sola. La nuestra cobra sola con Mercado Pago, y nuestra cuota va en soles, sin porcentaje
+          de tus ventas.
         </p>
       </div>
     </section>
@@ -491,9 +492,10 @@
         <div class="precio-fila"><span>Marca que quiere ser dueña del desarrollo</span><b>a cotizar</b></div>
       </div>
       <p class="mt-4 text-sm text-[var(--muted)] scroll-reveal">
-        Los montos no incluyen el 8% del recibo por honorarios. La comisión de Mercado Pago la cobra Mercado Pago
-        directamente a tu negocio: 3.49% + S/1 + IGV con el dinero al instante, según su página de suscripciones
-        (revisada el 18 de noviembre de 2026).
+        Nuestra cuota es fija y en soles: no cobramos un porcentaje de tus ventas. Los montos no incluyen el 8% del
+        recibo por honorarios. La comisión de Mercado Pago la cobra Mercado Pago directamente a tu negocio:
+        3.49% + S/1 + IGV con el dinero al instante, según su página de suscripciones (revisada el 22 de noviembre
+        de 2026).
       </p>
       <p class="mt-2 text-sm text-[var(--muted)] scroll-reveal">
         Tres semanas de desarrollo, una de estabilización acompañada y dos meses de soporte incluidos.
@@ -510,15 +512,17 @@
           <summary>¿Se pueden cobrar suscripciones automáticas en Shopify con Mercado Pago?</summary>
           <p>Sí, con una app construida a medida e instalada en tu tienda, que es lo que hacemos. Shopify solo ejecuta
             el cobro de un contrato de suscripción con cinco pasarelas: Shopify Payments, PayPal Express, Authorize.net,
-            Adyen y Stripe, y ninguna es Mercado Pago. Por eso las apps más usadas mandan un link de pago cada mes. La
-            nuestra cobra sola.</p>
+            Adyen y Stripe, y ninguna es Mercado Pago. Por eso Recharge y Appstle no pueden usarlo, y Seal le manda al
+            cliente una factura en cada ciclo para que pague a mano. La nuestra cobra sola con Mercado Pago, sin
+            porcentaje de tus ventas.</p>
         </details>
         <details>
           <summary>¿Por qué Recharge, Appstle, Loop o Seal no me sirven en Perú?</summary>
           <p>Porque heredan la misma limitación. Shopify Payments no opera en Perú, Colombia, Chile ni Argentina — en
-            Latinoamérica solo está en México. Stripe no acepta empresas peruanas y Authorize.net exige entidad en
-            Estados Unidos, Canadá, Reino Unido, Europa o Australia. Lo que esas apps ofrecen como alternativa es mandar
-            una factura por correo cada ciclo para que el cliente pague a mano.</p>
+            Latinoamérica solo está en México. Stripe no acepta empresas peruanas y Authorize.net exige una cuenta de
+            comercio en Estados Unidos o Canadá. Recharge y Appstle solo funcionan con las cinco pasarelas de Shopify.
+            Seal sí acepta Mercado Pago, pero le manda al cliente una factura por correo en cada ciclo para que pague a
+            mano.</p>
         </details>
         <details>
           <summary>¿Necesito Shopify Plus?</summary>
@@ -544,7 +548,7 @@
         </details>
         <details>
           <summary>¿Qué comisión cobra Mercado Pago en Perú?</summary>
-          <p>Según su página de suscripciones (revisada el 18 de noviembre de 2026): 3.49% + S/1 + IGV con el dinero al
+          <p>Según su página de suscripciones (revisada el 22 de noviembre de 2026): 3.49% + S/1 + IGV con el dinero al
             instante, o 3.29% + S/1 + IGV a catorce días, para crédito, débito y dinero en cuenta. La cobra Mercado Pago
             directamente a tu negocio.</p>
         </details>
