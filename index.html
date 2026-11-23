@@ -1075,7 +1075,7 @@
           <span class="idx__t">Asesor Digital</span>
           <span class="puerta__cta">Cotiza<span class="puerta__largo"> tu asesor</span> →</span>
           <span class="idx__d">Atiende, recomienda y arma el pedido en el chat, a cualquier hora.</span>
-          <span class="puerta__precio"><b>S/ 2,900</b><small>una vez</small><em>+ desde S/ 490 al mes</em></span>
+          <span class="puerta__precio"><b>A cotizar</b><em>según tu catálogo</em></span>
         </button></li>
         <li><button type="button" class="puerta" data-cotiza="tienda">
           <span class="idx__n">03</span>
@@ -1085,8 +1085,8 @@
           <span class="puerta__precio"><small>desde</small><b>S/ 1,900</b><em>con dos meses de soporte incluidos</em></span>
         </button></li>
       </ol>
-      <p class="puertas__nota">Montos en soles. No incluyen el 8% del recibo por honorarios. La comisión de Mercado Pago la
-        cobra Mercado Pago directamente a tu negocio.</p>
+      <p class="puertas__nota">Montos en soles. No incluyen el 8% del recibo por honorarios. Nuestras cuotas son fijas: no
+        cobramos un porcentaje de tus ventas. La comisión de Mercado Pago la cobra Mercado Pago directamente a tu negocio.</p>
     </section>
 
     <!-- ===== CASO DE ÉXITO: Lab Nutrition. Con su permiso escrito; sin cifras hasta que Lab apruebe una. ===== -->
@@ -1333,11 +1333,8 @@
             { q: '¿Qué vendes?', c: 'Vendo', ops: ['Belleza', 'Mascotas', 'Ferretería', 'Tecnología', 'Regalos', 'Otro'] },
             { q: '¿Cuántas consultas de clientes te llegan al mes?', c: 'Consultas al mes', ops: ['Hasta 500', 'Hasta 2,000', 'Más de 2,000', 'No lo sé'] },
           ],
-          precio: r => {
-            const m = { 'Hasta 500': '490', 'Hasta 2,000': '890', 'Más de 2,000': '1,490' }[r[2]];
-            return [['Instalación y carga de conocimiento', 'S/ 2,900', 'S/ 2,900 de instalación'],
-              [m ? 'Cuota mensual, ' + r[2].toLowerCase() + ' conversaciones' : 'Cuota mensual', m ? 'S/ ' + m + ' /mes' : 'desde S/ 490 /mes', m ? 'S/ ' + m + ' al mes' : 'desde S/ 490 al mes']];
-          },
+          // Se arma a medida de cada tienda: se cotiza según el catálogo y las consultas al mes.
+          precio: () => [['Instalación y cuota mensual', 'a cotizar', 'instalación y cuota a cotizar según mi catálogo']],
           plazo: 'Dos semanas de puesta en marcha, casi todas cargando qué recomendar y cómo hablarle a tu cliente.',
         },
         tienda: {

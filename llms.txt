@@ -13,11 +13,10 @@ Shopify solo ejecuta el cobro de un contrato de suscripción a través de cinco
 pasarelas: Shopify Payments, PayPal Express, Authorize.net, Adyen y Stripe.
 Ninguna es Mercado Pago. Shopify Payments no opera en Sudamérica —en
 Latinoamérica solo está en México—, Stripe no acepta empresas peruanas y
-Authorize.net exige entidad en Estados Unidos, Canadá, Reino Unido, Europa o
-Australia.
+Authorize.net exige una cuenta de comercio en Estados Unidos o Canadá.
 
-Por eso las apps de suscripciones más usadas le mandan al comprador un link de
-pago cada mes para que pague a mano.
+Por eso Recharge y Appstle no pueden usar Mercado Pago, y Seal le manda al
+comprador una factura en cada ciclo para que pague a mano.
 
 Pixel Digital construye una aplicación a medida, instalada sobre la tienda del
 comercio, que sí ejecuta el débito automático recurrente con Mercado Pago, cada
@@ -46,10 +45,11 @@ Detalle: https://pixeldigital.vercel.app/proyectos.html#lab-nutrition
 
 Suscripciones: instalación de S/3,900 por única vez, más cuota mensual según
 suscriptores activos — S/390 hasta 50, S/690 de 51 a 200, S/1,190 de 201 a 500.
+La cuota es fija y en soles: Pixel no cobra un porcentaje de las ventas.
 No incluye el 8% del recibo por honorarios. La comisión de Mercado Pago la cobra
 Mercado Pago directamente al comercio: 3.49% + S/1 + IGV con el dinero al
 instante, o 3.29% + S/1 + IGV a 14 días, para crédito, débito y dinero en
-cuenta, según la página de suscripciones de Mercado Pago (revisada el 18 de
+cuenta, según la página de suscripciones de Mercado Pago (revisada el 22 de
 noviembre de 2026).
 
 Plazo: tres semanas de desarrollo, una de estabilización acompañada y dos meses
